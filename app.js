@@ -102,6 +102,24 @@ async function getDueCards(subjectId) {
   });
 }
 
+// Collecte toute la progression IndexedDB pour export/sync
+async function getAllProgress() {
+  const result = {};
+  for (const subjectId of SUBJECTS_ORDER) {
+    const progress = await getCardProgress(subjectId);
+    const subject = subjects[subjectId];
+    if (!subject || !Object.keys(progress).length) continue;
+    result[subjectId] = {};
+    for (const [cardId, p] of Object.entries(progress)) {
+      const card = subject.flashcards.find(c => c.id === cardId);
+      if (card) {
+        result[subjectId][cardId] = { box: p.box, term: card.term, lastAnswered: p.lastAnswered || 0 };
+      }
+    }
+  }
+  return result;
+}
+
 async function getSubjectStats(subjectId) {
   const subject = subjects[subjectId];
   if (!subject) return { boxes: [0,0,0], total: 0, mastered: 0, pct: 0 };
@@ -372,7 +390,7 @@ function renderFlashcard() {
 
   screen.innerHTML = `
   <div class="fc-header">
-    <button class="back-btn" onclick="openSubject('${subjectId}')">←</button>
+    <button class="back-btn" onclick="exitFlashcards('${subjectId}')">←</button>
     <div class="fc-progress-bar">
       <div class="fc-progress-fill" style="width:${pct}%; background:${s.color}"></div>
     </div>
@@ -423,6 +441,13 @@ function flipCard() {
     if (btns) btns.style.display = 'flex';
     if (hint) hint.style.display = 'none';
   }
+}
+
+function exitFlashcards(subjectId) {
+  const { idx, correct, bof, wrong } = fcSession;
+  const done = correct + (bof || 0) + wrong;
+  if (done > 0) toast(`Session sauvegardée · ${done} carte${done > 1 ? 's' : ''} répondue${done > 1 ? 's' : ''}`);
+  openSubject(subjectId);
 }
 
 async function answerCard(score) {
@@ -631,10 +656,60 @@ async function showStatsScreen() {
     <h1>Statistiques</h1>
   </div>
   ${rows.join('')}
+  <div class="stats-actions">
+    <button class="action-btn action-sync" onclick="syncWithWiki()">
+      <span class="ab-icon">🔄</span>
+      <div><div class="ab-title">Sync Wiki</div><div class="ab-desc">Mise à jour checklists (WiFi maison)</div></div>
+    </button>
+    <button class="action-btn action-export" onclick="exportProgress()">
+      <span class="ab-icon">📤</span>
+      <div><div class="ab-title">Exporter</div><div class="ab-desc">Télécharger ma progression JSON</div></div>
+    </button>
+  </div>
   <button class="reset-btn" onclick="resetProgress()">🗑️ Réinitialiser la progression</button>
   `;
 
   showScreen('stats');
+}
+
+async function exportProgress() {
+  const progress = await getAllProgress();
+  const blob = new Blob([JSON.stringify({ progress, exported: new Date().toISOString() }, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `studyapp-progress-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  toast('Progression exportée !');
+}
+
+async function syncWithWiki() {
+  const btn = document.querySelector('.action-sync');
+  if (btn) { btn.querySelector('.ab-title').textContent = 'Syncing…'; btn.disabled = true; }
+
+  try {
+    const progress = await getAllProgress();
+    const total = Object.values(progress).reduce((s, sub) => s + Object.keys(sub).length, 0);
+    if (total === 0) { toast('Aucune progression à synchroniser'); return; }
+
+    const res = await fetch('http://localhost:8000/api/sync-studyapp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ progress }),
+      signal: AbortSignal.timeout(5000)
+    });
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    toast(`✓ Wiki mis à jour · ${data.updated_count} items`);
+  } catch (e) {
+    if (e.name === 'TimeoutError' || e.name === 'TypeError') {
+      toast('StudyOS non joignable — connecte-toi au WiFi maison');
+    } else {
+      toast('Erreur sync : ' + e.message);
+    }
+  } finally {
+    if (btn) { btn.querySelector('.ab-title').textContent = 'Sync Wiki'; btn.disabled = false; }
+  }
 }
 
 async function resetProgress() {
