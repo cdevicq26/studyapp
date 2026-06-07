@@ -194,25 +194,23 @@ async function renderHome() {
     const urgency = days <= 3 ? '#ef4444' : days <= 7 ? '#f59e0b' : s.color;
 
     return `
-    <div class="subject-card" onclick="openSubject('${id}')"
-      style="background: linear-gradient(135deg, ${s.color}22, ${s.color}11); border-color: ${s.color}33;">
+    <div class="subject-card" onclick="openSubject('${id}')">
+      <div class="sc-stripe" style="background: ${s.color}"></div>
       <div class="countdown-badge" style="color: ${urgency}">${days}j</div>
       <div class="sc-tag" style="color: ${s.color}">${s.type}</div>
       <div class="sc-name">${s.name}</div>
-      <div class="sc-exam" style="color: ${s.color}">${formatDate(s.exam)}</div>
+      <div class="sc-exam">${formatDate(s.exam)}</div>
       <div class="sc-bar-bg">
         <div class="sc-bar" style="width: ${stats.pct}%; background: ${s.color}"></div>
       </div>
-      <div class="sc-stats" style="color: ${s.color}">${stats.pct}% maîtrisé · ${due.length} à revoir</div>
+      <div class="sc-stats" style="color: ${s.color}">${stats.pct}% · ${due.length} à revoir</div>
     </div>`;
   }));
 
   screen.innerHTML = `
   <div class="home-header">
-    <div>
-      <div class="home-header date">${new Date().toLocaleDateString('fr-BE', { weekday:'long', day:'numeric', month:'long' })}</div>
-      <h1>Révisions 📚</h1>
-    </div>
+    <div class="greeting">${new Date().toLocaleDateString('fr-BE', { weekday:'long', day:'numeric', month:'long' })}</div>
+    <h1>Révisions 📚</h1>
   </div>
 
   <div style="display:flex; gap:10px; padding: 4px 20px 20px; overflow-x:auto;">
