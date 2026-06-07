@@ -4,7 +4,7 @@
 // CONFIG
 // ═══════════════════════════════════════════════════
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'francais', 'maths', 'chimie'];
-const LEITNER_INTERVALS = [0, 1, 3, 7]; // jours par boîte (1-3)
+const LEITNER_INTERVALS = [0, 1, 2, 3]; // jours par boîte (1-3)
 const DB_NAME = 'studyapp-v1';
 const DB_VERSION = 1;
 
@@ -237,13 +237,13 @@ async function renderHome() {
       <div class="lw-icon">🟠</div>
       <div class="lw-num">${globalBoxes[1]}</div>
       <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[1]}%; background:#d97706"></div></div>
-      <div class="lw-label">Dans 3j</div>
+      <div class="lw-label">Après-demain</div>
     </div>
     <div class="lw-card">
       <div class="lw-icon">🟢</div>
       <div class="lw-num">${globalBoxes[2]}</div>
       <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[2]}%; background:#16a34a"></div></div>
-      <div class="lw-label">Dans 7j</div>
+      <div class="lw-label">Dans 3j</div>
     </div>
   </div>
 
@@ -329,7 +329,7 @@ async function openSubject(id) {
   <div class="leitner-row">
     <div class="leitner-boxes">${leitnerBoxes}</div>
     <div style="font-size:11px; color:var(--muted); margin-top:8px; line-height:1.6">
-      Non → demain · Bof → dans 3j · Oui → dans 7j
+      Non → demain · Bof → après-demain · Oui → dans 3j
     </div>
   </div>
   `;
