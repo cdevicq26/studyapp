@@ -4,7 +4,7 @@
 // CONFIG
 // ═══════════════════════════════════════════════════
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'francais', 'maths', 'chimie'];
-const LEITNER_INTERVALS = [0, 1, 2, 4, 7, 30]; // jours par boîte (1-5)
+const LEITNER_INTERVALS = [0, 1, 3, 7]; // jours par boîte (1-3)
 const DB_NAME = 'studyapp-v1';
 const DB_VERSION = 1;
 
@@ -70,18 +70,20 @@ async function saveCardProgress(subjectId, progress) {
   await dbSet(`progress-${subjectId}`, progress);
 }
 
-async function updateCard(subjectId, cardId, correct) {
+// score: 'oui' | 'bof' | 'non'
+async function updateCard(subjectId, cardId, score) {
   const progress = await getCardProgress(subjectId);
   const card = progress[cardId] || { box: 1, nextReview: 0 };
 
-  if (correct) {
-    card.box = Math.min(card.box + 1, 5);
+  if (score === 'oui') {
+    card.box = Math.min(card.box + 1, 3);
+  } else if (score === 'bof') {
+    card.box = 2;
   } else {
     card.box = 1;
   }
 
-  const days = LEITNER_INTERVALS[card.box];
-  card.nextReview = Date.now() + days * 86400000;
+  card.nextReview = Date.now() + LEITNER_INTERVALS[card.box] * 86400000;
   card.lastAnswered = Date.now();
   progress[cardId] = card;
   await saveCardProgress(subjectId, progress);
@@ -102,18 +104,18 @@ async function getDueCards(subjectId) {
 
 async function getSubjectStats(subjectId) {
   const subject = subjects[subjectId];
-  if (!subject) return { boxes: [0,0,0,0,0], total: 0, mastered: 0, pct: 0 };
+  if (!subject) return { boxes: [0,0,0], total: 0, mastered: 0, pct: 0 };
   const progress = await getCardProgress(subjectId);
-  const boxes = [0, 0, 0, 0, 0]; // box 1-5
+  const boxes = [0, 0, 0]; // box 1-3
   let mastered = 0;
   subject.flashcards.forEach(card => {
     const p = progress[card.id];
     const box = p ? p.box - 1 : 0;
-    boxes[Math.max(0, Math.min(4, box))]++;
-    if (p && p.box >= 4) mastered++;
+    boxes[Math.max(0, Math.min(2, box))]++;
+    if (p && p.box === 3) mastered++;
   });
   const total = subject.flashcards.length;
-  const score = boxes.reduce((s, n, i) => s + n * (i / 4), 0);
+  const score = boxes.reduce((s, n, i) => s + n * (i / 2), 0);
   const pct = Math.round(score / total * 100);
   return { boxes, total, mastered, pct };
 }
@@ -251,8 +253,8 @@ async function openSubject(id) {
 
   const leitnerBoxes = stats.boxes.map((n, i) => `
     <div class="leitner-box">
-      <div class="lb-num" style="color: ${['#ef4444','#f59e0b','#eab308','#22c55e','#6366f1'][i]}">${n}</div>
-      <div class="lb-label">B${i + 1}</div>
+      <div class="lb-num" style="color: ${['#ef4444','#d97706','#16a34a'][i]}">${n}</div>
+      <div class="lb-label">${['Non vu','Bof','Oui'][i]}</div>
     </div>`).join('');
 
   screen.innerHTML = `
@@ -268,9 +270,9 @@ async function openSubject(id) {
         <div class="pr-bar" style="width: ${stats.pct}%; background: ${s.color}"></div>
       </div>
       <div class="pr-nums">
-        <span style="color:#ef4444">✗ ${stats.boxes[0]}</span>
-        <span style="color:#f59e0b">~ ${stats.boxes[1] + stats.boxes[2]}</span>
-        <span style="color:#4ade80">✓ ${stats.boxes[3] + stats.boxes[4]}</span>
+        <span style="color:#ef4444">Non ${stats.boxes[0]}</span>
+        <span style="color:#d97706">Bof ${stats.boxes[1]}</span>
+        <span style="color:#16a34a">Oui ${stats.boxes[2]}</span>
         <span style="color:var(--muted)">${stats.pct}%</span>
       </div>
     </div>
@@ -308,7 +310,7 @@ async function openSubject(id) {
   <div class="leitner-row">
     <div class="leitner-boxes">${leitnerBoxes}</div>
     <div style="font-size:11px; color:var(--muted); margin-top:8px; line-height:1.6">
-      B1 = revoir demain · B2 = 2j · B3 = 4j · B4 = 7j · B5 = maîtrisé
+      Non → demain · Bof → dans 3j · Oui → dans 7j
     </div>
   </div>
   `;
@@ -329,7 +331,7 @@ async function startFlashcards(subjectId, mode) {
   }
 
   cards = shuffle(cards);
-  fcSession = { subjectId, cards, idx: 0, correct: 0, wrong: 0, mode };
+  fcSession = { subjectId, cards, idx: 0, correct: 0, bof: 0, wrong: 0, mode };
   renderFlashcard();
   showScreen('flashcard');
 }
@@ -373,8 +375,9 @@ function renderFlashcard() {
     </div>
 
     <div class="fc-buttons" id="fc-btns" style="display:none">
-      <button class="fc-btn fc-btn-no" onclick="answerCard(false)">✗ Je ne savais pas</button>
-      <button class="fc-btn fc-btn-yes" onclick="answerCard(true)">✓ Je savais !</button>
+      <button class="fc-btn fc-btn-no" onclick="answerCard('non')">✗ Non</button>
+      <button class="fc-btn fc-btn-bof" onclick="answerCard('bof')">~ Bof</button>
+      <button class="fc-btn fc-btn-yes" onclick="answerCard('oui')">✓ Oui</button>
     </div>
     <div class="fc-swipe-hint" id="fc-hint">Appuie sur la carte pour révéler la définition</div>
   </div>
@@ -401,34 +404,33 @@ function flipCard() {
   }
 }
 
-async function answerCard(correct) {
+async function answerCard(score) {
   const { subjectId, cards, idx } = fcSession;
   const card = cards[idx];
 
-  await updateCard(subjectId, card.id, correct);
+  await updateCard(subjectId, card.id, score);
 
-  if (correct) {
-    fcSession.correct++;
-  } else {
-    fcSession.wrong++;
-  }
+  if (score === 'oui') fcSession.correct++;
+  else if (score === 'bof') fcSession.bof = (fcSession.bof || 0) + 1;
+  else fcSession.wrong++;
+
   fcSession.idx++;
   renderFlashcard();
 }
 
 function renderFlashcardEnd() {
-  const { subjectId, cards, correct, wrong } = fcSession;
+  const { subjectId, cards, correct, bof, wrong } = fcSession;
   const s = subjects[subjectId];
   const screen = document.getElementById('screen-flashcard');
-  const pct = Math.round((correct / cards.length) * 100);
-  const emoji = pct >= 80 ? '🎉' : pct >= 60 ? '💪' : '📚';
-  const msg = pct >= 80 ? 'Excellent travail !' : pct >= 60 ? 'Continue comme ça !' : 'Révise encore ce soir !';
+  const pct = Math.round(((correct + (bof || 0) * 0.5) / cards.length) * 100);
+  const emoji = pct >= 80 ? '🎉' : pct >= 55 ? '💪' : '📚';
+  const msg = pct >= 80 ? 'Excellent travail !' : pct >= 55 ? 'Continue comme ça !' : 'Révise encore ce soir !';
 
   screen.innerHTML = `
   <div class="fc-header">
     <button class="back-btn" onclick="openSubject('${subjectId}')">←</button>
-    <div style="font-size:15px; font-weight:700; flex:1; text-align:center">Session terminée</div>
-    <div style="width:36px"></div>
+    <div style="font-size:15px; font-weight:700; flex:1; text-align:center; color:var(--text)">Session terminée</div>
+    <div style="width:38px"></div>
   </div>
   <div class="session-end">
     <div class="se-icon">${emoji}</div>
@@ -436,16 +438,16 @@ function renderFlashcardEnd() {
     <p>${s.name} · ${cards.length} cartes</p>
     <div class="session-score">
       <div class="ss-item">
-        <div class="ss-num" style="color:#4ade80">${correct}</div>
-        <div class="ss-label">Correctes</div>
+        <div class="ss-num" style="color:#16a34a">${correct}</div>
+        <div class="ss-label">Oui</div>
       </div>
       <div class="ss-item">
-        <div class="ss-num" style="color:#f87171">${wrong}</div>
-        <div class="ss-label">À revoir</div>
+        <div class="ss-num" style="color:#d97706">${bof || 0}</div>
+        <div class="ss-label">Bof</div>
       </div>
       <div class="ss-item">
-        <div class="ss-num" style="color:${s.color}">${pct}%</div>
-        <div class="ss-label">Score</div>
+        <div class="ss-num" style="color:#ef4444">${wrong}</div>
+        <div class="ss-label">Non</div>
       </div>
     </div>
     <button class="btn-primary" onclick="startFlashcards('${subjectId}', '${fcSession.mode}')">Recommencer</button>
@@ -593,11 +595,9 @@ async function showStatsScreen() {
         <div class="ss-bar" style="width:${stats.pct}%; background:${s.color}"></div>
       </div>
       <div class="ss-detail">
-        <span style="color:#ef4444">✗ ${stats.boxes[0]}</span>
-        <span style="color:#f59e0b">B2 ${stats.boxes[1]}</span>
-        <span style="color:#eab308">B3 ${stats.boxes[2]}</span>
-        <span style="color:#22c55e">B4 ${stats.boxes[3]}</span>
-        <span style="color:#6366f1">B5 ${stats.boxes[4]}</span>
+        <span style="color:#ef4444">Non ${stats.boxes[0]}</span>
+        <span style="color:#d97706">Bof ${stats.boxes[1]}</span>
+        <span style="color:#16a34a">Oui ${stats.boxes[2]}</span>
         <span style="color:var(--muted)">${stats.pct}%</span>
       </div>
     </div>`;

@@ -470,14 +470,9 @@ body {
   transition: box-shadow .15s, transform .1s;
 }
 .fc-btn:active { box-shadow: var(--press) !important; transform: scale(.98); }
-.fc-btn-no {
-  box-shadow: var(--raise);
-  color: #ef4444;
-}
-.fc-btn-yes {
-  box-shadow: var(--raise);
-  color: #16a34a;
-}
+.fc-btn-no  { box-shadow: var(--raise); color: #ef4444; }
+.fc-btn-bof { box-shadow: var(--raise); color: #d97706; }
+.fc-btn-yes { box-shadow: var(--raise); color: #16a34a; }
 
 .fc-swipe-hint {
   font-size: 12px;
