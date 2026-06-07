@@ -180,16 +180,22 @@ function formatDate(d) {
 async function renderHome() {
   const screen = document.getElementById('screen-home');
 
-  let totalDue = 0;
-  let totalMastered = 0;
+  // Greeting
+  const h = new Date().getHours();
+  const greeting = h >= 18 ? 'Bonsoir' : h >= 12 ? 'Bon après-midi' : 'Bonjour';
+  const dateStr = new Date().toLocaleDateString('fr-BE', { weekday:'long', day:'numeric', month:'long' });
+
+  // Aggregate Leitner boxes across all subjects
+  const globalBoxes = [0, 0, 0];
   let totalCards = 0;
 
   const cards = await Promise.all(SUBJECTS_ORDER.map(async id => {
     const s = subjects[id];
     const stats = await getSubjectStats(id);
     const due = await getDueCards(id);
-    totalDue += due.length;
-    totalMastered += stats.mastered;
+    globalBoxes[0] += stats.boxes[0];
+    globalBoxes[1] += stats.boxes[1];
+    globalBoxes[2] += stats.boxes[2];
     totalCards += stats.total;
 
     const days = daysUntil(s.exam);
@@ -209,34 +215,47 @@ async function renderHome() {
     </div>`;
   }));
 
+  // Box bar widths
+  const maxBox = Math.max(...globalBoxes, 1);
+  const bw = globalBoxes.map(n => Math.round(n / maxBox * 100));
+
   screen.innerHTML = `
   <div class="home-header">
-    <div class="greeting">${new Date().toLocaleDateString('fr-BE', { weekday:'long', day:'numeric', month:'long' })}</div>
-    <h1>Révisions 📚</h1>
+    <div class="greeting">${dateStr}</div>
+    <h1>${greeting}, Charles 👋</h1>
+    <div class="home-stats-link" onclick="showStatsScreen()">📊 Stats</div>
   </div>
 
-  <div style="display:flex; gap:10px; padding: 4px 20px 20px; overflow-x:auto;">
-    <div class="quick-stat">
-      <div class="qs-num" style="color:#f59e0b">${totalDue}</div>
-      <div class="qs-label">À revoir</div>
+  <div class="leitner-widgets">
+    <div class="lw-card" onclick="startAllDue()">
+      <div class="lw-icon">🔴</div>
+      <div class="lw-num">${globalBoxes[0]}</div>
+      <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[0]}%; background:#ef4444"></div></div>
+      <div class="lw-label">Demain</div>
     </div>
-    <div class="quick-stat">
-      <div class="qs-num" style="color:#4ade80">${totalMastered}</div>
-      <div class="qs-label">Maîtrisés</div>
+    <div class="lw-card">
+      <div class="lw-icon">🟠</div>
+      <div class="lw-num">${globalBoxes[1]}</div>
+      <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[1]}%; background:#d97706"></div></div>
+      <div class="lw-label">Dans 3j</div>
     </div>
-    <div class="quick-stat">
-      <div class="qs-num" style="color:#818cf8">${totalCards}</div>
-      <div class="qs-label">Total cartes</div>
-    </div>
-    <div class="quick-stat" onclick="showStatsScreen()" style="cursor:pointer">
-      <div class="qs-num" style="color:#6366f1">📊</div>
-      <div class="qs-label">Statistiques</div>
+    <div class="lw-card">
+      <div class="lw-icon">🟢</div>
+      <div class="lw-num">${globalBoxes[2]}</div>
+      <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[2]}%; background:#16a34a"></div></div>
+      <div class="lw-label">Dans 7j</div>
     </div>
   </div>
 
   <div class="section-title">Matières</div>
   <div class="subject-grid">${cards.join('')}</div>
   `;
+}
+
+async function startAllDue() {
+  // Quick-start all due cards from the most urgent subject
+  const urgentId = SUBJECTS_ORDER.find(async id => (await getDueCards(id)).length > 0) || SUBJECTS_ORDER[0];
+  openSubject(urgentId);
 }
 
 // ═══════════════════════════════════════════════════
