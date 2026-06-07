@@ -228,20 +228,17 @@ async function renderHome() {
 
   <div class="leitner-widgets">
     <div class="lw-card" onclick="startAllDue()">
-      <div class="lw-icon">🔴</div>
-      <div class="lw-num">${globalBoxes[0]}</div>
+      <div class="lw-num" style="color:#ef4444">${globalBoxes[0]}</div>
       <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[0]}%; background:#ef4444"></div></div>
       <div class="lw-label">Demain</div>
     </div>
     <div class="lw-card">
-      <div class="lw-icon">🟠</div>
-      <div class="lw-num">${globalBoxes[1]}</div>
+      <div class="lw-num" style="color:#d97706">${globalBoxes[1]}</div>
       <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[1]}%; background:#d97706"></div></div>
       <div class="lw-label">Après-demain</div>
     </div>
     <div class="lw-card">
-      <div class="lw-icon">🟢</div>
-      <div class="lw-num">${globalBoxes[2]}</div>
+      <div class="lw-num" style="color:#16a34a">${globalBoxes[2]}</div>
       <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[2]}%; background:#16a34a"></div></div>
       <div class="lw-label">Dans 3j</div>
     </div>
