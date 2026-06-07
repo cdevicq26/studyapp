@@ -139,6 +139,49 @@ async function getSubjectStats(subjectId) {
 }
 
 // ═══════════════════════════════════════════════════
+// LEITNER POUR LES QCM (clé séparée : qcm-{subjectId})
+// ═══════════════════════════════════════════════════
+async function getQCMProgress(subjectId) {
+  const data = await dbGet(`qcm-progress-${subjectId}`);
+  return data || {};
+}
+
+async function updateQCM(subjectId, qId, correct) {
+  const progress = await getQCMProgress(subjectId);
+  const entry = progress[qId] || { box: 1, nextReview: 0 };
+
+  if (correct) {
+    entry.box = Math.min(entry.box + 1, 3);
+  } else {
+    entry.box = Math.max(entry.box - 1, 1);
+  }
+
+  entry.nextReview = Date.now() + LEITNER_INTERVALS[entry.box] * 86400000;
+  entry.lastAnswered = Date.now();
+  progress[qId] = entry;
+  await dbSet(`qcm-progress-${subjectId}`, progress);
+}
+
+async function getDueQCMs(subjectId) {
+  const subject = subjects[subjectId];
+  if (!subject) return [];
+  const progress = await getQCMProgress(subjectId);
+  const now = Date.now();
+  return subject.qcm.filter(q => {
+    const p = progress[q.id];
+    if (!p) return true; // jamais vu
+    return p.nextReview <= now;
+  });
+}
+
+async function getQCMStats(subjectId) {
+  const subject = subjects[subjectId];
+  if (!subject) return { due: 0, total: 0 };
+  const due = await getDueQCMs(subjectId);
+  return { due: due.length, total: subject.qcm.length };
+}
+
+// ═══════════════════════════════════════════════════
 // DATA LOADING
 // ═══════════════════════════════════════════════════
 async function loadSubject(id) {
@@ -286,6 +329,7 @@ async function openSubject(id) {
   const s = subjects[id];
   const stats = await getSubjectStats(id);
   const due = await getDueCards(id);
+  const qcmStats = await getQCMStats(id);
   const screen = document.getElementById('screen-subject');
 
   const days = daysUntil(s.exam);
@@ -331,13 +375,13 @@ async function openSubject(id) {
       <div class="mc-desc">Session libre complète</div>
       <div class="mc-count">${s.flashcards.length} cartes</div>
     </div>
-    <div class="mode-card" onclick="startQCM('${id}')">
+    <div class="mode-card" onclick="startQCM('${id}', 'due')">
       <div class="mc-icon">🧠</div>
-      <div class="mc-name">QCM</div>
-      <div class="mc-desc">Questions à choix multiple</div>
-      <div class="mc-count">${s.qcm.length} questions</div>
+      <div class="mc-name">QCM à revoir</div>
+      <div class="mc-desc">Questions Leitner dues</div>
+      <div class="mc-count" style="color:${qcmStats.due > 0 ? '#d97706' : '#16a34a'}">${qcmStats.due} à revoir</div>
     </div>
-    <div class="mode-card" onclick="startQCM('${id}', true)">
+    <div class="mode-card" onclick="startQCM('${id}', 'quick')">
       <div class="mc-icon">⚡</div>
       <div class="mc-name">QCM rapide</div>
       <div class="mc-desc">5 questions aléatoires</div>
@@ -505,12 +549,22 @@ function renderFlashcardEnd() {
 // ═══════════════════════════════════════════════════
 // QCM MODE
 // ═══════════════════════════════════════════════════
-async function startQCM(subjectId, quick = false) {
+async function startQCM(subjectId, mode = 'due') {
   const s = subjects[subjectId];
-  let questions = shuffle([...s.qcm]);
-  if (quick) questions = questions.slice(0, 5);
+  let questions;
 
-  qcmSession = { subjectId, questions, idx: 0, correct: 0, quick };
+  if (mode === 'quick') {
+    questions = shuffle([...s.qcm]).slice(0, 5);
+  } else if (mode === 'all') {
+    questions = shuffle([...s.qcm]);
+  } else {
+    // 'due' : questions dont c'est le moment de revoir
+    const due = await getDueQCMs(subjectId);
+    questions = due.length > 0 ? shuffle(due) : shuffle([...s.qcm]).slice(0, 10);
+    if (due.length === 0) toast('Toutes à jour — session de 10 questions aléatoires');
+  }
+
+  qcmSession = { subjectId, questions, idx: 0, correct: 0, mode };
   renderQCM();
   showScreen('qcm');
 }
@@ -558,20 +612,24 @@ function renderQCM() {
 }
 
 function answerQCM(chosen) {
-  const { questions, idx, currentAns } = qcmSession;
+  const { subjectId, questions, idx, currentAns } = qcmSession;
   const q = questions[idx];
   const opts = document.querySelectorAll('.qcm-opt');
+  const correct = chosen === currentAns;
 
   opts.forEach(o => o.classList.add('disabled'));
   opts[currentAns].classList.add('correct');
 
-  if (chosen === currentAns) {
+  if (correct) {
     qcmSession.correct++;
     toast('✓ Bonne réponse !');
   } else {
     opts[chosen].classList.add('wrong');
     toast('✗ Pas tout à fait…');
   }
+
+  // Mise à jour Leitner QCM
+  updateQCM(subjectId, q.id, correct);
 
   if (q.exp) {
     document.getElementById('qcm-expl').innerHTML = `
@@ -619,7 +677,7 @@ function renderQCMEnd() {
         <div class="ss-label">Score</div>
       </div>
     </div>
-    <button class="btn-primary" onclick="startQCM('${subjectId}', ${qcmSession.quick})">Recommencer</button>
+    <button class="btn-primary" onclick="startQCM('${subjectId}', '${qcmSession.mode}')">Recommencer</button>
     <button class="btn-secondary" onclick="openSubject('${subjectId}')">Retour à ${s.name}</button>
   </div>
   `;
