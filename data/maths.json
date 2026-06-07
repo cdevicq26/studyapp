@@ -1,8 +1,8 @@
 {
   "id": "maths",
   "name": "Mathématiques",
-  "color": "#7c3aed",
-  "colorLight": "#f5f3ff",
+  "color": "#ec4899",
+  "colorLight": "#fdf2f8",
   "exam": "2026-06-22",
   "type": "Oral",
   "flashcards": [

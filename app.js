@@ -310,15 +310,118 @@ async function renderHome() {
     </div>
   </div>
 
+  <div class="section-title">Session mixte</div>
+  <div class="mix-row">
+    <div class="mix-card" onclick="startMix('flashcard')">
+      <div class="mix-icon">🎲</div>
+      <div class="mix-label">Mix Flashcards</div>
+      <div class="mix-sub">Toutes matières mélangées</div>
+    </div>
+    <div class="mix-card" onclick="startMix('qcm')">
+      <div class="mix-icon">🎲</div>
+      <div class="mix-label">Mix QCM</div>
+      <div class="mix-sub">Toutes matières mélangées</div>
+    </div>
+  </div>
+
   <div class="section-title">Matières</div>
   <div class="subject-grid">${cards.join('')}</div>
   `;
 }
 
 async function startAllDue() {
-  // Quick-start all due cards from the most urgent subject
   const urgentId = SUBJECTS_ORDER.find(async id => (await getDueCards(id)).length > 0) || SUBJECTS_ORDER[0];
   openSubject(urgentId);
+}
+
+// ═══════════════════════════════════════════════════
+// MODE MIXTE — toutes matières mélangées
+// ═══════════════════════════════════════════════════
+async function startMix(mode) {
+  if (mode === 'flashcard') {
+    let allCards = [];
+    for (const id of SUBJECTS_ORDER) {
+      const s = subjects[id];
+      s.flashcards.forEach(c => allCards.push({ ...c, _subject: id, _color: s.color, _name: s.name }));
+    }
+    allCards = shuffle(allCards);
+    fcSession = {
+      subjectId: 'mix', cards: allCards,
+      idx: 0, correct: 0, bof: 0, wrong: 0, mode: 'mix'
+    };
+    renderFlashcardMix();
+    showScreen('flashcard');
+  } else {
+    let allQCM = [];
+    for (const id of SUBJECTS_ORDER) {
+      const s = subjects[id];
+      s.qcm.forEach(q => allQCM.push({ ...q, _subject: id, _name: s.name }));
+    }
+    qcmSession = {
+      subjectId: 'mix', questions: shuffle(allQCM).slice(0, 20),
+      idx: 0, correct: 0, mode: 'mix'
+    };
+    renderQCM();
+    showScreen('qcm');
+  }
+}
+
+function renderFlashcardMix() {
+  const { cards, idx } = fcSession;
+  const screen = document.getElementById('screen-flashcard');
+  if (idx >= cards.length) { renderFlashcardEnd(); return; }
+  const card = cards[idx];
+  const color = card._color || '#6366f1';
+  const pct = Math.round((idx / cards.length) * 100);
+  screen.innerHTML = `
+  <div class="fc-header">
+    <button class="back-btn" onclick="exitFlashcards('geo')">←</button>
+    <div class="fc-progress-bar">
+      <div class="fc-progress-fill" style="width:${pct}%; background:${color}"></div>
+    </div>
+    <div class="fc-counter">${idx + 1}/${cards.length}</div>
+  </div>
+  <div class="fc-arena">
+    <div class="flashcard" id="fc-card" onclick="flipCard()">
+      <div class="fc-face fc-front">
+        <div class="fc-cat">${card._name || card.cat} · ${card.cat}</div>
+        <div class="fc-box" id="fc-box-display">—</div>
+        <div class="fc-term">${card.term}</div>
+        <div class="fc-hint">Appuie · swipe ← Non · ↑ Bof · → Oui</div>
+      </div>
+      <div class="fc-face fc-back">
+        <div class="fc-cat-back">${card._name || ''} · ${card.cat}</div>
+        <div class="fc-term-back">${card.term}</div>
+        <div class="fc-def">${card.def}</div>
+        ${card.ex ? `<div class="fc-ex">${card.ex}</div>` : ''}
+      </div>
+    </div>
+    <div class="fc-buttons" id="fc-btns" style="display:none">
+      <button class="fc-btn fc-btn-no" onclick="answerCardMix('non')">✗ Non</button>
+      <button class="fc-btn fc-btn-bof" onclick="answerCardMix('bof')">~ Bof</button>
+      <button class="fc-btn fc-btn-yes" onclick="answerCardMix('oui')">✓ Oui</button>
+    </div>
+    <div class="fc-swipe-hint" id="fc-hint">Appuie sur la carte pour révéler</div>
+  </div>`;
+  initSwipe();
+  // swipe appelle answerCard — on patch pour le mix
+  window._isMix = true;
+  getCardProgress(card._subject).then(progress => {
+    const p = progress[card.id];
+    const el = document.getElementById('fc-box-display');
+    if (el && p) el.textContent = `📦 B${p.box}`;
+  });
+}
+
+async function answerCardMix(score) {
+  const { cards, idx } = fcSession;
+  const card = cards[idx];
+  await updateCard(card._subject, card.id, score);
+  if (score === 'oui') fcSession.correct++;
+  else if (score === 'bof') fcSession.bof = (fcSession.bof || 0) + 1;
+  else fcSession.wrong++;
+  fcSession.idx++;
+  renderFlashcardMix();
 }
 
 // ═══════════════════════════════════════════════════
@@ -387,9 +490,15 @@ async function openSubject(id) {
       <div class="mc-desc">5 questions aléatoires</div>
       <div class="mc-count">5 questions</div>
     </div>
+    <div class="mode-card" onclick="startQCM('${id}', 'all')">
+      <div class="mc-icon">📋</div>
+      <div class="mc-name">Tous les QCM</div>
+      <div class="mc-desc">Session complète</div>
+      <div class="mc-count">${s.qcm.length} questions</div>
+    </div>
   </div>
 
-  <div class="section-title">Boîtes Leitner</div>
+  <div class="section-title">Boîtes Leitner — Flashcards</div>
   <div class="leitner-row">
     <div class="leitner-boxes">${leitnerBoxes}</div>
     <div style="font-size:11px; color:var(--muted); margin-top:8px; line-height:1.6">
@@ -447,7 +556,7 @@ function renderFlashcard() {
         <div class="fc-cat">${card.cat}</div>
         <div class="fc-box">⬜ Boîte ?</div>
         <div class="fc-term">${card.term}</div>
-        <div class="fc-hint">Appuie pour voir la réponse</div>
+        <div class="fc-hint">Appuie · swipe ← Non · ↑ Bof · → Oui</div>
       </div>
       <div class="fc-face fc-back">
         <div class="fc-cat-back">${card.cat}</div>
@@ -466,6 +575,8 @@ function renderFlashcard() {
   </div>
   `;
 
+  initSwipe();
+
   // Load current box
   getCardProgress(subjectId).then(progress => {
     const p = progress[card.id];
@@ -482,9 +593,37 @@ function flipCard() {
   const hint = document.getElementById('fc-hint');
   if (!card.classList.contains('flipped')) {
     card.classList.add('flipped');
-    if (btns) btns.style.display = 'flex';
+    if (btns) btns.style.display = 'grid';
     if (hint) hint.style.display = 'none';
   }
+}
+
+function initSwipe() {
+  const arena = document.querySelector('.fc-arena');
+  if (!arena) return;
+  let sx, sy, st;
+  arena.addEventListener('touchstart', e => {
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
+    st = Date.now();
+  }, { passive: true });
+  arena.addEventListener('touchend', e => {
+    if (sx == null) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    const dt = Date.now() - st;
+    sx = sy = null;
+    if (dt > 600) return;
+    const card = document.getElementById('fc-card');
+    if (!card?.classList.contains('flipped')) return;
+    const ax = Math.abs(dx), ay = Math.abs(dy);
+    const fn = fcSession.mode === 'mix' ? answerCardMix : answerCard;
+    if (ax > 60 && ax > ay * 1.2) {
+      dx > 0 ? fn('oui') : fn('non');
+    } else if (dy < -60 && ay > ax * 1.2) {
+      fn('bof');
+    }
+  }, { passive: true });
 }
 
 function exitFlashcards(subjectId) {
@@ -692,18 +831,35 @@ async function showStatsScreen() {
   const rows = await Promise.all(SUBJECTS_ORDER.map(async id => {
     const s = subjects[id];
     const stats = await getSubjectStats(id);
+    const qp = await getQCMProgress(id);
+    const qBoxes = [0, 0, 0];
+    Object.values(qp).forEach(p => { qBoxes[Math.max(0, Math.min(2, p.box - 1))]++; });
+    const qTotal = s.qcm.length;
+    const qSeen = Object.keys(qp).length;
+    const qPct = qTotal ? Math.round(qSeen / qTotal * 100) : 0;
     return `
     <div class="stats-subject">
       <div class="ss-stripe" style="background:${s.color}"></div>
       <div class="ss-name">${s.name}</div>
+      <div class="ss-row-label">Flashcards</div>
       <div class="ss-bar-bg">
         <div class="ss-bar" style="width:${stats.pct}%; background:${s.color}"></div>
       </div>
       <div class="ss-detail">
-        <span style="color:#ef4444">Non ${stats.boxes[0]}</span>
-        <span style="color:#d97706">Bof ${stats.boxes[1]}</span>
-        <span style="color:#16a34a">Oui ${stats.boxes[2]}</span>
+        <span style="color:#ef4444">✗ ${stats.boxes[0]}</span>
+        <span style="color:#d97706">~ ${stats.boxes[1]}</span>
+        <span style="color:#16a34a">✓ ${stats.boxes[2]}</span>
         <span style="color:var(--muted)">${stats.pct}%</span>
+      </div>
+      <div class="ss-row-label" style="margin-top:10px">QCM</div>
+      <div class="ss-bar-bg">
+        <div class="ss-bar" style="width:${qPct}%; background:${s.color}; opacity:.6"></div>
+      </div>
+      <div class="ss-detail">
+        <span style="color:#ef4444">✗ ${qBoxes[0]}</span>
+        <span style="color:#d97706">~ ${qBoxes[1]}</span>
+        <span style="color:#16a34a">✓ ${qBoxes[2]}</span>
+        <span style="color:var(--muted)">${qSeen}/${qTotal} vus</span>
       </div>
     </div>`;
   }));
@@ -794,9 +950,18 @@ async function init() {
     await renderHome();
     showScreen('home');
 
-    // Register service worker
+    // Register service worker + notification de mise à jour
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').catch(() => {});
+      navigator.serviceWorker.addEventListener('message', e => {
+        if (e.data?.type === 'SW_UPDATED') {
+          const b = document.createElement('div');
+          b.className = 'update-banner';
+          b.innerHTML = `Nouvelle version disponible <button onclick="location.reload()">Recharger</button>`;
+          document.body.appendChild(b);
+          setTimeout(() => b.remove(), 12000);
+        }
+      });
     }
   } catch (err) {
     console.error('Init error:', err);

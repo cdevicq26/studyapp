@@ -220,6 +220,27 @@ body {
   letter-spacing: -.3px;
 }
 
+/* Mix row */
+.mix-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 0 22px 8px;
+}
+.mix-card {
+  background: var(--bg);
+  box-shadow: var(--raise);
+  border-radius: var(--r);
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow .15s, transform .12s;
+}
+.mix-card:active { box-shadow: var(--press); transform: scale(.97); }
+.mix-icon { font-size: 22px; margin-bottom: 6px; }
+.mix-label { font-size: 13px; font-weight: 800; color: var(--accent); margin-bottom: 3px; letter-spacing: -.2px; }
+.mix-sub { font-size: 10px; color: var(--muted); font-weight: 600; }
+
 /* ════════════════════════════════════════
    SUBJECT SCREEN
 ════════════════════════════════════════ */
@@ -732,6 +753,11 @@ body {
   display: flex; gap: 12px;
   font-size: 11px; font-weight: 700;
 }
+.ss-row-label {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .07em;
+  color: var(--faint); margin-bottom: 5px;
+}
 
 .stats-actions {
   display: flex;
@@ -800,3 +826,22 @@ body {
   letter-spacing: -.1px;
 }
 #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Update banner */
+.update-banner {
+  position: fixed; bottom: 80px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--text); color: var(--bg);
+  border-radius: 20px; padding: 10px 16px;
+  font-size: 13px; font-weight: 600;
+  z-index: 200; display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.2);
+  animation: fadeIn .3s;
+}
+.update-banner button {
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 10px;
+  padding: 4px 10px; font-size: 12px;
+  font-weight: 700; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}

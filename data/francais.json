@@ -1,101 +1,775 @@
 {
   "id": "francais",
   "name": "Français",
-  "color": "#ca8a04",
+  "color": "#eab308",
   "colorLight": "#fefce8",
   "exam": "2026-06-23",
   "type": "Oral",
   "flashcards": [
-    {"id":"f1","cat":"Auteurs","term":"Jean Racine","def":"Né 1639 · Phèdre (1677) · Jansénisme : grâce divine, volonté corrompue, prédestination. Tragédie = fatalité inéluctable.","ex":"Phèdre : \"ni tout à fait coupable, ni tout à fait innocente\" (préface)"},
-    {"id":"f2","cat":"Auteurs","term":"Pierre Corneille","def":"Né 1606 · Le Cid (1637) · Tragi-comédie (fin pas totalement tragique). Héros cornélien = conflit honneur vs amour, triomphe du devoir.","ex":"Le Cid : stances = monologue délibératif avant le duel"},
-    {"id":"f3","cat":"Auteurs","term":"Corneille vs Racine","def":"Corneille : héros maître de lui, conflit intérieur résolu par le devoir, fin ouverte. Racine : héros vaincu par la passion, fatalité, fin tragique.","ex":"Corneille = idéal cornélien. Racine = fatalité tragique janséniste"},
-    {"id":"f4","cat":"Auteurs","term":"Molière · Dom Juan","def":"Dom Juan (1665) : séducteur libertin. Acte I sc.2 = liste de conquêtes. Acte III sc.1 = \"deux et deux sont quatre\" (athéisme).","ex":"Dom Juan = libertin de mœurs ET intellectuel"},
-    {"id":"f5","cat":"Auteurs","term":"Laclos · Liaisons dangereuses","def":"Roman épistolaire (1782). Valmont + Merteuil = libertins. Lettre IV : Valmont refuse d'abord la mission Cécile.","ex":"Merteuil : libertinage = réponse à l'oppression féminine ≠ Valmont"},
-    {"id":"f6","cat":"Auteurs","term":"Shakespeare · Hamlet","def":"Hamlet (XVIe s.) : prince du Danemark qui doit venger son père assassiné. Hésite entre action et contemplation. Thème : liberté d'agir ou d'accepter le destin.","ex":"\"Être ou ne pas être\" = dilemme entre agir (risque) et subir (passivité). Lien thème Liberté."},
-    {"id":"f7","cat":"Auteurs","term":"Jansénisme (Racine)","def":"Mouvement religieux : l'être humain a une volonté corrompue par le péché originel. La grâce divine est accordée à certains seulement (prédestination). L'homme ne peut pas se sauver seul.","ex":"Phèdre : victime de Vénus (fatalité divine) mais coupable de ne pas agir juste → double condamnation"},
-    {"id":"f8","cat":"Auteurs","term":"Phèdre — coupable ou innocente ?","def":"Phèdre est VICTIME : sa passion lui est imposée par Vénus (punit la lignée du Soleil). Phèdre est COUPABLE : elle laisse Hippolyte accuser faussement, Thésée invoque Neptune, Hippolyte meurt.","ex":"Racine préface : \"ni tout à fait coupable, ni tout à fait innocente\" — ambiguïté morale centrale de la pièce"},
-    {"id":"f9","cat":"Auteurs","term":"Tirade de l'aveu (Phèdre)","def":"Phèdre avoue sa passion incestueuse pour Hippolyte à sa nourrice Œnone (puis à Hippolyte lui-même). L'aveu = libérateur car briser le secret est un soulagement, mais aussi destructeur car déclenche la catastrophe.","ex":"Phèdre à Hippolyte : elle lui déclare sa flamme — il la rejette — elle le laisse accuser faussement"},
-    {"id":"f10","cat":"Libertinage","term":"2 axes du libertinage","def":"1. Intellectuel : libre-penseur, remet en question Dieu et les normes sociales. 2. De mœurs : recherche du plaisir, séduction, manipulation.","ex":"Dom Juan = les deux axes · Merteuil = surtout intellectuel"},
-    {"id":"f11","cat":"Libertinage","term":"Paradoxe du libertin","def":"La liberté qu'ils revendiquent est une prison dorée : ils sont esclaves de leur propre désir de liberté.","ex":"Don Juan ne peut pas s'arrêter de séduire — il est piégé par sa propre logique"},
-    {"id":"f12","cat":"Libertinage","term":"Portrait-type du libertin","def":"6 traits : sentiment de supériorité · recherche du plaisir · manipulation · refus des normes · masque social · comportement compulsif.","ex":"Valmont et Merteuil incarnent ces 6 traits dans les Liaisons"},
-    {"id":"f13","cat":"Libertinage","term":"Merteuil ≠ Valmont","def":"Valmont : libertin de mœurs, cherche la conquête par défi. Merteuil : libertinage = réponse à l'oppression féminine — elle utilise les armes des hommes contre les hommes. Libertin intellectuel + de mœurs.","ex":"Merteuil lettre LXXXI : \"J'étais née pour venger mon sexe et maîtriser le vôtre\""},
-    {"id":"f14","cat":"Libertinage","term":"Libertin = précurseur des Lumières ?","def":"Oui : le libertin intellectuel remet en question Dieu, les normes sociales, la religion → préfigure la critique philosophique des Lumières (Voltaire, Diderot). Mais le libertin = transgression individuelle, pas projet collectif.","ex":"Dom Juan : \"deux et deux sont quatre\" → rationalisme → même logique que Descartes et Voltaire"},
-    {"id":"f15","cat":"Théâtre classique","term":"Règles du théâtre classique","def":"3 unités : temps (24h max) · lieu (1 seul) · action (1 intrigue principale). + Bienséances (rien de choquant) + Catharsis.","ex":"Phèdre respecte les 3 unités. Le Cid les transgresse (polémique)"},
-    {"id":"f16","cat":"Théâtre classique","term":"Catharsis","def":"Purification des passions par l'art dramatique. Le spectateur ressent pitié et terreur, puis est libéré de ces émotions.","ex":"Aristote · Poétique : but de la tragédie = provoquer la catharsis"},
-    {"id":"f17","cat":"Théâtre classique","term":"Stances — Le Cid","def":"Les stances (acte I sc.6) = monologue délibératif en vers de Don Rodrigue avant le duel contre le père de Chimène. Il expose son dilemme : honneur du père vs amour pour Chimène.","ex":"Structure en strophes irrégulières → traduit l'hésitation intérieure. Résolution : l'honneur passe avant tout = idéal cornélien"},
-    {"id":"f18","cat":"Théâtre classique","term":"Tragi-comédie vs Tragédie","def":"Tragédie : fin fatale, héros vaincu, fatalité. Tragi-comédie : éléments tragiques mais fin non totalement tragique — ouverture, espoir, ambiguïté.","ex":"Phèdre = tragédie (mort). Le Cid = tragi-comédie : Rodrigue vit, mais Chimène doit accepter le mariage avec son meurtrier"},
-    {"id":"f19","cat":"Figures de style","term":"Métaphore","def":"Comparaison implicite sans outil comparatif. Effet : image forte, rapprochement de deux réalités éloignées, intensification émotionnelle.","ex":"Phèdre : \"Vénus s'est attachée à sa proie\" (passion = prédateur / Phèdre = proie)"},
-    {"id":"f20","cat":"Figures de style","term":"Métaphore filée","def":"Métaphore développée sur plusieurs vers ou tout un texte. Effet : construction d'un univers cohérent, approfondissement de l'image initiale.","ex":"Dans Phèdre, la métaphore du feu est filée : \"ce feu fatal\", \"ardeurs\", \"flammes\" → la passion = feu qui consume"},
-    {"id":"f21","cat":"Figures de style","term":"Oxymore","def":"Association de deux mots de sens contraires dans un même groupe. Effet : paradoxe, tension, complexité d'un sentiment ou d'une situation.","ex":"\"douce violence\", \"obscure clarté\" (Corneille, Le Cid) — traduit les contradictions intérieures du héros"},
-    {"id":"f22","cat":"Figures de style","term":"Antithèse","def":"Opposition de deux idées ou images dans une construction symétrique. Effet : mise en relief du contraste, mise en évidence d'une tension.","ex":"\"Je vivais, je voyais ; je savais vouloir\" vs \"Je mourrai\" — opposition vie/mort dans Phèdre"},
-    {"id":"f23","cat":"Figures de style","term":"Allégorie","def":"Représentation d'une idée abstraite par une image concrète ou un personnage. Effet : rend le concept vivant et frappant.","ex":"Vénus dans Phèdre = allégorie de la passion amoureuse incontrôlable et dévastatrice"},
-    {"id":"f24","cat":"Figures de style","term":"Parallélisme","def":"Répétition d'une même structure grammaticale dans deux propositions. Effet : équilibre, insistance, comparaison implicite.","ex":"\"Maîtres de leurs passions, maîtres de leur destin\" — deux groupes nominaux en parallèle"},
-    {"id":"f25","cat":"Figures de style","term":"Euphémisme","def":"Atténuation d'une réalité difficile ou choquante par un terme plus doux. Effet : politesse, pudeur, ironie parfois.","ex":"\"Il a cessé de vivre\" pour \"il est mort\" · \"l'âge de raison\" pour vieillesse"},
-    {"id":"f26","cat":"Figures de style","term":"Ironie","def":"Dire le contraire de ce qu'on pense pour se moquer. Effet : distance critique, humour, dénonciation.","ex":"Dom Juan à son père : \"Vous faites bien de me pardonner\" (il n'a aucune intention de changer)"},
-    {"id":"f27","cat":"Figures de style","term":"Question rhétorique","def":"Question posée sans attendre de réponse, pour affirmer ou interpeller. Effet : implication du lecteur/spectateur, force de conviction.","ex":"Phèdre : \"Que faisais-je si loin de Syracuse ?\" → accuse indirectement, sans réponse attendue"},
-    {"id":"f28","cat":"Figures de style","term":"Périphrase","def":"Remplacer un mot par une expression plus longue qui le décrit. Effet : emphase, élégance, désignation indirecte.","ex":"\"l'astre du jour\" = le soleil · \"l'auteur de mes jours\" = mon père (théâtre classique)"},
-    {"id":"f29","cat":"Figures de style","term":"Paronomase","def":"Rapprochement de mots proches phonétiquement mais de sens différent. Effet : jeu sonore, mise en valeur d'un contraste ou d'une ressemblance trompeuse.","ex":"\"Qui se ressemble s'assemble\" · \"race / tracé\" — effets sonores dans les vers classiques"},
-    {"id":"f30","cat":"Figures de style","term":"Allitération","def":"Répétition d'un même son consonantique. Effet : musicalité, insistance, imitation sonore.","ex":"Andromaque : \"Pour qui sont ces serpents qui sifflent sur vos têtes\" (son S = sifflement)"},
-    {"id":"f31","cat":"Figures de style","term":"Anaphore","def":"Répétition d'un même mot/groupe en début de phrases successives. Effet : insistance, rythme, amplification.","ex":"\"Je t'aimais inconstant, qu'aurais-je fait fidèle ?\" — répétition structurante"},
-    {"id":"f32","cat":"Figures de style","term":"Chiasme","def":"Structure croisée : A-B / B'-A'. Effet : mise en miroir, équilibre, mise en valeur du contraste.","ex":"\"Il faut manger pour vivre et non vivre pour manger\" (Molière)"},
-    {"id":"f33","cat":"Figures de style","term":"Hyperbole","def":"Exagération volontaire pour frapper l'imagination. Effet : amplification d'une émotion ou d'une réalité.","ex":"\"Je mourrai si tu pars\" = hyperbole romantique"},
-    {"id":"f34","cat":"Figures de style","term":"Comparaison","def":"Rapprochement de deux éléments avec un outil comparatif (comme, tel, ainsi que…). Effet : image explicite, clarification.","ex":"\"Rodrigue, as-tu du cœur ?\" → métaphore. \"Fort comme un lion\" → comparaison (outil = comme)"},
-    {"id":"f35","cat":"Figures de style","term":"Accumulation / Énumération","def":"Succession d'éléments de même nature. Effet : abondance, insistance, liste qui déborde.","ex":"Dom Juan acte I sc.2 : longue liste de conquêtes féminines → accumulation comique et révélatrice"},
-    {"id":"f36","cat":"Versification","term":"L'alexandrin","def":"Vers de 12 syllabes (12 pieds). Le vers roi du théâtre classique français. Se divise en 2 hémistiches de 6 syllabes chacun.","ex":"\"Je suis / la bless / ure et / le cou / teau\" = 12 syllabes — Baudelaire. Racine, Corneille = alexandrins."},
-    {"id":"f37","cat":"Versification","term":"L'hémistiche","def":"Chacune des deux moitiés d'un alexandrin, séparées par la césure (pause). Chaque hémistiche = 6 syllabes.","ex":"\"Je t'aimais inconstant, | qu'aurais-je fait fidèle ?\" — la barre | = césure entre les deux hémistiches"},
-    {"id":"f38","cat":"Versification","term":"Types de rimes","def":"Rimes embrassées (ABBA) · Rimes croisées (ABAB) · Rimes suivies/plates (AABB).","ex":"Le Cid : stances en rimes embrassées et croisées · Phèdre : alexandrins à rimes plates"},
-    {"id":"f39","cat":"Versification","term":"Stances et dizains","def":"Les stances = suite de strophes en vers irréguliers (longueurs variables). Le dizain = strophe de 10 vers. Utilisés dans les monologues délibératifs.","ex":"Stances du Cid : Don Rodrigue en strophes irrégulières → traduit l'hésitation morale"},
-    {"id":"f40","cat":"Cinéma","term":"The Green Knight — fond","def":"Lowery, 2021. Gawain (neveu d'Arthur) fuit sa destinée : anti-héros qui veut la gloire sans mérite. Thèmes : mortalité, honneur, insignifiance de l'homme face au temps, nature sauvage.","ex":"Scène des géants = l'Homme est insignifiant. Mouvement circulaire = temps qui passe. Gawain triche."},
-    {"id":"f41","cat":"Cinéma","term":"The Green Knight — forme","def":"Angles obliques (déséquilibre intérieur) · lumière verte/froide (nature hostile) · lenteur (temps qui passe) · ellipses (passages de temps) · couleurs désaturées.","ex":"Scène finale : vision du futur de Gawain (s'il fuit le Chevalier Vert) → flash-forward contemplatif"},
-    {"id":"f42","cat":"Cinéma","term":"La La Land — fond","def":"Chazelle, 2016. Mia (actrice) + Sebastian (jazzman) : rêve vs réalité, sacrifice artistique pour réussir, couple face à l'ambition. La fin montre le chemin non pris (\"et si\").","ex":"Fin alternative : plan-séquence imaginaire montrant leur vie ensemble si Sebastian n'avait pas choisi le jazz"},
-    {"id":"f43","cat":"Cinéma","term":"La La Land — forme","def":"Couleurs saturées (nostalgie des années 50-60) · chorégraphies musicales · montage musical synchronisé · lumières chaudes (passion) puis froides (mélancolie de la fin).","ex":"Scène du planétarium : contre-plongée sur les deux dansant dans les étoiles → rêve, légèreté, euphorie"},
-    {"id":"f44","cat":"Cinéma","term":"The Life of Chuck — fond","def":"Flanagan, 2025. Vie d'un homme ordinaire (Chuck) racontée à l'envers (de sa mort à son enfance). Thèmes : sens de l'existence, mort acceptée, chaque vie mérite d'être célébrée.","ex":"\"Merci, Chuck\" = dernier plan, acceptation de la mort. Structure inversée = on comprend la valeur d'une vie en la voyant s'effacer"},
-    {"id":"f45","cat":"Cinéma","term":"The Life of Chuck — forme","def":"Structure en 3 actes inversés (Acte III : fin de l'histoire → Acte I : début). Chaque acte porte un titre. Montage chronologique au sein de chaque acte mais anachronique entre eux.","ex":"Cette structure inversée force le spectateur à reconstruire la chronologie — crée l'émotion finale"},
-    {"id":"f46","cat":"Cinéma","term":"A Silent Voice — fond","def":"Yamada Naoko, 2016. Ishida (harceleur) adulte cherche à se faire pardonner par Shoko (harcelée, malentendante). Thèmes : culpabilité, pardon, handicap, rédemption.","ex":"Ishida recouvre les visages des autres de croix bleues = incapacité à regarder en face les gens qu'il a blessés"},
-    {"id":"f47","cat":"Cinéma","term":"A Silent Voice — forme","def":"Animation (Kyoto Animation) · cadres asymétriques (mal-être intérieur) · silence signifiant (pas de son pour rendre le point de vue de Shoko) · couleurs douces mais tons froids pour Ishida.","ex":"Quand Ishida accepte de pardonner → les croix bleues sur les visages disparaissent = rédemption visualisée"},
-    {"id":"f48","cat":"Cinéma","term":"Jun / The Anthem of the Heart — fond","def":"Nagai Tatsuyuki, 2015. Jun, enfant, a dit quelque chose de blessant → une fée scelle sa voix. Ado, elle doit chanter pour une comédie musicale. Thèmes : paroles blessantes, guérison par la musique, liens sociaux.","ex":"La fée scelle la voix de Jun = métaphore de la culpabilité qui empêche de s'exprimer · La libérer = pardonner et oser"},
-    {"id":"f49","cat":"Cinéma","term":"Jun / The Anthem of the Heart — forme","def":"Animation · tons chauds (scènes de groupe, amitié) · musique et chant = symbole central · scènes de groupe équilibrées (composition symétrique).","ex":"La scène de chant final = travelling avant sur Jun + crescendo musical → libération émotionnelle"},
-    {"id":"f50","cat":"Cinéma","term":"5 films — réalisateurs et dates","def":"La La Land (Damien Chazelle, 2016) · The Green Knight (David Lowery, 2021) · The Life of Chuck (Mike Flanagan, 2025) · A Silent Voice (Yamada Naoko, 2016) · Jun/Anthem of the Heart (Nagai Tatsuyuki, 2015).","ex":"Moyen mnémotechnique : CL-LG-FC-SV-JA · Tous sauf Chuck sont des années 2010-2016"},
-    {"id":"f51","cat":"Vocabulaire cinéma","term":"Types de plans","def":"Plan large/ensemble (décor) · Plan moyen (tête aux pieds) · Plan américain (mi-cuisses) · Plan rapproché (buste/taille) · Gros plan (visage) · Très gros plan / insert (détail).","ex":"Gros plan = émotion intense · Plan large = contextualiser géographiquement · Insert = révéler un détail clé"},
-    {"id":"f52","cat":"Vocabulaire cinéma","term":"Angles de prise de vue","def":"Angle plat (caméra en face) = égalité. Plongée (caméra en haut) = vulnérabilité, écrasement. Contre-plongée (caméra en bas) = autorité, puissance, peut inspirer inquiétude si extrême.","ex":"Villain en contre-plongée = il domine · victime en plongée = elle est faible · The Green Knight = angles obliques"},
-    {"id":"f53","cat":"Vocabulaire cinéma","term":"Mouvements de caméra","def":"Fixe · Panoramique (rotation sur axe) · Travelling (déplacement : avant/arrière/latéral) · Zoom (optique, caméra fixe) · Caméra portée (vibrations, réalisme).","ex":"Travelling avant = tension, on s'approche · Caméra portée = réalisme, chaos · Panoramique = découvrir l'espace"},
-    {"id":"f54","cat":"Vocabulaire cinéma","term":"Types de montage","def":"Cut (coupe franche) · Chronologique · Alterné (2 actions simultanées) · Parallèle (non simultané, lien symbolique) · Flash-back · Flash-forward · Ellipse · Fondu (noir / enchaîné).","ex":"Fondu au noir = fin de séquence · Flash-back = The Life of Chuck (structure inversée) · Ellipse = saut temporel"},
-    {"id":"f55","cat":"Vocabulaire cinéma","term":"Son au cinéma","def":"Son in (personnage visible + audible) · Son hors-champ (personnage dans diégèse mais hors cadre) · Voix off (narrateur extérieur à la diégèse) · Son subjectif (ce que le personnage entend intérieurement).","ex":"A Silent Voice : silence subjectif = point de vue de Shoko (malentendante) · Voix off = Life of Chuck"},
-    {"id":"f56","cat":"Vocabulaire cinéma","term":"Champ / Hors-champ / Hors-cadre","def":"Champ = espace diégétique visible. Hors-champ = espace diégétique non visible mais existant dans l'univers du film. Hors-cadre = espace extérieur à la diégèse (équipe de tournage…).","ex":"L'amorce = personnage de dos flou en bord de cadre → hors-champ suggéré · Tout hors-champ = champ potentiel"},
-    {"id":"f57","cat":"Vocabulaire cinéma","term":"Profondeur de champ","def":"Étendue de la zone nette en profondeur. Grande profondeur = tout net → plusieurs plans narratifs simultanés. Petite profondeur = fond flou → isole le sujet, met en valeur.","ex":"Petite profondeur de champ = flou artistique sur personnage + fond flou · Grande = contexte et personnage nets"},
-    {"id":"f58","cat":"Vocabulaire cinéma","term":"Composition du cadre","def":"Centrée (calme, stabilité) · Au tiers (lignes de force : horizontales = calme/espace, verticales = rupture/agressivité, obliques = dynamisme). The Green Knight = obliques (déséquilibre intérieur de Gawain).","ex":"La La Land : compositions centrées pour les moments de rêve · The Green Knight : obliques pour l'angoisse"},
-    {"id":"f59","cat":"Vocabulaire cinéma","term":"Éclairage et couleurs","def":"Tons chauds (rouge/orange/jaune) → passion, danger, nostalgie. Tons froids (bleu/vert) → mélancolie, mort, calme. Éclairage 3 points : key light (principal) + fill light (remplissage) + back light (séparation du fond).","ex":"The Green Knight : lumière verte/froide = nature hostile. La La Land : warm/froid selon l'état émotionnel"},
-    {"id":"f60","cat":"Question transversale","term":"Liberté dans les œuvres","def":"Phèdre : liberté impossible (passion imposée par Vénus). Le Cid : liberté de choisir entre honneur et amour. Dom Juan : liberté absolue revendiquée mais compulsive. Liaisons : libertinage = conquête de sa liberté. Hamlet : liberté d'agir ou d'accepter la mort.","ex":"Question type : \"La liberté peut-elle être une prison ?\" → réponse avec Dom Juan (paradoxe) et Phèdre (fatalité)"},
-    {"id":"f61","cat":"Question transversale","term":"Représentation de la femme","def":"Phèdre : femme victime d'une passion divine, prise en faute. Chimène (Le Cid) : déchirée entre amour et devoir. Merteuil (Liaisons) : femme qui utilise la séduction pour s'émanciper. Shoko (Silent Voice) : victime.","ex":"Évolution : de la femme passive victime (Phèdre) vers la femme stratège (Merteuil) — 100 ans d'écart (1677→1782)"}
+    {
+      "id": "f1",
+      "cat": "Auteurs",
+      "term": "Jean Racine",
+      "def": "Né 1639 · Phèdre (1677) · Jansénisme : grâce divine, volonté corrompue, prédestination. Tragédie = fatalité inéluctable.",
+      "ex": "Phèdre : \"ni tout à fait coupable, ni tout à fait innocente\" (préface)"
+    },
+    {
+      "id": "f2",
+      "cat": "Auteurs",
+      "term": "Pierre Corneille",
+      "def": "Né 1606 · Le Cid (1637) · Tragi-comédie (fin pas totalement tragique). Héros cornélien = conflit honneur vs amour, triomphe du devoir.",
+      "ex": "Le Cid : stances = monologue délibératif avant le duel"
+    },
+    {
+      "id": "f3",
+      "cat": "Auteurs",
+      "term": "Corneille vs Racine",
+      "def": "Corneille : héros maître de lui, conflit intérieur résolu par le devoir, fin ouverte. Racine : héros vaincu par la passion, fatalité, fin tragique.",
+      "ex": "Corneille = idéal cornélien. Racine = fatalité tragique janséniste"
+    },
+    {
+      "id": "f4",
+      "cat": "Auteurs",
+      "term": "Molière · Dom Juan",
+      "def": "Dom Juan (1665) : séducteur libertin. Acte I sc.2 = liste de conquêtes. Acte III sc.1 = \"deux et deux sont quatre\" (athéisme).",
+      "ex": "Dom Juan = libertin de mœurs ET intellectuel"
+    },
+    {
+      "id": "f5",
+      "cat": "Auteurs",
+      "term": "Laclos · Liaisons dangereuses",
+      "def": "Roman épistolaire (1782). Valmont + Merteuil = libertins. Lettre IV : Valmont refuse d'abord la mission Cécile.",
+      "ex": "Merteuil : libertinage = réponse à l'oppression féminine ≠ Valmont"
+    },
+    {
+      "id": "f6",
+      "cat": "Auteurs",
+      "term": "Shakespeare · Hamlet",
+      "def": "Hamlet (XVIe s.) : prince du Danemark qui doit venger son père assassiné. Hésite entre action et contemplation. Thème : liberté d'agir ou d'accepter le destin.",
+      "ex": "\"Être ou ne pas être\" = dilemme entre agir (risque) et subir (passivité). Lien thème Liberté."
+    },
+    {
+      "id": "f7",
+      "cat": "Auteurs",
+      "term": "Jansénisme (Racine)",
+      "def": "Mouvement religieux : l'être humain a une volonté corrompue par le péché originel. La grâce divine est accordée à certains seulement (prédestination). L'homme ne peut pas se sauver seul.",
+      "ex": "Phèdre : victime de Vénus (fatalité divine) mais coupable de ne pas agir juste → double condamnation"
+    },
+    {
+      "id": "f8",
+      "cat": "Auteurs",
+      "term": "Phèdre — coupable ou innocente ?",
+      "def": "Phèdre est VICTIME : sa passion lui est imposée par Vénus (punit la lignée du Soleil). Phèdre est COUPABLE : elle laisse Hippolyte accuser faussement, Thésée invoque Neptune, Hippolyte meurt.",
+      "ex": "Racine préface : \"ni tout à fait coupable, ni tout à fait innocente\" — ambiguïté morale centrale de la pièce"
+    },
+    {
+      "id": "f9",
+      "cat": "Auteurs",
+      "term": "Tirade de l'aveu (Phèdre)",
+      "def": "Phèdre avoue sa passion incestueuse pour Hippolyte à sa nourrice Œnone (puis à Hippolyte lui-même). L'aveu = libérateur car briser le secret est un soulagement, mais aussi destructeur car déclenche la catastrophe.",
+      "ex": "Phèdre à Hippolyte : elle lui déclare sa flamme — il la rejette — elle le laisse accuser faussement"
+    },
+    {
+      "id": "f10",
+      "cat": "Libertinage",
+      "term": "2 axes du libertinage",
+      "def": "1. Intellectuel : libre-penseur, remet en question Dieu et les normes sociales. 2. De mœurs : recherche du plaisir, séduction, manipulation.",
+      "ex": "Dom Juan = les deux axes · Merteuil = surtout intellectuel"
+    },
+    {
+      "id": "f11",
+      "cat": "Libertinage",
+      "term": "Paradoxe du libertin",
+      "def": "La liberté qu'ils revendiquent est une prison dorée : ils sont esclaves de leur propre désir de liberté.",
+      "ex": "Don Juan ne peut pas s'arrêter de séduire — il est piégé par sa propre logique"
+    },
+    {
+      "id": "f12",
+      "cat": "Libertinage",
+      "term": "Portrait-type du libertin",
+      "def": "6 traits : sentiment de supériorité · recherche du plaisir · manipulation · refus des normes · masque social · comportement compulsif.",
+      "ex": "Valmont et Merteuil incarnent ces 6 traits dans les Liaisons"
+    },
+    {
+      "id": "f13",
+      "cat": "Libertinage",
+      "term": "Merteuil ≠ Valmont",
+      "def": "Valmont : libertin de mœurs, cherche la conquête par défi. Merteuil : libertinage = réponse à l'oppression féminine — elle utilise les armes des hommes contre les hommes. Libertin intellectuel + de mœurs.",
+      "ex": "Merteuil lettre LXXXI : \"J'étais née pour venger mon sexe et maîtriser le vôtre\""
+    },
+    {
+      "id": "f14",
+      "cat": "Libertinage",
+      "term": "Libertin = précurseur des Lumières ?",
+      "def": "Oui : le libertin intellectuel remet en question Dieu, les normes sociales, la religion → préfigure la critique philosophique des Lumières (Voltaire, Diderot). Mais le libertin = transgression individuelle, pas projet collectif.",
+      "ex": "Dom Juan : \"deux et deux sont quatre\" → rationalisme → même logique que Descartes et Voltaire"
+    },
+    {
+      "id": "f15",
+      "cat": "Théâtre classique",
+      "term": "Règles du théâtre classique",
+      "def": "3 unités : temps (24h max) · lieu (1 seul) · action (1 intrigue principale). + Bienséances (rien de choquant) + Catharsis.",
+      "ex": "Phèdre respecte les 3 unités. Le Cid les transgresse (polémique)"
+    },
+    {
+      "id": "f16",
+      "cat": "Théâtre classique",
+      "term": "Catharsis",
+      "def": "Purification des passions par l'art dramatique. Le spectateur ressent pitié et terreur, puis est libéré de ces émotions.",
+      "ex": "Aristote · Poétique : but de la tragédie = provoquer la catharsis"
+    },
+    {
+      "id": "f17",
+      "cat": "Théâtre classique",
+      "term": "Stances — Le Cid",
+      "def": "Les stances (acte I sc.6) = monologue délibératif en vers de Don Rodrigue avant le duel contre le père de Chimène. Il expose son dilemme : honneur du père vs amour pour Chimène.",
+      "ex": "Structure en strophes irrégulières → traduit l'hésitation intérieure. Résolution : l'honneur passe avant tout = idéal cornélien"
+    },
+    {
+      "id": "f18",
+      "cat": "Théâtre classique",
+      "term": "Tragi-comédie vs Tragédie",
+      "def": "Tragédie : fin fatale, héros vaincu, fatalité. Tragi-comédie : éléments tragiques mais fin non totalement tragique — ouverture, espoir, ambiguïté.",
+      "ex": "Phèdre = tragédie (mort). Le Cid = tragi-comédie : Rodrigue vit, mais Chimène doit accepter le mariage avec son meurtrier"
+    },
+    {
+      "id": "f19",
+      "cat": "Figures de style",
+      "term": "Métaphore",
+      "def": "Comparaison implicite sans outil comparatif. Effet : image forte, rapprochement de deux réalités éloignées, intensification émotionnelle.",
+      "ex": "Phèdre : \"Vénus s'est attachée à sa proie\" (passion = prédateur / Phèdre = proie)"
+    },
+    {
+      "id": "f20",
+      "cat": "Figures de style",
+      "term": "Métaphore filée",
+      "def": "Métaphore développée sur plusieurs vers ou tout un texte. Effet : construction d'un univers cohérent, approfondissement de l'image initiale.",
+      "ex": "Dans Phèdre, la métaphore du feu est filée : \"ce feu fatal\", \"ardeurs\", \"flammes\" → la passion = feu qui consume"
+    },
+    {
+      "id": "f21",
+      "cat": "Figures de style",
+      "term": "Oxymore",
+      "def": "Association de deux mots de sens contraires dans un même groupe. Effet : paradoxe, tension, complexité d'un sentiment ou d'une situation.",
+      "ex": "\"douce violence\", \"obscure clarté\" (Corneille, Le Cid) — traduit les contradictions intérieures du héros"
+    },
+    {
+      "id": "f22",
+      "cat": "Figures de style",
+      "term": "Antithèse",
+      "def": "Opposition de deux idées ou images dans une construction symétrique. Effet : mise en relief du contraste, mise en évidence d'une tension.",
+      "ex": "\"Je vivais, je voyais ; je savais vouloir\" vs \"Je mourrai\" — opposition vie/mort dans Phèdre"
+    },
+    {
+      "id": "f23",
+      "cat": "Figures de style",
+      "term": "Allégorie",
+      "def": "Représentation d'une idée abstraite par une image concrète ou un personnage. Effet : rend le concept vivant et frappant.",
+      "ex": "Vénus dans Phèdre = allégorie de la passion amoureuse incontrôlable et dévastatrice"
+    },
+    {
+      "id": "f24",
+      "cat": "Figures de style",
+      "term": "Parallélisme",
+      "def": "Répétition d'une même structure grammaticale dans deux propositions. Effet : équilibre, insistance, comparaison implicite.",
+      "ex": "\"Maîtres de leurs passions, maîtres de leur destin\" — deux groupes nominaux en parallèle"
+    },
+    {
+      "id": "f25",
+      "cat": "Figures de style",
+      "term": "Euphémisme",
+      "def": "Atténuation d'une réalité difficile ou choquante par un terme plus doux. Effet : politesse, pudeur, ironie parfois.",
+      "ex": "\"Il a cessé de vivre\" pour \"il est mort\" · \"l'âge de raison\" pour vieillesse"
+    },
+    {
+      "id": "f26",
+      "cat": "Figures de style",
+      "term": "Ironie",
+      "def": "Dire le contraire de ce qu'on pense pour se moquer. Effet : distance critique, humour, dénonciation.",
+      "ex": "Dom Juan à son père : \"Vous faites bien de me pardonner\" (il n'a aucune intention de changer)"
+    },
+    {
+      "id": "f27",
+      "cat": "Figures de style",
+      "term": "Question rhétorique",
+      "def": "Question posée sans attendre de réponse, pour affirmer ou interpeller. Effet : implication du lecteur/spectateur, force de conviction.",
+      "ex": "Phèdre : \"Que faisais-je si loin de Syracuse ?\" → accuse indirectement, sans réponse attendue"
+    },
+    {
+      "id": "f28",
+      "cat": "Figures de style",
+      "term": "Périphrase",
+      "def": "Remplacer un mot par une expression plus longue qui le décrit. Effet : emphase, élégance, désignation indirecte.",
+      "ex": "\"l'astre du jour\" = le soleil · \"l'auteur de mes jours\" = mon père (théâtre classique)"
+    },
+    {
+      "id": "f29",
+      "cat": "Figures de style",
+      "term": "Paronomase",
+      "def": "Rapprochement de mots proches phonétiquement mais de sens différent. Effet : jeu sonore, mise en valeur d'un contraste ou d'une ressemblance trompeuse.",
+      "ex": "\"Qui se ressemble s'assemble\" · \"race / tracé\" — effets sonores dans les vers classiques"
+    },
+    {
+      "id": "f30",
+      "cat": "Figures de style",
+      "term": "Allitération",
+      "def": "Répétition d'un même son consonantique. Effet : musicalité, insistance, imitation sonore.",
+      "ex": "Andromaque : \"Pour qui sont ces serpents qui sifflent sur vos têtes\" (son S = sifflement)"
+    },
+    {
+      "id": "f31",
+      "cat": "Figures de style",
+      "term": "Anaphore",
+      "def": "Répétition d'un même mot/groupe en début de phrases successives. Effet : insistance, rythme, amplification.",
+      "ex": "\"Je t'aimais inconstant, qu'aurais-je fait fidèle ?\" — répétition structurante"
+    },
+    {
+      "id": "f32",
+      "cat": "Figures de style",
+      "term": "Chiasme",
+      "def": "Structure croisée : A-B / B'-A'. Effet : mise en miroir, équilibre, mise en valeur du contraste.",
+      "ex": "\"Il faut manger pour vivre et non vivre pour manger\" (Molière)"
+    },
+    {
+      "id": "f33",
+      "cat": "Figures de style",
+      "term": "Hyperbole",
+      "def": "Exagération volontaire pour frapper l'imagination. Effet : amplification d'une émotion ou d'une réalité.",
+      "ex": "\"Je mourrai si tu pars\" = hyperbole romantique"
+    },
+    {
+      "id": "f34",
+      "cat": "Figures de style",
+      "term": "Comparaison",
+      "def": "Rapprochement de deux éléments avec un outil comparatif (comme, tel, ainsi que…). Effet : image explicite, clarification.",
+      "ex": "\"Rodrigue, as-tu du cœur ?\" → métaphore. \"Fort comme un lion\" → comparaison (outil = comme)"
+    },
+    {
+      "id": "f35",
+      "cat": "Figures de style",
+      "term": "Accumulation / Énumération",
+      "def": "Succession d'éléments de même nature. Effet : abondance, insistance, liste qui déborde.",
+      "ex": "Dom Juan acte I sc.2 : longue liste de conquêtes féminines → accumulation comique et révélatrice"
+    },
+    {
+      "id": "f36",
+      "cat": "Versification",
+      "term": "L'alexandrin",
+      "def": "Vers de 12 syllabes (12 pieds). Le vers roi du théâtre classique français. Se divise en 2 hémistiches de 6 syllabes chacun.",
+      "ex": "\"Je suis / la bless / ure et / le cou / teau\" = 12 syllabes — Baudelaire. Racine, Corneille = alexandrins."
+    },
+    {
+      "id": "f37",
+      "cat": "Versification",
+      "term": "L'hémistiche",
+      "def": "Chacune des deux moitiés d'un alexandrin, séparées par la césure (pause). Chaque hémistiche = 6 syllabes.",
+      "ex": "\"Je t'aimais inconstant, | qu'aurais-je fait fidèle ?\" — la barre | = césure entre les deux hémistiches"
+    },
+    {
+      "id": "f38",
+      "cat": "Versification",
+      "term": "Types de rimes",
+      "def": "Rimes embrassées (ABBA) · Rimes croisées (ABAB) · Rimes suivies/plates (AABB).",
+      "ex": "Le Cid : stances en rimes embrassées et croisées · Phèdre : alexandrins à rimes plates"
+    },
+    {
+      "id": "f39",
+      "cat": "Versification",
+      "term": "Stances et dizains",
+      "def": "Les stances = suite de strophes en vers irréguliers (longueurs variables). Le dizain = strophe de 10 vers. Utilisés dans les monologues délibératifs.",
+      "ex": "Stances du Cid : Don Rodrigue en strophes irrégulières → traduit l'hésitation morale"
+    },
+    {
+      "id": "f40",
+      "cat": "Cinéma",
+      "term": "The Green Knight — fond",
+      "def": "Lowery, 2021. Gawain (neveu d'Arthur) fuit sa destinée : anti-héros qui veut la gloire sans mérite. Thèmes : mortalité, honneur, insignifiance de l'homme face au temps, nature sauvage.",
+      "ex": "Scène des géants = l'Homme est insignifiant. Mouvement circulaire = temps qui passe. Gawain triche."
+    },
+    {
+      "id": "f41",
+      "cat": "Cinéma",
+      "term": "The Green Knight — forme",
+      "def": "Angles obliques (déséquilibre intérieur) · lumière verte/froide (nature hostile) · lenteur (temps qui passe) · ellipses (passages de temps) · couleurs désaturées.",
+      "ex": "Scène finale : vision du futur de Gawain (s'il fuit le Chevalier Vert) → flash-forward contemplatif"
+    },
+    {
+      "id": "f42",
+      "cat": "Cinéma",
+      "term": "La La Land — fond",
+      "def": "Chazelle, 2016. Mia (actrice) + Sebastian (jazzman) : rêve vs réalité, sacrifice artistique pour réussir, couple face à l'ambition. La fin montre le chemin non pris (\"et si\").",
+      "ex": "Fin alternative : plan-séquence imaginaire montrant leur vie ensemble si Sebastian n'avait pas choisi le jazz"
+    },
+    {
+      "id": "f43",
+      "cat": "Cinéma",
+      "term": "La La Land — forme",
+      "def": "Couleurs saturées (nostalgie des années 50-60) · chorégraphies musicales · montage musical synchronisé · lumières chaudes (passion) puis froides (mélancolie de la fin).",
+      "ex": "Scène du planétarium : contre-plongée sur les deux dansant dans les étoiles → rêve, légèreté, euphorie"
+    },
+    {
+      "id": "f44",
+      "cat": "Cinéma",
+      "term": "The Life of Chuck — fond",
+      "def": "Flanagan, 2025. Vie d'un homme ordinaire (Chuck) racontée à l'envers (de sa mort à son enfance). Thèmes : sens de l'existence, mort acceptée, chaque vie mérite d'être célébrée.",
+      "ex": "\"Merci, Chuck\" = dernier plan, acceptation de la mort. Structure inversée = on comprend la valeur d'une vie en la voyant s'effacer"
+    },
+    {
+      "id": "f45",
+      "cat": "Cinéma",
+      "term": "The Life of Chuck — forme",
+      "def": "Structure en 3 actes inversés (Acte III : fin de l'histoire → Acte I : début). Chaque acte porte un titre. Montage chronologique au sein de chaque acte mais anachronique entre eux.",
+      "ex": "Cette structure inversée force le spectateur à reconstruire la chronologie — crée l'émotion finale"
+    },
+    {
+      "id": "f46",
+      "cat": "Cinéma",
+      "term": "A Silent Voice — fond",
+      "def": "Yamada Naoko, 2016. Ishida (harceleur) adulte cherche à se faire pardonner par Shoko (harcelée, malentendante). Thèmes : culpabilité, pardon, handicap, rédemption.",
+      "ex": "Ishida recouvre les visages des autres de croix bleues = incapacité à regarder en face les gens qu'il a blessés"
+    },
+    {
+      "id": "f47",
+      "cat": "Cinéma",
+      "term": "A Silent Voice — forme",
+      "def": "Animation (Kyoto Animation) · cadres asymétriques (mal-être intérieur) · silence signifiant (pas de son pour rendre le point de vue de Shoko) · couleurs douces mais tons froids pour Ishida.",
+      "ex": "Quand Ishida accepte de pardonner → les croix bleues sur les visages disparaissent = rédemption visualisée"
+    },
+    {
+      "id": "f48",
+      "cat": "Cinéma",
+      "term": "Jun / The Anthem of the Heart — fond",
+      "def": "Nagai Tatsuyuki, 2015. Jun, enfant, a dit quelque chose de blessant → une fée scelle sa voix. Ado, elle doit chanter pour une comédie musicale. Thèmes : paroles blessantes, guérison par la musique, liens sociaux.",
+      "ex": "La fée scelle la voix de Jun = métaphore de la culpabilité qui empêche de s'exprimer · La libérer = pardonner et oser"
+    },
+    {
+      "id": "f49",
+      "cat": "Cinéma",
+      "term": "Jun / The Anthem of the Heart — forme",
+      "def": "Animation · tons chauds (scènes de groupe, amitié) · musique et chant = symbole central · scènes de groupe équilibrées (composition symétrique).",
+      "ex": "La scène de chant final = travelling avant sur Jun + crescendo musical → libération émotionnelle"
+    },
+    {
+      "id": "f50",
+      "cat": "Cinéma",
+      "term": "5 films — réalisateurs et dates",
+      "def": "La La Land (Damien Chazelle, 2016) · The Green Knight (David Lowery, 2021) · The Life of Chuck (Mike Flanagan, 2025) · A Silent Voice (Yamada Naoko, 2016) · Jun/Anthem of the Heart (Nagai Tatsuyuki, 2015).",
+      "ex": "Moyen mnémotechnique : CL-LG-FC-SV-JA · Tous sauf Chuck sont des années 2010-2016"
+    },
+    {
+      "id": "f51",
+      "cat": "Vocabulaire cinéma",
+      "term": "Types de plans",
+      "def": "Plan large/ensemble (décor) · Plan moyen (tête aux pieds) · Plan américain (mi-cuisses) · Plan rapproché (buste/taille) · Gros plan (visage) · Très gros plan / insert (détail).",
+      "ex": "Gros plan = émotion intense · Plan large = contextualiser géographiquement · Insert = révéler un détail clé"
+    },
+    {
+      "id": "f52",
+      "cat": "Vocabulaire cinéma",
+      "term": "Angles de prise de vue",
+      "def": "Angle plat (caméra en face) = égalité. Plongée (caméra en haut) = vulnérabilité, écrasement. Contre-plongée (caméra en bas) = autorité, puissance, peut inspirer inquiétude si extrême.",
+      "ex": "Villain en contre-plongée = il domine · victime en plongée = elle est faible · The Green Knight = angles obliques"
+    },
+    {
+      "id": "f53",
+      "cat": "Vocabulaire cinéma",
+      "term": "Mouvements de caméra",
+      "def": "Fixe · Panoramique (rotation sur axe) · Travelling (déplacement : avant/arrière/latéral) · Zoom (optique, caméra fixe) · Caméra portée (vibrations, réalisme).",
+      "ex": "Travelling avant = tension, on s'approche · Caméra portée = réalisme, chaos · Panoramique = découvrir l'espace"
+    },
+    {
+      "id": "f54",
+      "cat": "Vocabulaire cinéma",
+      "term": "Types de montage",
+      "def": "Cut (coupe franche) · Chronologique · Alterné (2 actions simultanées) · Parallèle (non simultané, lien symbolique) · Flash-back · Flash-forward · Ellipse · Fondu (noir / enchaîné).",
+      "ex": "Fondu au noir = fin de séquence · Flash-back = The Life of Chuck (structure inversée) · Ellipse = saut temporel"
+    },
+    {
+      "id": "f55",
+      "cat": "Vocabulaire cinéma",
+      "term": "Son au cinéma",
+      "def": "Son in (personnage visible + audible) · Son hors-champ (personnage dans diégèse mais hors cadre) · Voix off (narrateur extérieur à la diégèse) · Son subjectif (ce que le personnage entend intérieurement).",
+      "ex": "A Silent Voice : silence subjectif = point de vue de Shoko (malentendante) · Voix off = Life of Chuck"
+    },
+    {
+      "id": "f56",
+      "cat": "Vocabulaire cinéma",
+      "term": "Champ / Hors-champ / Hors-cadre",
+      "def": "Champ = espace diégétique visible. Hors-champ = espace diégétique non visible mais existant dans l'univers du film. Hors-cadre = espace extérieur à la diégèse (équipe de tournage…).",
+      "ex": "L'amorce = personnage de dos flou en bord de cadre → hors-champ suggéré · Tout hors-champ = champ potentiel"
+    },
+    {
+      "id": "f57",
+      "cat": "Vocabulaire cinéma",
+      "term": "Profondeur de champ",
+      "def": "Étendue de la zone nette en profondeur. Grande profondeur = tout net → plusieurs plans narratifs simultanés. Petite profondeur = fond flou → isole le sujet, met en valeur.",
+      "ex": "Petite profondeur de champ = flou artistique sur personnage + fond flou · Grande = contexte et personnage nets"
+    },
+    {
+      "id": "f58",
+      "cat": "Vocabulaire cinéma",
+      "term": "Composition du cadre",
+      "def": "Centrée (calme, stabilité) · Au tiers (lignes de force : horizontales = calme/espace, verticales = rupture/agressivité, obliques = dynamisme). The Green Knight = obliques (déséquilibre intérieur de Gawain).",
+      "ex": "La La Land : compositions centrées pour les moments de rêve · The Green Knight : obliques pour l'angoisse"
+    },
+    {
+      "id": "f59",
+      "cat": "Vocabulaire cinéma",
+      "term": "Éclairage et couleurs",
+      "def": "Tons chauds (rouge/orange/jaune) → passion, danger, nostalgie. Tons froids (bleu/vert) → mélancolie, mort, calme. Éclairage 3 points : key light (principal) + fill light (remplissage) + back light (séparation du fond).",
+      "ex": "The Green Knight : lumière verte/froide = nature hostile. La La Land : warm/froid selon l'état émotionnel"
+    },
+    {
+      "id": "f60",
+      "cat": "Question transversale",
+      "term": "Liberté dans les œuvres",
+      "def": "Phèdre : liberté impossible (passion imposée par Vénus). Le Cid : liberté de choisir entre honneur et amour. Dom Juan : liberté absolue revendiquée mais compulsive. Liaisons : libertinage = conquête de sa liberté. Hamlet : liberté d'agir ou d'accepter la mort.",
+      "ex": "Question type : \"La liberté peut-elle être une prison ?\" → réponse avec Dom Juan (paradoxe) et Phèdre (fatalité)"
+    },
+    {
+      "id": "f61",
+      "cat": "Question transversale",
+      "term": "Représentation de la femme",
+      "def": "Phèdre : femme victime d'une passion divine, prise en faute. Chimène (Le Cid) : déchirée entre amour et devoir. Merteuil (Liaisons) : femme qui utilise la séduction pour s'émanciper. Shoko (Silent Voice) : victime.",
+      "ex": "Évolution : de la femme passive victime (Phèdre) vers la femme stratège (Merteuil) — 100 ans d'écart (1677→1782)"
+    }
   ],
   "qcm": [
-    {"id":"fq1","q":"Quels sont les 2 axes du libertinage ?","opts":["Politique (pouvoir) + religieux (irréligion)","Intellectuel (libre-pensée) + de mœurs (plaisir/séduction)","Artistique (création) + philosophique (raison)","Moral (vice) + social (marginalité)"],"ans":1,"exp":"2 axes : 1. Intellectuel = remet en question Dieu et les normes. 2. De mœurs = recherche du plaisir, séduction, manipulation. Dom Juan combine les deux."},
-    {"id":"fq2","q":"Corneille, Le Cid — quelle année ? Quel genre ?","opts":["1677 — tragédie","1665 — comédie","1637 — tragi-comédie","1640 — drame"],"ans":2,"exp":"Le Cid (1637) = tragi-comédie : il y a du tragique (conflit honneur/amour) mais la fin n'est pas totalement tragique. Corneille né en 1606."},
-    {"id":"fq3","q":"Racine, Phèdre — quelle année ? Quel mouvement religieux influence son œuvre ?","opts":["1637 — Classicisme (raison, équilibre)","1682 — Baroque (excès, passion)","1665 — Libertinage (libre-pensée)","1677 — Jansénisme (grâce divine, prédestination)"],"ans":3,"exp":"Phèdre (1677). Racine = janséniste : grâce divine accordée à certains, volonté humaine corrompue, destin inéluctable. Phèdre est victime de Vénus ET coupable de laisser condamner Hippolyte."},
-    {"id":"fq4","q":"Quelle est la règle des 3 unités du théâtre classique ?","opts":["Unité de temps (24h) + lieu (1 seul) + action (1 intrigue)","Unité de style + ton + longueur","Unité de personnages + décor + costume","Unité de sens + morale + catharsis"],"ans":0,"exp":"3 unités : temps (l'action dure 24h max), lieu (un seul endroit), action (une seule intrigue principale). + bienséances + catharsis = 5 règles du théâtre classique."},
-    {"id":"fq5","q":"Dans Dom Juan, qu'affirme Dom Juan à l'acte III scène 1 ?","opts":["\"Les femmes sont ma seule religion\" — libertinage de mœurs","\"Je suis libre et je fais ce que je veux\" — manifeste libertin","\"Deux et deux sont quatre\" — seule certitude mathématique, athéisme","\"La mort est la seule vérité\" — nihilisme"],"ans":2,"exp":"\"Deux et deux sont quatre et quatre et quatre font huit\" — Dom Juan réduit sa croyance aux mathématiques. C'est sa déclaration d'athéisme, symbole du libertinage intellectuel."},
-    {"id":"fq6","q":"The Green Knight (Lowery, 2021) — quel est le thème central ?","opts":["Amour impossible et sacrifice artistique","Mortalité, honneur, insignifiance de l'homme face au temps","Rédemption et pardon après le harcèlement","Rêves brisés et succès artistique"],"ans":1,"exp":"The Green Knight : Gawain fuit sa destinée (anti-héros) face au temps qui passe, à la mort inévitable et à la nature sauvage. Forme : angles obliques, lumière verte/froide, lenteur."},
-    {"id":"fq7","q":"Que représente l'allitération ? Quel exemple célèbre dans le théâtre classique ?","opts":["Comparaison implicite — \"Vénus s'est attachée\" (Phèdre)","Répétition vocale — \"Il faut manger pour vivre\" (Dom Juan)","Exagération — \"Je mourrai si tu pars\" (Le Cid)","Répétition consonantique — \"Pour qui sont ces serpents qui sifflent\" (Andromaque)"],"ans":3,"exp":"Allitération = répétition du son [s] dans \"Pour qui sont ces serpents qui sifflent sur vos têtes\" (Andromaque, Racine). Imite le sifflement des serpents = effet sonore."},
-    {"id":"fq8","q":"Dans Les Liaisons dangereuses, que fait Valmont dans la lettre IV ?","opts":["Il révèle ses sentiments pour Mme de Tourvel","Il accepte immédiatement de séduire Cécile","Il trahit Merteuil pour la première fois","Il refuse d'abord la mission de séduire Cécile"],"ans":3,"exp":"Lettre IV : Valmont refuse d'abord la mission Cécile (trop facile), il est occupé à séduire Mme de Tourvel. Cela montre sa hiérarchie des conquêtes et son orgueil."},
-    {"id":"fq9","q":"Quel est le paradoxe du libertin ?","opts":["Il pense être unique mais répète les mêmes schémas","Il prétend croire en Dieu mais vit sans règle morale","La liberté qu'il revendique est une prison : il est esclave de son désir de liberté","Il séduit par amour mais finit par haïr"],"ans":2,"exp":"Le libertin se croit libre mais est compulsif (il ne peut pas s'arrêter). Sa \"liberté\" le contraint : il est piégé par sa propre logique de transgression permanente."},
-    {"id":"fq10","q":"Qu'est-ce que la catharsis au théâtre ?","opts":["Transformation du héros tragique au cours de la pièce","Chute finale du héros (châtiment moral)","Réconciliation des personnages à la fin de la pièce","Purification des passions : le spectateur ressent pitié/terreur puis est libéré"],"ans":3,"exp":"Catharsis (Aristote, Poétique) = but de la tragédie. Le spectateur ressent pitié (pour le héros) et terreur (de partager son destin), puis ces émotions se purgent. Effet libérateur."},
-    {"id":"fq11","q":"Quelle figure de style est utilisée dans \"Vénus s'est attachée à sa proie\" (Phèdre) ?","opts":["Allitération","Anaphore","Métaphore","Hyperbole"],"ans":2,"exp":"C'est une métaphore : comparaison implicite sans outil comparatif. Vénus (déesse) = prédateur, Phèdre = proie. La passion est représentée comme une mise à mort."},
-    {"id":"fq12","q":"Qu'est-ce qu'une métaphore filée ?","opts":["Une comparaison qui se répète en anaphore","Une hyperbole développée en plusieurs vers","Une métaphore développée sur plusieurs vers ou tout un texte","Une métaphore qui contient un oxymore"],"ans":2,"exp":"La métaphore filée = métaphore initiale (ex : la passion = feu) développée sur plusieurs vers avec des mots du même champ lexical (ardeurs, flammes, brûler…). Cohérence et amplification."},
-    {"id":"fq13","q":"Qu'est-ce qu'un oxymore ? Exemple dans Le Cid ?","opts":["Répétition d'un mot en début de vers · \"Je t'aimais inconstant\"","Association de mots contraires · \"obscure clarté\" (Corneille)","Exagération pour frapper · \"Je mourrai si tu pars\"","Question sans réponse attendue · \"Que faisais-je ici ?\""],"ans":1,"exp":"Oxymore = deux mots de sens contraire accolés. Exemple : \"obscure clarté\" dans Le Cid. Effet : traduit les contradictions intérieures du héros cornélien (honneur vs amour, lumière vs ombre)."},
-    {"id":"fq14","q":"Combien de syllabes comporte un alexandrin ? Comment se divise-t-il ?","opts":["10 syllabes — pas de division","8 syllabes — 2 fois 4 syllabes","12 syllabes — 2 hémistiches de 6 syllabes","14 syllabes — 2 fois 7 syllabes"],"ans":2,"exp":"Alexandrin = 12 syllabes (12 pieds), vers roi du théâtre classique français. Se divise en 2 hémistiches de 6 par la césure. Ex : \"Je t'ai-mais in-cons-tant / qu'au-rais-je fait fi-dèle\""},
-    {"id":"fq15","q":"Que sont les stances dans Le Cid ?","opts":["Un dialogue entre Rodrigue et Chimène","Un monologue délibératif en vers irréguliers avant le duel","Une scène de combat racontée au passé","Un discours de Don Diègue à son fils"],"ans":1,"exp":"Stances (acte I sc.6) = monologue de Don Rodrigue avant le duel. Vers irréguliers = traduit l'hésitation. Dilemme : honneur du père vs amour de Chimène. Idéal cornélien : l'honneur l'emporte."},
-    {"id":"fq16","q":"Dans A Silent Voice, que symbolise le fait qu'Ishida recouvre les visages des autres de croix bleues ?","opts":["Il est malentendant comme Shoko","Il ne peut pas regarder en face les gens qu'il a blessés (culpabilité)","Il voit les fantômes des gens morts","Il est en colère contre sa classe"],"ans":1,"exp":"Les croix bleues symbolisent l'incapacité d'Ishida à regarder les autres en face, suite à sa culpabilité d'avoir harcelé Shoko. Quand il se réconcilie avec eux, les croix disparaissent — visualisation de la rédemption."},
-    {"id":"fq17","q":"Quel est le principe structurel de The Life of Chuck (Flanagan, 2025) ?","opts":["Narration non-linéaire avec flash-backs multiples","Structure en miroir : début identique à la fin","Structure en 3 actes inversés : de la mort de Chuck à son enfance","Montage alterné entre deux personnages simultanés"],"ans":2,"exp":"The Life of Chuck raconte la vie d'un homme de sa mort vers son enfance (3 actes inversés, chacun titré). Cette inversion force le spectateur à reconstruire la chronologie et amplifie l'émotion finale."},
-    {"id":"fq18","q":"Quelle est la différence entre hors-champ et hors-cadre ?","opts":["Le hors-champ est flou ; le hors-cadre est net","Hors-champ = dans la diégèse mais hors cadre · Hors-cadre = extérieur à la diégèse","Le hors-cadre est au-dessus de l'image ; le hors-champ est sur les côtés","Il n'y a pas de différence, ce sont des synonymes"],"ans":1,"exp":"Hors-champ = espace diégétique (dans l'univers du film) mais non visible à l'écran. Hors-cadre = espace extérieur à la diégèse (équipe de tournage, salle de cinéma). Tout hors-champ = champ potentiel."},
-    {"id":"fq19","q":"Qu'est-ce qu'une contre-plongée ? Quel effet produit-elle ?","opts":["Caméra au-dessus du sujet → personnage paraît petit et vulnérable","Caméra en face du sujet → égalité avec le spectateur","Caméra en dessous du sujet → personnage paraît grand et autoritaire","Caméra sur le côté → déséquilibre et tension"],"ans":2,"exp":"Contre-plongée = caméra en dessous de la scène, dirigée vers le haut. Effet : personnage agrandi, impressionnant, autoritaire. Si très accentuée, peut aussi inspirer de l'inquiétude (menace)."},
-    {"id":"fq20","q":"Quelle figure de style associe deux termes de sens contraire dans un même groupe ?","opts":["Antithèse","Chiasme","Oxymore","Paradoxe"],"ans":2,"exp":"Oxymore = deux mots contraires accolés dans un même groupe nominal (ex : \"douce violence\", \"obscure clarté\"). À ne pas confondre avec l'antithèse qui oppose deux idées dans des propositions distinctes."},
-    {"id":"fq21","q":"Dans Jun (The Anthem of the Heart), pourquoi la fée scelle-t-elle la voix de Jun ?","opts":["Parce que Jun chantait faux et dérangeait le village","Parce que Jun a dit quelque chose de blessant étant enfant, et la fée veut la protéger","Parce que la musique est interdite dans la ville","Parce que Jun voulait devenir actrice, pas chanteuse"],"ans":1,"exp":"Jun enfant dit quelque chose de blessant à sa famille. Une fée lui scelle la voix pour qu'elle ne blesse plus. Métaphore de la culpabilité qui empêche de s'exprimer. La libérer = apprendre à pardonner et oser."},
-    {"id":"fq22","q":"Qu'est-ce qu'une question rhétorique ?","opts":["Une question posée par le professeur à un élève","Une question rhétorique ancienne tirée des discours grecs","Une question posée sans attendre de réponse, pour affirmer ou interpeller","Une question dont on ne connaît pas la réponse"],"ans":2,"exp":"Question rhétorique = question posée non pour obtenir une réponse mais pour affirmer un point de vue, impliquer le lecteur/spectateur ou dénoncer quelque chose. Très fréquent dans le théâtre classique et les discours."},
-    {"id":"fq23","q":"Quelle est la différence entre tragédie et tragi-comédie ?","opts":["La tragi-comédie comporte des scènes comiques ; la tragédie aucune","La tragédie respecte les 3 unités ; la tragi-comédie les transgresse toutes","Tragédie = fin fatale et inéluctable · Tragi-comédie = éléments tragiques mais fin non totalement tragique","La tragi-comédie est plus longue que la tragédie"],"ans":2,"exp":"Tragédie = fatalité, fin tragique (mort). Tragi-comédie (Le Cid) = conflit tragique (honneur vs amour) mais fin ouverte et non fatale. Le Cid transgresse les 3 unités, ce qui a provoqué la \"Querelle du Cid\"."},
-    {"id":"fq24","q":"Qu'est-ce que l'ironie comme figure de style ?","opts":["Dire le contraire de ce qu'on pense pour se moquer ou dénoncer","Répétition d'un mot en début de phrase pour insister","Association de deux termes contraires pour créer un paradoxe","Exagération volontaire pour frapper l'imagination"],"ans":0,"exp":"L'ironie = dire le contraire de ce qu'on pense, souvent pour se moquer ou dénoncer. Très présente dans le libertinage (Dom Juan fait semblant de se repentir). Effet : distance critique, humour, dénonciation."},
-    {"id":"fq25","q":"Qui réalise La La Land et en quelle année ?","opts":["David Lowery, 2021","Mike Flanagan, 2025","Damien Chazelle, 2016","Yamada Naoko, 2016"],"ans":2,"exp":"La La Land = Damien Chazelle, 2016. Fond : rêve vs réalité, couple, sacrifice artistique. Forme : couleurs saturées, chorégraphies, montage musical. La fin montre la vie alternative (\"et si\")."},
-    {"id":"fq26","q":"Quelle figure de style emploie une structure croisée A-B / B'-A' ?","opts":["Anaphore","Parallélisme","Chiasme","Antithèse"],"ans":2,"exp":"Chiasme = structure croisée A-B / B'-A'. Ex : \"Il faut manger pour vivre et non vivre pour manger\". Effet : mise en miroir, équilibre rhétorique, mise en valeur du contraste."},
-    {"id":"fq27","q":"Que signifie \"Être ou ne pas être\" dans Hamlet par rapport au thème de la Liberté ?","opts":["Hamlet se demande s'il doit se marier ou rester seul","Hamlet hésite entre agir pour venger son père (risque) et accepter passivement son destin","Hamlet se demande s'il existe vraiment dans le monde","Hamlet choisit entre la vie de cour et la vie d'acteur"],"ans":1,"exp":"\"Être ou ne pas être\" = dilemme fondamental entre agir (risquer la mort, venger le père) ou accepter la souffrance passivement. Lien thème Liberté : la liberté d'agir ou de subir son destin."},
-    {"id":"fq28","q":"Quelle est la caractéristique principale de la métaphore (vs la comparaison) ?","opts":["La métaphore utilise \"comme\" ou \"tel\" ; la comparaison non","La comparaison est plus longue que la métaphore","La métaphore = comparaison implicite sans outil comparatif ; la comparaison a un outil (comme, tel…)","Il n'y a pas de différence entre métaphore et comparaison"],"ans":2,"exp":"Métaphore = comparaison implicite SANS outil (\"Vénus s'est attachée à sa proie\"). Comparaison = avec un outil (\"fort comme un lion\"). La métaphore est plus directe et plus percutante que la comparaison."}
+    {
+      "id": "fq1",
+      "q": "Quels sont les 2 axes du libertinage ?",
+      "opts": [
+        "Politique (pouvoir) + religieux (irréligion)",
+        "Intellectuel (libre-pensée) + de mœurs (plaisir/séduction)",
+        "Artistique (création) + philosophique (raison)",
+        "Moral (vice) + social (marginalité)"
+      ],
+      "ans": 1,
+      "exp": "2 axes : 1. Intellectuel = remet en question Dieu et les normes. 2. De mœurs = recherche du plaisir, séduction, manipulation. Dom Juan combine les deux."
+    },
+    {
+      "id": "fq2",
+      "q": "Corneille, Le Cid — quelle année ? Quel genre ?",
+      "opts": [
+        "1677 — tragédie",
+        "1665 — comédie",
+        "1637 — tragi-comédie",
+        "1640 — drame"
+      ],
+      "ans": 2,
+      "exp": "Le Cid (1637) = tragi-comédie : il y a du tragique (conflit honneur/amour) mais la fin n'est pas totalement tragique. Corneille né en 1606."
+    },
+    {
+      "id": "fq3",
+      "q": "Racine, Phèdre — quelle année ? Quel mouvement religieux influence son œuvre ?",
+      "opts": [
+        "1637 — Classicisme (raison, équilibre)",
+        "1682 — Baroque (excès, passion)",
+        "1665 — Libertinage (libre-pensée)",
+        "1677 — Jansénisme (grâce divine, prédestination)"
+      ],
+      "ans": 3,
+      "exp": "Phèdre (1677). Racine = janséniste : grâce divine accordée à certains, volonté humaine corrompue, destin inéluctable. Phèdre est victime de Vénus ET coupable de laisser condamner Hippolyte."
+    },
+    {
+      "id": "fq4",
+      "q": "Quelle est la règle des 3 unités du théâtre classique ?",
+      "opts": [
+        "Unité de temps (24h) + lieu (1 seul) + action (1 intrigue)",
+        "Unité de style + ton + longueur",
+        "Unité de personnages + décor + costume",
+        "Unité de sens + morale + catharsis"
+      ],
+      "ans": 0,
+      "exp": "3 unités : temps (l'action dure 24h max), lieu (un seul endroit), action (une seule intrigue principale). + bienséances + catharsis = 5 règles du théâtre classique."
+    },
+    {
+      "id": "fq5",
+      "q": "Dans Dom Juan, qu'affirme Dom Juan à l'acte III scène 1 ?",
+      "opts": [
+        "\"Les femmes sont ma seule religion\" — libertinage de mœurs",
+        "\"Je suis libre et je fais ce que je veux\" — manifeste libertin",
+        "\"Deux et deux sont quatre\" — seule certitude mathématique, athéisme",
+        "\"La mort est la seule vérité\" — nihilisme"
+      ],
+      "ans": 2,
+      "exp": "\"Deux et deux sont quatre et quatre et quatre font huit\" — Dom Juan réduit sa croyance aux mathématiques. C'est sa déclaration d'athéisme, symbole du libertinage intellectuel."
+    },
+    {
+      "id": "fq6",
+      "q": "The Green Knight (Lowery, 2021) — quel est le thème central ?",
+      "opts": [
+        "Amour impossible et sacrifice artistique",
+        "Mortalité, honneur, insignifiance de l'homme face au temps",
+        "Rédemption et pardon après le harcèlement",
+        "Rêves brisés et succès artistique"
+      ],
+      "ans": 1,
+      "exp": "The Green Knight : Gawain fuit sa destinée (anti-héros) face au temps qui passe, à la mort inévitable et à la nature sauvage. Forme : angles obliques, lumière verte/froide, lenteur."
+    },
+    {
+      "id": "fq7",
+      "q": "Que représente l'allitération ? Quel exemple célèbre dans le théâtre classique ?",
+      "opts": [
+        "Comparaison implicite — \"Vénus s'est attachée\" (Phèdre)",
+        "Répétition vocale — \"Il faut manger pour vivre\" (Dom Juan)",
+        "Exagération — \"Je mourrai si tu pars\" (Le Cid)",
+        "Répétition consonantique — \"Pour qui sont ces serpents qui sifflent\" (Andromaque)"
+      ],
+      "ans": 3,
+      "exp": "Allitération = répétition du son [s] dans \"Pour qui sont ces serpents qui sifflent sur vos têtes\" (Andromaque, Racine). Imite le sifflement des serpents = effet sonore."
+    },
+    {
+      "id": "fq8",
+      "q": "Dans Les Liaisons dangereuses, que fait Valmont dans la lettre IV ?",
+      "opts": [
+        "Il révèle ses sentiments pour Mme de Tourvel",
+        "Il accepte immédiatement de séduire Cécile",
+        "Il trahit Merteuil pour la première fois",
+        "Il refuse d'abord la mission de séduire Cécile"
+      ],
+      "ans": 3,
+      "exp": "Lettre IV : Valmont refuse d'abord la mission Cécile (trop facile), il est occupé à séduire Mme de Tourvel. Cela montre sa hiérarchie des conquêtes et son orgueil."
+    },
+    {
+      "id": "fq9",
+      "q": "Quel est le paradoxe du libertin ?",
+      "opts": [
+        "Il pense être unique mais répète les mêmes schémas",
+        "Il prétend croire en Dieu mais vit sans règle morale",
+        "La liberté qu'il revendique est une prison : il est esclave de son désir de liberté",
+        "Il séduit par amour mais finit par haïr"
+      ],
+      "ans": 2,
+      "exp": "Le libertin se croit libre mais est compulsif (il ne peut pas s'arrêter). Sa \"liberté\" le contraint : il est piégé par sa propre logique de transgression permanente."
+    },
+    {
+      "id": "fq10",
+      "q": "Qu'est-ce que la catharsis au théâtre ?",
+      "opts": [
+        "Transformation du héros tragique au cours de la pièce",
+        "Chute finale du héros (châtiment moral)",
+        "Réconciliation des personnages à la fin de la pièce",
+        "Purification des passions : le spectateur ressent pitié/terreur puis est libéré"
+      ],
+      "ans": 3,
+      "exp": "Catharsis (Aristote, Poétique) = but de la tragédie. Le spectateur ressent pitié (pour le héros) et terreur (de partager son destin), puis ces émotions se purgent. Effet libérateur."
+    },
+    {
+      "id": "fq11",
+      "q": "Quelle figure de style est utilisée dans \"Vénus s'est attachée à sa proie\" (Phèdre) ?",
+      "opts": [
+        "Allitération",
+        "Anaphore",
+        "Métaphore",
+        "Hyperbole"
+      ],
+      "ans": 2,
+      "exp": "C'est une métaphore : comparaison implicite sans outil comparatif. Vénus (déesse) = prédateur, Phèdre = proie. La passion est représentée comme une mise à mort."
+    },
+    {
+      "id": "fq12",
+      "q": "Qu'est-ce qu'une métaphore filée ?",
+      "opts": [
+        "Une comparaison qui se répète en anaphore",
+        "Une hyperbole développée en plusieurs vers",
+        "Une métaphore développée sur plusieurs vers ou tout un texte",
+        "Une métaphore qui contient un oxymore"
+      ],
+      "ans": 2,
+      "exp": "La métaphore filée = métaphore initiale (ex : la passion = feu) développée sur plusieurs vers avec des mots du même champ lexical (ardeurs, flammes, brûler…). Cohérence et amplification."
+    },
+    {
+      "id": "fq13",
+      "q": "Qu'est-ce qu'un oxymore ? Exemple dans Le Cid ?",
+      "opts": [
+        "Répétition d'un mot en début de vers · \"Je t'aimais inconstant\"",
+        "Association de mots contraires · \"obscure clarté\" (Corneille)",
+        "Exagération pour frapper · \"Je mourrai si tu pars\"",
+        "Question sans réponse attendue · \"Que faisais-je ici ?\""
+      ],
+      "ans": 1,
+      "exp": "Oxymore = deux mots de sens contraire accolés. Exemple : \"obscure clarté\" dans Le Cid. Effet : traduit les contradictions intérieures du héros cornélien (honneur vs amour, lumière vs ombre)."
+    },
+    {
+      "id": "fq14",
+      "q": "Combien de syllabes comporte un alexandrin ? Comment se divise-t-il ?",
+      "opts": [
+        "10 syllabes — pas de division",
+        "8 syllabes — 2 fois 4 syllabes",
+        "12 syllabes — 2 hémistiches de 6 syllabes",
+        "14 syllabes — 2 fois 7 syllabes"
+      ],
+      "ans": 2,
+      "exp": "Alexandrin = 12 syllabes (12 pieds), vers roi du théâtre classique français. Se divise en 2 hémistiches de 6 par la césure. Ex : \"Je t'ai-mais in-cons-tant / qu'au-rais-je fait fi-dèle\""
+    },
+    {
+      "id": "fq15",
+      "q": "Que sont les stances dans Le Cid ?",
+      "opts": [
+        "Un dialogue entre Rodrigue et Chimène",
+        "Un monologue délibératif en vers irréguliers avant le duel",
+        "Une scène de combat racontée au passé",
+        "Un discours de Don Diègue à son fils"
+      ],
+      "ans": 1,
+      "exp": "Stances (acte I sc.6) = monologue de Don Rodrigue avant le duel. Vers irréguliers = traduit l'hésitation. Dilemme : honneur du père vs amour de Chimène. Idéal cornélien : l'honneur l'emporte."
+    },
+    {
+      "id": "fq16",
+      "q": "Dans A Silent Voice, que symbolise le fait qu'Ishida recouvre les visages des autres de croix bleues ?",
+      "opts": [
+        "Il est malentendant comme Shoko",
+        "Il ne peut pas regarder en face les gens qu'il a blessés (culpabilité)",
+        "Il voit les fantômes des gens morts",
+        "Il est en colère contre sa classe"
+      ],
+      "ans": 1,
+      "exp": "Les croix bleues symbolisent l'incapacité d'Ishida à regarder les autres en face, suite à sa culpabilité d'avoir harcelé Shoko. Quand il se réconcilie avec eux, les croix disparaissent — visualisation de la rédemption."
+    },
+    {
+      "id": "fq17",
+      "q": "Quel est le principe structurel de The Life of Chuck (Flanagan, 2025) ?",
+      "opts": [
+        "Narration non-linéaire avec flash-backs multiples",
+        "Structure en miroir : début identique à la fin",
+        "Structure en 3 actes inversés : de la mort de Chuck à son enfance",
+        "Montage alterné entre deux personnages simultanés"
+      ],
+      "ans": 2,
+      "exp": "The Life of Chuck raconte la vie d'un homme de sa mort vers son enfance (3 actes inversés, chacun titré). Cette inversion force le spectateur à reconstruire la chronologie et amplifie l'émotion finale."
+    },
+    {
+      "id": "fq18",
+      "q": "Quelle est la différence entre hors-champ et hors-cadre ?",
+      "opts": [
+        "Le hors-champ est flou ; le hors-cadre est net",
+        "Hors-champ = dans la diégèse mais hors cadre · Hors-cadre = extérieur à la diégèse",
+        "Le hors-cadre est au-dessus de l'image ; le hors-champ est sur les côtés",
+        "Il n'y a pas de différence, ce sont des synonymes"
+      ],
+      "ans": 1,
+      "exp": "Hors-champ = espace diégétique (dans l'univers du film) mais non visible à l'écran. Hors-cadre = espace extérieur à la diégèse (équipe de tournage, salle de cinéma). Tout hors-champ = champ potentiel."
+    },
+    {
+      "id": "fq19",
+      "q": "Qu'est-ce qu'une contre-plongée ? Quel effet produit-elle ?",
+      "opts": [
+        "Caméra au-dessus du sujet → personnage paraît petit et vulnérable",
+        "Caméra en face du sujet → égalité avec le spectateur",
+        "Caméra en dessous du sujet → personnage paraît grand et autoritaire",
+        "Caméra sur le côté → déséquilibre et tension"
+      ],
+      "ans": 2,
+      "exp": "Contre-plongée = caméra en dessous de la scène, dirigée vers le haut. Effet : personnage agrandi, impressionnant, autoritaire. Si très accentuée, peut aussi inspirer de l'inquiétude (menace)."
+    },
+    {
+      "id": "fq20",
+      "q": "Quelle figure de style associe deux termes de sens contraire dans un même groupe ?",
+      "opts": [
+        "Antithèse",
+        "Chiasme",
+        "Oxymore",
+        "Paradoxe"
+      ],
+      "ans": 2,
+      "exp": "Oxymore = deux mots contraires accolés dans un même groupe nominal (ex : \"douce violence\", \"obscure clarté\"). À ne pas confondre avec l'antithèse qui oppose deux idées dans des propositions distinctes."
+    },
+    {
+      "id": "fq21",
+      "q": "Dans Jun (The Anthem of the Heart), pourquoi la fée scelle-t-elle la voix de Jun ?",
+      "opts": [
+        "Parce que Jun chantait faux et dérangeait le village",
+        "Parce que Jun a dit quelque chose de blessant étant enfant, et la fée veut la protéger",
+        "Parce que la musique est interdite dans la ville",
+        "Parce que Jun voulait devenir actrice, pas chanteuse"
+      ],
+      "ans": 1,
+      "exp": "Jun enfant dit quelque chose de blessant à sa famille. Une fée lui scelle la voix pour qu'elle ne blesse plus. Métaphore de la culpabilité qui empêche de s'exprimer. La libérer = apprendre à pardonner et oser."
+    },
+    {
+      "id": "fq22",
+      "q": "Qu'est-ce qu'une question rhétorique ?",
+      "opts": [
+        "Une question posée par le professeur à un élève",
+        "Une question rhétorique ancienne tirée des discours grecs",
+        "Une question posée sans attendre de réponse, pour affirmer ou interpeller",
+        "Une question dont on ne connaît pas la réponse"
+      ],
+      "ans": 2,
+      "exp": "Question rhétorique = question posée non pour obtenir une réponse mais pour affirmer un point de vue, impliquer le lecteur/spectateur ou dénoncer quelque chose. Très fréquent dans le théâtre classique et les discours."
+    },
+    {
+      "id": "fq23",
+      "q": "Quelle est la différence entre tragédie et tragi-comédie ?",
+      "opts": [
+        "La tragi-comédie comporte des scènes comiques ; la tragédie aucune",
+        "La tragédie respecte les 3 unités ; la tragi-comédie les transgresse toutes",
+        "Tragédie = fin fatale et inéluctable · Tragi-comédie = éléments tragiques mais fin non totalement tragique",
+        "La tragi-comédie est plus longue que la tragédie"
+      ],
+      "ans": 2,
+      "exp": "Tragédie = fatalité, fin tragique (mort). Tragi-comédie (Le Cid) = conflit tragique (honneur vs amour) mais fin ouverte et non fatale. Le Cid transgresse les 3 unités, ce qui a provoqué la \"Querelle du Cid\"."
+    },
+    {
+      "id": "fq24",
+      "q": "Qu'est-ce que l'ironie comme figure de style ?",
+      "opts": [
+        "Dire le contraire de ce qu'on pense pour se moquer ou dénoncer",
+        "Répétition d'un mot en début de phrase pour insister",
+        "Association de deux termes contraires pour créer un paradoxe",
+        "Exagération volontaire pour frapper l'imagination"
+      ],
+      "ans": 0,
+      "exp": "L'ironie = dire le contraire de ce qu'on pense, souvent pour se moquer ou dénoncer. Très présente dans le libertinage (Dom Juan fait semblant de se repentir). Effet : distance critique, humour, dénonciation."
+    },
+    {
+      "id": "fq25",
+      "q": "Qui réalise La La Land et en quelle année ?",
+      "opts": [
+        "David Lowery, 2021",
+        "Mike Flanagan, 2025",
+        "Damien Chazelle, 2016",
+        "Yamada Naoko, 2016"
+      ],
+      "ans": 2,
+      "exp": "La La Land = Damien Chazelle, 2016. Fond : rêve vs réalité, couple, sacrifice artistique. Forme : couleurs saturées, chorégraphies, montage musical. La fin montre la vie alternative (\"et si\")."
+    },
+    {
+      "id": "fq26",
+      "q": "Quelle figure de style emploie une structure croisée A-B / B'-A' ?",
+      "opts": [
+        "Anaphore",
+        "Parallélisme",
+        "Chiasme",
+        "Antithèse"
+      ],
+      "ans": 2,
+      "exp": "Chiasme = structure croisée A-B / B'-A'. Ex : \"Il faut manger pour vivre et non vivre pour manger\". Effet : mise en miroir, équilibre rhétorique, mise en valeur du contraste."
+    },
+    {
+      "id": "fq27",
+      "q": "Que signifie \"Être ou ne pas être\" dans Hamlet par rapport au thème de la Liberté ?",
+      "opts": [
+        "Hamlet se demande s'il doit se marier ou rester seul",
+        "Hamlet hésite entre agir pour venger son père (risque) et accepter passivement son destin",
+        "Hamlet se demande s'il existe vraiment dans le monde",
+        "Hamlet choisit entre la vie de cour et la vie d'acteur"
+      ],
+      "ans": 1,
+      "exp": "\"Être ou ne pas être\" = dilemme fondamental entre agir (risquer la mort, venger le père) ou accepter la souffrance passivement. Lien thème Liberté : la liberté d'agir ou de subir son destin."
+    },
+    {
+      "id": "fq28",
+      "q": "Quelle est la caractéristique principale de la métaphore (vs la comparaison) ?",
+      "opts": [
+        "La métaphore utilise \"comme\" ou \"tel\" ; la comparaison non",
+        "La comparaison est plus longue que la métaphore",
+        "La métaphore = comparaison implicite sans outil comparatif ; la comparaison a un outil (comme, tel…)",
+        "Il n'y a pas de différence entre métaphore et comparaison"
+      ],
+      "ans": 2,
+      "exp": "Métaphore = comparaison implicite SANS outil (\"Vénus s'est attachée à sa proie\"). Comparaison = avec un outil (\"fort comme un lion\"). La métaphore est plus directe et plus percutante que la comparaison."
+    }
   ]
 }
