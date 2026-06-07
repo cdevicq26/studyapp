@@ -221,25 +221,30 @@ async function renderHome() {
 
   screen.innerHTML = `
   <div class="home-header">
-    <div class="greeting">${dateStr}</div>
-    <h1>${greeting}, Charles 👋</h1>
-    <div class="home-stats-link" onclick="showStatsScreen()">📊 Stats</div>
+    <div class="home-header-left">
+      <div class="greeting">${dateStr}</div>
+      <h1>${greeting}, Charles 👋</h1>
+    </div>
+    <button class="home-stats-btn" onclick="showStatsScreen()">📊</button>
   </div>
 
   <div class="leitner-widgets">
     <div class="lw-card" onclick="startAllDue()">
-      <div class="lw-num" style="color:#ef4444">${globalBoxes[0]}</div>
-      <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[0]}%; background:#ef4444"></div></div>
+      <div class="lw-accent" style="background:#ef4444"></div>
+      <div class="lw-num" style="color:#dc2626">${globalBoxes[0]}</div>
+      <div class="lw-bar-wrap"><div class="lw-bar" style="width:${bw[0]}%; background:#ef4444"></div></div>
       <div class="lw-label">Demain</div>
     </div>
     <div class="lw-card">
-      <div class="lw-num" style="color:#d97706">${globalBoxes[1]}</div>
-      <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[1]}%; background:#d97706"></div></div>
+      <div class="lw-accent" style="background:#d97706"></div>
+      <div class="lw-num" style="color:#b45309">${globalBoxes[1]}</div>
+      <div class="lw-bar-wrap"><div class="lw-bar" style="width:${bw[1]}%; background:#d97706"></div></div>
       <div class="lw-label">Après-demain</div>
     </div>
     <div class="lw-card">
-      <div class="lw-num" style="color:#16a34a">${globalBoxes[2]}</div>
-      <div class="lw-bar-bg"><div class="lw-bar" style="width:${bw[2]}%; background:#16a34a"></div></div>
+      <div class="lw-accent" style="background:#16a34a"></div>
+      <div class="lw-num" style="color:#15803d">${globalBoxes[2]}</div>
+      <div class="lw-bar-wrap"><div class="lw-bar" style="width:${bw[2]}%; background:#16a34a"></div></div>
       <div class="lw-label">Dans 3j</div>
     </div>
   </div>
@@ -606,7 +611,8 @@ async function showStatsScreen() {
     const stats = await getSubjectStats(id);
     return `
     <div class="stats-subject">
-      <div class="ss-name" style="color:${s.color}">${s.name}</div>
+      <div class="ss-stripe" style="background:${s.color}"></div>
+      <div class="ss-name">${s.name}</div>
       <div class="ss-bar-bg">
         <div class="ss-bar" style="width:${stats.pct}%; background:${s.color}"></div>
       </div>
@@ -621,8 +627,8 @@ async function showStatsScreen() {
 
   screen.innerHTML = `
   <div class="stats-header">
-    <button class="back-btn" onclick="goHome()" style="margin-bottom:12px">←</button>
-    <h1>Statistiques 📊</h1>
+    <button class="back-btn" onclick="goHome()">←</button>
+    <h1>Statistiques</h1>
   </div>
   ${rows.join('')}
   <button class="reset-btn" onclick="resetProgress()">🗑️ Réinitialiser la progression</button>
