@@ -1,0 +1,714 @@
+{
+  "id": "chimie",
+  "name": "Chimie",
+  "color": "#9124ff",
+  "colorLight": "#f3eeff",
+  "exam": "2026-06-24",
+  "type": "Oral",
+  "flashcards": [
+    {
+      "id": "ch1",
+      "cat": "Chimie Organique — Bases",
+      "term": "Valences C, H, O, N",
+      "def": "C = 4 liaisons · H = 1 liaison · O = 2 liaisons · N = 3 liaisons. Le carbone fait toujours 4 liaisons, ce qui lui permet de construire des chaînes, cycles et branchements infinis.",
+      "ex": "CH₄ : C central avec 4 H. NH₃ : N avec 3 H et 1 doublet libre."
+    },
+    {
+      "id": "ch2",
+      "cat": "Chimie Organique — Bases",
+      "term": "Chimie organique : définition",
+      "def": "Chimie des molécules carbonées (vivant + synthèses). Exclut les gaz purs et le CO₂. Composée essentiellement de C, H, O, N. Fondée par Friedrich Wöhler en 1828 (synthèse de l'urée).",
+      "ex": "Urée : NH₂-CO-NH₂ — première molécule organique synthétisée en laboratoire."
+    },
+    {
+      "id": "ch3",
+      "cat": "Chimie Organique — Représentations",
+      "term": "4 représentations moléculaires",
+      "def": "1. Développée : tous les liens y compris C–H. 2. Semi-développée : tous les liens sauf vers H. 3. Topologique : chaque sommet/extrémité = C, H implicites, hétéroatomes écrits. 4. Brute : CₓHᵧOᵤNᵥ sans structure.",
+      "ex": "Éthanol : développée C–C–O ; semi-dev CH₃-CH₂-OH ; topologique trait avec OH au bout ; brute C₂H₆O."
+    },
+    {
+      "id": "ch4",
+      "cat": "Chimie Organique — Représentations",
+      "term": "Formule topologique — règles",
+      "def": "Chaque sommet et chaque extrémité d'un trait = un atome de C. Les H ne sont pas écrits (implicites). Les hétéroatomes (O, N, F…) et les groupes fonctionnels (OH, CHO, COOH) sont toujours écrits explicitement.",
+      "ex": "But-1-ène : zigzag de 4 C, double trait entre C1 et C2."
+    },
+    {
+      "id": "ch5",
+      "cat": "Chimie Organique — Nomenclature",
+      "term": "Structure d'un nom IUPAC",
+      "def": "Préfixe(s) [substituants] + Radical [chaîne principale] + Suffixe [fonction principale]. La chaîne principale = la plus longue contenant la fonction principale. Numérotation = indices les plus petits.",
+      "ex": "2-méthylpropan-1-ol : chaîne principale = propan (3C), méthyle en C2, alcool (-ol) en C1."
+    },
+    {
+      "id": "ch6",
+      "cat": "Chimie Organique — Nomenclature",
+      "term": "10 préfixes IUPAC",
+      "def": "1=méth- · 2=éth- · 3=prop- · 4=but- · 5=pent- · 6=hex- · 7=hept- · 8=oct- · 9=non- · 10=déc-. Correspondent au nombre de carbones dans la chaîne principale.",
+      "ex": "Méthane (1C), éthane (2C), propane (3C), butane (4C), pentane (5C)…"
+    },
+    {
+      "id": "ch7",
+      "cat": "Chimie Organique — Nomenclature",
+      "term": "Suffixes par ordre de priorité (fonctions)",
+      "def": "1. Acide (acide alcan-oïque) 2. Ester (alcan-oate de) 3. Aldéhyde (-al) 4. Cétone (-one) 5. Alcool (-ol) 6. Amine (-amine) 7. Alcène (-ène) 8. Alcyne (-yne). La fonction la plus prioritaire détermine le suffixe.",
+      "ex": "Si alcool et alcène dans la même molécule : l'alcool (plus prioritaire) donne le suffixe -ol."
+    },
+    {
+      "id": "ch8",
+      "cat": "Chimie Organique — Nomenclature",
+      "term": "Règle des indices",
+      "def": "Les numéros de position doivent être les plus petits possibles. Tiret entre chiffre et lettre (propan-2-ol). Virgule entre deux chiffres (2,3-diméthylbutane). Les ramifications sont citées par ordre alphabétique.",
+      "ex": "3-méthylhexane ≠ 4-méthylhexane : on choisit le numéro le plus petit → 3."
+    },
+    {
+      "id": "ch9",
+      "cat": "Chimie Organique — Fonctions",
+      "term": "Aldéhyde vs Cétone",
+      "def": "Aldéhyde : groupe —CHO en BOUT de chaîne (C terminal). Suffixe -al. Cétone : groupe C=O en MILIEU de chaîne (C lié à 2 autres C). Suffixe -one.",
+      "ex": "Éthanal : CH₃-CHO (aldéhyde). Propanone (acétone) : CH₃-CO-CH₃ (cétone)."
+    },
+    {
+      "id": "ch10",
+      "cat": "Chimie Organique — Fonctions",
+      "term": "Alcool vs Éther",
+      "def": "Alcool : groupe —OH lié à un C (suffixe -ol). Éther : oxygène entre deux chaînes carbonées R—O—R' (notation …oxy…alcane). Même formule brute possible → isomères de fonction.",
+      "ex": "Éthanol CH₃CH₂OH (alcool) vs diméthyléther CH₃-O-CH₃ (éther) : deux isomères C₂H₆O."
+    },
+    {
+      "id": "ch11",
+      "cat": "Chimie Organique — Fonctions",
+      "term": "Acide carboxylique vs Ester",
+      "def": "Acide carboxylique : groupe —COOH en bout de chaîne (acide alcan-oïque). Ester : groupe —COO— résultant d'une estérification (alcan-oate de + nom de l'alkyle). La différence : l'ester n'a pas de H sur l'oxygène.",
+      "ex": "Acide éthanoïque CH₃COOH (vinaigre) → + éthanol → éthanoate d'éthyle CH₃COO-C₂H₅."
+    },
+    {
+      "id": "ch12",
+      "cat": "Chimie Organique — Fonctions",
+      "term": "13 fonctions organiques",
+      "def": "Alcane · Cycloalcane · Alcène (C=C) · Alcyne (C≡C) · Alcool (-OH) · Éther (-O-) · Aldéhyde (-CHO) · Cétone (C=O milieu) · Acide carboxylique (-COOH) · Ester (-COO-) · Amine (-NH₂/-NH-/-N<) · Amide (-CO-NH-) · Aromatique (benzène).",
+      "ex": "Aspirine C₉H₈O₄ : contient ester + aromatique + acide carboxylique."
+    },
+    {
+      "id": "ch13",
+      "cat": "Chimie Organique — Isomérie",
+      "term": "Isomères : définition",
+      "def": "Molécules ayant la MÊME formule brute mais des structures différentes. Différentes propriétés physiques (T°éb, T°fusion) et parfois chimiques. 3 grandes catégories : constitutionnels, géométriques (cis/trans), optiques (énantiomères).",
+      "ex": "C₄H₁₀ : butane (linéaire) ET 2-méthylpropane (ramifié) = isomères de constitution."
+    },
+    {
+      "id": "ch14",
+      "cat": "Chimie Organique — Isomérie",
+      "term": "Isomères de constitution : 3 types",
+      "def": "1. Isomères de chaîne : chaîne principale différente (ramifications). 2. Isomères de position : même groupe, sur un C différent. 3. Isomères de fonction : groupes fonctionnels différents (ex. alcool vs éther).",
+      "ex": "Propan-1-ol (OH en C1) vs propan-2-ol (OH en C2) = isomères de position."
+    },
+    {
+      "id": "ch15",
+      "cat": "Chimie Organique — Isomérie",
+      "term": "Isomères géométriques (cis/trans)",
+      "def": "Uniquement autour d'une double liaison C=C (pas de rotation libre). cis : groupes identiques du MÊME côté. trans : groupes identiques de côtés OPPOSÉS. Condition : chaque C de la double liaison doit porter 2 substituants différents.",
+      "ex": "But-2-ène cis : deux CH₃ du même côté. But-2-ène trans : deux CH₃ côtés opposés."
+    },
+    {
+      "id": "ch16",
+      "cat": "Chimie Organique — Isomérie",
+      "term": "Isomères optiques (énantiomères)",
+      "def": "Carbone asymétrique C* = lié à 4 substituants TOUS différents. Molécule chirale = non superposable à son image miroir. Propriété : déviation de la lumière polarisée — dextrogyre (+) vers la droite, lévogyre (−) vers la gauche.",
+      "ex": "Acide aminé L-alanine ≠ D-alanine : même formule, C* asymétrique, images miroir non superposables."
+    },
+    {
+      "id": "ch17",
+      "cat": "Chimie Organique — Liaisons et solubilité",
+      "term": "Liaisons hydrogène",
+      "def": "Se forment entre un H lié à un atome électronégatif (O, N, F) et un autre atome électronégatif (O, N, F) portant des paires libres. Notation X—H···Y. Responsables des propriétés inhabituelles de l'eau.",
+      "ex": "H₂O : deux liaisons H possibles par molécule → T°éb = 100°C (élevée pour une si petite molécule)."
+    },
+    {
+      "id": "ch18",
+      "cat": "Chimie Organique — Liaisons et solubilité",
+      "term": "T°ébullition : facteurs d'augmentation",
+      "def": "3 facteurs qui augmentent la T°éb : 1. Longueur de chaîne carbonée (plus de forces de Van der Waals). 2. Présence de double/triple liaison (molécule plus rigide). 3. Groupes polaires OH, NH₂, COOH (liaisons hydrogène).",
+      "ex": "Méthane T°éb=-162°C · Octane +126°C · Éthanol +78°C (même taille que propane mais OH → +T°éb)."
+    },
+    {
+      "id": "ch19",
+      "cat": "Chimie Organique — Liaisons et solubilité",
+      "term": "Solubilité : règle",
+      "def": "\"Polaire dissout polaire\" (semblable dissout semblable). Groupe polaire (OH, NH₂, COOH) + courte chaîne → soluble dans l'eau. Longue chaîne hydrocarbonée → insoluble (partie hydrophobe trop importante).",
+      "ex": "Éthanol (chaîne courte + OH) : soluble en toutes proportions. Octan-1-ol (longue chaîne + OH) : quasi insoluble."
+    },
+    {
+      "id": "ch20",
+      "cat": "Chimie Organique — Réactions",
+      "term": "10 types de réactions organiques",
+      "def": "1. Addition 2. Élimination 3. Substitution 4. Oxydation 5. Réduction 6. Estérification 7. Saponification 8. Condensation 9. Hydrolyse 10. Polymérisation/Polycondensation.",
+      "ex": "Alcool + O → Aldéhyde (oxydation). Aldéhyde + O → Acide carboxylique (oxydation)."
+    },
+    {
+      "id": "ch21",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Addition vs Élimination",
+      "def": "Addition : ajout d'une molécule sur une double/triple liaison (la liaison multiple disparaît). Élimination : perte d'eau ou H₂ pour FORMER une double liaison. Ce sont des réactions inverses l'une de l'autre.",
+      "ex": "Addition : propène + H₂O → propan-2-ol. Élimination : propan-2-ol → propène + H₂O."
+    },
+    {
+      "id": "ch22",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Estérification vs Hydrolyse",
+      "def": "Estérification : Acide carboxylique + Alcool → Ester + H₂O (réaction lente, équilibre). Hydrolyse : Ester + H₂O → Acide + Alcool (réaction inverse). Les deux sont à l'équilibre chimique (⇌).",
+      "ex": "CH₃COOH + CH₃CH₂OH ⇌ CH₃COOC₂H₅ + H₂O (éthanoate d'éthyle = arôme de poire)."
+    },
+    {
+      "id": "ch23",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Polymérisation vs Polycondensation",
+      "def": "Polymérisation (addition) : monomères reliés par addition sur double liaison, SANS élimination d'eau. Polycondensation : monomères reliés avec élimination d'une petite molécule (eau, HCl) à chaque étape.",
+      "ex": "Polyéthylène : n CH₂=CH₂ → (-CH₂-CH₂-)ₙ (polymérisation). Nylon : diamine + dichlorure → polyamide + HCl (polycondensation)."
+    },
+    {
+      "id": "ch24",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Oxydation des alcools",
+      "def": "Alcool PRIMAIRE (OH sur C terminal) + [O] → Aldéhyde + H₂O. Alcool SECONDAIRE (OH sur C interne) + [O] → Cétone + H₂O. Alcool tertiaire : ne s'oxyde pas facilement.",
+      "ex": "Propan-1-ol → propanal (aldéhyde). Propan-2-ol → propanone (cétone = acétone)."
+    },
+    {
+      "id": "ch25",
+      "cat": "Chimie Organique — Saponification",
+      "term": "Saponification : réaction",
+      "def": "Hydrolyse BASIQUE d'un triglycéride (ester) par NaOH : triglycéride + 3 NaOH → glycérol + 3 R-COO⁻Na⁺ (savon/carboxylate de sodium). La saponification est TOTALE et IRRÉVERSIBLE (contrairement à l'estérification).",
+      "ex": "Huile d'olive (C₅₇H₁₀₄O₆) + 3 NaOH → glycérol + 3 oléate de sodium."
+    },
+    {
+      "id": "ch26",
+      "cat": "Chimie Organique — Saponification",
+      "term": "Indice de saponification (IS)",
+      "def": "Masse de NaOH (en mg ou g) nécessaire pour saponifier 1 g d'huile. Formule : IS = (3 × M_NaOH) / M_triglycéride = (3 × 40) / M. Pour l'huile d'olive (M=884) : IS = 120/884 ≈ 0,136 g NaOH/g huile.",
+      "ex": "IS olive = 0,134 g/g · IS coco = 0,190 g/g (acides gras plus courts → M plus petite → IS plus grand)."
+    },
+    {
+      "id": "ch27",
+      "cat": "Chimie Organique — Saponification",
+      "term": "Taux de surgras",
+      "def": "Pourcentage d'huile non saponifiée (excès d'huile par rapport au NaOH utilisé). TS = (m_NaOH nécessaire − m_NaOH utilisé) / m_NaOH nécessaire × 100. Un savon surgras est plus doux pour la peau.",
+      "ex": "Si IS total = 60,88 g NaOH et qu'on utilise 56 g : TS = (60,88-56)/60,88 × 100 ≈ 8%."
+    },
+    {
+      "id": "ch28",
+      "cat": "Chimie Organique — Saponification",
+      "term": "Micelles : structure et action",
+      "def": "Le savon a une tête HYDROPHILE (carboxylate COO⁻ chargé) et une queue HYDROPHOBE (chaîne alkyle). En présence d'eau + graisse, formation de micelles : queues vers la graisse (intérieur), têtes vers l'eau (extérieur) → émulsification.",
+      "ex": "La graisse est emprisonnée dans la micelle et emportée par l'eau de rinçage."
+    },
+    {
+      "id": "ch29",
+      "cat": "Thermochimie — Grandeurs",
+      "term": "4 grandeurs thermodynamiques",
+      "def": "Q = chaleur échangée. ΔH = enthalpie (chaleur à pression constante, kJ/mol). ΔS = entropie (mesure du désordre, J/K/mol). ΔG = énergie libre de Gibbs (critère de spontanéité, kJ/mol). Relation : ΔG = ΔH − TΔS.",
+      "ex": "Si ΔG < 0 → réaction spontanée. Si ΔG > 0 → non spontanée. Si ΔG = 0 → équilibre."
+    },
+    {
+      "id": "ch30",
+      "cat": "Thermochimie — Grandeurs",
+      "term": "ΔH : enthalpie",
+      "def": "ΔH = quantité de chaleur échangée à pression constante = H(produits) − H(réactifs). Unité : kJ/mol. ΔH < 0 → exothermique (chaleur libérée, T monte). ΔH > 0 → endothermique (chaleur absorbée, T descend).",
+      "ex": "Formation de H₂O(l) : ΔH = −285,8 kJ/mol (très exothermique)."
+    },
+    {
+      "id": "ch31",
+      "cat": "Thermochimie — Grandeurs",
+      "term": "ΔS : entropie",
+      "def": "ΔS = variation du désordre d'un système. ΔS > 0 → désordre augmente (favorable). ΔS < 0 → désordre diminue (défavorable). Unités : J·K⁻¹·mol⁻¹. Exemples : solide → gaz = ΔS >> 0.",
+      "ex": "Dissolution d'un sel : les ions se dispersent dans l'eau → ΔS > 0 (plus de désordre)."
+    },
+    {
+      "id": "ch32",
+      "cat": "Thermochimie — Spontanéité",
+      "term": "Critère de spontanéité ΔG",
+      "def": "ΔG = ΔH − TΔS. Réaction spontanée si ΔG < 0. 4 cas : (ΔH<0, ΔS>0) → toujours spontané. (ΔH>0, ΔS<0) → jamais spontané. (ΔH<0, ΔS<0) → spontané à basse T. (ΔH>0, ΔS>0) → spontané à haute T.",
+      "ex": "Combustion : ΔH<<0 et ΔS>0 → toujours spontanée (ΔG<0 à toute T)."
+    },
+    {
+      "id": "ch33",
+      "cat": "Thermochimie — Spontanéité",
+      "term": "4 cas ΔH/ΔS selon T",
+      "def": "1. ΔH<0 + ΔS>0 → ΔG<0 toujours (spontané à toute T). 2. ΔH>0 + ΔS<0 → ΔG>0 toujours (jamais spontané). 3. ΔH<0 + ΔS<0 → spontané à basse T (ΔH domine). 4. ΔH>0 + ΔS>0 → spontané à haute T (TΔS domine).",
+      "ex": "Fusion de la glace : ΔH>0 + ΔS>0 → spontanée seulement si T > 0°C (haute T)."
+    },
+    {
+      "id": "ch34",
+      "cat": "Thermochimie — Calorimétrie",
+      "term": "Formule calorimétrique",
+      "def": "Q = m · c · ΔT. Q = chaleur (J ou kJ). m = masse du liquide (g). c = capacité thermique spécifique (J·g⁻¹·K⁻¹). ΔT = variation de température (°C ou K). Pour l'eau : c = 4,18 J·g⁻¹·K⁻¹.",
+      "ex": "100 g d'eau, ΔT = 5°C → Q = 100 × 4,18 × 5 = 2090 J = 2,09 kJ."
+    },
+    {
+      "id": "ch35",
+      "cat": "Thermochimie — Calorimétrie",
+      "term": "c de l'eau = 4,18 J/g/K",
+      "def": "La capacité thermique spécifique de l'eau est c = 4,18 J·g⁻¹·K⁻¹ (ou 4180 J·kg⁻¹·K⁻¹). C'est la quantité d'énergie nécessaire pour élever 1 g d'eau de 1°C (ou 1 K). Valeur à connaître par cœur.",
+      "ex": "Pour chauffer 200 g d'eau de 20°C à 80°C : Q = 200 × 4,18 × 60 = 50 160 J ≈ 50,2 kJ."
+    },
+    {
+      "id": "ch36",
+      "cat": "Thermochimie — Loi de Hess",
+      "term": "Loi de Hess : énoncé",
+      "def": "La chaleur dégagée ou absorbée lors d'une réaction chimique est INDÉPENDANTE de la voie suivie. On peut décomposer une réaction en étapes. ΔH_total = ΔH₁ + ΔH₂ + ΔH₃ + … (additivité des enthalpies).",
+      "ex": "Si A→B impossible à mesurer directement, on passe par A→C→B et on additionne les ΔH."
+    },
+    {
+      "id": "ch37",
+      "cat": "Thermochimie — Loi de Hess",
+      "term": "Hess : 3 règles d'application",
+      "def": "1. Si on additionne deux réactions → on additionne les ΔH. 2. Si on inverse une réaction → on change le signe de ΔH. 3. Si on multiplie une réaction par n → on multiplie ΔH par n. Les corps simples peuvent servir d'intermédiaires.",
+      "ex": "Réaction (1) inversée : A→B avec ΔH=+50 devient B→A avec ΔH=−50."
+    },
+    {
+      "id": "ch38",
+      "cat": "Thermochimie — Enthalpie de formation",
+      "term": "ΔH°f : définition",
+      "def": "Enthalpie standard de formation = variation d'enthalpie pour former 1 mole d'un composé à partir des corps simples les plus stables à 25°C (298 K) et 1 atm. Convention : ΔH°f = 0 pour tout corps simple dans son état le plus stable.",
+      "ex": "ΔH°f(H₂O(l)) = −285,8 kJ/mol. ΔH°f(H₂(g)) = 0 (corps simple)."
+    },
+    {
+      "id": "ch39",
+      "cat": "Thermochimie — Enthalpie de formation",
+      "term": "Corps simples : ΔH°f = 0",
+      "def": "Par convention, l'enthalpie standard de formation de tout corps simple dans son état le plus stable est NULLE. H₂(g), O₂(g), N₂(g), C(graphite), Na(s), Fe(s)… valent 0 kJ/mol. Sert de référence pour les calculs.",
+      "ex": "ΔH°f(O₃) ≠ 0 car O₃ n'est pas l'état le plus stable de l'oxygène (c'est O₂)."
+    },
+    {
+      "id": "ch40",
+      "cat": "Thermochimie — Enthalpie de formation",
+      "term": "Formule ΔH°réaction via ΔH°f",
+      "def": "ΔH°réaction = Σ ΔH°f(produits) − Σ ΔH°f(réactifs). On multiplie chaque ΔH°f par le coefficient stœchiométrique. Applicable seulement si toutes les ΔH°f sont connues dans les tables.",
+      "ex": "CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(l) : ΔH° = [(-393,5) + 2(-285,8)] − [(-74,86) + 0] = −890,24 kJ/mol."
+    },
+    {
+      "id": "ch41",
+      "cat": "Thermochimie — Valeurs clés",
+      "term": "ΔH°f(H₂O(l)) = −285,8 kJ/mol",
+      "def": "Enthalpie standard de formation de l'eau liquide = −285,8 kJ/mol. Réaction : H₂(g) + ½O₂(g) → H₂O(l). Très exothermique. À distinguer de H₂O(g) = −241,8 kJ/mol (différence = chaleur de condensation).",
+      "ex": "La combustion de l'hydrogène libère 285,8 kJ par mole d'eau formée → carburant très énergétique."
+    },
+    {
+      "id": "ch42",
+      "cat": "Thermochimie — Valeurs clés",
+      "term": "ΔH°f(CO₂(g)) = −393,5 kJ/mol",
+      "def": "Enthalpie standard de formation du dioxyde de carbone gazeux = −393,5 kJ/mol. Réaction : C(graphite) + O₂(g) → CO₂(g). Valeur fondamentale pour calculer ΔH des combustions organiques.",
+      "ex": "Combustion du méthane : ΔH° = [(-393,5) + 2(-285,8)] − [(-74,86)] = −890,24 kJ/mol."
+    },
+    {
+      "id": "ch43",
+      "cat": "Thermochimie — Réactions",
+      "term": "Exothermique vs Endothermique",
+      "def": "Exothermique : ΔH < 0 → la réaction LIBÈRE de l'énergie → la température du milieu AUGMENTE. Endothermique : ΔH > 0 → la réaction ABSORBE de l'énergie → la température du milieu DIMINUE.",
+      "ex": "Dissolution NaOH : Ti=21°C → Tf=82°C (exo). Dissolution KNO₃ : Ti=22°C → Tf=15°C (endo)."
+    },
+    {
+      "id": "ch44",
+      "cat": "Thermochimie — Labo",
+      "term": "Cycle de Hess pour le magnésium",
+      "def": "On ne peut pas mesurer directement Mg(s) + ½O₂ → MgO(s). On mesure (1) Mg + 2HCl → MgCl₂ + H₂ et (2) MgO + 2HCl → MgCl₂ + H₂O, et on utilise (3) ΔH°f(H₂O). Relation : x₀ = x₁ − x₂ + x₃.",
+      "ex": "Méthode indirecte = principe du cycle de Hess : on additionne des réactions mesurables."
+    },
+    {
+      "id": "ch45",
+      "cat": "Chimie Organique — Nomenclature",
+      "term": "Exemples de nomenclature",
+      "def": "CH₃-CH₂-OH = éthanol. CH₃-O-CH₃ = méthoxy méthane (diméthyléther). CH₃-CH₂-CH=CH₂ = but-1-ène. CH₃-CHOH-CH₃ = propan-2-ol. CH₃-NH₂ = méthanamine.",
+      "ex": "3,3-diméthylpentane : chaîne en 5C, deux méthyles en C3 → CH₃-CH₂-C(CH₃)₂-CH₂-CH₃."
+    },
+    {
+      "id": "ch46",
+      "cat": "Chimie Organique — Nomenclature",
+      "term": "Amine : 3 degrés",
+      "def": "Amine primaire : R-NH₂ (1 alkyle sur N). Amine secondaire : R-NH-R' (2 alkyles sur N). Amine tertiaire : R-N(R')R'' (3 alkyles sur N). Le suffixe -amine s'applique aux amines primaires.",
+      "ex": "CH₃-NH₂ = méthanamine (1°). CH₃-NH-CH₃ = N-méthylméthanamine (2°). N(CH₃)₃ = triméthylamine (3°)."
+    },
+    {
+      "id": "ch47",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Condensation vs Hydrolyse",
+      "def": "Condensation : formation d'une liaison entre deux molécules avec élimination d'une petite molécule (souvent H₂O). Hydrolyse : rupture d'une liaison par l'eau (réaction inverse). Exemples : amide, ester, saccharose.",
+      "ex": "Acide + Amine → Amide + H₂O (condensation). Amide + H₂O → Acide + Amine (hydrolyse)."
+    },
+    {
+      "id": "ch48",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Substitution",
+      "def": "Remplacement d'un groupe par un autre. Exemple : un alcool + NH₃ → amine + H₂O. En chimie organique, souvent appelée réaction de substitution nucléophile (SN) ou électrophile (SE) selon le mécanisme.",
+      "ex": "CH₃-CH₂-OH + NH₃ → CH₃-CH₂-NH₂ + H₂O (propan-1-ol → propan-1-amine)."
+    },
+    {
+      "id": "ch49",
+      "cat": "Chimie Organique — Fonctions",
+      "term": "Acétone (propanone)",
+      "def": "Formule : CH₃-CO-CH₃ (propanone). C'est une cétone. Caractéristiques : odeur caractéristique, sensation de froid à l'évaporation (retire l'énergie de la peau). T°éb = 56°C. Solvant organique courant.",
+      "ex": "L'acétone dissout les vernis, résines, plastiques — polaire et très volatile."
+    },
+    {
+      "id": "ch50",
+      "cat": "Chimie Organique — Fonctions",
+      "term": "Triglycéride : structure",
+      "def": "Triglycéride = glycérol + 3 acides gras reliés par des fonctions ESTER. Le glycérol a 3 groupes OH. Chaque acide gras R-COOH forme une liaison ester avec un OH du glycérol. Corps gras naturels (huiles, graisses).",
+      "ex": "Huile d'olive : C₅₇H₁₀₄O₆ (oléate de glycérol). M = 884 g/mol."
+    },
+    {
+      "id": "ch51",
+      "cat": "Thermochimie — Grandeurs",
+      "term": "Premier principe de la thermodynamique",
+      "def": "L'énergie se CONSERVE : elle ne peut ni être créée, ni être détruite, seulement transformée ou transférée. Q = ΔE − W. À pression constante : ΔH = Qp (l'enthalpie = chaleur échangée à pression constante).",
+      "ex": "En calorimétrie de laboratoire : on mesure Q = m·c·ΔT, puis on calcule ΔH par mole de réactif."
+    },
+    {
+      "id": "ch52",
+      "cat": "Chimie Organique — Fonctions",
+      "term": "Amide",
+      "def": "Groupe fonctionnel : -CO-NH- (ou -CO-NHR-, -CO-NR₂). Résulte de la condensation d'un acide carboxylique et d'une amine. Suffixe : -amide. Liaison amide = liaison peptidique dans les protéines.",
+      "ex": "CH₃-CO-NH₂ = éthanamide. Les protéines sont des polyamides naturels (AA reliés par liaisons peptidiques)."
+    },
+    {
+      "id": "ch53",
+      "cat": "Thermochimie — Valeurs clés",
+      "term": "Autres ΔH°f importants",
+      "def": "H₂O(g) = −241,8 kJ/mol · CO(g) = −110,5 kJ/mol · NH₃(g) = −46,19 kJ/mol · CH₄(g) = −74,86 kJ/mol · Fe₂O₃(s) = −824,2 kJ/mol · Al₂O₃(s) = −1676 kJ/mol · NaOH(s) = −426,8 kJ/mol.",
+      "ex": "Aluminothermie : ΔH° = ΔH°f(Al₂O₃) − ΔH°f(Fe₂O₃) = −1676 − (−824,2) = −851,8 kJ/mol → très exothermique."
+    },
+    {
+      "id": "ch54",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Hydrogénation vs Déshydratation",
+      "def": "Hydrogénation (réduction) : alcène + H₂ → alcane (addition de H₂ sur la double liaison). Déshydratation (élimination) : alcool → alcène + H₂O (formation de double liaison par perte d'eau). Réactions inverses.",
+      "ex": "Propène + H₂ → propane. Propan-2-ol → propène + H₂O."
+    }
+  ],
+  "qcm": [
+    {
+      "id": "chq1",
+      "q": "Quelle est la valence du carbone ?",
+      "opts": [
+        "2 liaisons",
+        "3 liaisons",
+        "4 liaisons",
+        "1 liaison"
+      ],
+      "ans": 2,
+      "exp": "Le carbone forme toujours 4 liaisons (valence = 4). C'est ce qui lui permet de construire des chaînes, cycles et branchements infinis. H=1, O=2, N=3, C=4."
+    },
+    {
+      "id": "chq2",
+      "q": "Quelle représentation moléculaire montre TOUS les liens, y compris les liaisons C–H ?",
+      "opts": [
+        "Formule topologique",
+        "Formule brute",
+        "Formule semi-développée",
+        "Formule développée"
+      ],
+      "ans": 3,
+      "exp": "La formule développée montre TOUTES les liaisons, y compris C–H. La semi-développée omet les liaisons vers H. La topologique représente C comme des sommets. La brute ne montre aucune structure."
+    },
+    {
+      "id": "chq3",
+      "q": "Dans la nomenclature IUPAC, que signifie le préfixe 'hex-' ?",
+      "opts": [
+        "5 carbones",
+        "7 carbones",
+        "8 carbones",
+        "6 carbones"
+      ],
+      "ans": 3,
+      "exp": "Hex- = 6 carbones. Méth-=1, éth-=2, prop-=3, but-=4, pent-=5, HEX-=6, hept-=7, oct-=8, non-=9, déc-=10."
+    },
+    {
+      "id": "chq4",
+      "q": "Quel est le groupe caractéristique de l'aldéhyde ?",
+      "opts": [
+        "C=O en milieu de chaîne",
+        "–CHO en bout de chaîne",
+        "–OH sur un carbone",
+        "–COO– entre deux chaînes"
+      ],
+      "ans": 1,
+      "exp": "L'aldéhyde a le groupe –CHO en BOUT de chaîne (C terminal). La cétone a C=O en MILIEU. L'alcool a –OH. L'ester a –COO–. Mnémotechnique : Al-dé-HYDE = bout de chaîne (H visible)."
+    },
+    {
+      "id": "chq5",
+      "q": "Quelles sont les conditions de formation d'une liaison hydrogène ?",
+      "opts": [
+        "X–H···Y avec X, Y ∈ {C, Si, S}",
+        "X–H···Y avec X, Y ∈ {O, N, F}",
+        "X–H···Y avec X, Y ∈ {N, Cl, Br}",
+        "X–H···Y avec X, Y ∈ {O, S, P}"
+      ],
+      "ans": 1,
+      "exp": "Liaison hydrogène : X–H···Y où X et Y sont parmi les éléments très électronégatifs O, N, F uniquement. Condition : H lié à un atome électronégatif + atome électronégatif avec paires libres à proximité."
+    },
+    {
+      "id": "chq6",
+      "q": "La réaction de saponification est :",
+      "opts": [
+        "Une estérification de triglycéride",
+        "Une hydrolyse basique d'ester (ester + NaOH)",
+        "Une oxydation d'alcool primaire",
+        "Une polymérisation par addition"
+      ],
+      "ans": 1,
+      "exp": "La saponification = hydrolyse BASIQUE d'un ester par NaOH. Triglycéride + 3 NaOH → glycérol + 3 R-COO⁻Na⁺. Contrairement à l'estérification, elle est totale et irréversible."
+    },
+    {
+      "id": "chq7",
+      "q": "Quel est le critère de spontanéité d'une réaction ?",
+      "opts": [
+        "ΔG < 0",
+        "ΔH < 0",
+        "ΔS > 0",
+        "Q < 0"
+      ],
+      "ans": 0,
+      "exp": "ΔG < 0 = réaction spontanée. ΔG = ΔH − TΔS. Une réaction peut être spontanée même si ΔH > 0 (si TΔS est assez grand). Ni ΔH<0 ni ΔS>0 seuls ne garantissent la spontanéité."
+    },
+    {
+      "id": "chq8",
+      "q": "La formule calorimétrique est Q = m·c·ΔT. Quelle est la valeur de c pour l'eau ?",
+      "opts": [
+        "4,18 J·g⁻¹·K⁻¹",
+        "1,00 J·g⁻¹·K⁻¹",
+        "2,09 J·g⁻¹·K⁻¹",
+        "8,31 J·g⁻¹·K⁻¹"
+      ],
+      "ans": 0,
+      "exp": "c(eau) = 4,18 J·g⁻¹·K⁻¹. C'est la capacité thermique spécifique de l'eau. Valeur à connaître par cœur pour tous les calculs calorimétriques."
+    },
+    {
+      "id": "chq9",
+      "q": "Selon la loi de Hess, que se passe-t-il si on inverse une réaction ?",
+      "opts": [
+        "ΔH est multiplié par 2",
+        "ΔH reste identique",
+        "Le signe de ΔH est inversé",
+        "ΔH devient nul"
+      ],
+      "ans": 2,
+      "exp": "Inverser une réaction = changer le signe de ΔH. Si A→B a ΔH=+50 kJ/mol, alors B→A a ΔH=−50 kJ/mol. C'est l'une des 3 règles fondamentales de la loi de Hess."
+    },
+    {
+      "id": "chq10",
+      "q": "Quelle est l'enthalpie standard de formation de H₂O(l) ?",
+      "opts": [
+        "−393,5 kJ/mol",
+        "−241,8 kJ/mol",
+        "−285,8 kJ/mol",
+        "+285,8 kJ/mol"
+      ],
+      "ans": 2,
+      "exp": "ΔH°f(H₂O(l)) = −285,8 kJ/mol. À ne pas confondre avec H₂O(g) = −241,8 kJ/mol. Et CO₂(g) = −393,5 kJ/mol. Toutes exothermiques (ΔH < 0)."
+    },
+    {
+      "id": "chq11",
+      "q": "La cétone se distingue de l'aldéhyde par :",
+      "opts": [
+        "Son groupe –COOH",
+        "Son groupe C=O lié à deux chaînes carbonées (milieu)",
+        "Son groupe –OH en milieu de chaîne",
+        "Son groupe –O– entre deux chaînes"
+      ],
+      "ans": 1,
+      "exp": "La cétone a un groupe C=O en MILIEU de chaîne, lié à deux carbones (R-CO-R'). L'aldéhyde a –CHO en BOUT de chaîne (lié à un H). Suffixes : cétone = -one, aldéhyde = -al."
+    },
+    {
+      "id": "chq12",
+      "q": "Qu'est-ce qu'un carbone asymétrique C* ?",
+      "opts": [
+        "Un carbone avec une double liaison",
+        "Un carbone lié à 4 substituants identiques",
+        "Un carbone lié à 4 substituants TOUS différents",
+        "Un carbone en bout de chaîne"
+      ],
+      "ans": 2,
+      "exp": "C* = carbone asymétrique = lié à 4 substituants TOUS différents. Cela rend la molécule chirale (non superposable à son image miroir). Propriété : déviation de la lumière polarisée."
+    },
+    {
+      "id": "chq13",
+      "q": "Quelle réaction permet de passer d'un alcool primaire à un aldéhyde ?",
+      "opts": [
+        "Addition",
+        "Substitution",
+        "Hydrolyse",
+        "Oxydation"
+      ],
+      "ans": 3,
+      "exp": "Oxydation d'un alcool primaire → aldéhyde + H₂O. Alcool secondaire → cétone. L'oxydation = gain d'O ou perte de H. Réactif : [O] (oxydant). Ex : propan-1-ol → propanal."
+    },
+    {
+      "id": "chq14",
+      "q": "La polymérisation par addition de l'éthène donne :",
+      "opts": [
+        "Polyéthylène",
+        "Nylon",
+        "PLA (polylactide)",
+        "Polyester"
+      ],
+      "ans": 0,
+      "exp": "n CH₂=CH₂ → (−CH₂−CH₂−)ₙ = polyéthylène. C'est une polymérisation par ADDITION sur la double liaison. Pas d'élimination d'eau. Nylon et polyester = polycondensation (avec élimination d'eau/HCl)."
+    },
+    {
+      "id": "chq15",
+      "q": "Quel est l'indice de saponification de l'huile d'olive (M=884 g/mol) ?",
+      "opts": [
+        "IS = 3×40/884 ≈ 0,136 g/g",
+        "IS = 40/884 ≈ 0,045 g/g",
+        "IS = 3×56/884 ≈ 0,190 g/g",
+        "IS = 3×40/282 ≈ 0,426 g/g"
+      ],
+      "ans": 0,
+      "exp": "IS = (3 × M_NaOH) / M_triglycéride = (3 × 40) / 884 = 120/884 ≈ 0,136 g NaOH/g huile. Les 3 viennent des 3 esters du triglycéride, chacun nécessitant 1 NaOH (M=40) pour la saponification."
+    },
+    {
+      "id": "chq16",
+      "q": "Dans quels cas une réaction est-elle TOUJOURS spontanée quelle que soit T ?",
+      "opts": [
+        "ΔH > 0 et ΔS < 0",
+        "ΔH < 0 et ΔS < 0",
+        "ΔH > 0 et ΔS > 0",
+        "ΔH < 0 et ΔS > 0"
+      ],
+      "ans": 3,
+      "exp": "Si ΔH < 0 ET ΔS > 0 : ΔG = ΔH − TΔS est toujours négatif (les deux termes contribuent à rendre ΔG < 0). Spontané à toute température. C'est le cas le plus favorable."
+    },
+    {
+      "id": "chq17",
+      "q": "Quelle formule permet de calculer ΔH° d'une réaction à partir des ΔH°f ?",
+      "opts": [
+        "ΔH°r = Σ ΔH°f(produits) − Σ ΔH°f(réactifs)",
+        "ΔH°r = Σ ΔH°f(réactifs) − Σ ΔH°f(produits)",
+        "ΔH°r = Σ ΔH°f(produits) + Σ ΔH°f(réactifs)",
+        "ΔH°r = Σ ΔH°f(produits) × Σ ΔH°f(réactifs)"
+      ],
+      "ans": 0,
+      "exp": "ΔH°r = Σ ΔH°f(produits) − Σ ΔH°f(réactifs). C'est produits MOINS réactifs (ne pas inverser !). Application de la loi de Hess avec les corps simples comme référence (ΔH°f=0)."
+    },
+    {
+      "id": "chq18",
+      "q": "Quelle est la règle de solubilité en chimie organique ?",
+      "opts": [
+        "Polaire dissout polaire (semblable dissout semblable)",
+        "Les molécules chargées dissolvent les neutres",
+        "Apolaire dissout polaire",
+        "Toute molécule avec OH est soluble dans l'eau"
+      ],
+      "ans": 0,
+      "exp": "'Polaire dissout polaire' ou 'semblable dissout semblable'. L'eau (polaire) dissout les molécules polaires (alcools courts, amines, acides). Les solvants apolaires (benzène) dissolvent les huiles."
+    },
+    {
+      "id": "chq19",
+      "q": "Dans un savon, comment s'orientent les micelles en présence d'eau et de graisse ?",
+      "opts": [
+        "Têtes hydrophobes vers l'eau, queues hydrophiles vers la graisse",
+        "Têtes hydrophiles vers la graisse, queues hydrophobes vers l'eau",
+        "Têtes hydrophiles vers l'eau, queues hydrophobes vers la graisse",
+        "Toutes les têtes vers l'intérieur, toutes les queues vers l'extérieur"
+      ],
+      "ans": 2,
+      "exp": "Les têtes hydrophiles (COO⁻) s'orientent vers l'eau (extérieur de la micelle). Les queues hydrophobes (alkyles) s'orientent vers la graisse (intérieur de la micelle). La graisse est ainsi émulsionnée et entraînée par l'eau."
+    },
+    {
+      "id": "chq20",
+      "q": "Qu'est-ce que ΔH°f = 0 signifie pour un corps simple ?",
+      "opts": [
+        "La réaction est à l'équilibre",
+        "Il est impossible de former ce composé",
+        "Il n'y a pas d'échange de chaleur car c'est la référence par convention",
+        "Le composé est stable à toute température"
+      ],
+      "ans": 2,
+      "exp": "ΔH°f = 0 pour les corps simples dans leur état le plus stable = convention arbitraire servant de référence. H₂(g), O₂(g), C(graphite), Na(s)… Ce n'est pas une propriété physique, c'est un zéro de référence."
+    },
+    {
+      "id": "chq21",
+      "q": "Quel type d'isomérie est possible autour d'une double liaison C=C ?",
+      "opts": [
+        "Isomère optique (énantiomère)",
+        "Isomère de chaîne",
+        "Isomère de fonction",
+        "Isomère géométrique (cis/trans)"
+      ],
+      "ans": 3,
+      "exp": "Seuls les isomères géométriques (cis/trans) nécessitent une double liaison C=C (pas de rotation libre). L'isomère optique nécessite un C*. Les isomères de chaîne et de fonction sont des isomères de constitution."
+    },
+    {
+      "id": "chq22",
+      "q": "Quelle est la relation entre estérification et hydrolyse ?",
+      "opts": [
+        "Ce sont deux réactions indépendantes",
+        "Ce sont deux réactions parallèles",
+        "Ce sont deux réactions opposées à l'équilibre (⇌)",
+        "L'hydrolyse précède toujours l'estérification"
+      ],
+      "ans": 2,
+      "exp": "Estérification (acide + alcool → ester + eau) et hydrolyse (ester + eau → acide + alcool) sont des réactions INVERSES à l'équilibre chimique (⇌). L'équilibre peut être déplacé par excès de réactif ou élimination d'un produit."
+    },
+    {
+      "id": "chq23",
+      "q": "ΔH°f(CO₂(g)) = ?",
+      "opts": [
+        "−110,5 kJ/mol",
+        "+393,5 kJ/mol",
+        "−285,8 kJ/mol",
+        "−393,5 kJ/mol"
+      ],
+      "ans": 3,
+      "exp": "ΔH°f(CO₂(g)) = −393,5 kJ/mol. Réaction : C(graphite) + O₂(g) → CO₂(g). Valeur fondamentale pour les calculs de combustion. À ne pas confondre avec H₂O(l) = −285,8 et CO(g) = −110,5 kJ/mol."
+    },
+    {
+      "id": "chq24",
+      "q": "La polymérisation diffère de la polycondensation car :",
+      "opts": [
+        "Elle produit des polymères de longueur fixe",
+        "Elle ne produit pas de petite molécule éliminée (addition pure)",
+        "Elle ne peut utiliser que des monomères avec OH",
+        "Elle est toujours endothermique"
+      ],
+      "ans": 1,
+      "exp": "Polymérisation (addition) : les monomères s'unissent directement sur la double liaison, SANS élimination d'eau ni autre molécule. Polycondensation : élimination d'une petite molécule (H₂O, HCl) à chaque étape. Nylon = polycondensation."
+    },
+    {
+      "id": "chq25",
+      "q": "Si on chauffe 125 g d'eau avec 5,11 g de NaOH et que ΔH = −44 kJ/mol de NaOH (M=40), quelle est approximativement la variation de température ?",
+      "opts": [
+        "ΔT ≈ 61°C",
+        "ΔT ≈ 5°C",
+        "ΔT ≈ 15°C",
+        "ΔT ≈ 2°C"
+      ],
+      "ans": 0,
+      "exp": "n(NaOH) = 5,11/40 ≈ 0,128 mol. Q = 44 × 0,128 ≈ 5,6 kJ. ΔT = Q/(m×c) = 5600/(125×4,18) ≈ 10,7°C. En cours : Ti=21°C → Tf=82°C → ΔT ≈ 61°C (valeurs mesurées au labo)."
+    },
+    {
+      "id": "chq26",
+      "q": "Quelle est la formule de ΔG et son interprétation ?",
+      "opts": [
+        "ΔG = ΔH + TΔS, spontané si ΔG > 0",
+        "ΔG = ΔH − TΔS, spontané si ΔG < 0",
+        "ΔG = ΔS − TΔH, spontané si ΔG < 0",
+        "ΔG = ΔH / (TΔS), spontané si ΔG < 1"
+      ],
+      "ans": 1,
+      "exp": "ΔG = ΔH − TΔS (Gibbs). Spontané si ΔG < 0. Non spontané si ΔG > 0. À l'équilibre si ΔG = 0. La température T joue sur le terme TΔS et peut donc inverser la spontanéité selon le signe de ΔS."
+    },
+    {
+      "id": "chq27",
+      "q": "Quelle réaction a lieu entre un alcool et l'ammoniac NH₃ ?",
+      "opts": [
+        "Estérification",
+        "Substitution (alcool → amine)",
+        "Oxydation",
+        "Condensation (amide)"
+      ],
+      "ans": 1,
+      "exp": "Alcool + NH₃ → Amine + H₂O : c'est une substitution (le groupe OH est remplacé par NH₂). Ex : propan-1-ol + NH₃ → propan-1-amine + H₂O. À ne pas confondre avec la condensation acide+amine → amide."
+    }
+  ]
+}

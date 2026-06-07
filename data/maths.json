@@ -1,0 +1,771 @@
+{
+  "id": "maths",
+  "name": "Mathématiques",
+  "color": "#7c3aed",
+  "colorLight": "#f5f3ff",
+  "exam": "2026-06-22",
+  "type": "Oral",
+  "flashcards": [
+    {
+      "id": "m1",
+      "cat": "Analyse",
+      "term": "Définition de la dérivée (limite)",
+      "def": "f'(x) = lim[h→0] (f(x+h) − f(x)) / h. C'est le taux de variation instantané de f en x.",
+      "ex": "Ex : f(x) = x² → f'(x) = lim (x+h)²−x²)/h = lim (2xh+h²)/h = 2x"
+    },
+    {
+      "id": "m2",
+      "cat": "Analyse",
+      "term": "Règle de la dérivée du produit",
+      "def": "(u·v)' = u'·v + u·v'",
+      "ex": "Ex : (x²·sin x)' = 2x·sin x + x²·cos x"
+    },
+    {
+      "id": "m3",
+      "cat": "Analyse",
+      "term": "Règle de la dérivée du quotient",
+      "def": "(u/v)' = (u'·v − u·v') / v²",
+      "ex": "Ex : (sin x / x)' = (cos x · x − sin x · 1) / x² = (x·cos x − sin x) / x²"
+    },
+    {
+      "id": "m4",
+      "cat": "Analyse",
+      "term": "Dérivée de (g(x))ⁿ",
+      "def": "[(g(x))ⁿ]' = n·(g(x))ⁿ⁻¹ · g'(x)  — règle de la chaîne",
+      "ex": "Ex : (sin x)³ → 3·(sin x)²·cos x"
+    },
+    {
+      "id": "m5",
+      "cat": "Analyse",
+      "term": "Dérivée de √g(x)",
+      "def": "[√g(x)]' = g'(x) / (2√g(x))",
+      "ex": "Ex : √(x²+1) → 2x / (2√(x²+1)) = x / √(x²+1)"
+    },
+    {
+      "id": "m6",
+      "cat": "Analyse",
+      "term": "Tableau de variations",
+      "def": "Outil qui résume le signe de f'(x) et les variations de f (croissante/décroissante/extremum). f'(x)>0 → f croissante ; f'(x)<0 → f décroissante ; f'(x)=0 → extremum possible.",
+      "ex": "Ex : f'(x) = 0 en x=2 avec passage de + à − → maximum local en x=2"
+    },
+    {
+      "id": "m7",
+      "cat": "Analyse",
+      "term": "Asymptote verticale",
+      "def": "La droite x = a est asymptote verticale si lim[x→a] f(x) = ±∞. Se produit quand le dénominateur s'annule.",
+      "ex": "Ex : f(x) = 1/(x−3) → asymptote verticale en x = 3"
+    },
+    {
+      "id": "m8",
+      "cat": "Analyse",
+      "term": "Asymptote horizontale",
+      "def": "La droite y = L est asymptote horizontale si lim[x→±∞] f(x) = L.",
+      "ex": "Ex : f(x) = (2x+1)/(x+5) → lim[x→∞] = 2 → asymptote horizontale y = 2"
+    },
+    {
+      "id": "m9",
+      "cat": "Analyse",
+      "term": "Concavité : f'' > 0 et f'' < 0",
+      "def": "f''(x) > 0 : courbe concave vers le haut (souriante). f''(x) < 0 : courbe concave vers le bas (renversée).",
+      "ex": "Ex : f(x) = x² → f''(x) = 2 > 0 partout → concave vers le haut"
+    },
+    {
+      "id": "m10",
+      "cat": "Analyse",
+      "term": "Point d'inflexion",
+      "def": "Point où la concavité change de sens. Condition nécessaire : f''(x) = 0 avec changement de signe de f''.",
+      "ex": "Ex : f(x) = x³ → f''(x) = 6x = 0 en x=0 ; f'' change de − à + → point d'inflexion en (0,0)"
+    },
+    {
+      "id": "m11",
+      "cat": "Nombres Complexes",
+      "term": "Définition de i et i²",
+      "def": "i est le nombre imaginaire tel que i² = −1. Un nombre complexe s'écrit z = a + ib avec a,b ∈ ℝ.",
+      "ex": "Ex : z = 3 + 4i → partie réelle 3, partie imaginaire 4"
+    },
+    {
+      "id": "m12",
+      "cat": "Nombres Complexes",
+      "term": "Cycle des puissances de i",
+      "def": "Cycle de période 4 : i⁰=1, i¹=i, i²=−1, i³=−i, i⁴=1, i⁵=i, ... Pour iⁿ : calculer n mod 4.",
+      "ex": "Ex : i¹⁷ → 17 mod 4 = 1 → i¹⁷ = i"
+    },
+    {
+      "id": "m13",
+      "cat": "Nombres Complexes",
+      "term": "Conjugué d'un nombre complexe",
+      "def": "Le conjugué de z = a + ib est z̄ = a − ib. Propriété : z · z̄ = a² + b² = |z|²",
+      "ex": "Ex : z = 3 + 4i → z̄ = 3 − 4i ; z·z̄ = 9+16 = 25"
+    },
+    {
+      "id": "m14",
+      "cat": "Nombres Complexes",
+      "term": "Module d'un nombre complexe",
+      "def": "|z| = √(a² + b²) pour z = a + ib. C'est la distance de z à l'origine dans le plan complexe.",
+      "ex": "Ex : z = 3 + 4i → |z| = √(9+16) = √25 = 5"
+    },
+    {
+      "id": "m15",
+      "cat": "Nombres Complexes",
+      "term": "Division de nombres complexes",
+      "def": "Pour diviser z₁/z₂ : multiplier numérateur et dénominateur par le conjugué z̄₂. z₁/z₂ = (z₁·z̄₂) / (z₂·z̄₂) = (z₁·z̄₂) / |z₂|²",
+      "ex": "Ex : 1/(1+i) = (1−i)/((1+i)(1−i)) = (1−i)/2 = 1/2 − i/2"
+    },
+    {
+      "id": "m16",
+      "cat": "Nombres Complexes",
+      "term": "Racines carrées d'un complexe (système)",
+      "def": "Pour √z avec z = a+ib, poser √z = x+iy et résoudre : x²−y²=a et 2xy=b et x²+y²=|z|",
+      "ex": "Ex : √(3+4i) → x²+y²=5, x²−y²=3 → x²=4,y²=1 → ±(2+i)"
+    },
+    {
+      "id": "m17",
+      "cat": "Nombres Complexes",
+      "term": "Forme polaire (trigonométrique)",
+      "def": "z = r[cos θ + i·sin θ] avec r = |z| (module) et θ = arg(z) (argument). Aussi noté r·cis(θ).",
+      "ex": "Ex : z = 1+i → r=√2, θ=π/4 → z = √2[cos(π/4) + i·sin(π/4)]"
+    },
+    {
+      "id": "m18",
+      "cat": "Nombres Complexes",
+      "term": "Formule de De Moivre",
+      "def": "zⁿ = rⁿ[cos(nθ) + i·sin(nθ)]. Permet de calculer facilement les puissances en forme polaire.",
+      "ex": "Ex : (1+i)⁸ = (√2)⁸[cos(8·π/4)+i·sin(8·π/4)] = 16[cos(2π)+i·sin(2π)] = 16"
+    },
+    {
+      "id": "m19",
+      "cat": "Nombres Complexes",
+      "term": "Racines n-ièmes d'un complexe",
+      "def": "Le complexe z a exactement n racines n-ièmes : zₖ = r^(1/n)[cos((θ+2kπ)/n) + i·sin((θ+2kπ)/n)] pour k = 0,1,...,n−1",
+      "ex": "Ex : racines cubiques de 1 → module 1, arguments 0, 2π/3, 4π/3"
+    },
+    {
+      "id": "m20",
+      "cat": "Groupes",
+      "term": "Définition d'un groupe — 4 axiomes IANI",
+      "def": "Un groupe (G,*) vérifie : I=Interne (a*b∈G), A=Associatif ((a*b)*c=a*(b*c)), N=Neutre (∃e: a*e=e*a=a), I=Inverse (∀a ∃a⁻¹: a*a⁻¹=e)",
+      "ex": "Ex : (ℤ,+) est un groupe : 0 est neutre, −n est l'inverse de n"
+    },
+    {
+      "id": "m21",
+      "cat": "Groupes",
+      "term": "Groupe abélien (commutatif)",
+      "def": "Un groupe est abélien si en plus : a*b = b*a pour tout a,b ∈ G.",
+      "ex": "Ex : (ℤ,+) est abélien car a+b=b+a. (𝔖₃,∘) n'est pas abélien car la composition de permutations n'est pas commutative."
+    },
+    {
+      "id": "m22",
+      "cat": "Groupes",
+      "term": "Méthode de vérification en 4 étapes",
+      "def": "1) Interne : vérifier que l'opération reste dans G. 2) Associatif : vérifier (a*b)*c = a*(b*c). 3) Neutre : trouver e et vérifier a*e=a. 4) Inverse : pour tout a trouver a⁻¹.",
+      "ex": "Ex : (ℤ,·) : 0 est absorbant, pas d'inverse pour 2 → pas un groupe"
+    },
+    {
+      "id": "m23",
+      "cat": "Groupes",
+      "term": "Table de Cayley — propriété sudoku",
+      "def": "Dans la table de Cayley d'un groupe, chaque élément apparaît exactement une fois par ligne et une fois par colonne (comme un sudoku).",
+      "ex": "Ex : table de (ℤ/3ℤ,+) : chaque de 0,1,2 apparaît exactement une fois par ligne/colonne"
+    },
+    {
+      "id": "m24",
+      "cat": "Groupes",
+      "term": "ℤ/nℤ — groupe des entiers modulo n",
+      "def": "ℤ/nℤ = {0, 1, 2, ..., n−1} avec l'addition modulo n. C'est un groupe abélien d'ordre n.",
+      "ex": "Ex : ℤ/4ℤ = {0,1,2,3}, 3+2=5 mod 4=1"
+    },
+    {
+      "id": "m25",
+      "cat": "Groupes",
+      "term": "Théorème de Lagrange",
+      "def": "Si H est un sous-groupe d'un groupe fini G, alors |H| divise |G|. L'ordre d'un sous-groupe divise l'ordre du groupe.",
+      "ex": "Ex : G d'ordre 12 → sous-groupes possibles d'ordre 1, 2, 3, 4, 6, 12 uniquement"
+    },
+    {
+      "id": "m26",
+      "cat": "Groupes",
+      "term": "Groupe des permutations 𝔖ₙ",
+      "def": "𝔖ₙ est le groupe de toutes les permutations d'un ensemble de n éléments. Son ordre est n! (factorielle n).",
+      "ex": "Ex : 𝔖₃ a 3! = 6 éléments (6 façons de permuter {1,2,3})"
+    },
+    {
+      "id": "m27",
+      "cat": "Géométrie 3D",
+      "term": "Norme d'un vecteur 3D",
+      "def": "||v|| = √(vx² + vy² + vz²) pour v = (vx, vy, vz)",
+      "ex": "Ex : v = (1, 2, 2) → ||v|| = √(1+4+4) = √9 = 3"
+    },
+    {
+      "id": "m28",
+      "cat": "Géométrie 3D",
+      "term": "Produit scalaire (formule algébrique)",
+      "def": "u⃗·v⃗ = ux·vx + uy·vy + uz·vz",
+      "ex": "Ex : u=(1,2,3), v=(4,−1,0) → u·v = 4−2+0 = 2"
+    },
+    {
+      "id": "m29",
+      "cat": "Géométrie 3D",
+      "term": "Produit scalaire (formule géométrique + perpendicularité)",
+      "def": "u⃗·v⃗ = ||u||·||v||·cos θ. Si u⃗·v⃗ = 0 et u⃗,v⃗ ≠ 0⃗ → u⃗ ⊥ v⃗",
+      "ex": "Ex : u·v=0 → angle de 90° entre les vecteurs → droites perpendiculaires"
+    },
+    {
+      "id": "m30",
+      "cat": "Géométrie 3D",
+      "term": "Produit vectoriel",
+      "def": "u⃗×v⃗ = (uy·vz−uz·vy, uz·vx−ux·vz, ux·vy−uy·vx). Résultat perpendiculaire aux deux vecteurs.",
+      "ex": "Ex : u=(1,0,0), v=(0,1,0) → u×v = (0·0−0·1, 0·0−1·0, 1·1−0·0) = (0,0,1)"
+    },
+    {
+      "id": "m31",
+      "cat": "Géométrie 3D",
+      "term": "Droite paramétrique dans l'espace",
+      "def": "Droite passant par A = (x₀,y₀,z₀) de direction d⃗ = (a,b,c) : (x,y,z) = (x₀+ta, y₀+tb, z₀+tc), t ∈ ℝ",
+      "ex": "Ex : passe par (1,2,3), direction (1,0,−1) → x=1+t, y=2, z=3−t"
+    },
+    {
+      "id": "m32",
+      "cat": "Géométrie 3D",
+      "term": "Positions relatives de deux droites",
+      "def": "Deux droites dans l'espace sont soit : parallèles (directions proportionnelles, pas de point commun), sécantes (un point d'intersection), ou gauches (non parallèles, pas d'intersection).",
+      "ex": "Ex : pour tester, poser le système des paramétriques — si pas de solution et directions non proportionnelles → gauches"
+    },
+    {
+      "id": "m33",
+      "cat": "Géométrie 3D",
+      "term": "Équation d'un plan",
+      "def": "ax + by + cz = d où n⃗ = (a,b,c) est le vecteur normal au plan.",
+      "ex": "Ex : plan de normale (1,2,3) passant par (0,0,0) : x + 2y + 3z = 0"
+    },
+    {
+      "id": "m34",
+      "cat": "Géométrie 3D",
+      "term": "Vecteur normal à un plan par deux vecteurs directeurs",
+      "def": "Si v⃗ et w⃗ sont deux vecteurs du plan, le vecteur normal est n⃗ = v⃗ × w⃗ (produit vectoriel).",
+      "ex": "Ex : plan par 3 points A,B,C → v⃗=AB, w⃗=AC → n⃗=v⃗×w⃗ → équation ax+by+cz=d"
+    },
+    {
+      "id": "m35",
+      "cat": "Géométrie 3D",
+      "term": "Distance d'un point à un plan",
+      "def": "Distance de P=(x₀,y₀,z₀) au plan ax+by+cz=d : dist = |ax₀+by₀+cz₀−d| / √(a²+b²+c²)",
+      "ex": "Ex : P=(1,0,0), plan x+y+z=3 → dist = |1+0+0−3| / √3 = 2/√3 = 2√3/3"
+    },
+    {
+      "id": "m36",
+      "cat": "Matrices",
+      "term": "Application linéaire — 2 conditions",
+      "def": "f : E→F est linéaire si : 1) f(u+v) = f(u)+f(v) (additivité) et 2) f(λu) = λ·f(u) (homogénéité)",
+      "ex": "Ex : f(x,y)=(x+y, x) est linéaire ; f(x,y)=(x+1, y) ne l'est pas (f(0)≠0)"
+    },
+    {
+      "id": "m37",
+      "cat": "Matrices",
+      "term": "Matrice d'une application linéaire",
+      "def": "Les colonnes de la matrice sont les images des vecteurs de base. Pour f: ℝ²→ℝ², col1 = f(e₁) = f(1,0), col2 = f(e₂) = f(0,1).",
+      "ex": "Ex : f(x,y)=(2x+y, x−y) → col1=f(1,0)=(2,1), col2=f(0,1)=(1,−1) → M = [[2,1],[1,−1]]"
+    },
+    {
+      "id": "m38",
+      "cat": "Matrices",
+      "term": "Matrice de rotation d'angle θ",
+      "def": "R(θ) = [[cos θ, −sin θ], [sin θ, cos θ]]",
+      "ex": "Ex : R(90°) = [[0,−1],[1,0]] → (1,0) → (0,1) et (0,1) → (−1,0)"
+    },
+    {
+      "id": "m39",
+      "cat": "Matrices",
+      "term": "Produit matriciel — non-commutativité",
+      "def": "Le produit AB se calcule par lignes×colonnes : (AB)ᵢⱼ = Σₖ Aᵢₖ·Bₖⱼ. En général AB ≠ BA.",
+      "ex": "Ex : A=[[1,2],[0,1]], B=[[1,0],[1,1]] → AB ≠ BA en général"
+    },
+    {
+      "id": "m40",
+      "cat": "Matrices",
+      "term": "Déterminant d'une matrice 2×2",
+      "def": "det([[a,b],[c,d]]) = ad − bc",
+      "ex": "Ex : det([[3,2],[1,4]]) = 3·4 − 2·1 = 12 − 2 = 10"
+    },
+    {
+      "id": "m41",
+      "cat": "Matrices",
+      "term": "Inverse d'une matrice 2×2",
+      "def": "M⁻¹ = (1/det(M)) · [[d,−b],[−c,a]] pour M = [[a,b],[c,d]]. Existe seulement si det(M) ≠ 0.",
+      "ex": "Ex : M=[[3,2],[1,4]] → det=10 → M⁻¹ = (1/10)[[4,−2],[−1,3]]"
+    },
+    {
+      "id": "m42",
+      "cat": "Matrices",
+      "term": "Lien matrices de rotation et formules d'addition",
+      "def": "R(α)·R(β) = R(α+β). En développant le produit matriciel, on obtient les formules cos(α+β) et sin(α+β).",
+      "ex": "Ex : [[cosα,−sinα],[sinα,cosα]] × [[cosβ,−sinβ],[sinβ,cosβ]] → col 1 donne cos(α+β) et sin(α+β)"
+    },
+    {
+      "id": "m43",
+      "cat": "Trigonométrie",
+      "term": "Définitions sin, cos, tan (triangle rectangle)",
+      "def": "sin α = opposé/hypoténuse ; cos α = adjacent/hypoténuse ; tan α = opposé/adjacent = sin α / cos α",
+      "ex": "Ex : triangle avec opposé=3, hypoténuse=5 → sin α = 3/5 = 0,6"
+    },
+    {
+      "id": "m44",
+      "cat": "Trigonométrie",
+      "term": "Identité fondamentale",
+      "def": "sin²α + cos²α = 1 (pour tout angle α)",
+      "ex": "Ex : si sin α = 3/5 → cos²α = 1 − 9/25 = 16/25 → cos α = ±4/5"
+    },
+    {
+      "id": "m45",
+      "cat": "Trigonométrie",
+      "term": "Loi des cosinus (Pythagore généralisé)",
+      "def": "c² = a² + b² − 2ab·cos α. Cas particulier α=90° : cos 90°=0 → c²=a²+b²",
+      "ex": "Ex : a=5, b=7, α=60° → c² = 25+49−2·5·7·(1/2) = 74−35 = 39 → c=√39"
+    },
+    {
+      "id": "m46",
+      "cat": "Trigonométrie",
+      "term": "Valeurs remarquables : 0°, 30°, 45°, 60°, 90°",
+      "def": "sin: 0, 1/2, √2/2, √3/2, 1 | cos: 1, √3/2, √2/2, 1/2, 0 | tan: 0, √3/3, 1, √3, ∞",
+      "ex": "Mémo sin: 0=√0/2, 30=√1/2, 45=√2/2, 60=√3/2, 90=√4/2"
+    },
+    {
+      "id": "m47",
+      "cat": "Trigonométrie",
+      "term": "Valeurs remarquables : 120°, 135°, 150°, 180°",
+      "def": "120°: sin=√3/2, cos=−1/2, tan=−√3 | 135°: sin=√2/2, cos=−√2/2, tan=−1 | 150°: sin=1/2, cos=−√3/2, tan=−√3/3 | 180°: sin=0, cos=−1, tan=0",
+      "ex": "Astuce: 120°=180°−60°, 135°=180°−45°, 150°=180°−30°. sin garde le signe, cos change de signe."
+    },
+    {
+      "id": "m48",
+      "cat": "Trigonométrie",
+      "term": "Conversion degrés ↔ radians",
+      "def": "180° = π rad. Pour convertir : degrés → radians = degrés × π/180. Radians → degrés = radians × 180/π.",
+      "ex": "Ex : 60° = 60·π/180 = π/3 rad ; π/4 rad = 180/4 = 45°"
+    },
+    {
+      "id": "m49",
+      "cat": "Trigonométrie",
+      "term": "Fonctions paires et impaires",
+      "def": "Paire : f(−x) = f(x) → symétrie axe y. Impaire : f(−x) = −f(x) → symétrie par rapport à l'origine. cos est paire, sin et tan sont impaires.",
+      "ex": "Ex : sin(−x) = −sin(x) ; cos(−x) = cos(x)"
+    },
+    {
+      "id": "m50",
+      "cat": "Trigonométrie",
+      "term": "Paramètres de f(x) = a·sin(b(x+c)) + d",
+      "def": "a = amplitude (si a<0 : symétrie axe x) | b = période T = 2π/|b| (si b<0 : symétrie axe y) | c = décalage horizontal (c>0 : vers gauche) | d = décalage vertical",
+      "ex": "Ex : f(x) = 2·sin(3(x−π/6)) → amplitude=2, T=2π/3, décalage droite π/6"
+    },
+    {
+      "id": "m51",
+      "cat": "Trigonométrie",
+      "term": "Formules d'addition — cos",
+      "def": "cos(θ₁±θ₂) = cos θ₁·cos θ₂ ∓ sin θ₁·sin θ₂",
+      "ex": "Ex : cos(75°) = cos(45°+30°) = cos45·cos30−sin45·sin30 = (√6−√2)/4"
+    },
+    {
+      "id": "m52",
+      "cat": "Trigonométrie",
+      "term": "Formules d'addition — sin",
+      "def": "sin(θ₁±θ₂) = sin θ₁·cos θ₂ ± cos θ₁·sin θ₂",
+      "ex": "Ex : sin(75°) = sin(45°+30°) = sin45·cos30+cos45·sin30 = (√6+√2)/4"
+    },
+    {
+      "id": "m53",
+      "cat": "Trigonométrie",
+      "term": "Formules de doublage (angle double)",
+      "def": "sin(2θ) = 2·sin θ·cos θ | cos(2θ) = cos²θ−sin²θ = 1−2sin²θ = 2cos²θ−1 | tan(2θ) = 2tan θ/(1−tan²θ)",
+      "ex": "Ex : sin(2·30°) = sin(60°) = 2·(1/2)·(√3/2) = √3/2 ✓"
+    },
+    {
+      "id": "m54",
+      "cat": "Trigonométrie",
+      "term": "Formules de Simpson",
+      "def": "cos a + cos b = 2·cos((a+b)/2)·cos((a−b)/2) | sin a + sin b = 2·sin((a+b)/2)·cos((a−b)/2) | cos a − cos b = −2·sin((a+b)/2)·sin((a−b)/2) | sin a − sin b = 2·cos((a+b)/2)·sin((a−b)/2)",
+      "ex": "Ex : cos 75°+cos 15° = 2·cos(45°)·cos(30°) = 2·(√2/2)·(√3/2) = √6/2"
+    },
+    {
+      "id": "m55",
+      "cat": "Trigonométrie",
+      "term": "Résolution de sin x = k",
+      "def": "Si |k| ≤ 1 : deux familles de solutions. sin x = k → x = arcsin(k) + 2kπ OU x = π − arcsin(k) + 2kπ, k ∈ ℤ",
+      "ex": "Ex : sin x = √3/2 → x = π/3 + 2kπ ou x = 2π/3 + 2kπ"
+    },
+    {
+      "id": "m56",
+      "cat": "Trigonométrie",
+      "term": "Résolution de tan x = k",
+      "def": "tan x = k → x = arctan(k) + kπ, k ∈ ℤ (une seule famille, période π)",
+      "ex": "Ex : tan x = 1 → x = π/4 + kπ"
+    },
+    {
+      "id": "m57",
+      "cat": "Géométrie 3D",
+      "term": "Méthode de Cramer (résolution de systèmes)",
+      "def": "Pour Ax = b, si det(A) ≠ 0 : xᵢ = det(Aᵢ)/det(A) où Aᵢ est A avec la colonne i remplacée par b.",
+      "ex": "Ex : pour trouver l'intersection de droites ou le plan passant par 3 points, on résout le système par Cramer"
+    }
+  ],
+  "qcm": [
+    {
+      "id": "mq1",
+      "q": "La dérivée de f(x) = (x²+1)³ est :",
+      "opts": [
+        "3(x²+1)²",
+        "6x(x²+1)²",
+        "3x²(x²+1)²",
+        "6(x²+1)²"
+      ],
+      "ans": 1,
+      "exp": "Règle (g(x))ⁿ : n·(g(x))ⁿ⁻¹·g'(x) = 3·(x²+1)²·2x = 6x(x²+1)²"
+    },
+    {
+      "id": "mq2",
+      "q": "Si f''(x) < 0 sur un intervalle, la courbe est :",
+      "opts": [
+        "Croissante",
+        "Décroissante",
+        "Concave vers le haut (souriante)",
+        "Concave vers le bas (renversée)"
+      ],
+      "ans": 3,
+      "exp": "f''(x) < 0 → concavité vers le bas (courbe renversée). f''(x) > 0 → concavité vers le haut."
+    },
+    {
+      "id": "mq3",
+      "q": "La dérivée du quotient (u/v)' est égale à :",
+      "opts": [
+        "(u'v + uv') / v²",
+        "(u'v − uv') / v²",
+        "(uv' − u'v) / v²",
+        "u'/v'"
+      ],
+      "ans": 1,
+      "exp": "(u/v)' = (u'·v − u·v') / v². Attention à l'ordre : u' en premier au numérateur."
+    },
+    {
+      "id": "mq4",
+      "q": "Quelle est la valeur de i²³ ?",
+      "opts": [
+        "1",
+        "−1",
+        "i",
+        "−i"
+      ],
+      "ans": 2,
+      "exp": "23 mod 4 = 3 → i²³ = i³ = i²·i = −1·i = −i"
+    },
+    {
+      "id": "mq5",
+      "q": "Le module de z = 5 + 12i est :",
+      "opts": [
+        "17",
+        "7",
+        "13",
+        "√17"
+      ],
+      "ans": 2,
+      "exp": "|z| = √(5² + 12²) = √(25 + 144) = √169 = 13"
+    },
+    {
+      "id": "mq6",
+      "q": "Pour diviser 1/(2+i), on multiplie par :",
+      "opts": [
+        "(2+i)/(2+i)",
+        "(2−i)/(2−i)",
+        "(1−i)/(1−i)",
+        "i/i"
+      ],
+      "ans": 1,
+      "exp": "On multiplie numérateur et dénominateur par le conjugué du dénominateur : (2−i). Ainsi (2+i)(2−i) = 4+1 = 5."
+    },
+    {
+      "id": "mq7",
+      "q": "La formule de De Moivre donne [r(cos θ + i·sin θ)]ⁿ = ?",
+      "opts": [
+        "rⁿ(cos θ + i·sin θ)",
+        "rⁿ(cos(nθ) + i·sin(nθ))",
+        "r(cos(nθ) + i·sin(nθ))",
+        "nrⁿ⁻¹(cos θ + i·sin θ)"
+      ],
+      "ans": 1,
+      "exp": "De Moivre : zⁿ = rⁿ[cos(nθ) + i·sin(nθ)]. On élève le module à la puissance n et on multiplie l'argument par n."
+    },
+    {
+      "id": "mq8",
+      "q": "Lequel de ces ensembles muni de la multiplication N'est PAS un groupe ?",
+      "opts": [
+        "(ℝ\\{0}, ×)",
+        "(ℤ, +)",
+        "(ℤ, ×)",
+        "({1,−1}, ×)"
+      ],
+      "ans": 2,
+      "exp": "(ℤ,×) : l'entier 2 n'a pas d'inverse dans ℤ (1/2 ∉ ℤ). Les autres sont des groupes."
+    },
+    {
+      "id": "mq9",
+      "q": "Le théorème de Lagrange stipule que :",
+      "opts": [
+        "Tout groupe est abélien",
+        "L'ordre d'un sous-groupe divise l'ordre du groupe",
+        "Tout groupe fini a un sous-groupe de chaque ordre",
+        "L'ordre du groupe est toujours premier"
+      ],
+      "ans": 1,
+      "exp": "Lagrange : si H est sous-groupe de G fini, alors |H| divise |G|. Attention, la réciproque n'est pas toujours vraie."
+    },
+    {
+      "id": "mq10",
+      "q": "Le groupe 𝔖₄ (permutations de 4 éléments) a combien d'éléments ?",
+      "opts": [
+        "4",
+        "8",
+        "16",
+        "24"
+      ],
+      "ans": 3,
+      "exp": "|𝔖ₙ| = n! → |𝔖₄| = 4! = 4×3×2×1 = 24"
+    },
+    {
+      "id": "mq11",
+      "q": "Si u⃗·v⃗ = 0 (et u⃗,v⃗ ≠ 0⃗), alors :",
+      "opts": [
+        "u⃗ et v⃗ sont parallèles",
+        "u⃗ et v⃗ sont perpendiculaires",
+        "||u⃗|| = ||v⃗||",
+        "u⃗ = v⃗"
+      ],
+      "ans": 1,
+      "exp": "u⃗·v⃗ = ||u||·||v||·cos θ = 0 → cos θ = 0 → θ = 90° → perpendiculaires"
+    },
+    {
+      "id": "mq12",
+      "q": "Le produit vectoriel u⃗×v⃗ donne un vecteur :",
+      "opts": [
+        "Parallèle à u⃗",
+        "Parallèle à v⃗",
+        "Perpendiculaire à u⃗ et v⃗",
+        "De norme ||u||+||v||"
+      ],
+      "ans": 2,
+      "exp": "Le produit vectoriel u⃗×v⃗ est perpendiculaire aux deux vecteurs. C'est pourquoi il sert à trouver le vecteur normal d'un plan."
+    },
+    {
+      "id": "mq13",
+      "q": "La distance du point P=(1,1,1) au plan x+y+z=6 est :",
+      "opts": [
+        "3",
+        "√3",
+        "3/√3 = √3",
+        "1"
+      ],
+      "ans": 2,
+      "exp": "dist = |1+1+1−6| / √(1²+1²+1²) = |−3| / √3 = 3/√3 = 3√3/3 = √3"
+    },
+    {
+      "id": "mq14",
+      "q": "Une application linéaire f vérifie obligatoirement :",
+      "opts": [
+        "f(0) = 1",
+        "f(u+v) = f(u)·f(v)",
+        "f(λu) = λ·f(u) et f(u+v) = f(u)+f(v)",
+        "f est bijective"
+      ],
+      "ans": 2,
+      "exp": "Les 2 conditions : additivité f(u+v)=f(u)+f(v) et homogénéité f(λu)=λf(u). Implique f(0)=0."
+    },
+    {
+      "id": "mq15",
+      "q": "Le déterminant de la matrice [[2,3],[1,4]] est :",
+      "opts": [
+        "5",
+        "11",
+        "8",
+        "−5"
+      ],
+      "ans": 0,
+      "exp": "det = ad−bc = 2·4 − 3·1 = 8 − 3 = 5"
+    },
+    {
+      "id": "mq16",
+      "q": "La matrice de rotation d'angle 90° est :",
+      "opts": [
+        "[[1,0],[0,1]]",
+        "[[0,−1],[1,0]]",
+        "[[0,1],[−1,0]]",
+        "[[−1,0],[0,−1]]"
+      ],
+      "ans": 1,
+      "exp": "R(90°) = [[cos90°,−sin90°],[sin90°,cos90°]] = [[0,−1],[1,0]]. Vérifie : (1,0) → (0,1) ✓"
+    },
+    {
+      "id": "mq17",
+      "q": "sin(30°) + cos(60°) = ?",
+      "opts": [
+        "√3",
+        "1",
+        "√3/2",
+        "√2/2"
+      ],
+      "ans": 1,
+      "exp": "sin(30°) = 1/2 ; cos(60°) = 1/2 → somme = 1"
+    },
+    {
+      "id": "mq18",
+      "q": "cos(120°) est égal à :",
+      "opts": [
+        "1/2",
+        "√3/2",
+        "−1/2",
+        "−√3/2"
+      ],
+      "ans": 2,
+      "exp": "120° = 180°−60°. cos(180°−θ) = −cos θ → cos(120°) = −cos(60°) = −1/2"
+    },
+    {
+      "id": "mq19",
+      "q": "La période de f(x) = sin(4x) est :",
+      "opts": [
+        "4π",
+        "2π",
+        "π/2",
+        "π"
+      ],
+      "ans": 2,
+      "exp": "T = 2π/|b| = 2π/4 = π/2"
+    },
+    {
+      "id": "mq20",
+      "q": "Dans f(x) = a·sin(b(x+c))+d, le paramètre c représente :",
+      "opts": [
+        "L'amplitude",
+        "La période",
+        "Le décalage horizontal",
+        "Le décalage vertical"
+      ],
+      "ans": 2,
+      "exp": "c = décalage horizontal (c>0 → vers la gauche). a=amplitude, T=2π/|b|, d=décalage vertical."
+    },
+    {
+      "id": "mq21",
+      "q": "sin(α+β) est égal à :",
+      "opts": [
+        "sin α·cos β − cos α·sin β",
+        "sin α·sin β + cos α·cos β",
+        "sin α·cos β + cos α·sin β",
+        "cos α·cos β − sin α·sin β"
+      ],
+      "ans": 2,
+      "exp": "sin(α+β) = sin α·cos β + cos α·sin β. Moyen mémo : sinus 'mélange', cosinus 'reste séparé'."
+    },
+    {
+      "id": "mq22",
+      "q": "cos(2θ) peut s'écrire :",
+      "opts": [
+        "2·sin θ·cos θ",
+        "cos²θ − sin²θ",
+        "2·cos θ",
+        "cos²θ + sin²θ"
+      ],
+      "ans": 1,
+      "exp": "cos(2θ) = cos²θ − sin²θ = 1−2sin²θ = 2cos²θ−1. sin(2θ) = 2sinθcosθ."
+    },
+    {
+      "id": "mq23",
+      "q": "Les formules de Simpson transforment :",
+      "opts": [
+        "Un produit en somme/différence",
+        "Une somme/différence en produit",
+        "Les deux selon le sens utilisé",
+        "Uniquement les sinus"
+      ],
+      "ans": 2,
+      "exp": "Les formules de Simpson permettent de passer dans les deux sens : somme→produit (directement) ou produit→somme (en sens inverse)."
+    },
+    {
+      "id": "mq24",
+      "q": "Quelle est la solution de cos x = −1 ?",
+      "opts": [
+        "x = π/2 + 2kπ",
+        "x = π + 2kπ",
+        "x = 3π/2 + 2kπ",
+        "x = 2kπ"
+      ],
+      "ans": 1,
+      "exp": "cos x = −1 → x = π + 2kπ (point (−1,0) sur le cercle trigonométrique)"
+    },
+    {
+      "id": "mq25",
+      "q": "tan(x) est une fonction :",
+      "opts": [
+        "Paire (symétrie axe y)",
+        "Ni paire ni impaire",
+        "Impaire (symétrie origine)",
+        "Périodique de période 2π"
+      ],
+      "ans": 2,
+      "exp": "tan(−x) = sin(−x)/cos(−x) = −sinx/cosx = −tan x → impaire. Période de tan est π (pas 2π)."
+    },
+    {
+      "id": "mq26",
+      "q": "La table de Cayley d'un groupe a la propriété :",
+      "opts": [
+        "Chaque ligne est identique",
+        "Chaque élément apparaît exactement une fois par ligne et par colonne",
+        "La diagonale contient toujours l'élément neutre",
+        "Le tableau est toujours symétrique"
+      ],
+      "ans": 1,
+      "exp": "Propriété 'sudoku' : chaque élément du groupe apparaît exactement une fois par ligne et une fois par colonne. Seulement si le groupe est abélien la table est symétrique."
+    },
+    {
+      "id": "mq27",
+      "q": "Si un groupe G a 15 éléments, quels ordres sont possibles pour ses sous-groupes ?",
+      "opts": [
+        "1, 3, 5, 7, 15",
+        "1, 3, 5, 15",
+        "1, 5, 10, 15",
+        "Tous les entiers de 1 à 15"
+      ],
+      "ans": 1,
+      "exp": "Théorème de Lagrange : |H| divise |G| = 15. Diviseurs de 15 : 1, 3, 5, 15."
+    },
+    {
+      "id": "mq28",
+      "q": "La norme du vecteur v⃗ = (2, −1, 2) est :",
+      "opts": [
+        "5",
+        "√5",
+        "3",
+        "7"
+      ],
+      "ans": 2,
+      "exp": "||v|| = √(2² + (−1)² + 2²) = √(4+1+4) = √9 = 3"
+    },
+    {
+      "id": "mq29",
+      "q": "L'équation d'un plan de vecteur normal n⃗=(1,2,3) passant par l'origine est :",
+      "opts": [
+        "x = 0",
+        "x+2y+3z = 6",
+        "x+2y+3z = 0",
+        "x²+2y²+3z² = 0"
+      ],
+      "ans": 2,
+      "exp": "Plan : ax+by+cz=d. Vecteur normal (1,2,3) → 1·x+2·y+3·z=d. Passe par (0,0,0) → d=0."
+    },
+    {
+      "id": "mq30",
+      "q": "Pour trouver la matrice d'une application linéaire f: ℝ²→ℝ², on calcule :",
+      "opts": [
+        "f(1,1) et f(−1,−1)",
+        "f(1,0) et f(0,1)",
+        "f(0,0) et f(1,1)",
+        "L'inverse de f"
+      ],
+      "ans": 1,
+      "exp": "Les colonnes de la matrice sont les images des vecteurs de base canoniques : col1=f(e₁)=f(1,0) et col2=f(e₂)=f(0,1)."
+    }
+  ]
+}
