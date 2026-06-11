@@ -1,0 +1,34 @@
+{
+  "id": "controle-geo-04",
+  "matiere": "geo",
+  "numero": 4,
+  "titre": "Géographie — Méthode, Europe & Cocaïne",
+  "date_generation": "2026-06-10",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Explique la méthode DIPP. Comment l'appliquerais-tu pour analyser la cocaïne comme ressource géoéconomique ?",
+      "concepts": ["DIPP", "Demande", "Import-Export", "Production", "Pays", "ressource illicite", "cocaïne"]
+    },
+    {
+      "id": "q2",
+      "texte": "Explique le trafic de cocaïne depuis sa production jusqu'à sa consommation en Europe. Quels mécanismes géographiques expliquent cette route ?",
+      "concepts": ["Colombie", "Pérou", "Bolivie", "effet ballon", "Afrique de l'Ouest", "Anvers", "Air Bridge Denial", "mondialisation", "transit"]
+    },
+    {
+      "id": "q3",
+      "texte": "Quelle est la différence entre site et situation ? Applique ces deux concepts à un port que tu connais.",
+      "concepts": ["site", "situation", "Anvers", "géopolitique", "localisation"]
+    },
+    {
+      "id": "q4",
+      "texte": "Explique la construction européenne : quelles sont les différences entre l'UE, la Zone euro et l'Espace Schengen ? Donne des exemples de pays qui n'appartiennent pas aux trois.",
+      "concepts": ["Union européenne", "Zone euro", "Espace Schengen", "27 États", "20 États", "29 États", "dorsale européenne"]
+    },
+    {
+      "id": "q5",
+      "texte": "Décris le schéma systémique du réchauffement climatique en Arctique. Quels sont les liens de causalité entre les différentes composantes ?",
+      "concepts": ["schéma systémique", "boucle de rétroaction", "albédo", "banquise", "pergélisol", "méthane", "Gulf Stream"]
+    }
+  ]
+}

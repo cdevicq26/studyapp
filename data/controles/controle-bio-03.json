@@ -1,0 +1,34 @@
+{
+  "id": "controle-bio-03",
+  "matiere": "bio",
+  "numero": 3,
+  "titre": "Biologie — Cycle cellulaire, Transport & Organites",
+  "date_generation": "2026-06-10",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Décris les phases du cycle cellulaire (G1, S, G2, mitose). Qu'est-ce qui se passe exactement pendant la phase S et pourquoi est-elle critique ?",
+      "concepts": ["interphase", "G1", "G2", "phase S", "réplication", "mitose", "checkpoint", "cancer"]
+    },
+    {
+      "id": "q2",
+      "texte": "Explique les 4 phases de la mitose dans l'ordre. Pour chaque phase, décris ce qui se passe avec les chromosomes.",
+      "concepts": ["prophase", "métaphase", "anaphase", "télophase", "cytocinèse", "fuseau mitotique", "chromatides sœurs", "plaque équatoriale"]
+    },
+    {
+      "id": "q3",
+      "texte": "Explique la différence entre transport passif et transport actif. Donne deux exemples de chaque en précisant les mécanismes.",
+      "concepts": ["transport passif", "transport actif", "diffusion simple", "diffusion facilitée", "osmose", "pompe Na/K", "endocytose", "gradient"]
+    },
+    {
+      "id": "q4",
+      "texte": "Décris le trajet d'une protéine destinée à être sécrétée hors de la cellule, depuis sa synthèse jusqu'à sa sortie.",
+      "concepts": ["ribosome", "RER", "vésicule", "Golgi", "exocytose", "traduction", "ARNm", "modification post-traductionnelle"]
+    },
+    {
+      "id": "q5",
+      "texte": "Qu'est-ce que l'inhibition de contact ? Quel lien y a-t-il avec le développement des cancers et des tumeurs malignes ?",
+      "concepts": ["inhibition de contact", "cancer", "tumeur bénigne", "tumeur maligne", "métastase", "prolifération anarchique", "cycle cellulaire"]
+    }
+  ]
+}

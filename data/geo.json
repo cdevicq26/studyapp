@@ -6,130 +6,873 @@
   "exam": "2026-06-15",
   "type": "Oral",
   "flashcards": [
-    {"id":"g1","cat":"Méthode","term":"DIPP","def":"Grille d'analyse géoéconomique : Demande · Import-Export · Production · Pays.","ex":"Applicable au sable, à la cocaïne, aux ressources arctiques"},
-    {"id":"g2","cat":"Méthode","term":"Site","def":"Lieu défini par ses caractéristiques physiques : terrain, eau, relief, accès naturel.","ex":"Anvers = site fluvial à l'embouchure de l'Escaut"},
-    {"id":"g3","cat":"Méthode","term":"Situation","def":"Position relative d'un lieu par rapport à son environnement géographique (autres villes, routes, marchés).","ex":"Anvers = croisée des routes maritimes d'Europe du Nord-Ouest"},
-    {"id":"g4","cat":"Méthode","term":"Effet ballon","def":"Pression répressive dans un lieu → déplace une activité ailleurs, sans réduire le volume global.","ex":"Lutte antidrogue en Colombie → production se déplace au Pérou/Bolivie"},
-    {"id":"g5","cat":"Méthode","term":"Géopolitique","def":"Étude des relations entre la géographie (espace, ressources, frontières) et la politique internationale.","ex":"Revendications des 5 États sur les ressources arctiques"},
-    {"id":"g6","cat":"Méthode","term":"Boucle de rétroaction","def":"Mécanisme où un effet amplifie sa propre cause, créant une spirale auto-entretenue.","ex":"Réchauffement → banquise fond → moins d'albédo → encore plus de réchauffement"},
-    {"id":"g7","cat":"Méthode","term":"Démarche de Ganty","def":"5 étapes d'analyse géographique : Observer → Problématiser → Collecter → Analyser → Conclure.","ex":"Outil pour analyser une ressource ou situation géographique complexe"},
-    {"id":"g8","cat":"UE / Europe","term":"Union européenne","def":"Association de 27 États qui délèguent des compétences à des institutions communes. Traité de Rome 1957.","ex":"27 membres depuis le Brexit (2020)"},
-    {"id":"g9","cat":"UE / Europe","term":"Zone euro","def":"20 États utilisant l'euro. Politique monétaire gérée par la BCE à Francfort. Créée en 1999 par 11 pays fondateurs.","ex":"Belgique ✓ / Pologne ✗ (hors zone euro)"},
-    {"id":"g10","cat":"UE / Europe","term":"Espace Schengen","def":"Libre circulation sans contrôle aux frontières. 29 États (25 UE + 4 hors UE). Signé 1985, en vigueur 1995.","ex":"Suisse = Schengen mais pas UE · Irlande = UE mais pas Schengen"},
-    {"id":"g11","cat":"UE / Europe","term":"Dorsale européenne","def":"Espace économique dense de Liverpool à Milan (Roger Brunet, années 1980). ~100M hab. Aussi appelée Banane bleue.","ex":"Concentre l'essentiel des pouvoirs économiques européens"},
-    {"id":"g12","cat":"UE / Europe","term":"Mégapole","def":"Ville dépassant les 10 millions d'habitants.","ex":"Istanbul, Londres, Paris"},
-    {"id":"g13","cat":"Ressources","term":"Ressource","def":"Ce qu'une société juge utile d'exploiter. Notion dépend du contexte technique, économique et culturel.","ex":"Le sable est devenu ressource critique au XXe s. avec l'essor du béton"},
-    {"id":"g14","cat":"Ressources","term":"Renouvelable","def":"Ressource qui se renouvelle naturellement aussi vite qu'elle est consommée.","ex":"Forêts (si gestion durable), eau douce, énergie solaire"},
-    {"id":"g15","cat":"Ressources","term":"Non renouvelable","def":"Ressource dont le renouvellement naturel prend bien plus qu'une vie humaine (temps géologique).","ex":"Sable, pétrole, charbon, gaz naturel"},
-    {"id":"g16","cat":"Ressources","term":"Earth Overshoot Day","def":"Jour où l'humanité a consommé toutes les ressources que la Terre peut régénérer en 1 an. Calculé par le Global Footprint Network.","ex":"2025 : 24 juillet — le reste de l'année = à crédit"},
-    {"id":"g17","cat":"Ressources","term":"Biocapacité","def":"Capacité de la Terre à régénérer ses ressources et à absorber les déchets produits par l'activité humaine.","ex":"Formule EOD : (biocapacité ÷ empreinte éco) × 365"},
-    {"id":"g18","cat":"Ressources","term":"Empreinte écologique","def":"Quantité de ressources consommées par une population, ramenée à la surface productive nécessaire.","ex":"Si tout le monde vivait comme un Belge → ~3 planètes nécessaires"},
-    {"id":"g19","cat":"Ressources","term":"Rente pétrolière","def":"Revenus générés par la vente des hydrocarbures (pétrole, gaz). Source principale de richesse pour certains États.","ex":"Russie, Arabie Saoudite, pays du Golfe"},
-    {"id":"g20","cat":"Ressources","term":"Firme transnationale","def":"Entreprise dont les activités s'étendent dans plusieurs pays, avec fragmentation de la production à l'échelle mondiale.","ex":"Total, BP, Shell pour les hydrocarbures arctiques"},
-    {"id":"g21","cat":"Ressources","term":"Mondialisation","def":"Interconnexion croissante des marchés, flux financiers et échanges à l'échelle mondiale — y compris les marchés illicites.","ex":"La cocaïne emprunte les mêmes routes que les marchandises légales"},
-    {"id":"g22","cat":"Ressources","term":"Dumping fiscal","def":"Stratégie de localiser une activité dans un pays à faible fiscalité pour réduire les coûts.","ex":"Armateurs utilisent des pavillons de complaisance pour éviter les taxes"},
-    {"id":"g23","cat":"Ressources","term":"Choc pétrolier","def":"Hausse brutale et imprévue des prix du pétrole aux répercussions économiques mondiales.","ex":"1973 : prix ×4 (embargo OPEP) · 1979 : prix ×2 (révolution iranienne)"},
-    {"id":"g24","cat":"Transport","term":"HUB","def":"Plateforme multimodale centrale où convergent de nombreuses routes, puis redistribuent les flux vers d'autres destinations.","ex":"Anvers = hub mondial : 121t cocaïne saisies 2023, 8,5M EVP"},
-    {"id":"g25","cat":"Transport","term":"EVP","def":"Équivalent Vingt Pieds : unité standard de mesure des conteneurs maritimes (6m × 2,44m).","ex":"Anvers traite 8,5 millions d'EVP par an"},
-    {"id":"g26","cat":"Transport","term":"Conteneur","def":"Boîte métallique standardisée (McLean, 1956). Représente 90% du trafic maritime mondial.","ex":"Mêmes conteneurs pour le légal et l'illicite"},
-    {"id":"g27","cat":"Transport","term":"Pavillon de complaisance","def":"Immatriculation d'un navire dans un État à faible taxation et peu de contrôles, même si le propriétaire est étranger.","ex":"Panama, Liberia — aussi utilisé pour le trafic de drogue"},
-    {"id":"g28","cat":"Transport","term":"Multimodal","def":"Qui utilise plusieurs modes de transport combinés pour acheminer une marchandise.","ex":"Bateau → barge → camion → train = chaîne multimodale"},
-    {"id":"g29","cat":"Transport","term":"Hinterland","def":"Arrière-pays desservi par un port : l'espace géographique dont le port capte les flux commerciaux.","ex":"Hinterland d'Anvers → Allemagne, Suisse, Autriche"},
-    {"id":"g30","cat":"Transport","term":"Transit","def":"Passage d'une marchandise par un pays intermédiaire, sans que ce pays en soit la destination finale.","ex":"Cocaïne transite par l'Espagne avant d'arriver en Belgique"},
-    {"id":"g31","cat":"Transport","term":"Isthme","def":"Bande de terre étroite reliant deux continents. Point de passage stratégique pour le commerce mondial.","ex":"Isthme de Panama → canal construit là pour cette raison"},
-    {"id":"g32","cat":"Transport","term":"Détroit","def":"Passage maritime étroit entre deux étendues d'eau. Point stratégique pour le commerce et la défense.","ex":"Détroit de Gibraltar · Détroit d'Ormuz (pétrole du Golfe)"},
-    {"id":"g33","cat":"Transport","term":"Canal de Panama","def":"Canal artificiel reliant Pacifique et Atlantique (isthme de Panama). 14 000 bateaux/an. Ouvert par les USA en 1914.","ex":"Raccourcit de 15 000 km le trajet Asie → côte est USA"},
-    {"id":"g34","cat":"Arctique","term":"Cryosphère","def":"Ensemble des étendues de glace et de neige de la planète : banquise, inlandsis, pergélisol, glaciers. Régule le climat mondial.","ex":"Albédo : surfaces blanches réfléchissent la chaleur solaire"},
-    {"id":"g35","cat":"Arctique","term":"Banquise","def":"Surface de mer gelée flottant sur l'eau. Sa fonte ne fait PAS monter le niveau des mers (déjà dans l'eau).","ex":"Banquise arctique a perdu 36% de surface (2,5 M km²) depuis les années 1980"},
-    {"id":"g36","cat":"Arctique","term":"Inlandsis","def":"Couche de glace permanente recouvrant les terres (Groenland, Antarctique). Sa fonte fait monter le niveau des mers.","ex":"Fonte inlandsis groenlandais → montée des océans"},
-    {"id":"g37","cat":"Arctique","term":"Pergélisol","def":"Sol gelé en permanence (≥2 ans consécutifs). Couvre ~25% des terres émergées. En dégelant → libère du méthane (GES puissant).","ex":"Dégel Sibérie/Canada/Alaska → accélère le réchauffement"},
-    {"id":"g38","cat":"Arctique","term":"ZEE","def":"Zone Économique Exclusive : espace maritime jusqu'à 200 milles marins (370 km) depuis les côtes. Droits exclusifs sur les ressources.","ex":"5 États se disputent les ZEE arctiques (pétrole, gaz, pêche)"},
-    {"id":"g39","cat":"Arctique","term":"Eaux internationales","def":"Zone maritime hors de toute ZEE, où aucun État ne détient de droits exclusifs. Liberté de navigation garantie.","ex":"Haute mer = espace de liberté — aussi utilisé par trafiquants"},
-    {"id":"g40","cat":"Arctique","term":"GES","def":"Gaz à Effet de Serre : gaz qui retiennent la chaleur dans l'atmosphère. Principaux : CO₂ et méthane (CH₄).","ex":"Dégel pergélisol → méthane (25× plus puissant que le CO₂ sur 100 ans)"},
-    {"id":"g41","cat":"Arctique","term":"Gulf Stream","def":"Courant océanique chaud du golfe du Mexique → Europe du Nord. Apporte un climat tempéré à l'Europe occidentale.","ex":"Sans Gulf Stream, la Belgique aurait un climat similaire au Canada"},
-    {"id":"g42","cat":"Arctique","term":"Population autochtone","def":"Peuple vivant dans une région depuis les origines, avant les colonisations. Droits particuliers sur les terres ancestrales.","ex":"Inuits (Canada/Groenland/Alaska), Samis (Scandinavie), Nenets (Russie)"},
-    {"id":"g43","cat":"Sable","term":"Sable","def":"Sédiment minéral, grains de 0,063 à 2 mm. 2e ressource mondiale après l'eau. Non renouvelable à l'échelle humaine.","ex":"Sable désert (grains ronds) = inutilisable pour le béton"},
-    {"id":"g44","cat":"Sable","term":"Béton","def":"Matériau le plus utilisé au monde après l'eau. Composition : 46% sable + 33% gravier + 19% ciment + 6% eau.","ex":"Chaque bâtiment, route, barrage = tonnes de sable"},
-    {"id":"g45","cat":"Sable","term":"Remblaiement","def":"Extension artificielle d'un territoire sur la mer par apport massif de sable.","ex":"Singapour a agrandi son territoire de 25%. Indonésie interdit l'export en 2007."},
-    {"id":"g46","cat":"Sable","term":"Fracking","def":"Fracturation hydraulique : extraction pétrole/gaz de schiste par injection d'eau sous haute pression. Consomme ~1 800 tonnes de sable par puits.","ex":"Boom fracking USA → forte hausse demande mondiale en sable"},
-    {"id":"g47","cat":"Sable","term":"Mafia du sable","def":"Réseaux criminels contrôlant le trafic illégal de sable, avec violence et corruption.","ex":"Très actifs en Inde, Afrique sub-saharienne, Méditerranée"},
-    {"id":"g48","cat":"Sable","term":"Urbanisation","def":"Croissance de la part de la population vivant en ville. Entraîne une demande colossale en béton (et donc en sable).","ex":"En 2050, ~2/3 de la pop. mondiale en ville → explosion demande sable"},
-    {"id":"g49","cat":"Trafic","term":"Air Bridge Denial","def":"Programme américain d'interception des avions transportant de la drogue (Colombie, 1994). A provoqué l'effet ballon.","ex":"Production mondiale n'a pas baissé : 63t (1998) → 124t Europe (2008)"},
-    {"id":"g50","cat":"Trafic","term":"Cocaïne","def":"Ressource semi-mondialisée : production ×4 entre 1998 et 2022 malgré la répression (ONUDC).","ex":"Prod : Colombie/Pérou/Bolivie → transit Afrique W. → Europe (Anvers)"},
-
-    {"id":"g51","cat":"UE / Europe","term":"Parlement européen","def":"Institution de l'UE élue au suffrage universel direct. Vote les lois et le budget. Sièges : Bruxelles (commissions) + Strasbourg (plénières) + Luxembourg (secrétariat).","ex":"Seule institution de l'UE élue directement par les citoyens"},
-    {"id":"g52","cat":"UE / Europe","term":"Conseil européen","def":"Institution de l'UE réunissant les chefs d'État et de gouvernement. Fixe les grandes orientations politiques. Siège : Bruxelles.","ex":"Sommet des dirigeants — différent du Conseil des ministres"},
-    {"id":"g53","cat":"UE / Europe","term":"Conseil des ministres","def":"Institution de l'UE réunissant les ministres sectoriels de chaque pays (ex : Conseil des ministres des Finances). Co-législateur avec le Parlement. Siège : Bruxelles.","ex":"Éco-Fin, Conseil Agriculture, Conseil Affaires étrangères..."},
-    {"id":"g54","cat":"UE / Europe","term":"Commission européenne","def":"Institution de l'UE qui propose les lois et met en œuvre les politiques. Équivalent du gouvernement de l'UE. Siège : Bruxelles.","ex":"Propositions législatives → ensuite co-décision Parlement + Conseil des ministres"},
-    {"id":"g55","cat":"UE / Europe","term":"Cour de Justice de l'UE","def":"Institution de l'UE qui veille à l'application du droit européen. Siège : Luxembourg.","ex":"Peut condamner un État membre qui ne respecte pas le droit de l'UE"},
-    {"id":"g56","cat":"UE / Europe","term":"Banque centrale européenne (BCE)","def":"Institution de l'UE qui contrôle la politique monétaire de la zone euro : taux d'intérêt, émission de monnaie. Siège : Francfort (Allemagne).","ex":"Gère l'euro pour les 20 pays de la zone euro"},
-    {"id":"g57","cat":"UE / Europe","term":"Cour des comptes européenne","def":"Institution de l'UE qui vérifie que le budget de l'UE est correctement utilisé. Siège : Kirchberg, Luxembourg.","ex":"Contrôle indépendant des finances de l'UE"},
-    {"id":"g58","cat":"UE / Europe","term":"Brexit","def":"Retrait du Royaume-Uni de l'Union européenne. Référendum le 23/06/2016 (51,89% pour). Effectif en 2020. L'UE passe de 28 à 27 membres.","ex":"Première (et seule) sortie d'un État membre de l'UE"},
-    {"id":"g59","cat":"UE / Europe","term":"11 pays fondateurs zone euro","def":"Allemagne, Autriche, Belgique, Espagne, Finlande, France, Irlande, Italie, Luxembourg, Pays-Bas, Portugal. Créée en 1999.","ex":"Croatie = 20e membre de la zone euro en 2023"},
-    {"id":"g60","cat":"UE / Europe","term":"Limites géographiques de l'Europe","def":"Pas de frontière naturelle claire à l'Est. Limite conventionnelle : monts Oural + fleuve Oural + mer Caspienne + Caucase. Limites Ouest/Nord/Sud : Atlantique, Arctique, Méditerranée.","ex":"La Russie s'étend des deux côtés de l'Oural → limite floue"},
-    {"id":"g61","cat":"UE / Europe","term":"Deux discontinuités de la dorsale","def":"La Manche (résolue par le Tunnel sous la Manche) et les Alpes (résolues par les tunnels alpins) interrompent la continuité de la Banane bleue.","ex":"Sans ces infrastructures, la dorsale serait physiquement fragmentée"},
-    {"id":"g62","cat":"UE / Europe","term":"4 États hors-UE dans Schengen","def":"Suisse, Norvège, Islande, Liechtenstein. Font partie de l'espace Schengen sans être membres de l'UE.","ex":"À l'inverse, Irlande et Chypre = UE mais hors Schengen"},
-    {"id":"g63","cat":"Arctique","term":"5 composants de la cryosphère","def":"Banquise (mer gelée), Inlandsis (glace sur terre), Pergélisol (sol gelé), Toundra, Taïga (forêt boréale).","ex":"Banquise et inlandsis ≠ même impact sur la montée des eaux"},
-    {"id":"g64","cat":"Arctique","term":"Route du Nord-Ouest","def":"Route maritime arctique longeant les côtes canadiennes (de l'Alaska à l'Atlantique). Ouverte par le réchauffement. Raccourcit le trajet Asie-Europe de 30 à 40%.","ex":"Revendiquée par le Canada comme eaux intérieures"},
-    {"id":"g65","cat":"Arctique","term":"Route du Nord-Est","def":"Route maritime arctique longeant les côtes russes (Sibérie → Europe). Aussi appelée passage du Nord-Est. Très rentable pour la Russie qui peut la contrôler.","ex":"La Russie perçoit des droits de passage sur cette route"},
-    {"id":"g66","cat":"Arctique","term":"8 pays riverains de l'Arctique","def":"Russie, Canada, États-Unis (Alaska), Danemark (Groenland), Norvège, Islande, Finlande, Suède.","ex":"Parmi eux : 5 pays ont une façade sur l'océan Arctique (Russie, Canada, USA, Danemark, Norvège)"},
-    {"id":"g67","cat":"Arctique","term":"Ressources énergétiques arctiques","def":"L'Arctique recèle environ 13% des réserves mondiales de pétrole et 30% des réserves mondiales de gaz naturel non encore exploitées. Gisements offshore.","ex":"Extraction coûteuse et risquée — fonte de la banquise rend l'accès possible"},
-    {"id":"g68","cat":"Arctique","term":"Albédo","def":"Capacité d'une surface à réfléchir la lumière solaire. La glace blanche a un albédo élevé. Les eaux sombres ont un albédo faible → absorbent plus de chaleur.","ex":"Banquise fond → eau sombre exposée → plus de chaleur absorbée → albédo diminue"},
-    {"id":"g69","cat":"Arctique","term":"Projection banquise 2030","def":"Selon les projections, il n'y aura plus de banquise certains mois à partir de 2030. La surface a déjà diminué de 2,5 millions de km², soit 36%.","ex":"Arctique se réchauffe ~4× plus vite que le reste de la planète (données 2022)"},
-    {"id":"g70","cat":"Arctique","term":"OTAN en Arctique","def":"Alliance militaire dominante en Arctique : Canada, USA, Danemark, Islande, Norvège sont membres. Finlande et Suède ont rejoint l'OTAN (2023-2024). Seule la Russie est hors OTAN.","ex":"Jeu de rôle : vote OTAN = 1,5 point si cohérent avec la majorité OTAN"},
-    {"id":"g71","cat":"Sable","term":"Delta du Mékong (Vietnam)","def":"Cas concret d'impact du sable : 750 km de berges ont disparu à cause de l'extraction excessive de sable. Érosion irréversible des deltas.","ex":"Extraction de sable du lit des fleuves → effondrement des berges"},
-    {"id":"g72","cat":"Sable","term":"Sable fluvial vs désertique","def":"Le sable utilisable en construction provient des rivières et des fonds marins (grains anguleux qui adhèrent). Le sable du désert est inutilisable (grains ronds érodés par le vent, n'adhèrent pas).","ex":"Les Émirats arabes unis importent du sable malgré d'immenses déserts"},
-    {"id":"g73","cat":"Trafic","term":"DIPP de la cocaïne","def":"D = USA + Europe (consommateurs). I = Amérique latine → Afrique de l'Ouest → Europe. P = Colombie, Pérou, Bolivie (producteurs). P = Cartels, Venezuela, Nigeria (acteurs politiques).","ex":"La cocaïne suit les mêmes logiques géoéconomiques qu'une ressource légale"},
-    {"id":"g74","cat":"Trafic","term":"Pourquoi Anvers ? (8 arguments)","def":"1. 2e port Europe (8,5M EVP). 2. Hub multimodal (bateau+barge+camion+train). 3. 5% conteneurs contrôlés. 4. Situé dans la dorsale européenne. 5. Hinterland riche. 6. Site fluvial (Escaut). 7. Corruption douanière. 8. MSC Tena peut y accéder.","ex":"Ces mêmes atouts expliquent pourquoi Anvers est aussi le 2e port légal d'Europe"},
-    {"id":"g75","cat":"Trafic","term":"Afrique de l'Ouest comme transit","def":"L'Afrique de l'Ouest est devenue un carrefour majeur du trafic de cocaïne entre l'Amérique du Sud et l'Europe depuis les années 2000. Le Nigeria est le centre de commande en Afrique subsaharienne.","ex":"Venezuela → Golfe de Guinée → Sahel → Maghreb → Europe"},
-    {"id":"g76","cat":"Trafic","term":"Prix de la cocaïne","def":"Prix au kg : ~28 000 € en 2019 → ~14 000–17 000 € en 2024. Baisse due à l'offre qui augmente plus vite que la demande, même si les saisies augmentent.","ex":"Paradoxe : plus de saisies + prix en baisse = production qui explose"},
-    {"id":"g77","cat":"Trafic","term":"Consommation Europe (eaux usées)","def":"Études eaux usées 2025 : Anvers Sud = 1re ville européenne (1 996,98 mg/1000 hab/jour). Bruxelles = 4e en Europe (1 186,34). Étude sur 128 villes, 26 pays, 68,8M habitants.","ex":"Top mondial : Lebu (Chili), Los Angeles, Belo Horizonte, Natal, puis Anvers"},
-    {"id":"g78","cat":"Trafic","term":"Colombie en 1999","def":"En 1999, la Colombie avait 170 000 hectares cultivés en coca. Effet de l'Air Bridge Denial : la production s'y est massivement déplacée depuis le Pérou et la Bolivie.","ex":"Programme ABD → Pérou/Bolivie → Colombie (40 000 ha → 170 000 ha)"},
-    {"id":"g79","cat":"Méthode","term":"Grille d'analyse de document (A/B/C)","def":"A = Décrire (sujet, nature, spatialité, époque). B = Critiquer (fiabilité de l'auteur, pertinence). C = Résumer (général → particulier). Compétence évaluée à l'oral du 15/06/2026.","ex":"Toujours citer le numéro du document dans la réponse (doc. 3)"},
-    {"id":"g80","cat":"Méthode","term":"Schéma systémique","def":"Carte mentale reliant : la ressource (définition, nature), les acteurs (producteurs, États, firmes), les flux (DIPP), et les conséquences (écologiques, sociales, géopolitiques).","ex":"Outil central du cours Ganty pour analyser pétrole, sable, cocaïne, arctique"},
-    {"id":"g81","cat":"Méthode","term":"Format officiel de l'oral géo","def":"4 pts vocabulaire + 6 pts analyse de document + 6 pts interprétation + 1 pt mondialisation + 3 pts discours = 20 pts total.","ex":"L'analyse de document (A/B/C) représente la moitié des points"},
-    {"id":"g82","cat":"UE / Europe","term":"Schengen — 2 États UE exclus","def":"Irlande et Chypre sont membres de l'UE mais ne font pas partie de l'espace Schengen.","ex":"À l'inverse, Suisse, Norvège, Islande, Liechtenstein = Schengen mais pas UE"},
-    {"id":"g83","cat":"Arctique","term":"Toundra","def":"Biome de l'Arctique : végétation rase, arbres absents, sol gelé une grande partie de l'année. Composant de la cryosphère au sens large.","ex":"Se trouve entre la taïga (forêt boréale) et la banquise"},
-    {"id":"g84","cat":"Arctique","term":"Taïga","def":"Forêt boréale de conifères, au sud de la toundra. Biome le plus étendu de la planète. Rôle majeur dans le stockage du carbone.","ex":"Russie, Canada, Scandinavie — puit de carbone mondial"},
-    {"id":"g85","cat":"Sable","term":"Singapour et le sable","def":"Singapour a agrandi son territoire de 25% depuis 1973 par remblaiement. Principale importation : sable d'Indonésie. En 2007, l'Indonésie a interdit l'exportation de sable vers Singapour.","ex":"Un pays sans sable naturel qui construit sur l'eau grâce au sable importé"},
-    {"id":"g86","cat":"Ressources","term":"Ressource illicite","def":"Ressource dont la production, le commerce ou la consommation est interdite par les lois nationales et/ou internationales, mais obéit aux mêmes logiques géoéconomiques qu'une ressource légale.","ex":"La cocaïne suit la grille DIPP et emprunte les routes du commerce mondial"},
-    {"id":"g87","cat":"Transport","term":"Canal de Suez","def":"Canal artificiel en Égypte reliant la mer Méditerranée à la mer Rouge (golfe de Suez). Raccourcit de 7 000 km le trajet Europe-Asie. Ouvert en 1869 par De Lesseps.","ex":"Canal Suez bloqué en 2021 par l'Ever Given → perturbation du commerce mondial"}
+    {
+      "id": "g1",
+      "cat": "Méthode",
+      "term": "DIPP",
+      "def": "Division Internationale des Processus Productifs : fragmentation de la chaîne de production d'un bien à l'international. Chaque étape est localisée dans le pays où les avantages comparatifs sont les plus grands (main-d'œuvre, ressources, fiscalité, infrastructures).",
+      "ex": "Ex : iPhone conçu aux USA, fabriqué en Asie, assemblé en Chine. Cocaïne produite en Colombie → transitée → distribuée à Anvers."
+    },
+    {
+      "id": "g2",
+      "cat": "Méthode",
+      "term": "Site",
+      "def": "Lieu défini par ses caractéristiques physiques : terrain, eau, relief, accès naturel.",
+      "ex": "Anvers = site fluvial à l'embouchure de l'Escaut"
+    },
+    {
+      "id": "g3",
+      "cat": "Méthode",
+      "term": "Situation",
+      "def": "Position relative d'un lieu par rapport à son environnement géographique (autres villes, routes, marchés).",
+      "ex": "Anvers = croisée des routes maritimes d'Europe du Nord-Ouest"
+    },
+    {
+      "id": "g4",
+      "cat": "Méthode",
+      "term": "Effet ballon",
+      "def": "Pression répressive dans un lieu → déplace une activité ailleurs, sans réduire le volume global.",
+      "ex": "Lutte antidrogue en Colombie → production se déplace au Pérou/Bolivie"
+    },
+    {
+      "id": "g5",
+      "cat": "Méthode",
+      "term": "Géopolitique",
+      "def": "Étude des relations entre la géographie (espace, ressources, frontières) et la politique internationale.",
+      "ex": "Revendications des 5 États sur les ressources arctiques"
+    },
+    {
+      "id": "g6",
+      "cat": "Méthode",
+      "term": "Boucle de rétroaction",
+      "def": "Mécanisme où un effet amplifie sa propre cause, créant une spirale auto-entretenue.",
+      "ex": "Réchauffement → banquise fond → moins d'albédo → encore plus de réchauffement"
+    },
+    {
+      "id": "g7",
+      "cat": "Méthode",
+      "term": "Démarche de Ganty",
+      "def": "5 étapes d'analyse géographique : Observer → Problématiser → Collecter → Analyser → Conclure.",
+      "ex": "Outil pour analyser une ressource ou situation géographique complexe"
+    },
+    {
+      "id": "g8",
+      "cat": "UE / Europe",
+      "term": "Union européenne",
+      "def": "Association de 27 États qui délèguent des compétences à des institutions communes. Traité de Rome 1957.",
+      "ex": "27 membres depuis le Brexit (2020)"
+    },
+    {
+      "id": "g9",
+      "cat": "UE / Europe",
+      "term": "Zone euro",
+      "def": "20 États utilisant l'euro. Politique monétaire gérée par la BCE à Francfort. Créée en 1999 par 11 pays fondateurs.",
+      "ex": "Belgique ✓ / Pologne ✗ (hors zone euro)"
+    },
+    {
+      "id": "g10",
+      "cat": "UE / Europe",
+      "term": "Espace Schengen",
+      "def": "Libre circulation sans contrôle aux frontières. 29 États (25 UE + 4 hors UE). Signé 1985, en vigueur 1995.",
+      "ex": "Suisse = Schengen mais pas UE · Irlande = UE mais pas Schengen"
+    },
+    {
+      "id": "g11",
+      "cat": "UE / Europe",
+      "term": "Dorsale européenne",
+      "def": "Espace économique dense de Liverpool à Milan (Roger Brunet, années 1980). ~100M hab. Aussi appelée Banane bleue.",
+      "ex": "Concentre l'essentiel des pouvoirs économiques européens"
+    },
+    {
+      "id": "g12",
+      "cat": "UE / Europe",
+      "term": "Mégapole",
+      "def": "Ville dépassant les 10 millions d'habitants.",
+      "ex": "Istanbul, Londres, Paris"
+    },
+    {
+      "id": "g13",
+      "cat": "Ressources",
+      "term": "Ressource",
+      "def": "Ce qu'une société juge utile d'exploiter. Notion dépend du contexte technique, économique et culturel.",
+      "ex": "Le sable est devenu ressource critique au XXe s. avec l'essor du béton"
+    },
+    {
+      "id": "g14",
+      "cat": "Ressources",
+      "term": "Renouvelable",
+      "def": "Ressource qui se renouvelle naturellement aussi vite qu'elle est consommée.",
+      "ex": "Forêts (si gestion durable), eau douce, énergie solaire"
+    },
+    {
+      "id": "g15",
+      "cat": "Ressources",
+      "term": "Non renouvelable",
+      "def": "Ressource dont le renouvellement naturel prend bien plus qu'une vie humaine (temps géologique).",
+      "ex": "Sable, pétrole, charbon, gaz naturel"
+    },
+    {
+      "id": "g16",
+      "cat": "Ressources",
+      "term": "Earth Overshoot Day",
+      "def": "Jour où l'humanité a consommé toutes les ressources que la Terre peut régénérer en 1 an. Calculé par le Global Footprint Network.",
+      "ex": "2025 : 24 juillet — le reste de l'année = à crédit"
+    },
+    {
+      "id": "g17",
+      "cat": "Ressources",
+      "term": "Biocapacité",
+      "def": "Capacité de la Terre à régénérer ses ressources et à absorber les déchets produits par l'activité humaine.",
+      "ex": "Formule EOD : (biocapacité ÷ empreinte éco) × 365"
+    },
+    {
+      "id": "g18",
+      "cat": "Ressources",
+      "term": "Empreinte écologique",
+      "def": "Quantité de ressources consommées par une population, ramenée à la surface productive nécessaire.",
+      "ex": "Si tout le monde vivait comme un Belge → ~3 planètes nécessaires"
+    },
+    {
+      "id": "g19",
+      "cat": "Ressources",
+      "term": "Rente pétrolière",
+      "def": "Revenus générés par la vente des hydrocarbures (pétrole, gaz). Source principale de richesse pour certains États.",
+      "ex": "Russie, Arabie Saoudite, pays du Golfe"
+    },
+    {
+      "id": "g20",
+      "cat": "Ressources",
+      "term": "Firme transnationale",
+      "def": "Entreprise dont les activités s'étendent dans plusieurs pays, avec fragmentation de la production à l'échelle mondiale.",
+      "ex": "Total, BP, Shell pour les hydrocarbures arctiques"
+    },
+    {
+      "id": "g21",
+      "cat": "Ressources",
+      "term": "Mondialisation",
+      "def": "Interconnexion croissante des marchés, flux financiers et échanges à l'échelle mondiale — y compris les marchés illicites.",
+      "ex": "La cocaïne emprunte les mêmes routes que les marchandises légales"
+    },
+    {
+      "id": "g22",
+      "cat": "Ressources",
+      "term": "Dumping fiscal",
+      "def": "Stratégie de localiser une activité dans un pays à faible fiscalité pour réduire les coûts.",
+      "ex": "Armateurs utilisent des pavillons de complaisance pour éviter les taxes"
+    },
+    {
+      "id": "g23",
+      "cat": "Ressources",
+      "term": "Choc pétrolier",
+      "def": "Hausse brutale et imprévue des prix du pétrole aux répercussions économiques mondiales.",
+      "ex": "1973 : prix ×4 (embargo OPEP) · 1979 : prix ×2 (révolution iranienne)"
+    },
+    {
+      "id": "g24",
+      "cat": "Transport",
+      "term": "HUB",
+      "def": "Plateforme multimodale centrale où convergent de nombreuses routes, puis redistribuent les flux vers d'autres destinations.",
+      "ex": "Anvers = hub mondial : 121t cocaïne saisies 2023, 8,5M EVP"
+    },
+    {
+      "id": "g25",
+      "cat": "Transport",
+      "term": "EVP",
+      "def": "Équivalent Vingt Pieds : unité standard de mesure des conteneurs maritimes (6m × 2,44m).",
+      "ex": "Anvers traite 8,5 millions d'EVP par an"
+    },
+    {
+      "id": "g26",
+      "cat": "Transport",
+      "term": "Conteneur",
+      "def": "Boîte métallique standardisée (McLean, 1956). Représente 90% du trafic maritime mondial.",
+      "ex": "Mêmes conteneurs pour le légal et l'illicite"
+    },
+    {
+      "id": "g27",
+      "cat": "Transport",
+      "term": "Pavillon de complaisance",
+      "def": "Immatriculation d'un navire dans un État à faible taxation et peu de contrôles, même si le propriétaire est étranger.",
+      "ex": "Panama, Liberia — aussi utilisé pour le trafic de drogue"
+    },
+    {
+      "id": "g28",
+      "cat": "Transport",
+      "term": "Multimodal",
+      "def": "Qui utilise plusieurs modes de transport combinés pour acheminer une marchandise.",
+      "ex": "Bateau → barge → camion → train = chaîne multimodale"
+    },
+    {
+      "id": "g29",
+      "cat": "Transport",
+      "term": "Hinterland",
+      "def": "Arrière-pays desservi par un port : l'espace géographique dont le port capte les flux commerciaux.",
+      "ex": "Hinterland d'Anvers → Allemagne, Suisse, Autriche"
+    },
+    {
+      "id": "g30",
+      "cat": "Transport",
+      "term": "Transit",
+      "def": "Passage d'une marchandise par un pays intermédiaire, sans que ce pays en soit la destination finale.",
+      "ex": "Cocaïne transite par l'Espagne avant d'arriver en Belgique"
+    },
+    {
+      "id": "g31",
+      "cat": "Transport",
+      "term": "Isthme",
+      "def": "Bande de terre étroite reliant deux continents. Point de passage stratégique pour le commerce mondial.",
+      "ex": "Isthme de Panama → canal construit là pour cette raison"
+    },
+    {
+      "id": "g32",
+      "cat": "Transport",
+      "term": "Détroit",
+      "def": "Passage maritime étroit entre deux étendues d'eau. Point stratégique pour le commerce et la défense.",
+      "ex": "Détroit de Gibraltar · Détroit d'Ormuz (pétrole du Golfe)"
+    },
+    {
+      "id": "g33",
+      "cat": "Transport",
+      "term": "Canal de Panama",
+      "def": "Canal artificiel reliant Pacifique et Atlantique (isthme de Panama). 14 000 bateaux/an. Ouvert par les USA en 1914.",
+      "ex": "Raccourcit de 15 000 km le trajet Asie → côte est USA"
+    },
+    {
+      "id": "g34",
+      "cat": "Arctique",
+      "term": "Cryosphère",
+      "def": "Ensemble des étendues de glace et de neige de la planète : banquise, inlandsis, pergélisol, glaciers. Régule le climat mondial.",
+      "ex": "Albédo : surfaces blanches réfléchissent la chaleur solaire"
+    },
+    {
+      "id": "g35",
+      "cat": "Arctique",
+      "term": "Banquise",
+      "def": "Surface de mer gelée flottant sur l'eau. Sa fonte ne fait PAS monter le niveau des mers (déjà dans l'eau).",
+      "ex": "Banquise arctique a perdu 36% de surface (2,5 M km²) depuis les années 1980"
+    },
+    {
+      "id": "g36",
+      "cat": "Arctique",
+      "term": "Inlandsis",
+      "def": "Couche de glace permanente recouvrant les terres (Groenland, Antarctique). Sa fonte fait monter le niveau des mers.",
+      "ex": "Fonte inlandsis groenlandais → montée des océans"
+    },
+    {
+      "id": "g37",
+      "cat": "Arctique",
+      "term": "Pergélisol",
+      "def": "Sol gelé en permanence (≥2 ans consécutifs). Couvre ~25% des terres émergées. En dégelant → libère du méthane (GES puissant).",
+      "ex": "Dégel Sibérie/Canada/Alaska → accélère le réchauffement"
+    },
+    {
+      "id": "g38",
+      "cat": "Arctique",
+      "term": "ZEE",
+      "def": "Zone Économique Exclusive : espace maritime jusqu'à 200 milles marins (370 km) depuis les côtes. Droits exclusifs sur les ressources.",
+      "ex": "5 États se disputent les ZEE arctiques (pétrole, gaz, pêche)"
+    },
+    {
+      "id": "g39",
+      "cat": "Arctique",
+      "term": "Eaux internationales",
+      "def": "Zone maritime hors de toute ZEE, où aucun État ne détient de droits exclusifs. Liberté de navigation garantie.",
+      "ex": "Haute mer = espace de liberté — aussi utilisé par trafiquants"
+    },
+    {
+      "id": "g40",
+      "cat": "Arctique",
+      "term": "GES",
+      "def": "Gaz à Effet de Serre : gaz qui retiennent la chaleur dans l'atmosphère. Principaux : CO₂ et méthane (CH₄).",
+      "ex": "Dégel pergélisol → méthane (25× plus puissant que le CO₂ sur 100 ans)"
+    },
+    {
+      "id": "g41",
+      "cat": "Arctique",
+      "term": "Gulf Stream",
+      "def": "Courant océanique chaud du golfe du Mexique → Europe du Nord. Apporte un climat tempéré à l'Europe occidentale.",
+      "ex": "Sans Gulf Stream, la Belgique aurait un climat similaire au Canada"
+    },
+    {
+      "id": "g42",
+      "cat": "Arctique",
+      "term": "Population autochtone",
+      "def": "Peuple vivant dans une région depuis les origines, avant les colonisations. Droits particuliers sur les terres ancestrales.",
+      "ex": "Inuits (Canada/Groenland/Alaska), Samis (Scandinavie), Nenets (Russie)"
+    },
+    {
+      "id": "g43",
+      "cat": "Sable",
+      "term": "Sable",
+      "def": "Sédiment minéral, grains de 0,063 à 2 mm. 2e ressource mondiale après l'eau. Non renouvelable à l'échelle humaine.",
+      "ex": "Sable désert (grains ronds) = inutilisable pour le béton"
+    },
+    {
+      "id": "g44",
+      "cat": "Sable",
+      "term": "Béton",
+      "def": "Matériau le plus utilisé au monde après l'eau. Composition : 46% sable + 33% gravier + 19% ciment + 6% eau.",
+      "ex": "Chaque bâtiment, route, barrage = tonnes de sable"
+    },
+    {
+      "id": "g45",
+      "cat": "Sable",
+      "term": "Remblaiement",
+      "def": "Extension artificielle d'un territoire sur la mer par apport massif de sable.",
+      "ex": "Singapour a agrandi son territoire de 25%. Indonésie interdit l'export en 2007."
+    },
+    {
+      "id": "g46",
+      "cat": "Sable",
+      "term": "Fracking",
+      "def": "Fracturation hydraulique : extraction pétrole/gaz de schiste par injection d'eau sous haute pression. Consomme ~1 800 tonnes de sable par puits.",
+      "ex": "Boom fracking USA → forte hausse demande mondiale en sable"
+    },
+    {
+      "id": "g47",
+      "cat": "Sable",
+      "term": "Mafia du sable",
+      "def": "Réseaux criminels contrôlant le trafic illégal de sable, avec violence et corruption.",
+      "ex": "Très actifs en Inde, Afrique sub-saharienne, Méditerranée"
+    },
+    {
+      "id": "g48",
+      "cat": "Sable",
+      "term": "Urbanisation",
+      "def": "Croissance de la part de la population vivant en ville. Entraîne une demande colossale en béton (et donc en sable).",
+      "ex": "En 2050, ~2/3 de la pop. mondiale en ville → explosion demande sable"
+    },
+    {
+      "id": "g49",
+      "cat": "Trafic",
+      "term": "Air Bridge Denial",
+      "def": "Programme américain d'interception des avions transportant de la drogue (Colombie, 1994). A provoqué l'effet ballon.",
+      "ex": "Production mondiale n'a pas baissé : 63t (1998) → 124t Europe (2008)"
+    },
+    {
+      "id": "g50",
+      "cat": "Trafic",
+      "term": "Cocaïne",
+      "def": "Ressource semi-mondialisée : production ×4 entre 1998 et 2022 malgré la répression (ONUDC).",
+      "ex": "Prod : Colombie/Pérou/Bolivie → transit Afrique W. → Europe (Anvers)"
+    },
+    {
+      "id": "g63",
+      "cat": "Arctique",
+      "term": "5 composants de la cryosphère",
+      "def": "Banquise (mer gelée), Inlandsis (glace sur terre), Pergélisol (sol gelé), Toundra, Taïga (forêt boréale).",
+      "ex": "Banquise et inlandsis ≠ même impact sur la montée des eaux"
+    },
+    {
+      "id": "g64",
+      "cat": "Arctique",
+      "term": "Route du Nord-Ouest",
+      "def": "Route maritime arctique longeant les côtes canadiennes (de l'Alaska à l'Atlantique). Ouverte par le réchauffement. Raccourcit le trajet Asie-Europe de 30 à 40%.",
+      "ex": "Revendiquée par le Canada comme eaux intérieures"
+    },
+    {
+      "id": "g65",
+      "cat": "Arctique",
+      "term": "Route du Nord-Est",
+      "def": "Route maritime arctique longeant les côtes russes (Sibérie → Europe). Aussi appelée passage du Nord-Est. Très rentable pour la Russie qui peut la contrôler.",
+      "ex": "La Russie perçoit des droits de passage sur cette route"
+    },
+    {
+      "id": "g66",
+      "cat": "Arctique",
+      "term": "8 pays riverains de l'Arctique",
+      "def": "Russie, Canada, États-Unis (Alaska), Danemark (Groenland), Norvège, Islande, Finlande, Suède.",
+      "ex": "Parmi eux : 5 pays ont une façade sur l'océan Arctique (Russie, Canada, USA, Danemark, Norvège)"
+    },
+    {
+      "id": "g67",
+      "cat": "Arctique",
+      "term": "Ressources énergétiques arctiques",
+      "def": "L'Arctique recèle environ 13% des réserves mondiales de pétrole et 30% des réserves mondiales de gaz naturel non encore exploitées. Gisements offshore.",
+      "ex": "Extraction coûteuse et risquée — fonte de la banquise rend l'accès possible"
+    },
+    {
+      "id": "g68",
+      "cat": "Arctique",
+      "term": "Albédo",
+      "def": "Capacité d'une surface à réfléchir la lumière solaire. La glace blanche a un albédo élevé. Les eaux sombres ont un albédo faible → absorbent plus de chaleur.",
+      "ex": "Banquise fond → eau sombre exposée → plus de chaleur absorbée → albédo diminue"
+    },
+    {
+      "id": "g69",
+      "cat": "Arctique",
+      "term": "Projection banquise 2030",
+      "def": "Selon les projections, il n'y aura plus de banquise certains mois à partir de 2030. La surface a déjà diminué de 2,5 millions de km², soit 36%.",
+      "ex": "Arctique se réchauffe ~4× plus vite que le reste de la planète (données 2022)"
+    },
+    {
+      "id": "g70",
+      "cat": "Arctique",
+      "term": "OTAN en Arctique",
+      "def": "Alliance militaire dominante en Arctique : Canada, USA, Danemark, Islande, Norvège sont membres. Finlande et Suède ont rejoint l'OTAN (2023-2024). Seule la Russie est hors OTAN.",
+      "ex": "Jeu de rôle : vote OTAN = 1,5 point si cohérent avec la majorité OTAN"
+    },
+    {
+      "id": "g71",
+      "cat": "Sable",
+      "term": "Delta du Mékong (Vietnam)",
+      "def": "Cas concret d'impact du sable : 750 km de berges ont disparu à cause de l'extraction excessive de sable. Érosion irréversible des deltas.",
+      "ex": "Extraction de sable du lit des fleuves → effondrement des berges"
+    },
+    {
+      "id": "g72",
+      "cat": "Sable",
+      "term": "Sable fluvial vs désertique",
+      "def": "Le sable utilisable en construction provient des rivières et des fonds marins (grains anguleux qui adhèrent). Le sable du désert est inutilisable (grains ronds érodés par le vent, n'adhèrent pas).",
+      "ex": "Les Émirats arabes unis importent du sable malgré d'immenses déserts"
+    },
+    {
+      "id": "g73",
+      "cat": "Trafic",
+      "term": "DIPP de la cocaïne",
+      "def": "Division Internationale des Processus Productifs : fragmentation de la chaîne de production d'un bien à l'international. Chaque étape est localisée dans le pays où les avantages comparatifs sont les plus grands (main-d'œuvre, ressources, fiscalité, infrastructures).",
+      "ex": "Ex : iPhone conçu aux USA, fabriqué en Asie, assemblé en Chine. Cocaïne produite en Colombie → transitée → distribuée à Anvers."
+    },
+    {
+      "id": "g74",
+      "cat": "Trafic",
+      "term": "Pourquoi Anvers ? (8 arguments)",
+      "def": "1. 2e port Europe (8,5M EVP). 2. Hub multimodal (bateau+barge+camion+train). 3. 5% conteneurs contrôlés. 4. Situé dans la dorsale européenne. 5. Hinterland riche. 6. Site fluvial (Escaut). 7. Corruption douanière. 8. MSC Tena peut y accéder.",
+      "ex": "Ces mêmes atouts expliquent pourquoi Anvers est aussi le 2e port légal d'Europe"
+    },
+    {
+      "id": "g75",
+      "cat": "Trafic",
+      "term": "Afrique de l'Ouest comme transit",
+      "def": "L'Afrique de l'Ouest est devenue un carrefour majeur du trafic de cocaïne entre l'Amérique du Sud et l'Europe depuis les années 2000. Le Nigeria est le centre de commande en Afrique subsaharienne.",
+      "ex": "Venezuela → Golfe de Guinée → Sahel → Maghreb → Europe"
+    },
+    {
+      "id": "g76",
+      "cat": "Trafic",
+      "term": "Prix de la cocaïne",
+      "def": "Prix au kg : ~28 000 € en 2019 → ~14 000–17 000 € en 2024. Baisse due à l'offre qui augmente plus vite que la demande, même si les saisies augmentent.",
+      "ex": "Paradoxe : plus de saisies + prix en baisse = production qui explose"
+    },
+    {
+      "id": "g77",
+      "cat": "Trafic",
+      "term": "Consommation Europe (eaux usées)",
+      "def": "Études eaux usées 2025 : Anvers Sud = 1re ville européenne (1 996,98 mg/1000 hab/jour). Bruxelles = 4e en Europe (1 186,34). Étude sur 128 villes, 26 pays, 68,8M habitants.",
+      "ex": "Top mondial : Lebu (Chili), Los Angeles, Belo Horizonte, Natal, puis Anvers"
+    },
+    {
+      "id": "g78",
+      "cat": "Trafic",
+      "term": "Colombie en 1999",
+      "def": "En 1999, la Colombie avait 170 000 hectares cultivés en coca. Effet de l'Air Bridge Denial : la production s'y est massivement déplacée depuis le Pérou et la Bolivie.",
+      "ex": "Programme ABD → Pérou/Bolivie → Colombie (40 000 ha → 170 000 ha)"
+    },
+    {
+      "id": "g79",
+      "cat": "Méthode",
+      "term": "Grille d'analyse de document (A/B/C)",
+      "def": "A = Décrire (sujet, nature, spatialité, époque). B = Critiquer (fiabilité de l'auteur, pertinence). C = Résumer (général → particulier). Compétence évaluée à l'oral du 15/06/2026.",
+      "ex": "Toujours citer le numéro du document dans la réponse (doc. 3)"
+    },
+    {
+      "id": "g80",
+      "cat": "Méthode",
+      "term": "Schéma systémique",
+      "def": "Carte mentale reliant : la ressource (définition, nature), les acteurs (producteurs, États, firmes), les flux (DIPP), et les conséquences (écologiques, sociales, géopolitiques).",
+      "ex": "Outil central du cours Ganty pour analyser pétrole, sable, cocaïne, arctique"
+    },
+    {
+      "id": "g81",
+      "cat": "Méthode",
+      "term": "Format officiel de l'oral géo",
+      "def": "4 pts vocabulaire + 6 pts analyse de document + 6 pts interprétation + 1 pt mondialisation + 3 pts discours = 20 pts total.",
+      "ex": "L'analyse de document (A/B/C) représente la moitié des points"
+    },
+    {
+      "id": "g83",
+      "cat": "Arctique",
+      "term": "Toundra",
+      "def": "Biome de l'Arctique : végétation rase, arbres absents, sol gelé une grande partie de l'année. Composant de la cryosphère au sens large.",
+      "ex": "Se trouve entre la taïga (forêt boréale) et la banquise"
+    },
+    {
+      "id": "g84",
+      "cat": "Arctique",
+      "term": "Taïga",
+      "def": "Forêt boréale de conifères, au sud de la toundra. Biome le plus étendu de la planète. Rôle majeur dans le stockage du carbone.",
+      "ex": "Russie, Canada, Scandinavie — puit de carbone mondial"
+    },
+    {
+      "id": "g85",
+      "cat": "Sable",
+      "term": "Singapour et le sable",
+      "def": "Singapour a agrandi son territoire de 25% depuis 1973 par remblaiement. Principale importation : sable d'Indonésie. En 2007, l'Indonésie a interdit l'exportation de sable vers Singapour.",
+      "ex": "Un pays sans sable naturel qui construit sur l'eau grâce au sable importé"
+    },
+    {
+      "id": "g86",
+      "cat": "Ressources",
+      "term": "Ressource illicite",
+      "def": "Ressource dont la production, le commerce ou la consommation est interdite par les lois nationales et/ou internationales, mais obéit aux mêmes logiques géoéconomiques qu'une ressource légale.",
+      "ex": "La cocaïne suit la grille DIPP et emprunte les routes du commerce mondial"
+    },
+    {
+      "id": "g87",
+      "cat": "Transport",
+      "term": "Canal de Suez",
+      "def": "Canal artificiel en Égypte reliant la mer Méditerranée à la mer Rouge (golfe de Suez). Raccourcit de 7 000 km le trajet Europe-Asie. Ouvert en 1869 par De Lesseps.",
+      "ex": "Canal Suez bloqué en 2021 par l'Ever Given → perturbation du commerce mondial"
+    }
   ],
   "qcm": [
-    {"id":"gq1","q":"Quelle est la date de l'Earth Overshoot Day 2025 ?","opts":["24 juillet","1er août","12 juin","15 septembre"],"ans":0,"exp":"En 2025, l'EOD tombe le 24 juillet. L'humanité consomme l'équivalent de 1,75 Terre par an."},
-    {"id":"gq2","q":"Combien de membres compte l'Union européenne aujourd'hui ?","opts":["27","28","25","30"],"ans":0,"exp":"27 membres depuis le Brexit (2020). Fondée par le Traité de Rome en 1957."},
-    {"id":"gq3","q":"La Zone euro compte combien d'États membres ?","opts":["20","27","19","25"],"ans":0,"exp":"20 États utilisent l'euro. La BCE est à Francfort. Créée en 1999 avec 11 pays fondateurs."},
-    {"id":"gq4","q":"L'Espace Schengen compte combien d'États ?","opts":["29","27","25","31"],"ans":0,"exp":"29 États (25 UE + 4 hors UE : Suisse, Norvège, Islande, Liechtenstein). Fondé 1985, en vigueur 1995."},
-    {"id":"gq5","q":"Qui a théorisé la Dorsale européenne (Banane bleue) ?","opts":["Roger Brunet","Roger Brugge","Jean Gottmann","Peter Hall"],"ans":0,"exp":"Roger Brunet, géographe français, dans les années 1980. De Liverpool à Milan, ~100M habitants."},
-    {"id":"gq6","q":"Quelle est la composition exacte du béton ?","opts":["46% sable + 33% gravier + 19% ciment + 6% eau","50% sable + 30% gravier + 15% ciment + 5% eau","40% sable + 40% gravier + 15% ciment + 5% eau","46% gravier + 33% sable + 19% ciment + 6% eau"],"ans":0,"exp":"46% sable + 33% gravier + 19% ciment + 6% eau. Le sable est l'ingrédient dominant."},
-    {"id":"gq7","q":"Combien de tonnes de sable consomme un puits de fracking ?","opts":["~1 800 tonnes","~500 tonnes","~5 000 tonnes","~300 tonnes"],"ans":0,"exp":"~1 800 tonnes par puits. Le boom du fracking aux USA a provoqué une explosion de la demande en sable."},
-    {"id":"gq8","q":"Quel est le premier choc pétrolier ? Quelle hausse des prix ?","opts":["1973 — prix ×4","1973 — prix ×2","1979 — prix ×4","1971 — prix ×3"],"ans":0,"exp":"1973 : ×4 suite à l'embargo de l'OPEP. 1979 : ×2 suite à la révolution iranienne."},
-    {"id":"gq9","q":"La ZEE s'étend jusqu'à quelle distance des côtes ?","opts":["200 milles marins (370 km)","100 milles marins (185 km)","300 milles marins (555 km)","12 milles marins (22 km)"],"ans":0,"exp":"200 milles marins = 370 km. L'État côtier a des droits exclusifs sur les ressources dans cette zone."},
-    {"id":"gq10","q":"Pourquoi le sable du désert est-il inutilisable pour le béton ?","opts":["Grains trop ronds : n'adhèrent pas","Trop fin : ne résiste pas à la pression","Trop sale : contient trop de minéraux","Trop chaud : se dilate trop"],"ans":0,"exp":"Les grains du désert sont ronds (érodés par le vent) et n'adhèrent pas. Le béton nécessite des grains anguleux (rivières, mer)."},
-    {"id":"gq11","q":"Combien Singapour a-t-il agrandi son territoire par remblaiement ?","opts":["25%","10%","40%","15%"],"ans":0,"exp":"Singapour a agrandi son territoire de 25% depuis 1973. L'Indonésie a interdit l'export de sable en 2007 en réaction."},
-    {"id":"gq12","q":"Quel est le canal artificiel qui relie le Pacifique à l'Atlantique ?","opts":["Canal de Panama","Canal de Suez","Canal de Kiel","Canal du Nicaragua"],"ans":0,"exp":"Canal de Panama, ouvert en 1914 par les USA (après l'échec de De Lesseps). 14 000 bateaux/an. Économise 15 000 km."},
-    {"id":"gq13","q":"L'Arctique se réchauffe combien de fois plus vite que la moyenne mondiale ?","opts":["3 à 4 fois","2 fois","5 à 6 fois","Pareil que la moyenne"],"ans":0,"exp":"L'Arctique se réchauffe 3 à 4× plus vite. La banquise a perdu 36% de surface depuis les années 1980."},
-    {"id":"gq14","q":"Combien de tonnes de cocaïne ont été saisies à Anvers en 2023 ?","opts":["121 tonnes","80 tonnes","200 tonnes","45 tonnes"],"ans":0,"exp":"121 tonnes en 2023 (116 à Anvers + 5 à Zeebrugge). Anvers traite 8,5M EVP/an, seul 5% des conteneurs sont contrôlés."},
-    {"id":"gq15","q":"La fonte de la banquise fait-elle monter le niveau des mers ?","opts":["Non — elle flotte déjà","Oui — directement","Oui — indirectement","Non — elle est trop petite"],"ans":0,"exp":"Non. La banquise flotte déjà dans l'eau (comme des glaçons dans un verre). C'est la fonte de l'inlandsis (glace sur la terre) qui fait monter les mers."},
-    {"id":"gq16","q":"Où siège la Cour de Justice de l'Union européenne ?","opts":["Bruxelles","Francfort","Luxembourg","Strasbourg"],"ans":2,"exp":"La Cour de Justice de l'UE siège à Luxembourg. La BCE est à Francfort. Le Parlement européen siège à Strasbourg (plénières) et Bruxelles (commissions)."},
-    {"id":"gq17","q":"Combien de pays fondateurs comptait la Zone euro en 1999 ?","opts":["15","20","11","9"],"ans":2,"exp":"11 pays fondateurs en 1999 : Allemagne, Autriche, Belgique, Espagne, Finlande, France, Irlande, Italie, Luxembourg, Pays-Bas, Portugal. La Croatie est le 20e membre (2023)."},
-    {"id":"gq18","q":"Lequel de ces pays est membre de Schengen mais PAS de l'UE ?","opts":["Irlande","Pologne","Suisse","Roumanie"],"ans":2,"exp":"La Suisse est dans l'espace Schengen mais pas dans l'UE. L'Irlande est dans l'UE mais pas dans Schengen. La Pologne et la Roumanie sont dans l'UE et dans Schengen."},
-    {"id":"gq19","q":"Quelle institution de l'UE propose les lois et les met en œuvre ?","opts":["Conseil européen","Commission européenne","Parlement européen","Cour de Justice"],"ans":1,"exp":"La Commission européenne (siège Bruxelles) est l'équivalent du gouvernement de l'UE : elle propose les lois et les met en œuvre. Le Conseil européen fixe les grandes orientations."},
-    {"id":"gq20","q":"Quel pourcentage des réserves mondiales de gaz non découvertes se trouve en Arctique ?","opts":["10%","13%","20%","30%"],"ans":3,"exp":"L'Arctique recèle ~30% des réserves mondiales de gaz naturel non découvertes et ~13% des réserves de pétrole. Gisements offshore coûteux à exploiter."},
-    {"id":"gq21","q":"Quelle route arctique longe les côtes russes ?","opts":["Route du Nord-Ouest","Route Polaire","Route du Nord-Est","Route de la Sibérie"],"ans":2,"exp":"La Route du Nord-Est (ou passage du Nord-Est) longe les côtes de la Sibérie russe. La Route du Nord-Ouest longe les côtes canadiennes."},
-    {"id":"gq22","q":"De combien de pourcentage les routes arctiques réduisent-elles les distances par rapport à Suez ou Panama ?","opts":["10 à 15%","20 à 25%","30 à 40%","50 à 60%"],"ans":2,"exp":"Les routes arctiques réduisent les distances de 30 à 40% par rapport aux routes traditionnelles (Suez, Panama). Enjeu commercial et stratégique majeur."},
-    {"id":"gq23","q":"En quelle année la Russie a-t-elle planté un drapeau au fond de l'océan Arctique pour revendiquer ses ressources ?","opts":["2001","2004","2007","2012"],"ans":2,"exp":"En 2007, la Russie a planté un drapeau en titane au fond de l'Arctique pour symboliser sa revendication d'extension du plateau continental au-delà des 200 milles de ZEE."},
-    {"id":"gq24","q":"Parmi les composants de la cryosphère, lequel est un SOL gelé (pas de la glace) ?","opts":["Banquise","Inlandsis","Pergélisol","Toundra"],"ans":2,"exp":"Le pergélisol est un SOL gelé en permanence (≥2 ans). La banquise = mer gelée. L'inlandsis = glace sur terre. La toundra = biome (végétation)."},
-    {"id":"gq25","q":"Combien d'hectares de coca la Colombie cultivait-elle en 1999 ?","opts":["40 000 ha","100 000 ha","170 000 ha","250 000 ha"],"ans":2,"exp":"170 000 ha en 1999, après l'effet ballon provoqué par le programme Air Bridge Denial. La Colombie est devenue le premier producteur mondial de cocaïne dès les années 1980."},
-    {"id":"gq26","q":"En 1998, combien de tonnes de cocaïne arrivaient en Europe ?","opts":["124 tonnes","45 tonnes","63 tonnes","200 tonnes"],"ans":2,"exp":"En 1998 : 63 tonnes vers l'Europe vs 67 tonnes vers les USA. En 2008, le volume vers l'Europe avait doublé et l'Afrique de l'Ouest était devenue un transit majeur."},
-    {"id":"gq27","q":"Quel pays est le centre de commande du trafic de drogue en Afrique subsaharienne ?","opts":["Maroc","Venezuela","Nigéria","Haïti"],"ans":2,"exp":"Le Nigeria est le centre de commande et de contrôle du trafic en Afrique subsaharienne. L'Afrique de l'Ouest est devenue un hub majeur du transit de cocaïne vers l'Europe."},
-    {"id":"gq28","q":"Quelle est la taille standard des grains de sable utilisable en construction ?","opts":["0,001 à 0,05 mm","0,063 à 2 mm","2 à 5 mm","5 à 20 mm"],"ans":1,"exp":"Le sable se définit par des grains de 0,063 à 2 mm. En dessous : limon ou argile. Au-dessus : gravier. Les grains doivent être anguleux (rivière, mer) pour adhérer dans le béton."},
-    {"id":"gq29","q":"Quel format suit l'oral de géographie au 15/06/2026 ?","opts":["4pts vocab + 6pts analyse + 6pts interprétation + 1pt mondialisation + 3pts discours","10pts QCM + 10pts essai","5 questions de cours + 5 questions d'application","1 carte + 3 questions ouvertes"],"ans":0,"exp":"Format officiel Ganty : 4pts vocabulaire + 6pts analyse de document (A/B/C) + 6pts interprétation + 1pt mondialisation + 3pts discours = 20 pts."},
-    {"id":"gq30","q":"Lequel de ces pays est membre de l'UE mais hors de l'espace Schengen ?","opts":["Suisse","Danemark","Irlande","Autriche"],"ans":2,"exp":"L'Irlande est membre de l'UE mais hors Schengen (avec Chypre). La Suisse est dans Schengen mais pas dans l'UE. Danemark et Autriche = UE + Schengen."},
-    {"id":"gq31","q":"Qu'est-ce que l'albédo dans le contexte de l'Arctique ?","opts":["La salinité de l'eau arctique","La capacité d'une surface à réfléchir la lumière solaire","Le volume de glace flottante","La vitesse du Gulf Stream"],"ans":1,"exp":"L'albédo = capacité de réflexion de la lumière. La glace blanche a un albédo élevé. Quand la banquise fond, les eaux sombres exposées absorbent plus de chaleur → boucle de rétroaction."},
-    {"id":"gq32","q":"Quelle institution de l'UE vérifie l'utilisation du budget européen ?","opts":["Banque centrale européenne","Commission européenne","Conseil des ministres","Cour des comptes européenne"],"ans":3,"exp":"La Cour des comptes européenne, siège à Kirchberg (Luxembourg), contrôle que le budget de l'UE est correctement dépensé. La BCE gère la monnaie, pas le budget."},
-    {"id":"gq33","q":"Combien d'EVP le port d'Anvers traite-t-il par an ?","opts":["4,2 millions","8,5 millions","12 millions","6,3 millions"],"ans":1,"exp":"8,5 millions d'EVP par an. Anvers est le 2e port européen (après Rotterdam) et le 13e port mondial. Ce volume immense rend impossible le contrôle de tous les conteneurs."},
-    {"id":"gq34","q":"Quel est le prix au kg de cocaïne en 2024 ?","opts":["~28 000 €","~50 000 €","~14 000 – 17 000 €","~5 000 €"],"ans":2,"exp":"~14 000–17 000 € en 2024 contre ~28 000 € en 2019. La baisse s'explique par l'offre qui augmente plus vite que la demande, même si les saisies augmentent."},
-    {"id":"gq35","q":"Vers quelle année est projeté le premier été sans banquise en Arctique ?","opts":["2050","2045","Vers 2030","2100"],"ans":2,"exp":"Les projections indiquent qu'il n'y aura plus de banquise certains mois à partir de 2030. La surface a déjà diminué de 2,5 M km² (36%) depuis les années 1980."}
+    {
+      "id": "gq1",
+      "q": "Quelle est la date de l'Earth Overshoot Day 2025 ?",
+      "opts": [
+        "24 juillet",
+        "1er août",
+        "12 juin",
+        "15 septembre"
+      ],
+      "ans": 0,
+      "exp": "En 2025, l'EOD tombe le 24 juillet. L'humanité consomme l'équivalent de 1,75 Terre par an."
+    },
+    {
+      "id": "gq2",
+      "q": "Combien de membres compte l'Union européenne aujourd'hui ?",
+      "opts": [
+        "27",
+        "28",
+        "25",
+        "30"
+      ],
+      "ans": 0,
+      "exp": "27 membres depuis le Brexit (2020). Fondée par le Traité de Rome en 1957."
+    },
+    {
+      "id": "gq3",
+      "q": "La Zone euro compte combien d'États membres ?",
+      "opts": [
+        "20",
+        "27",
+        "19",
+        "25"
+      ],
+      "ans": 0,
+      "exp": "20 États utilisent l'euro. La BCE est à Francfort. Créée en 1999 avec 11 pays fondateurs."
+    },
+    {
+      "id": "gq5",
+      "q": "Qui a théorisé la Dorsale européenne (Banane bleue) ?",
+      "opts": [
+        "Roger Brunet",
+        "Roger Brugge",
+        "Jean Gottmann",
+        "Peter Hall"
+      ],
+      "ans": 0,
+      "exp": "Roger Brunet, géographe français, dans les années 1980. De Liverpool à Milan, ~100M habitants."
+    },
+    {
+      "id": "gq6",
+      "q": "Quelle est la composition exacte du béton ?",
+      "opts": [
+        "46% sable + 33% gravier + 19% ciment + 6% eau",
+        "50% sable + 30% gravier + 15% ciment + 5% eau",
+        "40% sable + 40% gravier + 15% ciment + 5% eau",
+        "46% gravier + 33% sable + 19% ciment + 6% eau"
+      ],
+      "ans": 0,
+      "exp": "46% sable + 33% gravier + 19% ciment + 6% eau. Le sable est l'ingrédient dominant."
+    },
+    {
+      "id": "gq7",
+      "q": "Combien de tonnes de sable consomme un puits de fracking ?",
+      "opts": [
+        "~1 800 tonnes",
+        "~500 tonnes",
+        "~5 000 tonnes",
+        "~300 tonnes"
+      ],
+      "ans": 0,
+      "exp": "~1 800 tonnes par puits. Le boom du fracking aux USA a provoqué une explosion de la demande en sable."
+    },
+    {
+      "id": "gq8",
+      "q": "Quel est le premier choc pétrolier ? Quelle hausse des prix ?",
+      "opts": [
+        "1973 — prix ×4",
+        "1973 — prix ×2",
+        "1979 — prix ×4",
+        "1971 — prix ×3"
+      ],
+      "ans": 0,
+      "exp": "1973 : ×4 suite à l'embargo de l'OPEP. 1979 : ×2 suite à la révolution iranienne."
+    },
+    {
+      "id": "gq9",
+      "q": "La ZEE s'étend jusqu'à quelle distance des côtes ?",
+      "opts": [
+        "200 milles marins (370 km)",
+        "100 milles marins (185 km)",
+        "300 milles marins (555 km)",
+        "12 milles marins (22 km)"
+      ],
+      "ans": 0,
+      "exp": "200 milles marins = 370 km. L'État côtier a des droits exclusifs sur les ressources dans cette zone."
+    },
+    {
+      "id": "gq10",
+      "q": "Pourquoi le sable du désert est-il inutilisable pour le béton ?",
+      "opts": [
+        "Grains trop ronds : n'adhèrent pas",
+        "Trop fin : ne résiste pas à la pression",
+        "Trop sale : contient trop de minéraux",
+        "Trop chaud : se dilate trop"
+      ],
+      "ans": 0,
+      "exp": "Les grains du désert sont ronds (érodés par le vent) et n'adhèrent pas. Le béton nécessite des grains anguleux (rivières, mer)."
+    },
+    {
+      "id": "gq11",
+      "q": "Combien Singapour a-t-il agrandi son territoire par remblaiement ?",
+      "opts": [
+        "25%",
+        "10%",
+        "40%",
+        "15%"
+      ],
+      "ans": 0,
+      "exp": "Singapour a agrandi son territoire de 25% depuis 1973. L'Indonésie a interdit l'export de sable en 2007 en réaction."
+    },
+    {
+      "id": "gq12",
+      "q": "Quel est le canal artificiel qui relie le Pacifique à l'Atlantique ?",
+      "opts": [
+        "Canal de Panama",
+        "Canal de Suez",
+        "Canal de Kiel",
+        "Canal du Nicaragua"
+      ],
+      "ans": 0,
+      "exp": "Canal de Panama, ouvert en 1914 par les USA (après l'échec de De Lesseps). 14 000 bateaux/an. Économise 15 000 km."
+    },
+    {
+      "id": "gq13",
+      "q": "L'Arctique se réchauffe combien de fois plus vite que la moyenne mondiale ?",
+      "opts": [
+        "3 à 4 fois",
+        "2 fois",
+        "5 à 6 fois",
+        "Pareil que la moyenne"
+      ],
+      "ans": 0,
+      "exp": "L'Arctique se réchauffe 3 à 4× plus vite. La banquise a perdu 36% de surface depuis les années 1980."
+    },
+    {
+      "id": "gq14",
+      "q": "Combien de tonnes de cocaïne ont été saisies à Anvers en 2023 ?",
+      "opts": [
+        "121 tonnes",
+        "80 tonnes",
+        "200 tonnes",
+        "45 tonnes"
+      ],
+      "ans": 0,
+      "exp": "121 tonnes en 2023 (116 à Anvers + 5 à Zeebrugge). Anvers traite 8,5M EVP/an, seul 5% des conteneurs sont contrôlés."
+    },
+    {
+      "id": "gq15",
+      "q": "La fonte de la banquise fait-elle monter le niveau des mers ?",
+      "opts": [
+        "Non — elle flotte déjà",
+        "Oui — directement",
+        "Oui — indirectement",
+        "Non — elle est trop petite"
+      ],
+      "ans": 0,
+      "exp": "Non. La banquise flotte déjà dans l'eau (comme des glaçons dans un verre). C'est la fonte de l'inlandsis (glace sur la terre) qui fait monter les mers."
+    },
+    {
+      "id": "gq17",
+      "q": "Combien de pays fondateurs comptait la Zone euro en 1999 ?",
+      "opts": [
+        "15",
+        "20",
+        "11",
+        "9"
+      ],
+      "ans": 2,
+      "exp": "11 pays fondateurs en 1999 : Allemagne, Autriche, Belgique, Espagne, Finlande, France, Irlande, Italie, Luxembourg, Pays-Bas, Portugal. La Croatie est le 20e membre (2023)."
+    },
+    {
+      "id": "gq20",
+      "q": "Quel pourcentage des réserves mondiales de gaz non découvertes se trouve en Arctique ?",
+      "opts": [
+        "10%",
+        "13%",
+        "20%",
+        "30%"
+      ],
+      "ans": 3,
+      "exp": "L'Arctique recèle ~30% des réserves mondiales de gaz naturel non découvertes et ~13% des réserves de pétrole. Gisements offshore coûteux à exploiter."
+    },
+    {
+      "id": "gq21",
+      "q": "Quelle route arctique longe les côtes russes ?",
+      "opts": [
+        "Route du Nord-Ouest",
+        "Route Polaire",
+        "Route du Nord-Est",
+        "Route de la Sibérie"
+      ],
+      "ans": 2,
+      "exp": "La Route du Nord-Est (ou passage du Nord-Est) longe les côtes de la Sibérie russe. La Route du Nord-Ouest longe les côtes canadiennes."
+    },
+    {
+      "id": "gq22",
+      "q": "De combien de pourcentage les routes arctiques réduisent-elles les distances par rapport à Suez ou Panama ?",
+      "opts": [
+        "10 à 15%",
+        "20 à 25%",
+        "30 à 40%",
+        "50 à 60%"
+      ],
+      "ans": 2,
+      "exp": "Les routes arctiques réduisent les distances de 30 à 40% par rapport aux routes traditionnelles (Suez, Panama). Enjeu commercial et stratégique majeur."
+    },
+    {
+      "id": "gq23",
+      "q": "En quelle année la Russie a-t-elle planté un drapeau au fond de l'océan Arctique pour revendiquer ses ressources ?",
+      "opts": [
+        "2001",
+        "2004",
+        "2007",
+        "2012"
+      ],
+      "ans": 2,
+      "exp": "En 2007, la Russie a planté un drapeau en titane au fond de l'Arctique pour symboliser sa revendication d'extension du plateau continental au-delà des 200 milles de ZEE."
+    },
+    {
+      "id": "gq24",
+      "q": "Parmi les composants de la cryosphère, lequel est un SOL gelé (pas de la glace) ?",
+      "opts": [
+        "Banquise",
+        "Inlandsis",
+        "Pergélisol",
+        "Toundra"
+      ],
+      "ans": 2,
+      "exp": "Le pergélisol est un SOL gelé en permanence (≥2 ans). La banquise = mer gelée. L'inlandsis = glace sur terre. La toundra = biome (végétation)."
+    },
+    {
+      "id": "gq25",
+      "q": "Combien d'hectares de coca la Colombie cultivait-elle en 1999 ?",
+      "opts": [
+        "40 000 ha",
+        "100 000 ha",
+        "170 000 ha",
+        "250 000 ha"
+      ],
+      "ans": 2,
+      "exp": "170 000 ha en 1999, après l'effet ballon provoqué par le programme Air Bridge Denial. La Colombie est devenue le premier producteur mondial de cocaïne dès les années 1980."
+    },
+    {
+      "id": "gq26",
+      "q": "En 1998, combien de tonnes de cocaïne arrivaient en Europe ?",
+      "opts": [
+        "124 tonnes",
+        "45 tonnes",
+        "63 tonnes",
+        "200 tonnes"
+      ],
+      "ans": 2,
+      "exp": "En 1998 : 63 tonnes vers l'Europe vs 67 tonnes vers les USA. En 2008, le volume vers l'Europe avait doublé et l'Afrique de l'Ouest était devenue un transit majeur."
+    },
+    {
+      "id": "gq27",
+      "q": "Quel pays est le centre de commande du trafic de drogue en Afrique subsaharienne ?",
+      "opts": [
+        "Maroc",
+        "Venezuela",
+        "Nigéria",
+        "Haïti"
+      ],
+      "ans": 2,
+      "exp": "Le Nigeria est le centre de commande et de contrôle du trafic en Afrique subsaharienne. L'Afrique de l'Ouest est devenue un hub majeur du transit de cocaïne vers l'Europe."
+    },
+    {
+      "id": "gq28",
+      "q": "Quelle est la taille standard des grains de sable utilisable en construction ?",
+      "opts": [
+        "0,001 à 0,05 mm",
+        "0,063 à 2 mm",
+        "2 à 5 mm",
+        "5 à 20 mm"
+      ],
+      "ans": 1,
+      "exp": "Le sable se définit par des grains de 0,063 à 2 mm. En dessous : limon ou argile. Au-dessus : gravier. Les grains doivent être anguleux (rivière, mer) pour adhérer dans le béton."
+    },
+    {
+      "id": "gq29",
+      "q": "Quel format suit l'oral de géographie au 15/06/2026 ?",
+      "opts": [
+        "4pts vocab + 6pts analyse + 6pts interprétation + 1pt mondialisation + 3pts discours",
+        "10pts QCM + 10pts essai",
+        "5 questions de cours + 5 questions d'application",
+        "1 carte + 3 questions ouvertes"
+      ],
+      "ans": 0,
+      "exp": "Format officiel Ganty : 4pts vocabulaire + 6pts analyse de document (A/B/C) + 6pts interprétation + 1pt mondialisation + 3pts discours = 20 pts."
+    },
+    {
+      "id": "gq31",
+      "q": "Qu'est-ce que l'albédo dans le contexte de l'Arctique ?",
+      "opts": [
+        "La salinité de l'eau arctique",
+        "La capacité d'une surface à réfléchir la lumière solaire",
+        "Le volume de glace flottante",
+        "La vitesse du Gulf Stream"
+      ],
+      "ans": 1,
+      "exp": "L'albédo = capacité de réflexion de la lumière. La glace blanche a un albédo élevé. Quand la banquise fond, les eaux sombres exposées absorbent plus de chaleur → boucle de rétroaction."
+    },
+    {
+      "id": "gq33",
+      "q": "Combien d'EVP le port d'Anvers traite-t-il par an ?",
+      "opts": [
+        "4,2 millions",
+        "8,5 millions",
+        "12 millions",
+        "6,3 millions"
+      ],
+      "ans": 1,
+      "exp": "8,5 millions d'EVP par an. Anvers est le 2e port européen (après Rotterdam) et le 13e port mondial. Ce volume immense rend impossible le contrôle de tous les conteneurs."
+    },
+    {
+      "id": "gq34",
+      "q": "Quel est le prix au kg de cocaïne en 2024 ?",
+      "opts": [
+        "~28 000 €",
+        "~50 000 €",
+        "~14 000 – 17 000 €",
+        "~5 000 €"
+      ],
+      "ans": 2,
+      "exp": "~14 000–17 000 € en 2024 contre ~28 000 € en 2019. La baisse s'explique par l'offre qui augmente plus vite que la demande, même si les saisies augmentent."
+    },
+    {
+      "id": "gq35",
+      "q": "Vers quelle année est projeté le premier été sans banquise en Arctique ?",
+      "opts": [
+        "2050",
+        "2045",
+        "Vers 2030",
+        "2100"
+      ],
+      "ans": 2,
+      "exp": "Les projections indiquent qu'il n'y aura plus de banquise certains mois à partir de 2030. La surface a déjà diminué de 2,5 M km² (36%) depuis les années 1980."
+    }
   ]
 }

@@ -1,0 +1,473 @@
+{
+  "generated": "2026-06-08T16:44:13",
+  "synced_by": "Claude Sonnet 4.6",
+  "subjects": {
+    "geo": {
+      "name": "Géographie",
+      "exam": "2026-06-15",
+      "type": "Oral",
+      "color": "#005703",
+      "emoji": "🌍",
+      "checklist": {
+        "total": 70,
+        "pct": 19,
+        "counts": {
+          "ok": 7,
+          "partial": 12,
+          "gap": 2,
+          "untested": 49
+        }
+      }
+    },
+    "philo": {
+      "name": "Philosophie",
+      "exam": "2026-06-16",
+      "type": "Écrit",
+      "color": "#CC5A00",
+      "emoji": "🧠",
+      "checklist": {
+        "total": 43,
+        "pct": 17,
+        "counts": {
+          "ok": 4,
+          "partial": 7,
+          "gap": 0,
+          "untested": 32
+        }
+      }
+    },
+    "bio": {
+      "name": "Biologie",
+      "exam": "2026-06-17",
+      "type": "Écrit",
+      "color": "#00CC03",
+      "emoji": "🧬",
+      "checklist": {
+        "total": 59,
+        "pct": 3,
+        "counts": {
+          "ok": 0,
+          "partial": 3,
+          "gap": 0,
+          "untested": 56
+        }
+      }
+    },
+    "maths": {
+      "name": "Mathématiques",
+      "exam": "2026-06-19",
+      "type": "Oral",
+      "color": "#CC00C8",
+      "emoji": "📐",
+      "checklist": {
+        "total": 40,
+        "pct": 0,
+        "counts": {
+          "ok": 0,
+          "partial": 0,
+          "gap": 0,
+          "untested": 40
+        }
+      }
+    },
+    "francais": {
+      "name": "Français",
+      "exam": "2026-06-22",
+      "type": "Oral",
+      "color": "#F0C000",
+      "emoji": "📚",
+      "checklist": {
+        "total": 45,
+        "pct": 22,
+        "counts": {
+          "ok": 2,
+          "partial": 16,
+          "gap": 5,
+          "untested": 22
+        }
+      }
+    },
+    "chimie": {
+      "name": "Chimie",
+      "exam": "2026-06-23",
+      "type": "Oral",
+      "color": "#9124FF",
+      "emoji": "⚗️",
+      "checklist": {
+        "total": 29,
+        "pct": 0,
+        "counts": {
+          "ok": 0,
+          "partial": 0,
+          "gap": 0,
+          "untested": 29
+        }
+      }
+    }
+  },
+  "planning": [
+    {
+      "date": "8/06",
+      "day": "Dim",
+      "fullDate": "2026-06-08",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "Organisation + lecture planning"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "App Philo : toutes les flashcards non vues (35 cartes)"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Géo : revoir les 16 cartes B1 + lire synthèse géo"
+        }
+      ]
+    },
+    {
+      "date": "9/06",
+      "day": "Lun",
+      "fullDate": "2026-06-09",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "Contrôle bio C2 à froid (vrai programme Ch3-Ch7)"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "App Géo + App Philo"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Lire fiche a-etudier-bio après correction C2"
+        }
+      ]
+    },
+    {
+      "date": "10/06",
+      "day": "Mar",
+      "fullDate": "2026-06-10",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "Contrôle Géo C3 + App Philo sweep"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "Bio Ch3+Ch4 — ADN / Mutations"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Philo toutes cartes + App Géo"
+        }
+      ]
+    },
+    {
+      "date": "11/06",
+      "day": "Mer",
+      "fullDate": "2026-06-11",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "App Géo sweep + Contrôle Philo C4"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "Bio Ch5+Ch6 — Cellule + Cycle cellulaire"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Lire fiche philo + App Bio"
+        }
+      ]
+    },
+    {
+      "date": "12/06",
+      "day": "Jeu",
+      "fullDate": "2026-06-12",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "App Géo + App Philo lacunes"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "Bio Ch7 Transport + Contrôle bio C3"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Bio toutes cartes"
+        }
+      ]
+    },
+    {
+      "date": "13/06",
+      "day": "Ven",
+      "fullDate": "2026-06-13",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "Sweep Géo final (toutes les cartes)"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "Sweep Philo final"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Bio + relecture synthèse géo légère"
+        }
+      ]
+    },
+    {
+      "date": "14/06",
+      "day": "Sam",
+      "fullDate": "2026-06-14",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "Relecture légère synthèse Géo uniquement"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "App Bio + App Philo"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Repos — pas de révision intensive"
+        }
+      ]
+    },
+    {
+      "date": "15/06",
+      "day": "Lun",
+      "fullDate": "2026-06-15",
+      "isExam": true,
+      "examColor": "#005703",
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏫",
+          "text": "EXAMEN GÉOGRAPHIE — Oral"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Bio + relecture fiche Philo légère"
+        }
+      ]
+    },
+    {
+      "date": "16/06",
+      "day": "Mar",
+      "fullDate": "2026-06-16",
+      "isExam": true,
+      "examColor": "#CC5A00",
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏫",
+          "text": "EXAMEN PHILOSOPHIE — Écrit"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Maths + App Chimie début"
+        }
+      ]
+    },
+    {
+      "date": "17/06",
+      "day": "Mer",
+      "fullDate": "2026-06-17",
+      "isExam": true,
+      "examColor": "#00CC03",
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏫",
+          "text": "EXAMEN BIOLOGIE — Écrit"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Maths intensif + App Chimie"
+        }
+      ]
+    },
+    {
+      "date": "18/06",
+      "day": "Jeu",
+      "fullDate": "2026-06-18",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Journée",
+          "place": "🏠",
+          "text": "Maths C1 + Chimie Ch1 organique + App Français"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Lire fiche maths C1"
+        }
+      ]
+    },
+    {
+      "date": "19/06",
+      "day": "Ven",
+      "fullDate": "2026-06-19",
+      "isExam": true,
+      "examColor": "#CC00C8",
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏫",
+          "text": "EXAMEN MATHÉMATIQUES — Oral"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "App Français intensif + App Chimie"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Lire fiche Français"
+        }
+      ]
+    },
+    {
+      "date": "20/06",
+      "day": "Sam",
+      "fullDate": "2026-06-20",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "Contrôle Français + App Chimie"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "Chimie Ch2 thermochimie"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "App Français + App Chimie"
+        }
+      ]
+    },
+    {
+      "date": "21/06",
+      "day": "Dim",
+      "fullDate": "2026-06-21",
+      "isExam": false,
+      "examColor": null,
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏠",
+          "text": "Relecture légère fiche Français uniquement"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "App Chimie sweep"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Repos"
+        }
+      ]
+    },
+    {
+      "date": "22/06",
+      "day": "Lun",
+      "fullDate": "2026-06-22",
+      "isExam": true,
+      "examColor": "#F0C000",
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏫",
+          "text": "EXAMEN FRANÇAIS — Oral"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Relecture légère Chimie"
+        }
+      ]
+    },
+    {
+      "date": "23/06",
+      "day": "Mar",
+      "fullDate": "2026-06-23",
+      "isExam": true,
+      "examColor": "#9124FF",
+      "tasks": [
+        {
+          "time": "Matin",
+          "place": "🏫",
+          "text": "EXAMEN CHIMIE — Oral"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "Fin des examens !"
+        }
+      ]
+    }
+  ],
+  "next_exam": {
+    "subject": "geo",
+    "name": "Géographie",
+    "date": "2026-06-15",
+    "type": "Oral",
+    "color": "#005703",
+    "emoji": "🌍",
+    "days": 7
+  }
+}

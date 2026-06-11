@@ -1,0 +1,298 @@
+{
+  "flashcards": [
+    {
+      "id": "vf1",
+      "cat": "Cinéma — Unités de base",
+      "term": "Plan",
+      "def": "Unité de base du cinéma : série d'images enregistrées lors d'une même prise, entre « Moteur » et « Coupez ».\nPlusieurs prises peuvent exister pour un même plan.",
+      "ex": "Une scène de dialogue peut être tournée en 10 prises — le réalisateur choisit la meilleure au montage."
+    },
+    {
+      "id": "vf2",
+      "cat": "Cinéma — Unités de base",
+      "term": "Séquence",
+      "def": "Ensemble de plans constituant une unité narrative (une scène).\nQuand une séquence = un seul long plan continu : plan-séquence.",
+      "ex": "La séquence de l'escalier d'Odessa dans Cuirassé Potemkine est composée de dizaines de plans rapides."
+    },
+    {
+      "id": "vf3",
+      "cat": "Cinéma — Unités de base",
+      "term": "Plan-séquence",
+      "def": "Séquence filmée en un seul plan continu, sans coupe.\nExige précision de la mise en scène et des acteurs.",
+      "ex": "L'ouverture d'Atonement (Expiation, 2007) est un célèbre plan-séquence de 5 minutes à Dunkerque."
+    },
+    {
+      "id": "vf4",
+      "cat": "Cinéma — Champ",
+      "term": "Champ",
+      "def": "L'espace que la caméra filme, visible à l'écran (délimité par le cadre).",
+      "ex": "Dans un champ/contre-champ de dialogue, chaque personnage est dans son propre champ."
+    },
+    {
+      "id": "vf5",
+      "cat": "Cinéma — Champ",
+      "term": "Hors-champ",
+      "def": "Espace contigu au champ, non visible à l'écran mais suggéré (par un regard, un son).\nLaisse place à l'imagination du spectateur — « champ potentiel ».",
+      "ex": "Un personnage regarde fixement vers la droite : ce qu'il regarde est hors-champ — on l'imagine."
+    },
+    {
+      "id": "vf6",
+      "cat": "Cinéma — Champ",
+      "term": "Contre-champ",
+      "def": "Champ spatialement opposé au champ précédent.\nBase du dialogue filmé : alternance champ/contre-champ.",
+      "ex": "Personne A parle (champ) → caméra pivote → personne B écoute (contre-champ) → alternance."
+    },
+    {
+      "id": "vf7",
+      "cat": "Cinéma — Champ",
+      "term": "Profondeur de champ",
+      "def": "Portion d'espace nette à l'image.\nGrande profondeur = raconter plusieurs choses simultanément (proche et lointain nets).\nPetite profondeur = isoler un sujet (fond flou).",
+      "ex": "Portrait avec fond flou = petite profondeur de champ (sujet isolé). Paysage net de près à loin = grande profondeur."
+    },
+    {
+      "id": "vf8",
+      "cat": "Cinéma — Champ",
+      "term": "Hors-cadre",
+      "def": "Espace extérieur à la diégèse : ce qui ne fait pas partie du film lui-même (la caméra, l'équipe, le réalisateur).",
+      "ex": "Quand un acteur regarde la caméra, il regarde vers le hors-cadre — brise la fiction."
+    },
+    {
+      "id": "vf9",
+      "cat": "Cinéma — Champ",
+      "term": "Amorce",
+      "def": "Personnage de dos, flou, en bord de cadre — permet d'imaginer le hors-champ.\nDonne de la profondeur à la composition sans tout montrer.",
+      "ex": "Un bras flou en bas de cadre en gros plan sur un visage : crée une impression de proximité et d'intimité."
+    },
+    {
+      "id": "vf10",
+      "cat": "Cinéma — Cadrage",
+      "term": "Cadre",
+      "def": "Surface matérielle de l'image — la fenêtre rectangulaire qui délimite ce qu'on voit.",
+      "ex": "Le format 16:9 est le cadre standard moderne. Le format Cinémascope (2,35:1) donne un cadre plus large."
+    },
+    {
+      "id": "vf11",
+      "cat": "Cinéma — Cadrage",
+      "term": "Cadrage",
+      "def": "Organisation plastique de l'image : profondeur de champ, échelle des plans, angles, mouvements, lumière.\nChoix artistique qui produit des effets sur le spectateur.",
+      "ex": "Cadrer un personnage en contre-plongée le fait paraître grand et imposant."
+    },
+    {
+      "id": "vf12",
+      "cat": "Cinéma — Échelles de plan",
+      "term": "Plan général",
+      "def": "Cadre un vaste ensemble situant le décor. Personnages peu identifiables.\nEstablit le contexte géographique ou spatial.",
+      "ex": "Ouverture sur une ville en plan général pour montrer que l'action se passe à Paris."
+    },
+    {
+      "id": "vf13",
+      "cat": "Cinéma — Échelles de plan",
+      "term": "Plan d'ensemble",
+      "def": "Cadre l'ensemble du décor, personnages identifiables mais encore petits.",
+      "ex": "Vue d'une salle de classe entière : on identifie les personnages mais sans détails du visage."
+    },
+    {
+      "id": "vf14",
+      "cat": "Cinéma — Échelles de plan",
+      "term": "Plan moyen",
+      "def": "Cadre le personnage de la tête aux pieds.\nPermet de voir les gestes et les postures complètes.",
+      "ex": "Plan moyen d'un acteur qui marche : on voit tout le corps, le mouvement, l'environnement immédiat."
+    },
+    {
+      "id": "vf15",
+      "cat": "Cinéma — Échelles de plan",
+      "term": "Plan américain",
+      "def": "Cadre le personnage de la tête à mi-cuisse.\nOrigine : westerns américains — permet de voir les revolvers.",
+      "ex": "Les duels de western sont souvent en plan américain pour montrer les mains et les armes."
+    },
+    {
+      "id": "vf16",
+      "cat": "Cinéma — Échelles de plan",
+      "term": "Gros plan",
+      "def": "Isole le visage d'un personnage (ou un objet de même taille).\nMet en valeur les émotions, les détails expressifs.",
+      "ex": "Gros plan sur les yeux d'un acteur lors d'une révélation : on lit directement son émotion."
+    },
+    {
+      "id": "vf17",
+      "cat": "Cinéma — Échelles de plan",
+      "term": "Très gros plan",
+      "def": "Isole un détail très précis d'un personnage ou d'un objet (œil, bouche, doigt, détail).\nFocalise toute l'attention sur un élément signifiant.",
+      "ex": "Très gros plan sur une main qui tremble — signe de peur ou de maladie."
+    },
+    {
+      "id": "vf18",
+      "cat": "Cinéma — Angles",
+      "term": "Plongée",
+      "def": "Caméra au-dessus du sujet, orientée vers le bas.\nEffet : domine le sujet filmé, le diminue, le fragilise.",
+      "ex": "Plongée sur un personnage seul dans une foule hostile → il paraît vulnérable et écrasé."
+    },
+    {
+      "id": "vf19",
+      "cat": "Cinéma — Angles",
+      "term": "Contre-plongée",
+      "def": "Caméra en dessous du sujet, orientée vers le haut.\nEffet : met en valeur le sujet, le grandit — peut induire inquiétude si très accentuée.",
+      "ex": "Contre-plongée sur un super-héros : il domine le cadre, impression de puissance."
+    },
+    {
+      "id": "vf20",
+      "cat": "Cinéma — Mouvements",
+      "term": "Panoramique",
+      "def": "La caméra reste sur un pied et pivote sur son axe (horizontal, vertical ou les deux).\nDifférent du travelling : la caméra ne se déplace pas.",
+      "ex": "Panoramique horizontal pour suivre un personnage qui marche, ou pour révéler un paysage."
+    },
+    {
+      "id": "vf21",
+      "cat": "Cinéma — Mouvements",
+      "term": "Travelling",
+      "def": "La caméra se déplace physiquement (sur rails, chariot, épaule).\nAvant (rapproche) · arrière (éloigne) · latéral (déplace sans changer l'angle) · accompagnement.",
+      "ex": "Travelling arrière sur un personnage qui reste immobile : l'environnement s'agrandit, sentiment d'isolement."
+    },
+    {
+      "id": "vf22",
+      "cat": "Cinéma — Mouvements",
+      "term": "Zoom (travelling optique)",
+      "def": "La caméra reste fixe mais l'objectif à focale variable modifie l'échelle du plan.\nDifférence : le zoom ne déplace pas la caméra, le travelling si.",
+      "ex": "Le zoom avant crée un effet de rapprochement plus « artificiel » que le travelling avant."
+    },
+    {
+      "id": "vf23",
+      "cat": "Cinéma — Montage",
+      "term": "Montage",
+      "def": "Organisation et découpage des plans pour donner sens, rythme et effets à l'histoire.\nChoix fondamental du cinéaste : quel plan après quel plan, pour quel effet ?",
+      "ex": "Même scène montée différemment = film radicalement différent (Hitchcock l'a démontré avec le montage Kuleshov)."
+    },
+    {
+      "id": "vf24",
+      "cat": "Cinéma — Montage",
+      "term": "Montage alterné",
+      "def": "Alternance de plans de deux séquences simultanées dans des lieux différents.\nSuggère que deux actions se déroulent en même temps.",
+      "ex": "Poursuite en voiture + victime qui attend → montage alterné → tension : arriveront-ils à temps ?"
+    },
+    {
+      "id": "vf25",
+      "cat": "Cinéma — Montage",
+      "term": "Flash-back",
+      "def": "Retour en arrière dans le temps de la narration.\nPermet de révéler le passé d'un personnage ou d'expliquer une situation présente.",
+      "ex": "Signs (Shyamalan) utilise des flash-backs pour révéler progressivement le trauma du personnage principal."
+    },
+    {
+      "id": "vf26",
+      "cat": "Cinéma — Montage",
+      "term": "Ellipse",
+      "def": "Saut temporel dans la narration : un laps de temps est passé sous silence.\nPermet d'accélérer le récit en omettant les moments sans intérêt dramatique.",
+      "ex": "Fondu au noir + titre « 3 ans plus tard » : ellipse de 3 ans."
+    },
+    {
+      "id": "vf27",
+      "cat": "Cinéma — Montage",
+      "term": "Fondu au noir",
+      "def": "Disparition progressive de l'image dans le noir — (inverse : ouverture au noir).\nPonctuation visuelle qui marque la fin d'une séquence ou une ellipse.",
+      "ex": "Fin d'un chapitre narratif → fondu au noir → nouvelle scène : suggère un saut de temps."
+    },
+    {
+      "id": "vf28",
+      "cat": "Cinéma — Montage",
+      "term": "Fondu enchaîné",
+      "def": "La première image disparaît pendant que la seconde apparaît en surimpression.\nDoubler les images = suggérer une connexion, un passage entre deux moments.",
+      "ex": "Fondu enchaîné sur un visage qui vieillit : symbolise le passage du temps."
+    },
+    {
+      "id": "vf29",
+      "cat": "Cinéma — Montage",
+      "term": "Raccord",
+      "def": "Enchaînement cohérent entre deux plans (regard, mouvement, axe, direction, champ/contre-champ).\nUn mauvais raccord brise l'illusion et désoriente le spectateur.",
+      "ex": "Raccord regard : on voit un personnage regarder (plan 1), puis ce qu'il regarde (plan 2) — logique et fluide."
+    },
+    {
+      "id": "vf30",
+      "cat": "Cinéma — Son",
+      "term": "Diégèse",
+      "def": "L'univers fictif du film : tout ce qui existe à l'intérieur de la fiction.\nDiégétique = appartient à l'univers du film · extradiégétique = extérieur (musique de fond, voix off).",
+      "ex": "Un personnage qui joue du piano à l'écran : son diégétique. Musique ajoutée en post-production : extradiégétique."
+    },
+    {
+      "id": "vf31",
+      "cat": "Cinéma — Son",
+      "term": "Voix in",
+      "def": "On voit ET on entend le personnage présent à l'image.\nSon diégétique direct.",
+      "ex": "Acteur qui parle face caméra : voix in — la source du son est visible."
+    },
+    {
+      "id": "vf32",
+      "cat": "Cinéma — Son",
+      "term": "Voix off",
+      "def": "Voix d'un narrateur non présent à l'écran — extérieur à la diégèse.\nPermet un commentaire ou une narration extérieure à l'action.",
+      "ex": "Le narrateur adulte dans Stand By Me commente ses souvenirs d'enfance en voix off."
+    },
+    {
+      "id": "vf33",
+      "cat": "Cinéma — Son",
+      "term": "Voix hors-champ",
+      "def": "Voix d'un personnage qui existe dans la diégèse mais n'est pas visible à l'image.\nDifférence avec voix off : le personnage EST dans le film, juste hors du cadre.",
+      "ex": "Un personnage répond depuis une autre pièce : voix hors-champ (il existe dans l'univers du film)."
+    },
+    {
+      "id": "vf34",
+      "cat": "Histoire littéraire",
+      "term": "Humanisme",
+      "def": "Courant intellectuel de la Renaissance (XIVe–XVIe s.) centré sur la dignité, la raison et le potentiel de l'être humain.\nRetour à l'Antiquité gréco-latine, curiosité universelle, développement des sciences et des arts.",
+      "ex": "Érasme, Rabelais, Montaigne : figures de l'humanisme qui pensaient que l'homme pouvait se perfectionner par l'éducation."
+    },
+    {
+      "id": "vf35",
+      "cat": "Histoire littéraire",
+      "term": "Renaissance",
+      "def": "Période historique et culturelle (XIVe–XVIe s.) marquant la « renaissance » de l'art et de la pensée antiques.\nCaractérisée par l'imprimerie, les grandes découvertes, l'héliocentrisme, la perspective.",
+      "ex": "Léonard de Vinci incarne la Renaissance : peintre, scientifique, ingénieur — l'homme universel (microcosme-macrocosme)."
+    },
+    {
+      "id": "vf36",
+      "cat": "Histoire littéraire",
+      "term": "La Pléiade",
+      "def": "Groupe de 7 poètes français du XVIe s., partisans d'une renaissance de la langue française.\nChef de file : Ronsard. Mission : défendre et illustrer le français contre le latin.",
+      "ex": "Du Bellay publie « Défense et Illustration de la langue française » (1549) — manifeste de la Pléiade."
+    },
+    {
+      "id": "vf37",
+      "cat": "Histoire littéraire",
+      "term": "Utopie",
+      "def": "Société idéale imaginaire écrite, dans un lieu clos (île, abbaye, ville) — communautaire, humaniste, égalitaire.\nSert à critiquer la société réelle par contraste. Du grec : ou-topos = « nulle part ».",
+      "ex": "L'Abbaye de Thélème chez Rabelais, l'île d'Utopia chez Thomas More : lieux utopiques de la Renaissance."
+    },
+    {
+      "id": "vf38",
+      "cat": "Histoire littéraire",
+      "term": "Dystopie",
+      "def": "Société future cauchemardesque — version sombre et critique de la société actuelle poussée à l'extrême.\nInverse de l'utopie : met en garde contre certaines dérives.",
+      "ex": "1984 (Orwell), Fahrenheit 451 (Bradbury), Le Meilleur des mondes (Huxley) : dystopies classiques."
+    },
+    {
+      "id": "vf39",
+      "cat": "Histoire littéraire",
+      "term": "Les Lumières",
+      "def": "Mouvement philosophique du XVIIe–XVIIIe s. fondé sur la raison, le progrès et la critique des institutions.\n4 piliers selon Todorov : autonomie, désacralisation, universalité, perfectibilité humaine.",
+      "ex": "Voltaire, Rousseau, Montesquieu, Diderot : figures des Lumières qui préparent la Révolution française (1789)."
+    },
+    {
+      "id": "vf40",
+      "cat": "Histoire littéraire",
+      "term": "L'Encyclopédie",
+      "def": "Grande œuvre des Lumières dirigée par Diderot et d'Alembert (1751–1772).\n28 volumes répertoriant tous les savoirs humains — outil révolutionnaire contre l'obscurantisme.",
+      "ex": "L'Encyclopédie diffuse les idées des Lumières à travers toute l'Europe lettrée."
+    },
+    {
+      "id": "vf41",
+      "cat": "Analyse littéraire",
+      "term": "Thèse",
+      "def": "Position défendue dans une analyse ou un essai.\nDoit être défendable, argumentée et soutenue par des exemples précis.",
+      "ex": "Thèse : « Le choix du point de vue de la mère dans Mexico 86 renforce l'empathie du spectateur. »"
+    },
+    {
+      "id": "vf42",
+      "cat": "Analyse littéraire",
+      "term": "Connecteurs logiques",
+      "def": "Mots ou expressions qui organisent la progression d'un argument (cause, conséquence, opposition, addition…).\nEssentiels pour que les idées s'enchaînent avec une logique visible.",
+      "ex": "Ainsi, en effet, par conséquent, or, cependant, qui plus est, à l'inverse, c'est pourquoi…"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "controle-philo-04",
+  "matiere": "philo",
+  "numero": 4,
+  "titre": "Philosophie — Aristote : éthique, vertu et politique",
+  "date_generation": "2026-06-10",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Explique le concept de médieté chez Aristote. Pourquoi le courage est-il une vertu et non la témérité ou la lâcheté ? Donne un autre exemple.",
+      "concepts": ["médieté", "juste milieu", "vice", "vertu", "excès", "défaut", "courage", "contexte"]
+    },
+    {
+      "id": "q2",
+      "texte": "Qu'est-ce que la phronesis ? Pourquoi Aristote pense-t-il qu'on ne peut pas être vertueux sans expérience ?",
+      "concepts": ["phronesis", "prudence", "sagesse pratique", "contextualisation", "délibération", "expérience", "conséquences"]
+    },
+    {
+      "id": "q3",
+      "texte": "Aristote dit que vertu et vice présupposent la liberté. Qu'est-ce que ça veut dire ? Utilise l'exemple d'Eichmann pour illustrer.",
+      "concepts": ["liberté", "responsabilité", "vertu", "vice", "Eichmann", "Sartre", "obéissance aux ordres"]
+    },
+    {
+      "id": "q4",
+      "texte": "Pour Aristote, la justice n'est pas l'égalité mais l'équité. Explique cette distinction avec un exemple concret.",
+      "concepts": ["justice", "équité", "égalité arithmétique", "impôt", "donner selon ses capacités", "recevoir selon ses besoins"]
+    },
+    {
+      "id": "q5",
+      "texte": "Compare la vision de Platon et celle d'Aristote sur la connaissance et sur la politique. En quoi s'opposent-ils fondamentalement ?",
+      "concepts": ["Platon vs Aristote", "Idées → choses", "choses → idées", "despotisme éclairé", "démocratie", "épistémè", "expérience", "L'École d'Athènes"]
+    }
+  ]
+}

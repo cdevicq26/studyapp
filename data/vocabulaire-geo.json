@@ -1,0 +1,346 @@
+{
+  "flashcards": [
+    {
+      "id": "vg1", "cat": "Méthode",
+      "term": "DIPP",
+      "def": "Division Internationale des Processus Productifs.\nFragmentation de la chaîne de production d'un bien à l'INTERNATIONAL.\nChaque étape est localisée là où les avantages comparatifs sont les plus grands :\n• Main-d'œuvre\n• Ressources naturelles\n• Fiscalité\n• Infrastructures",
+      "ex": "iPhone : conçu aux USA, composants fabriqués en Asie, assemblé en Chine. Cocaïne : produite en Colombie, transformée en route, distribuée à Anvers. Même logique économique."
+    },
+    {
+      "id": "vg2", "cat": "Méthode",
+      "term": "Site",
+      "def": "Lieu défini par ses caractéristiques PHYSIQUES :\n• Terrain\n• Accès à l'eau\n• Relief\n• Ressources naturelles à proximité\nC'est ce que le lieu EST en lui-même.",
+      "ex": "Anvers = site fluvial, à l'embouchure de l'Escaut, reliée à la mer du Nord. Ce site physique explique pourquoi un port s'y est développé."
+    },
+    {
+      "id": "vg3", "cat": "Méthode",
+      "term": "Situation",
+      "def": "Position RELATIVE d'un lieu par rapport à son environnement géographique :\n• Autres villes\n• Routes commerciales\n• Marchés\n• Frontières\nC'est ce que le lieu EST par rapport aux autres.",
+      "ex": "Anvers = au croisement des routes maritimes d'Europe du Nord-Ouest, au cœur d'un hinterland de 180 millions de consommateurs. Site + situation = avantage compétitif majeur."
+    },
+    {
+      "id": "vg4", "cat": "Méthode",
+      "term": "Effet ballon",
+      "def": "Mécanisme où une PRESSION RÉPRESSIVE dans un lieu déplace une activité vers un autre lieu, SANS réduire le volume global.\nComme un ballon : appuyer d'un côté le fait gonfler ailleurs.",
+      "ex": "Lutte antidrogue USA en Bolivie/Pérou → production se déplace en Colombie (40 000 → 170 000 ha de coca). La production mondiale n'a pas baissé — elle s'est juste déplacée."
+    },
+    {
+      "id": "vg5", "cat": "Méthode",
+      "term": "Géopolitique",
+      "def": "Étude des relations entre :\n• La GÉOGRAPHIE (espace, ressources, frontières, routes)\n• La POLITIQUE internationale (États, alliances, conflits)\nAnalyse comment l'espace influence les rapports de pouvoir.",
+      "ex": "Les revendications des 5 États riverains sur les ressources arctiques : qui contrôle la ZEE → qui contrôle le pétrole et les routes. La géographie détermine la politique."
+    },
+    {
+      "id": "vg6", "cat": "Méthode",
+      "term": "Boucle de rétroaction",
+      "def": "Mécanisme où un EFFET amplifie sa propre CAUSE, créant une spirale auto-entretenue.\nPeut être positive (amplificatrice) ou négative (régulatrice).\nTrès utilisée pour analyser les systèmes complexes.",
+      "ex": "Réchauffement climatique → banquise fond → albédo diminue (moins de blanc réfléchissant) → océan absorbe plus de chaleur → encore plus de réchauffement. Cercle vicieux."
+    },
+    {
+      "id": "vg7", "cat": "Méthode",
+      "term": "Schéma systémique",
+      "def": "Outil d'analyse géographique : carte mentale reliant entre eux :\n• La ressource (définition, nature)\n• Les acteurs (producteurs, États, firmes, consommateurs)\n• Les flux (routes, échanges)\n• Les enjeux (conflits, pouvoir, durabilité)",
+      "ex": "Outil central du cours Ganty pour analyser pétrole, sable, cocaïne, Arctique. Permet de voir les interactions et non juste les éléments isolés."
+    },
+    {
+      "id": "vg8", "cat": "Europe",
+      "term": "Union européenne",
+      "def": "Association de 27 ÉTATS qui délèguent des compétences à des institutions communes.\nFondée par le Traité de Rome (1957).\nObjectifs : marché commun, libre circulation, monnaie unique (zone euro), coopération politique.",
+      "ex": "27 membres depuis le Brexit (2020). Pas tous dans la zone euro ni dans Schengen. L'UE est à la fois une réalité économique ET politique — cas unique au monde."
+    },
+    {
+      "id": "vg9", "cat": "Europe",
+      "term": "Zone euro",
+      "def": "20 États utilisant l'EURO comme monnaie commune.\nPolitique monétaire gérée par la BCE (Banque Centrale Européenne) à Francfort.\nCréée en 1999 par 11 pays fondateurs.",
+      "ex": "Belgique ✓ dans la zone euro · Pologne ✗ (hors zone euro, conserve le zloty). Tous les membres de l'UE ne sont pas forcément dans la zone euro."
+    },
+    {
+      "id": "vg10", "cat": "Europe",
+      "term": "Espace Schengen",
+      "def": "Zone de LIBRE CIRCULATION sans contrôle aux frontières intérieures.\n29 États : 25 membres UE + 4 hors UE (Suisse, Norvège, Islande, Liechtenstein).\nSigné en 1985 à Schengen (Luxembourg).",
+      "ex": "Suisse = Schengen mais PAS UE · Irlande = UE mais PAS Schengen. L'espace Schengen ≠ zone euro ≠ UE : trois cercles différents qui ne se superposent pas."
+    },
+    {
+      "id": "vg11", "cat": "Europe",
+      "term": "Dorsale européenne",
+      "def": "Espace économique le plus dense et le plus riche d'Europe, s'étirant de LIVERPOOL à MILAN.\nConceptualisé par Roger Brunet dans les années 1980.\nAussi appelée « Banane bleue ».\n~100 millions d'habitants, concentre l'essentiel des richesses et pouvoirs économiques européens.",
+      "ex": "La Belgique se situe au cœur de cette dorsale — ce qui explique en partie pourquoi Anvers est devenu le 2e port européen."
+    },
+    {
+      "id": "vg12", "cat": "Europe",
+      "term": "Mégapole",
+      "def": "Ville ou agglomération dépassant les 10 MILLIONS D'HABITANTS.\nConcentration exceptionnelle de population, d'activités économiques et de pouvoirs.",
+      "ex": "Istanbul (~15M), Londres (~9M, limite), Paris (~12M avec banlieue). En Europe, peu de vraies mégapoles par rapport à l'Asie (Tokyo ~37M, Shanghai ~26M)."
+    },
+    {
+      "id": "vg13", "cat": "Ressources",
+      "term": "Ressource",
+      "def": "Ce qu'une société juge UTILE D'EXPLOITER à un moment donné.\nNotion RELATIVE : dépend du contexte technique, économique et culturel.\nUne ressource peut devenir inutile (charbon) ou nouvelle (lithium) selon les besoins.",
+      "ex": "Le sable est devenu une ressource critique au XXe s. avec l'essor du béton — avant, personne n'en manquait. Ce qui est ressource aujourd'hui ne le sera peut-être plus demain."
+    },
+    {
+      "id": "vg14", "cat": "Ressources",
+      "term": "Ressource renouvelable",
+      "def": "Ressource qui se RENOUVELLE NATURELLEMENT aussi vite (ou plus vite) qu'elle est consommée.\nSi le rythme de consommation dépasse le rythme de renouvellement → elle devient non renouvelable.",
+      "ex": "Forêts (si gestion durable), eau douce, énergie solaire, pêche (si gestion des quotas). Le sable fluvial ÉTAIT renouvelable, mais la consommation actuelle dépasse largement le renouvellement."
+    },
+    {
+      "id": "vg15", "cat": "Ressources",
+      "term": "Ressource non renouvelable",
+      "def": "Ressource dont le renouvellement naturel prend des MILLIONS D'ANNÉES (temps géologique), bien plus qu'une vie humaine.\nUne fois consommée, elle est définitivement perdue à l'échelle humaine.",
+      "ex": "Sable, pétrole, charbon, gaz naturel, minerais. Le sable fluvial prend des millénaires à se former — on l'exploite des milliers de fois plus vite qu'il ne se renouvelle."
+    },
+    {
+      "id": "vg16", "cat": "Ressources",
+      "term": "Earth Overshoot Day (EOD)",
+      "def": "Jour de l'année où l'humanité a ÉPUISÉ toutes les ressources que la Terre peut régénérer en 1 an.\nCalculé par le Global Footprint Network.\nFormule : (biocapacité ÷ empreinte écologique) × 365",
+      "ex": "2025 : 24 juillet. Le reste de l'année, l'humanité vit « à crédit ». En 1971, l'EOD était en décembre — il recule d'environ 2 jours par an depuis lors."
+    },
+    {
+      "id": "vg17", "cat": "Ressources",
+      "term": "Biocapacité",
+      "def": "Capacité de la Terre à RÉGÉNÉRER ses ressources ET à absorber les déchets produits par l'activité humaine.\nExprimée en hectares globaux (hag) par personne ou pour la planète entière.",
+      "ex": "La biocapacité mondiale est d'environ 1,7 hag/personne, mais l'empreinte écologique moyenne est de ~2,7 hag/personne → on dépasse. Utilisé dans le calcul de l'EOD."
+    },
+    {
+      "id": "vg18", "cat": "Ressources",
+      "term": "Empreinte écologique",
+      "def": "Quantité de ressources consommées par une population, ramenée à la SURFACE PRODUCTIVE nécessaire pour les générer ET absorber les déchets.\nExprimée en hectares globaux (hag).",
+      "ex": "Si tout le monde vivait comme un Belge → ~3 planètes nécessaires. Permet de comparer les modes de vie entre pays et de calculer l'EOD."
+    },
+    {
+      "id": "vg19", "cat": "Ressources",
+      "term": "Rente pétrolière",
+      "def": "Revenus générés par la VENTE DES HYDROCARBURES (pétrole, gaz naturel).\nSource principale de richesse pour certains États.\nPeut créer une dépendance (si l'État ne diversifie pas son économie).",
+      "ex": "Russie, Arabie Saoudite, pays du Golfe vivent en grande partie de cette rente. Problème : quand le prix du pétrole chute ou que les réserves s'épuisent, toute l'économie est fragilisée."
+    },
+    {
+      "id": "vg20", "cat": "Ressources",
+      "term": "Firme transnationale (FTN)",
+      "def": "Entreprise dont les activités s'étendent dans PLUSIEURS PAYS avec fragmentation de la production (DIPP).\nSon siège est dans un pays, ses usines dans d'autres, ses marchés partout.\nOptimise les coûts à l'échelle mondiale.",
+      "ex": "Total, BP, Shell pour les hydrocarbures arctiques. Apple, Nike pour la production manufacturière. Les FTN profitent souvent du dumping fiscal pour minimiser leurs impôts."
+    },
+    {
+      "id": "vg21", "cat": "Ressources",
+      "term": "Mondialisation",
+      "def": "Interconnexion CROISSANTE des marchés, des flux financiers et des échanges à l'échelle mondiale.\nEnglobe flux légaux ET illicites.\nAccélérée par les transports (conteneurisation) et les technologies de communication.",
+      "ex": "La cocaïne emprunte les mêmes routes que les marchandises légales : containers, hubs portuaires, réseaux de distribution. La mondialisation profite aux économies criminelles autant qu'aux légales."
+    },
+    {
+      "id": "vg22", "cat": "Ressources",
+      "term": "Dumping fiscal",
+      "def": "Stratégie consistant à localiser une activité dans un pays à FAIBLE FISCALITÉ pour réduire les coûts.\nPeut être légal (optimisation fiscale) ou illégal (fraude).\nFavorise certains États au détriment d'autres.",
+      "ex": "Armateurs immatriculent leurs navires au Panama ou au Liberia (pavillons de complaisance) : moins de taxes, moins de contrôles sociaux. Stratégie légale mais controversée."
+    },
+    {
+      "id": "vg23", "cat": "Ressources",
+      "term": "Choc pétrolier",
+      "def": "Hausse BRUTALE et IMPRÉVUE des prix du pétrole aux répercussions économiques mondiales.\nDeux chocs majeurs :\n• 1973 : prix ×4 (embargo OPEP après guerre du Kippour)\n• 1979 : prix ×2 (révolution iranienne)",
+      "ex": "Les chocs pétroliers montrent l'extrême dépendance des économies occidentales au pétrole. Conséquences : inflation, récession, accélération des recherches d'énergies alternatives."
+    },
+    {
+      "id": "vg24", "cat": "Ressources",
+      "term": "Ressource illicite",
+      "def": "Ressource dont la production, le commerce ou la consommation est INTERDITE par les lois nationales et/ou internationales.\nSoumise aux mêmes logiques économiques que les ressources légales : offre, demande, prix, DIPP.",
+      "ex": "La cocaïne suit exactement la grille DIPP et emprunte les mêmes routes du commerce mondial. Elle est illicite juridiquement mais obéit à des règles économiques très rationnelles."
+    },
+    {
+      "id": "vg25", "cat": "Transport maritime",
+      "term": "HUB",
+      "def": "Plateforme MULTIMODALE centrale où convergent de nombreuses routes de transport, puis redistribuent les flux vers d'autres destinations.\nConcentre le traitement, le stockage et la redistribution des marchandises.",
+      "ex": "Anvers = hub mondial du commerce légitime ET du trafic de cocaïne : même infrastructure, même logique. 8,5 M EVP/an, connexions vers toute l'Europe centrale par barge, camion, train."
+    },
+    {
+      "id": "vg26", "cat": "Transport maritime",
+      "term": "EVP",
+      "def": "Équivalent Vingt Pieds.\nUnité STANDARD de mesure des conteneurs maritimes : ~6 m × 2,44 m.\nPermet de comparer les capacités des ports et navires quelle que soit la taille réelle des conteneurs.",
+      "ex": "Anvers traite 8,5 millions d'EVP par an. En 2023, 121 tonnes de cocaïne ont été saisies à Anvers — dissimulées dans une infime fraction de ces millions de conteneurs."
+    },
+    {
+      "id": "vg27", "cat": "Transport maritime",
+      "term": "Conteneur",
+      "def": "Boîte métallique STANDARDISÉE inventée par Malcolm McLean (1956).\nRévolution logistique : même boîte transportée par bateau, camion, train sans déchargement.\nReprésente 90% du trafic maritime mondial.",
+      "ex": "La conteneurisation a divisé les coûts de transport par 10 → accélération de la mondialisation. Les mêmes boîtes transportent aussi bien des smartphones que de la cocaïne."
+    },
+    {
+      "id": "vg28", "cat": "Transport maritime",
+      "term": "Pavillon de complaisance",
+      "def": "Immatriculation d'un navire dans un ÉTAT À FAIBLE TAXATION et peu de contrôles sociaux, même si le propriétaire n'y réside pas.\nPermet d'éviter les taxes et réglementations strictes.",
+      "ex": "Panama et Liberia = 1ers pavillons mondiaux. Aussi utilisé pour le trafic de drogue : navires plus difficiles à contrôler. Stratégie légale de dumping fiscal appliquée au transport maritime."
+    },
+    {
+      "id": "vg29", "cat": "Transport maritime",
+      "term": "Multimodal",
+      "def": "Qui utilise PLUSIEURS MODES DE TRANSPORT combinés pour acheminer une marchandise d'origine à destination.\nObjectif : optimiser les coûts et délais en jouant sur les avantages de chaque mode.",
+      "ex": "Cocaïne : bateau (traversée Atlantique) → barge (Escaut jusqu'à Anvers) → camion (distribution Europe) = chaîne multimodale. Même chose pour le commerce légal."
+    },
+    {
+      "id": "vg30", "cat": "Transport maritime",
+      "term": "Hinterland",
+      "def": "ARRIÈRE-PAYS desservi par un port : l'espace géographique dont le port capte les flux commerciaux, import et export.\nPlus le hinterland est vaste et riche → plus le port est puissant.",
+      "ex": "Hinterland d'Anvers : Allemagne, Belgique, France, Pays-Bas, Suisse, Autriche = ~180 millions de consommateurs. Ce hinterland gigantesque explique pourquoi Anvers est le 2e port européen."
+    },
+    {
+      "id": "vg31", "cat": "Transport maritime",
+      "term": "Transit",
+      "def": "Passage d'une marchandise par un PAYS INTERMÉDIAIRE qui n'est pas sa destination finale.\nLe pays de transit ne produit ni ne consomme — il sert de relais dans la chaîne.",
+      "ex": "Cocaïne : produite en Colombie → transit par l'Afrique de l'Ouest et l'Espagne → consommée en Belgique/Pays-Bas. L'Espagne et les pays africains sont des pays de transit."
+    },
+    {
+      "id": "vg32", "cat": "Transport maritime",
+      "term": "Isthme",
+      "def": "BANDE DE TERRE ÉTROITE reliant deux masses continentales et séparant deux étendues d'eau.\nPoint de passage stratégique : contrôler un isthme = contrôler les routes commerciales.",
+      "ex": "Isthme de Panama → Canal de Panama construit là pour relier Pacifique et Atlantique. Sans canal, il faut contourner l'Amérique du Sud (+15 000 km)."
+    },
+    {
+      "id": "vg33", "cat": "Transport maritime",
+      "term": "Détroit",
+      "def": "PASSAGE MARITIME ÉTROIT entre deux étendues d'eau, créé naturellement par la géographie.\nPoint stratégique pour le commerce mondial et la défense militaire.",
+      "ex": "Détroit de Gibraltar (Méditerranée ↔ Atlantique) · Détroit d'Ormuz (pétrole du Golfe → monde) · Détroit de Malacca (Asie ↔ Europe). Bloquer un détroit = paralyser l'économie mondiale."
+    },
+    {
+      "id": "vg34", "cat": "Transport maritime",
+      "term": "Canal de Panama",
+      "def": "Canal artificiel reliant le PACIFIQUE à l'ATLANTIQUE à travers l'isthme de Panama.\n14 000 bateaux/an. Ouvert en 1914 par les Américains.\nRaccourcit de ~15 000 km le trajet Asie → côte est USA.",
+      "ex": "Sans ce canal, il faut contourner l'Amérique du Sud par le Cap Horn. Exemple parfait de comment une infrastructure modifie complètement la géographie du commerce mondial."
+    },
+    {
+      "id": "vg35", "cat": "Transport maritime",
+      "term": "Canal de Suez",
+      "def": "Canal artificiel en ÉGYPTE reliant la mer Méditerranée à la mer Rouge.\nRaccourcit de ~9 000 km le trajet Europe ↔ Asie.\nOuvert en 1869.",
+      "ex": "Bloqué en 2021 par l'Ever Given (6 jours) → perturbation mondiale du commerce, pénuries en cascade. Montre l'extrême dépendance du commerce mondial à quelques points de passage clés."
+    },
+    {
+      "id": "vg36", "cat": "Arctique",
+      "term": "Cryosphère",
+      "def": "Ensemble des étendues de GLACE ET DE NEIGE de la planète :\n• Banquise (mer gelée)\n• Inlandsis (glace sur terre)\n• Pergélisol (sol gelé)\n• Glaciers de montagne\n• Toundra (partiellement)",
+      "ex": "La cryosphère joue un rôle crucial dans le climat via l'albédo (réflexion lumière solaire). Sa fonte accélère le réchauffement via la boucle de rétroaction albédo."
+    },
+    {
+      "id": "vg37", "cat": "Arctique",
+      "term": "Banquise",
+      "def": "Surface de MER GELÉE, flottant sur l'eau.\nImportant : sa fonte NE fait PAS monter le niveau des mers (elle est déjà dans l'eau, comme les glaçons d'un verre).\nArctique : a perdu 36% de surface depuis les années 1980.",
+      "ex": "≠ inlandsis (glace sur terre). La fonte de la banquise arctique ouvre des routes maritimes (Nord-Ouest, Nord-Est) et donne accès aux ressources sous-marines. Impact géopolitique majeur."
+    },
+    {
+      "id": "vg38", "cat": "Arctique",
+      "term": "Inlandsis",
+      "def": "Couche de GLACE PERMANENTE recouvrant des TERRES (Groenland, Antarctique).\nSa fonte FAIT MONTER le niveau des mers (la glace quitte la terre pour rejoindre l'océan).\nReprésentent d'énormes réserves d'eau douce.",
+      "ex": "La fonte complète de l'inlandsis groenlandais ferait monter les océans de ~7 mètres. ≠ banquise : la distinction est cruciale pour comprendre la montée des eaux."
+    },
+    {
+      "id": "vg39", "cat": "Arctique",
+      "term": "Pergélisol",
+      "def": "Sol GEL PERMANENT (≥2 ans consécutifs à température négative).\nCouvre ~25% des terres émergées (Sibérie, Canada, Alaska).\nContient d'énormes quantités de MÉTHANE (CH₄) et de CO₂ emprisonnés.",
+      "ex": "Dégel du pergélisol → libération de méthane (25× plus puissant que CO₂ sur 100 ans) → réchauffement accéléré → plus de dégel. Boucle de rétroaction critique."
+    },
+    {
+      "id": "vg40", "cat": "Arctique",
+      "term": "ZEE — Zone Économique Exclusive",
+      "def": "Espace maritime allant jusqu'à 200 MILLES MARINS (370 km) depuis les côtes d'un État.\nL'État riverain y a des DROITS EXCLUSIFS sur :\n• Exploitation des ressources (pétrole, gaz, pêche)\n• Recherches scientifiques\nLes autres États conservent le droit de navigation.",
+      "ex": "5 États se disputent les ZEE arctiques : Russie, Canada, USA, Danemark (Groenland), Norvège. Qui contrôle la ZEE → qui contrôle ~13% des réserves mondiales de pétrole."
+    },
+    {
+      "id": "vg41", "cat": "Arctique",
+      "term": "Eaux internationales (Haute mer)",
+      "def": "Zone maritime HORS de toute ZEE où aucun État ne détient de droits exclusifs.\nPrincipe de la LIBERTÉ DE NAVIGATION : tout navire peut y circuler librement.\nGouvernance internationale partiellement assurée par les Nations Unies.",
+      "ex": "La haute mer est un espace de liberté — utilisé aussi bien par le commerce légal que par les trafiquants. Zones de haute mer en Arctique → controverse sur qui décide."
+    },
+    {
+      "id": "vg42", "cat": "Arctique",
+      "term": "GES — Gaz à Effet de Serre",
+      "def": "Gaz qui RETIENNENT LA CHALEUR dans l'atmosphère terrestre.\nPrincipaux : CO₂ (dioxyde de carbone) et CH₄ (méthane).\nProduits naturellement ET par activités humaines (combustion fossile, agriculture, déforestation).",
+      "ex": "Dégel du pergélisol libère du méthane (CH₄), qui est 25× plus puissant que CO₂ sur 100 ans comme GES. Amplifie le réchauffement via la boucle de rétroaction."
+    },
+    {
+      "id": "vg43", "cat": "Arctique",
+      "term": "Gulf Stream",
+      "def": "Grand COURANT OCÉANIQUE chaud transportant les eaux chaudes du golfe du Mexique vers l'Europe du Nord.\nApporte un CLIMAT TEMPÉRÉ à l'Europe occidentale (Belgique, Royaume-Uni, Scandinavie).",
+      "ex": "Sans le Gulf Stream, la Belgique aurait un climat similaire au Canada (mêmes latitudes, ~-20°C en hiver). Son affaiblissement (lié à la fonte des glaces) pourrait paradoxalement refroidir l'Europe."
+    },
+    {
+      "id": "vg44", "cat": "Arctique",
+      "term": "Albédo",
+      "def": "Capacité d'une surface à RÉFLÉCHIR la lumière solaire, exprimée en pourcentage.\n• Glace blanche : albédo ~80% (réfléchit beaucoup)\n• Eau sombre : albédo ~6% (absorbe beaucoup)\n• Sol nu : albédo ~30%",
+      "ex": "Banquise fond → eau sombre exposée → absorbe plus de chaleur → réchauffement accéléré → encore moins de banquise. C'est la boucle de rétroaction albédo — clé pour comprendre l'Arctique."
+    },
+    {
+      "id": "vg45", "cat": "Arctique",
+      "term": "Toundra",
+      "def": "BIOME arctique/subarctique : végétation basse et rase (mousses, lichens, arbustes nains).\nArbres absents (sol trop gelé pour les racines profondes).\nSol = pergélisol.\nRiche en biodiversité animale saisonnière (caribous, oiseaux migrateurs).",
+      "ex": "Se trouve entre la taïga (au sud) et la banquise (au nord). Très fragile climatiquement : son dégel contribue aux émissions de méthane."
+    },
+    {
+      "id": "vg46", "cat": "Arctique",
+      "term": "Taïga",
+      "def": "FORÊT BORÉALE de conifères (épicéas, sapins, pins), au sud de la toundra.\nBiome le plus ÉTENDU de la planète (Canada, Russie, Scandinavie).\nRôle majeur comme PUITS DE CARBONE (stocke le CO₂).",
+      "ex": "La taïga russe stocke autant de carbone que la forêt amazonienne. Sa destruction (incendies + exploitation) accélère le réchauffement. Limite nord = toundra, limite sud = forêt tempérée."
+    },
+    {
+      "id": "vg47", "cat": "Arctique",
+      "term": "Route du Nord-Ouest",
+      "def": "Route maritime arctique longeant les CÔTES CANADIENNES (Alaska → Atlantique).\nOuverte de manière continue pour la 1ère fois en 2007 (fonte de la banquise).\nRaccourcit de ~4 000 km le trajet Asie → Europe vs canal de Panama.",
+      "ex": "Revendiquée par le Canada comme eaux intérieures canadiennes (pas une route internationale libre). Ouverte grâce au réchauffement climatique — avantage économique contre catastrophe écologique."
+    },
+    {
+      "id": "vg48", "cat": "Arctique",
+      "term": "Route du Nord-Est",
+      "def": "Route maritime arctique longeant les CÔTES RUSSES (Sibérie → Europe du Nord).\nAussi appelée : passage du Nord-Est ou route maritime du Nord.\nRaccourcit d'environ 40% le trajet Europe ↔ Asie vs canal de Suez.",
+      "ex": "La Russie contrôle cette route et perçoit des droits de passage. Avantage géopolitique majeur pour Moscou dans la nouvelle géographie arctique créée par le réchauffement."
+    },
+    {
+      "id": "vg49", "cat": "Sable",
+      "term": "Sable",
+      "def": "Sédiment minéral à grains de 0,063 à 2 mm.\n2e RESSOURCE LA PLUS EXPLOITÉE au monde après l'eau.\nNon renouvelable à l'échelle humaine.\nSable FLUVIAL/MARIN (grains anguleux) = utilisable · Sable DÉSERTIQUE (grains ronds) = inutilisable pour le béton.",
+      "ex": "Les Émirats arabes unis importent du sable d'Australie malgré leurs immenses déserts — car le sable désertique est inutilisable. Paradoxe qui illustre la pénurie mondiale de sable fluvial."
+    },
+    {
+      "id": "vg50", "cat": "Sable",
+      "term": "Béton",
+      "def": "Matériau de construction le PLUS UTILISÉ AU MONDE après l'eau.\nComposition : 46% sable + 33% gravier + 19% ciment + 2% eau.\nChaque bâtiment, route, barrage, pont = des tonnes de sable.",
+      "ex": "L'essor du béton au XXe s. a transformé le sable en ressource critique mondiale. On coule autant de béton en 2 ans qu'au cours de tout le XXe s. — demande qui explose avec l'urbanisation mondiale."
+    },
+    {
+      "id": "vg51", "cat": "Sable",
+      "term": "Remblaiement",
+      "def": "Extension artificielle d'un TERRITOIRE SUR LA MER par apport massif de sable et de matériaux.\nPermet à des États densément peuplés ou manquant d'espace de gagner des terres.",
+      "ex": "Singapour a agrandi son territoire de 25% depuis 1973 par remblaiement — principale importation du pays est le sable. Îles artificielles à Dubaï. Delta du Mékong menacé par l'extraction excessive."
+    },
+    {
+      "id": "vg52", "cat": "Sable",
+      "term": "Fracking (fracturation hydraulique)",
+      "def": "Technique d'extraction de pétrole et gaz de SCHISTE par injection d'eau sous haute pression dans la roche.\nConsomme des quantités MASSIVES de sable (sable de fracking = agent de soutènement).",
+      "ex": "Boom du fracking aux USA (années 2010) → explosion de la demande mondiale en sable. Contribue à l'épuisement des réserves de sable fluvial aux USA et ailleurs."
+    },
+    {
+      "id": "vg53", "cat": "Sable",
+      "term": "Urbanisation",
+      "def": "Croissance de la PART DE LA POPULATION vivant en VILLE.\nMouvement mondial et accéléré : de 30% en 1950 à >55% aujourd'hui.\nEntraîne une demande COLOSSALE en béton — et donc en sable.",
+      "ex": "En 2050 : ~70% de la population mondiale en ville (prévision ONU). L'urbanisation explosive de la Chine, de l'Inde et de l'Afrique crée une pression immense sur les ressources en sable."
+    },
+    {
+      "id": "vg54", "cat": "Sable",
+      "term": "Mafia du sable",
+      "def": "Réseaux CRIMINELS contrôlant le trafic illégal de sable, avec violence et corruption.\nExtraits des fleuves et côtes illégalement, exportés en contournant les lois.",
+      "ex": "Très actifs en Inde (meurtres de lanceurs d'alerte), Afrique sub-saharienne, Méditerranée. Le sable est trop précieux → un marché criminel s'est développé autour de lui, comme pour le pétrole ou la drogue."
+    },
+    {
+      "id": "vg55", "cat": "Sable",
+      "term": "Sable fluvial vs désertique",
+      "def": "Sable FLUVIAL/MARIN : grains ANGULEUX, se collent entre eux → utilisable pour béton, verre, fracking.\nSable DÉSERTIQUE : grains RONDS (polis par le vent), ne se collent pas → inutilisable pour la construction.",
+      "ex": "Dubaï importe du sable d'Australie malgré le désert environnant. La pénurie mondiale porte sur le sable fluvial — le sable désertique est abondant mais inutilisable industriellement."
+    },
+    {
+      "id": "vg56", "cat": "Cocaïne & Trafic",
+      "term": "Air Bridge Denial",
+      "def": "Programme américain d'INTERCEPTION des avions transportant de la drogue, déployé en Colombie à partir de 1994.\nA provoqué l'EFFET BALLON : la production s'est déplacée vers d'autres zones.",
+      "ex": "Résultat paradoxal : production mondiale de cocaïne de 63t (1998) → 124t (2008). La répression a déplacé les routes sans réduire la production. Preuve empirique de l'effet ballon."
+    },
+    {
+      "id": "vg57", "cat": "Cocaïne & Trafic",
+      "term": "Pourquoi Anvers ? — 8 arguments",
+      "def": "1. 2e port d'Europe (8,5M EVP/an)\n2. Hub multimodal (bateaux, barges, camions, trains)\n3. Seulement 5% des conteneurs contrôlés\n4. Vaste hinterland (180M consommateurs)\n5. Fort trafic de denrées légales (bananes, café = mêmes routes)\n6. Personnel portuaire corruptible\n7. Mafia locale (clan Clan della Zaza)\n8. Proximité des marchés consommateurs",
+      "ex": "Ces mêmes atouts qui font d'Anvers le 2e port légal d'Europe en font aussi la principale porte d'entrée de la cocaïne en Europe. Le légal et l'illicite partagent exactement la même infrastructure."
+    }
+  ]
+}

@@ -3,7 +3,7 @@
   "name": "Français",
   "color": "#eab308",
   "colorLight": "#fefce8",
-  "exam": "2026-06-23",
+  "exam": "2026-06-22",
   "type": "Oral",
   "flashcards": [
     {
@@ -40,13 +40,6 @@
       "term": "Laclos · Liaisons dangereuses",
       "def": "Roman épistolaire (1782). Valmont + Merteuil = libertins. Lettre IV : Valmont refuse d'abord la mission Cécile.",
       "ex": "Merteuil : libertinage = réponse à l'oppression féminine ≠ Valmont"
-    },
-    {
-      "id": "f6",
-      "cat": "Auteurs",
-      "term": "Shakespeare · Hamlet",
-      "def": "Hamlet (XVIe s.) : prince du Danemark qui doit venger son père assassiné. Hésite entre action et contemplation. Thème : liberté d'agir ou d'accepter le destin.",
-      "ex": "\"Être ou ne pas être\" = dilemme entre agir (risque) et subir (passivité). Lien thème Liberté."
     },
     {
       "id": "f7",
@@ -420,13 +413,6 @@
       "ex": "The Green Knight : lumière verte/froide = nature hostile. La La Land : warm/froid selon l'état émotionnel"
     },
     {
-      "id": "f60",
-      "cat": "Question transversale",
-      "term": "Liberté dans les œuvres",
-      "def": "Phèdre : liberté impossible (passion imposée par Vénus). Le Cid : liberté de choisir entre honneur et amour. Dom Juan : liberté absolue revendiquée mais compulsive. Liaisons : libertinage = conquête de sa liberté. Hamlet : liberté d'agir ou d'accepter la mort.",
-      "ex": "Question type : \"La liberté peut-elle être une prison ?\" → réponse avec Dom Juan (paradoxe) et Phèdre (fatalité)"
-    },
-    {
       "id": "f61",
       "cat": "Question transversale",
       "term": "Représentation de la femme",
@@ -746,18 +732,6 @@
       ],
       "ans": 2,
       "exp": "Chiasme = structure croisée A-B / B'-A'. Ex : \"Il faut manger pour vivre et non vivre pour manger\". Effet : mise en miroir, équilibre rhétorique, mise en valeur du contraste."
-    },
-    {
-      "id": "fq27",
-      "q": "Que signifie \"Être ou ne pas être\" dans Hamlet par rapport au thème de la Liberté ?",
-      "opts": [
-        "Hamlet se demande s'il doit se marier ou rester seul",
-        "Hamlet hésite entre agir pour venger son père (risque) et accepter passivement son destin",
-        "Hamlet se demande s'il existe vraiment dans le monde",
-        "Hamlet choisit entre la vie de cour et la vie d'acteur"
-      ],
-      "ans": 1,
-      "exp": "\"Être ou ne pas être\" = dilemme fondamental entre agir (risquer la mort, venger le père) ou accepter la souffrance passivement. Lien thème Liberté : la liberté d'agir ou de subir son destin."
     },
     {
       "id": "fq28",

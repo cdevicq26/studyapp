@@ -1,0 +1,34 @@
+{
+  "id": "controle-philo-03",
+  "matiere": "philo",
+  "numero": 3,
+  "titre": "Philosophie — Platon : connaissance, âme et politique",
+  "date_generation": "2026-06-10",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Raconte et explique le Mythe de la Caverne de Platon. Que représente chaque élément du mythe ? Quelles sont les 3 grandes questions qu'il pose ?",
+      "concepts": ["mythe de la caverne", "ombres", "soleil", "le Bien", "ontologie", "épistémologie", "morale", "doxa", "épistémè"]
+    },
+    {
+      "id": "q2",
+      "texte": "Quelle est la différence entre la doxa et l'épistémè chez Platon ? Pourquoi les mathématiques sont-elles pour lui un modèle de connaissance vraie ?",
+      "concepts": ["doxa", "épistémè", "sensible", "intelligible", "mathématiques", "immuable", "absolu", "Pythagore"]
+    },
+    {
+      "id": "q3",
+      "texte": "Explique la maïeutique socratique. En quoi est-ce différent d'enseigner ? Quelles sont les deux étapes ?",
+      "concepts": ["maïeutique", "Socrate", "aporie", "ironie", "accouchement", "réminiscence", "table rase"]
+    },
+    {
+      "id": "q4",
+      "texte": "Qu'est-ce que l'ascèse selon Platon ? Pourquoi se priver du corps aide-t-il à atteindre la vérité ? En quoi ça n'a rien à voir avec le masochisme ?",
+      "concepts": ["ascèse", "corps", "âme", "tremplin", "alétheia", "dévoilement", "le Bien"]
+    },
+    {
+      "id": "q5",
+      "texte": "Comment Platon conçoit-il la société idéale ? Explique ses 3 classes sociales et pourquoi il s'oppose à la démocratie des Sophistes.",
+      "concepts": ["despotisme éclairé", "philosophe-roi", "artisans", "militaires", "philosophes", "démocratie", "Sophistes", "rhétorique"]
+    }
+  ]
+}

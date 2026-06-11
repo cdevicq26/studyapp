@@ -1,0 +1,312 @@
+{
+  "flashcards": [
+    {
+      "id": "vc1",
+      "cat": "Chimie organique — bases",
+      "term": "Chimie organique",
+      "def": "Chimie des molécules du vivant (naturelles) + de celles qui s'en inspirent (synthétisées).\nÉgalement appelée chimie du carbone — exclut les gaz purs et le CO₂.",
+      "ex": "La synthèse de l'aspirine, du plastique ou du savon relève de la chimie organique."
+    },
+    {
+      "id": "vc2",
+      "cat": "Chimie organique — bases",
+      "term": "Valence",
+      "def": "Nombre de liaisons qu'un atome peut former.\nC = 4 · H = 1 · O = 2 · N = 3.\nLa valence détermine la structure de toute molécule organique.",
+      "ex": "Le carbone (valence 4) peut former des chaînes, des cycles et des branchements infinis."
+    },
+    {
+      "id": "vc3",
+      "cat": "Chimie organique — bases",
+      "term": "Formule brute",
+      "def": "Formule de la forme CₓHᵧOᵤNᵥ qui indique la composition atomique sans la structure.\nNe permet pas de distinguer des isomères.",
+      "ex": "C₄H₁₀ correspond au butane ET au 2-méthylpropane — deux molécules différentes."
+    },
+    {
+      "id": "vc4",
+      "cat": "Chimie organique — bases",
+      "term": "Formule développée",
+      "def": "Représentation où TOUS les liens (y compris C–H) sont dessinés explicitement.",
+      "ex": "Éthanol : H–C–C–O–H avec tous les H visibles sur chaque carbone."
+    },
+    {
+      "id": "vc5",
+      "cat": "Chimie organique — bases",
+      "term": "Formule semi-développée",
+      "def": "Représentation où tous les liens sauf ceux vers H sont dessinés.\nLes H sont groupés avec leur carbone.",
+      "ex": "CH₃–CH₂–OH (éthanol) — les H sont implicites sur les carbones."
+    },
+    {
+      "id": "vc6",
+      "cat": "Chimie organique — bases",
+      "term": "Écriture topologique",
+      "def": "Représentation en trait brisé où chaque sommet et extrémité = un atome de C.\nLes H sont implicites. Les hétéroatomes (O, N) sont écrits explicitement.",
+      "ex": "Un hexagone en trait brisé sans labels = cyclohexane (C₆H₁₂)."
+    },
+    {
+      "id": "vc7",
+      "cat": "Nomenclature IUPAC",
+      "term": "Nomenclature IUPAC",
+      "def": "Système international de nommage des molécules.\nStructure : Préfixe(s) [substituants] + Radical [chaîne principale] + Suffixe [fonction].\nRègle des indices : numéros les plus petits possible.",
+      "ex": "2-méthylbutane : chaîne de 4C (but-) avec un méthyle sur le C2."
+    },
+    {
+      "id": "vc8",
+      "cat": "Nomenclature IUPAC",
+      "term": "Préfixes des carbones",
+      "def": "Préfixe indiquant le nombre de carbones de la chaîne principale.\n1C = méth · 2C = éth · 3C = prop · 4C = but · 5C = pent\n6C = hex · 7C = hept · 8C = oct · 9C = non · 10C = déc",
+      "ex": "Octane = chaîne de 8 carbones (oct-) + alcane (-ane)."
+    },
+    {
+      "id": "vc9",
+      "cat": "Fonctions organiques",
+      "term": "Alcool",
+      "def": "Groupe caractéristique : –OH (hydroxyle) sur un carbone.\nSuffixe : -ol.\nForte température d'ébullition due aux liaisons hydrogène.",
+      "ex": "Éthanol (CH₃–CH₂–OH) · propan-2-ol · méthanol."
+    },
+    {
+      "id": "vc10",
+      "cat": "Fonctions organiques",
+      "term": "Aldéhyde",
+      "def": "Groupe caractéristique : –CH=O en bout de chaîne.\nSuffixe : -al.\nS'obtient par oxydation d'un alcool primaire.",
+      "ex": "Éthanal (CH₃–CH=O) · propanal."
+    },
+    {
+      "id": "vc11",
+      "cat": "Fonctions organiques",
+      "term": "Cétone",
+      "def": "Groupe caractéristique : –C(=O)– en milieu de chaîne.\nSuffixe : -one.\nS'obtient par oxydation d'un alcool secondaire.",
+      "ex": "Propanone (acétone) : CH₃–CO–CH₃ — odeur caractéristique, sensation de froid."
+    },
+    {
+      "id": "vc12",
+      "cat": "Fonctions organiques",
+      "term": "Acide carboxylique",
+      "def": "Groupe caractéristique : –COOH en bout de chaîne.\nSuffixe : acide …oïque.\nTrès soluble dans l'eau (2 sites de liaisons H).",
+      "ex": "Acide éthanoïque = vinaigre (CH₃–COOH)."
+    },
+    {
+      "id": "vc13",
+      "cat": "Fonctions organiques",
+      "term": "Ester",
+      "def": "Groupe caractéristique : –COO– (entre un acide et un alcool).\nSuffixe : …oate de …\nFormé par estérification (acide + alcool ⇌ ester + eau).",
+      "ex": "Éthanoate d'éthyle (arômes de fruits) · le savon contient des esters (triglycérides)."
+    },
+    {
+      "id": "vc14",
+      "cat": "Fonctions organiques",
+      "term": "Amine",
+      "def": "Groupe caractéristique : –NH₂ (primaire), –NH– (secondaire), –N< (tertiaire).\nSuffixe : -amine.\nBase faible, soluble dans l'eau pour les courtes chaînes.",
+      "ex": "Méthanamine (CH₃–NH₂) · propan-1-amine."
+    },
+    {
+      "id": "vc15",
+      "cat": "Fonctions organiques",
+      "term": "Alcène",
+      "def": "Molécule avec une double liaison C=C.\nSuffixe : -ène.\nGéométrie plane autour du C=C, angles 120°. Pas de rotation libre → isomères cis/trans possibles.",
+      "ex": "Éthène (CH₂=CH₂) polymérise en polyéthylène (plastique)."
+    },
+    {
+      "id": "vc16",
+      "cat": "Fonctions organiques",
+      "term": "Alcyne",
+      "def": "Molécule avec une triple liaison C≡C.\nSuffixe : -yne.\nLinéaire autour de la triple liaison (angle 180°).",
+      "ex": "Éthyne (acétylène, HC≡CH) — utilisé en soudure."
+    },
+    {
+      "id": "vc17",
+      "cat": "Isomères",
+      "term": "Isomères",
+      "def": "Molécules ayant la même formule brute mais des structures différentes.",
+      "ex": "C₄H₁₀ → butane (linéaire) et 2-méthylpropane (ramifié) : mêmes atomes, arrangements différents."
+    },
+    {
+      "id": "vc18",
+      "cat": "Isomères",
+      "term": "Isomères de chaîne",
+      "def": "Isomères dont la chaîne principale diffère (ramifications différentes).\nMême formule brute, longueur ou branchement de chaîne différents.",
+      "ex": "Butane vs 2-méthylpropane (tous deux C₄H₁₀)."
+    },
+    {
+      "id": "vc19",
+      "cat": "Isomères",
+      "term": "Isomères géométriques (cis/trans)",
+      "def": "Isomères autour d'une double liaison (rotation impossible).\ncis : groupes identiques du même côté.\ntrans : groupes identiques de côtés opposés.",
+      "ex": "Cis-but-2-ène vs trans-but-2-ène : propriétés physiques différentes."
+    },
+    {
+      "id": "vc20",
+      "cat": "Isomères",
+      "term": "Carbone asymétrique (C*)",
+      "def": "Carbone lié à 4 substituants différents.\nRend la molécule chirale : non superposable à son image miroir.\nDévie la lumière polarisée (dextrogyre ou lévogyre).",
+      "ex": "L'acide lactique a un C* — ses deux énantiomères dévient la lumière en sens opposés."
+    },
+    {
+      "id": "vc21",
+      "cat": "Isomères",
+      "term": "Énantiomères",
+      "def": "Paire d'isomères optiques : images miroir non superposables d'une molécule chirale.\nMêmes propriétés chimiques sauf vis-à-vis d'autres molécules chirales (enzymes, médicaments).",
+      "ex": "Certains médicaments n'existent qu'en un seul énantiomère actif (l'autre peut être inactif ou toxique)."
+    },
+    {
+      "id": "vc22",
+      "cat": "Propriétés physiques",
+      "term": "Forces de Van der Waals",
+      "def": "Forces d'attraction faibles entre molécules, proportionnelles à la masse et à la longueur de la chaîne.\nPlus la molécule est grande → plus les forces sont élevées → T° ébullition plus élevée.",
+      "ex": "L'octane (C₈) bout à 126°C, le méthane (C₁) à –162°C."
+    },
+    {
+      "id": "vc23",
+      "cat": "Propriétés physiques",
+      "term": "Liaison hydrogène",
+      "def": "Liaison entre un H lié à un atome électronégatif (O ou N) et un autre atome électronégatif.\nExplique les températures d'ébullition élevées des alcools et de l'eau.",
+      "ex": "L'éthanol bout à 78°C alors que l'éthane (même taille, sans OH) bout à –89°C."
+    },
+    {
+      "id": "vc24",
+      "cat": "Propriétés physiques",
+      "term": "Moment dipolaire",
+      "def": "Vecteur P = q·d mesurant la polarité d'une molécule.\nDépend de la polarité des liaisons ET de la géométrie.\nUnité : debye (D). Molécule symétrique → μ = 0.",
+      "ex": "H₂O : μ = 1,83 D (asymétrique) · cyclohexane : μ = 0 D (symétrique)."
+    },
+    {
+      "id": "vc25",
+      "cat": "Propriétés physiques",
+      "term": "Solubilité — règle",
+      "def": "Polaire se dissout dans polaire (semblable dissout semblable).\nCourte chaîne + groupe polaire (OH, NH₂, COOH) → soluble dans l'eau.\nLongue chaîne hydrocarbonée → insoluble.",
+      "ex": "Éthanol : soluble dans l'eau. Octane : insoluble (trop hydrophobe)."
+    },
+    {
+      "id": "vc26",
+      "cat": "Réactions organiques",
+      "term": "Réaction d'addition",
+      "def": "Ajout d'une molécule sur une double ou triple liaison.\nLa liaison multiple disparaît.",
+      "ex": "Propène + H₂O → propan-2-ol (hydratation d'un alcène)."
+    },
+    {
+      "id": "vc27",
+      "cat": "Réactions organiques",
+      "term": "Réaction d'élimination",
+      "def": "Perte d'une petite molécule (eau, H₂) pour former une double liaison.\nInverse de l'addition.",
+      "ex": "Propan-2-ol → propène + H₂O (déshydratation d'un alcool)."
+    },
+    {
+      "id": "vc28",
+      "cat": "Réactions organiques",
+      "term": "Estérification",
+      "def": "Acide carboxylique + alcool ⇌ ester + eau.\nRéaction réversible (équilibre). Catalysée par H⁺.\nInverse = hydrolyse de l'ester.",
+      "ex": "Acide éthanoïque + éthanol ⇌ éthanoate d'éthyle + H₂O."
+    },
+    {
+      "id": "vc29",
+      "cat": "Réactions organiques",
+      "term": "Saponification",
+      "def": "Hydrolyse basique d'un ester (triglycéride + NaOH → glycérol + carboxylate de sodium).\nLe carboxylate de sodium EST le savon.\nIrréversible (contrairement à l'estérification).",
+      "ex": "Huile d'olive + NaOH → savon + glycérol."
+    },
+    {
+      "id": "vc30",
+      "cat": "Réactions organiques",
+      "term": "Polymérisation",
+      "def": "Monomères reliés par addition : pas d'élimination d'eau.\nProduit un polymère (chaîne macromoléculaire).",
+      "ex": "n CH₂=CH₂ → (–CH₂–CH₂–)ₙ = polyéthylène (plastique)."
+    },
+    {
+      "id": "vc31",
+      "cat": "Réactions organiques",
+      "term": "Polycondensation",
+      "def": "Monomères reliés avec élimination d'eau à chaque étape.\nDifférence clé avec la polymérisation : il y a rejet d'eau.",
+      "ex": "Nylon : hexaméthylènediamine + chlorure de sébacoyle → polyamide + HCl."
+    },
+    {
+      "id": "vc32",
+      "cat": "Savon et micelles",
+      "term": "Triglycéride",
+      "def": "Glycérol + 3 acides gras reliés par des fonctions ester.\nC'est la forme de stockage des graisses dans le corps.",
+      "ex": "L'huile d'olive est composée principalement de triglycérides d'acide oléique."
+    },
+    {
+      "id": "vc33",
+      "cat": "Savon et micelles",
+      "term": "Micelle",
+      "def": "Structure sphérique formée par les savons en présence d'eau et de graisse.\nTêtes hydrophiles vers l'eau · queues hydrophobes vers la graisse.\nLa micelle encapsule la graisse et permet son évacuation par l'eau.",
+      "ex": "Laver les mains avec du savon : les micelles emportent les bactéries et graisses dans l'eau."
+    },
+    {
+      "id": "vc34",
+      "cat": "Savon et micelles",
+      "term": "Indice de saponification (IS)",
+      "def": "Masse de NaOH (en g) nécessaire pour saponifier 1 g d'huile.\nFormule : IS = (3 × M_NaOH) / M_triglycéride.\nÉlève pour les huiles à chaînes courtes (coco) · moins élevé pour les huiles à longues chaînes (olive).",
+      "ex": "Huile d'olive : IS = 0,134 · Huile de coco : IS = 0,190."
+    },
+    {
+      "id": "vc35",
+      "cat": "Savon et micelles",
+      "term": "Taux de surgras (TS)",
+      "def": "Pourcentage d'huile non saponifiée dans un savon (utilisation de moins de NaOH que nécessaire).\nFormule : TS = (NaOH nécessaire – NaOH utilisé) / NaOH nécessaire × 100.\nRésulte en un savon plus doux.",
+      "ex": "TS de 8% signifie que 8% de l'huile reste intacte → savon surgras doux pour la peau."
+    },
+    {
+      "id": "vc36",
+      "cat": "Thermochimie",
+      "term": "Thermochimie",
+      "def": "Partie de la thermodynamique qui étudie les échanges de chaleur lors des réactions chimiques.\nConcerne les transferts d'énergie calorifique à pression constante.",
+      "ex": "Mesurer la chaleur dégagée lors de la dissolution du NaOH relève de la thermochimie."
+    },
+    {
+      "id": "vc37",
+      "cat": "Thermochimie",
+      "term": "Enthalpie (ΔH)",
+      "def": "Quantité de chaleur absorbée ou libérée à pression constante.\nΔH = H_produits – H_réactifs.\nΔH < 0 : exothermique (chaleur libérée) · ΔH > 0 : endothermique (chaleur absorbée).",
+      "ex": "Dissolution de NaOH : ΔH < 0 → T monte. Dissolution de KNO₃ : ΔH > 0 → T descend."
+    },
+    {
+      "id": "vc38",
+      "cat": "Thermochimie",
+      "term": "Réaction exothermique",
+      "def": "Réaction qui libère de l'énergie vers le milieu extérieur.\nΔH < 0 → la température du milieu augmente.",
+      "ex": "Combustion, dissolution du NaOH, chaufferette chimique (oxydation du fer)."
+    },
+    {
+      "id": "vc39",
+      "cat": "Thermochimie",
+      "term": "Réaction endothermique",
+      "def": "Réaction qui absorbe de l'énergie du milieu extérieur.\nΔH > 0 → la température du milieu diminue.",
+      "ex": "Dissolution du KNO₃, photosynthèse, production de H₂ à partir de CH₄ et H₂O."
+    },
+    {
+      "id": "vc40",
+      "cat": "Thermochimie",
+      "term": "Loi de Hess",
+      "def": "La chaleur d'une réaction est indépendante de la voie suivie.\nOn peut additionner des réactions intermédiaires pour obtenir ΔH d'une réaction totale.\nΔH_total = ΔH₁ + ΔH₂ + … (en pouvant inverser des réactions, signe change).",
+      "ex": "Calculer ΔH de la combustion du Mg via 3 réactions mesurables en lab."
+    },
+    {
+      "id": "vc41",
+      "cat": "Thermochimie",
+      "term": "Enthalpie standard de formation (ΔH°f)",
+      "def": "Chaleur pour former 1 mole d'un composé à partir des corps simples les plus stables à 25°C et 1 atm.\nΔH°f = 0 pour les corps simples (H₂(g), O₂(g), C_graphite…).",
+      "ex": "ΔH°f(H₂O_l) = –285,8 kJ/mol · ΔH°f(CO₂) = –393,5 kJ/mol."
+    },
+    {
+      "id": "vc42",
+      "cat": "Thermochimie",
+      "term": "Énergie libre de Gibbs (ΔG)",
+      "def": "Critère de spontanéité d'une réaction.\nΔG = ΔH – TΔS.\nΔG < 0 → spontané · ΔG > 0 → non spontané · ΔG = 0 → équilibre.",
+      "ex": "Une réaction peut être non spontanée à basse T et spontanée à haute T (selon ΔH et ΔS)."
+    },
+    {
+      "id": "vc43",
+      "cat": "Thermochimie",
+      "term": "Entropie (ΔS)",
+      "def": "Mesure du désordre d'un système thermodynamique.\nAugmente spontanément dans un système isolé.\nIntervient dans le critère de Gibbs : ΔG = ΔH – TΔS.",
+      "ex": "Un gaz a plus d'entropie qu'un solide · dissolution d'un sel augmente l'entropie."
+    },
+    {
+      "id": "vc44",
+      "cat": "Thermochimie",
+      "term": "Calorimétrie — Q = mcΔT",
+      "def": "Formule pour calculer la quantité de chaleur échangée.\nQ = masse × capacité thermique × variation de température.\nc_eau = 4,18 J·g⁻¹·K⁻¹.",
+      "ex": "10g d'eau qui passe de 20°C à 30°C : Q = 10 × 4,18 × 10 = 418 J."
+    }
+  ]
+}

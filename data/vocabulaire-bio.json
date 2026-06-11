@@ -1,0 +1,660 @@
+{
+  "flashcards": [
+    {
+      "id": "vb1",
+      "cat": "Acides nucléiques",
+      "term": "Acide nucléique",
+      "def": "Macromolécule portant l'information génétique. Deux types :\n• ADN = acide désoxyribonucléique\n• ARN = acide ribonucléique",
+      "ex": "L'ADN stocke l'information dans le noyau. L'ARN en est la copie de travail qui sort du noyau pour être traduite en protéine.",
+      "short_def": "Macromolécule portant l'information génétique, dont il existe deux types dans la cellule."
+    },
+    {
+      "id": "vb2",
+      "cat": "Acides nucléiques",
+      "term": "Nucléotide",
+      "def": "Monomère (brique de base) des acides nucléiques.\nComposé de 3 éléments :\n• Sucre (désoxyribose ou ribose)\n• Groupe phosphate (P)\n• Base azotée (A, T, G, C ou U)",
+      "ex": "La séquence des bases azotées le long du brin d'ADN est ce qui code l'information génétique — comme des lettres dans un mot.",
+      "short_def": "Brique de base des acides nucléiques, composée d'un sucre, d'un phosphate et d'une base azotée."
+    },
+    {
+      "id": "vb3",
+      "cat": "Acides nucléiques",
+      "term": "Désoxyribose",
+      "def": "Sucre à 5 carbones présent dans l'ADN.\n\"Désoxy\" signifie qu'un groupement OH manque par rapport au ribose — c'est sa différence structurale clé.",
+      "ex": "ADN = désoxyribose · ARN = ribose. C'est ce sucre qui donne son nom à l'acide désoxyribonucléique.",
+      "short_def": "Sucre à 5 carbones de l'ADN, auquel il manque un groupement OH par rapport à son équivalent dans l'ARN."
+    },
+    {
+      "id": "vb4",
+      "cat": "Acides nucléiques",
+      "term": "Ribose",
+      "def": "Sucre à 5 carbones (C₅H₁₀O₅) présent dans l'ARN. Possède un groupement OH de plus que le désoxyribose.",
+      "ex": "Présent dans les ARNm, ARNt et ARNr. C'est ce sucre qui donne son nom à l'acide ribonucléique.",
+      "short_def": "Sucre à 5 carbones présent dans l'ARN, avec un OH de plus que son équivalent dans l'ADN."
+    },
+    {
+      "id": "vb5",
+      "cat": "Acides nucléiques",
+      "term": "Bases azotées — ADN",
+      "def": "L'ADN contient 4 bases :\n• Adénine (A)\n• Thymine (T)\n• Guanine (G)\n• Cytosine (C)\n\nRègle d'appariement : A = T (2 liaisons H) · C ≡ G (3 liaisons H)",
+      "ex": "Règle de Chargaff : dans l'ADN d'un organisme, %A = %T et %G = %C. Ces appariements maintiennent la double hélice fermée.",
+      "short_def": "Les quatre bases de l'ADN qui s'apparient selon la règle A=T et C≡G."
+    },
+    {
+      "id": "vb6",
+      "cat": "Acides nucléiques",
+      "term": "Uracile (U)",
+      "def": "Base azotée présente dans l'ARN à la place de la Thymine (T).\nL'ARN contient donc : A, U, G, C (pas de T).\nL'uracile s'apparie avec l'Adénine (A).",
+      "ex": "Lors de la transcription, partout où l'ADN a un A, l'ARNm aura un U — jamais un T.",
+      "short_def": "Base azotée de l'ARN qui remplace la Thymine et s'apparie avec l'Adénine."
+    },
+    {
+      "id": "vb7",
+      "cat": "Acides nucléiques",
+      "term": "Double hélice antiparallèle",
+      "def": "Structure de l'ADN (Watson & Crick, 1953) :\n• 2 brins enroulés l'un autour de l'autre\n• Brins maintenus par liaisons H entre bases complémentaires\n• Antiparallèle : un brin va 5'→3', l'autre 3'→5'",
+      "ex": "AT ≠ TA : l'orientation des brins compte. C'est cette antiparallélisme qui rend la réplication semi-conservative possible.",
+      "short_def": "Structure de l'ADN découverte en 1953 : deux brins enroulés orientés en sens opposés."
+    },
+    {
+      "id": "vb8",
+      "cat": "Acides nucléiques",
+      "term": "Complémentarité des bases",
+      "def": "Principe fondamental : chaque base ne peut s'apparier qu'avec une base précise :\n• A avec T (ADN) ou U (ARN)\n• C avec G\nAppariements stabilisés par des liaisons hydrogène.",
+      "ex": "Permet de reconstituer un brin entier à partir d'un seul brin modèle — base de la réplication ET de la transcription.",
+      "short_def": "Principe selon lequel chaque base ne peut s'apparier qu'avec une base précise, via des liaisons hydrogène."
+    },
+    {
+      "id": "vb9",
+      "cat": "Condensation de l'ADN",
+      "term": "Nucléosome",
+      "def": "Unité de base de la chromatine.\nFragment d'ADN enroulé autour d'un octamère d'histones (2×H2A, 2×H2B, 2×H3, 2×H4) + histone H1 de liaison.\nDiamètre ~10 nm. Aspect visuel : \"collier de perles\".",
+      "ex": "C'est le 1er niveau de compaction de l'ADN (après la double hélice de 2 nm). Sans les nucléosomes, l'ADN humain (~2 m) ne rentrerait pas dans un noyau de 5 µm.",
+      "short_def": "Unité de base de la chromatine : fragment d'ADN enroulé autour d'un cœur de 8 protéines histones."
+    },
+    {
+      "id": "vb10",
+      "cat": "Condensation de l'ADN",
+      "term": "Chromatine",
+      "def": "Complexe ADN + protéines (histones) constituant le contenu du noyau entre deux divisions.\nDeux états :\n• Hétérochromatine : condensée, foncée → gènes INACTIFS\n• Euchromatine : relâchée, claire → gènes ACTIFS",
+      "ex": "En interphase, l'ADN existe sous forme de chromatine. Il ne forme des chromosomes visibles que pendant la division cellulaire.",
+      "short_def": "Complexe ADN + histones qui constitue le contenu du noyau entre deux divisions, actif ou inactif selon sa forme."
+    },
+    {
+      "id": "vb11",
+      "cat": "Condensation de l'ADN",
+      "term": "Hétérochromatine",
+      "def": "Zone de chromatine fortement condensée, colorée plus foncée au microscope.\nCorrespond aux régions où les gènes sont INACTIFS — inaccessibles à l'ARN polymérase.",
+      "ex": "Ex : le chromosome X inactivé chez la femme (corpuscule de Barr) est entièrement en hétérochromatine. Hétéro = différent → zones « silencieuses ».",
+      "short_def": "Zone de chromatine condensée et foncée au microscope où les gènes sont silencieux."
+    },
+    {
+      "id": "vb12",
+      "cat": "Condensation de l'ADN",
+      "term": "Euchromatine",
+      "def": "Zone de chromatine peu condensée, colorée plus claire au microscope.\nCorrespond aux régions où les gènes sont ACTIFS — accessibles à l'ARN polymérase pour la transcription.",
+      "ex": "Les gènes exprimés dans une cellule se trouvent en euchromatine. Eu = « vrai » → zones où l'activité génétique a lieu.",
+      "short_def": "Zone de chromatine relâchée et claire au microscope où les gènes sont accessibles et actifs."
+    },
+    {
+      "id": "vb13",
+      "cat": "Condensation de l'ADN",
+      "term": "Chromosome monochromatidien",
+      "def": "Chromosome formé d'UNE SEULE chromatide.\nPrésent en G1, AVANT la réplication de l'ADN (phase S).\nConstitué d'une seule molécule d'ADN bicaténaire.",
+      "ex": "Juste après la cytocinèse, chaque cellule fille possède des chromosomes monochromatidiens — la réplication n'a pas encore eu lieu.",
+      "short_def": "Chromosome formé d'une seule molécule d'ADN, présent avant la réplication."
+    },
+    {
+      "id": "vb14",
+      "cat": "Condensation de l'ADN",
+      "term": "Chromosome bichromatidien",
+      "def": "Chromosome formé de DEUX chromatides sœurs reliées au centromère.\nPrésent en G2 et au début de la mitose, APRÈS la réplication.\nAspect en forme de X.",
+      "ex": "La phase S transforme chaque chromosome monochromatidien en bichromatidien (l'ADN a été dupliqué). Les 2 chromatides se sépareront à l'anaphase.",
+      "short_def": "Chromosome en X formé après la réplication, composé de deux copies identiques reliées au centromère."
+    },
+    {
+      "id": "vb15",
+      "cat": "Condensation de l'ADN",
+      "term": "Chromatides sœurs",
+      "def": "Les deux copies identiques d'un chromosome répliqué, reliées par le centromère.\nElles sont produites par la réplication (phase S) et se séparent à l'ANAPHASE de la mitose.",
+      "ex": "Sœurs = copies conformes. Après séparation à l'anaphase, chaque cellule fille reçoit une chromatide de chaque paire → identiques à la cellule mère.",
+      "short_def": "Les deux copies identiques d'un chromosome répliqué, unies au centromère jusqu'à l'anaphase."
+    },
+    {
+      "id": "vb16",
+      "cat": "Condensation de l'ADN",
+      "term": "Chromosomes homologues",
+      "def": "Paire de chromosomes portant les MÊMES GÈNES (aux mêmes locus), mais pas forcément les mêmes allèles.\nL'un est d'origine maternelle, l'autre paternelle.\nHumain : 23 paires = 46 chromosomes.",
+      "ex": "≠ chromatides sœurs (copies identiques). Les homologues viennent chacun d'un parent — ils peuvent porter des allèles différents (ex : allèle dominant/récessif).",
+      "short_def": "Paire de chromosomes portant les mêmes gènes aux mêmes positions, l'un venant de chaque parent."
+    },
+    {
+      "id": "vb17",
+      "cat": "Condensation de l'ADN",
+      "term": "Centromère",
+      "def": "Zone de constriction du chromosome bichromatidien.\nContient des séquences d'ADN répétitives non-codantes.\nSert de point d'ancrage au KINÉTOCHORE (protéine) lors de la mitose.",
+      "ex": "C'est là que les 2 chromatides sœurs sont « collées » jusqu'à l'anaphase. L'histone spéciale CENH₃ remplace les histones classiques au centromère.",
+      "short_def": "Zone de constriction du chromosome servant de point d'ancrage au fuseau lors de la division cellulaire."
+    },
+    {
+      "id": "vb18",
+      "cat": "Condensation de l'ADN",
+      "term": "Télomère",
+      "def": "Séquences répétitives non-codantes situées aux EXTRÉMITÉS des chromosomes.\nRôle protecteur : empêche les extrémités de se dégrader, de fusionner entre elles ou d'être reconnues comme des cassures d'ADN.",
+      "ex": "Comme les embouts plastiques d'un lacet. Les télomères raccourcissent à chaque division → rôle dans le vieillissement cellulaire.",
+      "short_def": "Séquences répétitives non-codantes situées aux extrémités des chromosomes pour les protéger."
+    },
+    {
+      "id": "vb19",
+      "cat": "Condensation de l'ADN",
+      "term": "Caryotype",
+      "def": "Représentation ordonnée de l'ensemble des chromosomes d'une cellule, classés par PAIRES et par TAILLE.\nHumain normal : 46 chromosomes = 22 paires d'autosomes + 1 paire de gonosomes (XX ♀ ou XY ♂).",
+      "ex": "Outil diagnostic : permet de détecter les anomalies chromosomiques (trisomie 21 = 47 chromosomes, Turner = 45, Klinefelter = 47 XXY).",
+      "short_def": "Représentation ordonnée par paires et par taille de l'ensemble des chromosomes d'une cellule."
+    },
+    {
+      "id": "vb20",
+      "cat": "Condensation de l'ADN",
+      "term": "Autosomes",
+      "def": "Chromosomes NON SEXUELS, présents en 22 paires chez l'humain (chromosomes 1 à 22).\nIdentiques chez l'homme et la femme.\nS'opposent aux GONOSOMES (chromosomes sexuels X et Y).",
+      "ex": "Trisomie 21 = anomalie sur un autosome (chr. 21). Hémophilie = anomalie sur un gonosome (chr. X) → liée au sexe.",
+      "short_def": "Les 22 paires de chromosomes non sexuels, identiques chez l'homme et chez la femme."
+    },
+    {
+      "id": "vb21",
+      "cat": "Synthèse des protéines",
+      "term": "Dogme fondamental de la biochimie",
+      "def": "Flux d'information génétique dans la cellule :\nADN → (Transcription) → ARNm → (Traduction) → Protéine\n\nException : rétrotranscription (ARN → ADN) chez les rétrovirus (ex : VIH).",
+      "ex": "L'information ne circule en principe que dans ce sens. C'est le schéma directeur de toute la biologie moléculaire.",
+      "short_def": "Le principe selon lequel l'information génétique circule de l'ADN vers l'ARN vers la protéine."
+    },
+    {
+      "id": "vb22",
+      "cat": "Synthèse des protéines",
+      "term": "Transcription",
+      "def": "Processus dans le NOYAU par lequel l'ARN polymérase lit le brin matrice de l'ADN (3'→5') et synthétise un ARNm complémentaire (5'→3').\nProduit d'abord un ARN pré-messager (transcrit primaire).",
+      "ex": "Copie une séquence ADN en langage ARN pour qu'elle puisse sortir du noyau et être lue par les ribosomes dans le cytoplasme.",
+      "short_def": "Processus dans le noyau par lequel une enzyme synthétise un ARNm à partir d'un brin d'ADN modèle."
+    },
+    {
+      "id": "vb23",
+      "cat": "Synthèse des protéines",
+      "term": "ARN polymérase",
+      "def": "Enzyme qui catalyse la synthèse de l'ARNm lors de la transcription.\nLit le brin matrice d'ADN (3'→5') et allonge l'ARNm en 5'→3' en ajoutant les ribonucléotides complémentaires.",
+      "ex": "L'enzyme clé de la transcription. Sans ARN polymérase, aucun ARNm ne peut être produit → pas de protéines.",
+      "short_def": "Enzyme qui lit le brin matrice d'ADN et synthétise l'ARNm en 5'→3' lors de la transcription."
+    },
+    {
+      "id": "vb24",
+      "cat": "Synthèse des protéines",
+      "term": "ARN pré-messager",
+      "def": "Première copie d'ARN produite par la transcription, AVANT toute modification.\nContient encore les INTRONS (non-codants) et les EXONS (codants).\nSera modifié pour devenir l'ARNm mature.",
+      "ex": "Chez les eucaryotes uniquement. Il devra subir 3 modifications : ajout coiffe 5', queue poly-A, et épissage avant de quitter le noyau.",
+      "short_def": "Premier transcrit d'ARN produit avant toute modification, contenant encore les séquences non-codantes."
+    },
+    {
+      "id": "vb25",
+      "cat": "Synthèse des protéines",
+      "term": "Introns",
+      "def": "Séquences NON-CODANTES de l'ARN pré-messager.\nSeront retirés lors de l'épissage et dégradés.\nNe contribuent pas à la protéine finale.",
+      "ex": "Introns = interrompus, retirés. Analogie cinéma : les introns sont les scènes coupées au montage — présentes dans le film brut, absentes du film final.",
+      "short_def": "Séquences non-codantes de l'ARN pré-messager éliminées lors de la maturation."
+    },
+    {
+      "id": "vb26",
+      "cat": "Synthèse des protéines",
+      "term": "Exons",
+      "def": "Séquences CODANTES de l'ARN pré-messager.\nConservées après épissage et assemblées pour former l'ARNm mature.\nSeront traduits en acides aminés.",
+      "ex": "Exons = exprimés. Ce sont les séquences qui « comptent » pour la protéine. Un gène humain contient en moyenne 8–9 exons.",
+      "short_def": "Séquences codantes de l'ARN pré-messager conservées après maturation et traduites en protéine."
+    },
+    {
+      "id": "vb27",
+      "cat": "Synthèse des protéines",
+      "term": "Épissage (splicing)",
+      "def": "Maturation de l'ARN pré-messager :\n1. Retrait de tous les introns\n2. Jonction des exons restants\n→ Produit l'ARNm MATURE prêt à être traduit.",
+      "ex": "Comme monter un film : on retire les séquences inutiles (introns) et on colle les séquences utiles (exons) pour avoir un film cohérent (ARNm mature).",
+      "short_def": "Maturation de l'ARN consistant à retirer les séquences non-codantes et assembler les séquences utiles."
+    },
+    {
+      "id": "vb28",
+      "cat": "Synthèse des protéines",
+      "term": "Épissage alternatif",
+      "def": "Variante de l'épissage : certains exons sont inclus OU exclus selon le tissu ou le stade de développement.\n→ UN seul gène peut produire PLUSIEURS protéines différentes.",
+      "ex": "Gène CGRP : dans la thyroïde → calcitonine (hormone) · dans les neurones → CGRP (neurotransmetteur). Même gène, protéines différentes selon l'épissage.",
+      "short_def": "Mécanisme permettant à un seul gène de produire plusieurs protéines différentes selon le tissu ou le stade."
+    },
+    {
+      "id": "vb29",
+      "cat": "Synthèse des protéines",
+      "term": "Coiffe 5'",
+      "def": "Modification post-transcriptionnelle ajoutée à l'extrémité 5' de l'ARN pré-messager :\nGuanine méthylée (7-méthylguanosine) + 3 groupes phosphate.\nRôles : ↑ durée de vie ARNm · facilite export hors du noyau · facilite reconnaissance par les ribosomes.",
+      "ex": "Comme un « capuchon » qui protège l'ARNm de la dégradation et signale aux ribosomes qu'il est prêt à être traduit.",
+      "short_def": "Modification protectrice ajoutée à l'extrémité 5' de l'ARNm lors de sa maturation dans le noyau."
+    },
+    {
+      "id": "vb30",
+      "cat": "Synthèse des protéines",
+      "term": "Queue poly-A",
+      "def": "Modification post-transcriptionnelle ajoutée à l'extrémité 3' de l'ARN pré-messager :\n100 à 250 adénines (A) ajoutées en série.\nRôles identiques à la coiffe 5' : ↑ durée de vie · facilite export · facilite traduction.",
+      "ex": "Comme une « queue » stabilisatrice. Les deux modifications (coiffe 5' + queue poly-A) forment ensemble la protection complète de l'ARNm.",
+      "short_def": "Suite de 100 à 250 adénines ajoutées à l'extrémité 3' de l'ARNm pour le stabiliser."
+    },
+    {
+      "id": "vb31",
+      "cat": "Synthèse des protéines",
+      "term": "Traduction",
+      "def": "Processus dans le CYTOPLASME par lequel le ribosome lit l'ARNm codon par codon et assemble la chaîne d'acides aminés.\nEn 5 étapes : initiation → élongation (répétée) → terminaison.",
+      "ex": "« Traduit » le langage nucléotides (ARNm, codons de 3 lettres) en langage acides aminés (protéine). Lieu : ribosomes libres (→ protéines intracellulaires) ou fixés au RER (→ protéines exportées).",
+      "short_def": "Processus dans le cytoplasme par lequel le ribosome lit l'ARNm codon par codon pour assembler une protéine."
+    },
+    {
+      "id": "vb32",
+      "cat": "Synthèse des protéines",
+      "term": "Codon",
+      "def": "Séquence de 3 nucléotides consécutifs sur l'ARNm codant pour UN acide aminé.\n64 codons au total (4³) :\n• 61 codons codants\n• 3 codons STOP : UAA, UAG, UGA\n• 1 codon START : AUG (Méthionine)",
+      "ex": "Le code génétique est le dictionnaire codon → acide aminé. AUG est le signal de démarrage de toute traduction.",
+      "short_def": "Triplet de nucléotides sur l'ARNm correspondant à un acide aminé ou à un signal d'arrêt."
+    },
+    {
+      "id": "vb33",
+      "cat": "Synthèse des protéines",
+      "term": "Anticodon",
+      "def": "Séquence de 3 nucléotides COMPLÉMENTAIRE du codon, portée par l'ARNt.\nPermet à l'ARNt d'apporter le bon acide aminé en face du bon codon sur l'ARNm.",
+      "ex": "Codon AUG sur ARNm → anticodon UAC sur l'ARNt-Méthionine. L'appariement codon-anticodon garantit que le bon AA est ajouté à la chaîne.",
+      "short_def": "Triplet de nucléotides complémentaire du codon, porté par le transporteur d'acide aminé."
+    },
+    {
+      "id": "vb34",
+      "cat": "Synthèse des protéines",
+      "term": "ARNm — ARN messager",
+      "def": "Copie d'un gène produite lors de la transcription. Sert de MATRICE pour la traduction.\nStructure : coiffe 5' — exons — queue poly-A.\nMono-caténaire (1 seul brin), base U à la place de T.",
+      "ex": "Le messager entre le noyau (ADN) et le ribosome (usine à protéines). Sans ARNm, le ribosome n'a rien à lire.",
+      "short_def": "Copie d'un gène, produite dans le noyau, servant de matrice pour la fabrication d'une protéine."
+    },
+    {
+      "id": "vb35",
+      "cat": "Synthèse des protéines",
+      "term": "ARNt — ARN de transport",
+      "def": "Petite molécule d'ARN en forme de feuille de trèfle.\nPorte à une extrémité un ANTICODON (reconnaît le codon) et à l'autre extrémité un ACIDE AMINÉ spécifique.\nFait le lien entre le codon de l'ARNm et l'acide aminé.",
+      "ex": "Le facteur de transport de la traduction : il livre le bon acide aminé au ribosome selon le codon lu. Il y a autant de types d'ARNt que d'acides aminés (20).",
+      "short_def": "Petite molécule d'ARN en forme de trèfle qui amène le bon acide aminé face au bon codon."
+    },
+    {
+      "id": "vb36",
+      "cat": "Synthèse des protéines",
+      "term": "ARNr — ARN ribosomal",
+      "def": "Composant structural des ribosomes (associé à des protéines ribosomales).\nCatalise la formation des LIAISONS PEPTIDIQUES lors de la traduction.\nProduit dans le nucléole.",
+      "ex": "Le ribosome est en grande partie fait d'ARNr — c'est lui le « moteur » de la traduction. Produit par le nucléole (structure dans le noyau).",
+      "short_def": "Composant structural des ribosomes qui catalyse la formation des liaisons entre acides aminés."
+    },
+    {
+      "id": "vb37",
+      "cat": "Synthèse des protéines",
+      "term": "Sites A, P, E du ribosome",
+      "def": "Les 3 sites fonctionnels du ribosome :\n• A (Accepteur) : accueille le nouvel ARNt porteur d'un AA\n• P (Peptide) : site où se forme la liaison peptidique (transfert AA sur chaîne)\n• E (Évacuation) : éjecte l'ARNt vide",
+      "ex": "Séquence : ARNt entre en A → passe en P (liaison peptidique formée) → passe en E (ARNt éjecté). Le ribosome avance d'un codon à chaque cycle.",
+      "short_def": "Les trois sites fonctionnels du ribosome où l'ARNt arrive (A), forme la liaison (P), puis est éjecté (E)."
+    },
+    {
+      "id": "vb38",
+      "cat": "Biologie cellulaire",
+      "term": "Procaryote",
+      "def": "Cellule SANS noyau délimité par une membrane.\nADN circulaire localisé dans le NUCLÉOÏDE (zone sans membrane).\n4 éléments présents : ADN · membrane · ribosome · cytosol.\nEx : bactéries.",
+      "ex": "Pro = avant / karyon = noyau. La bactérie E. coli est un procaryote. Les procaryotes n'ont pas de mitochondries — ils respirent via leur membrane plasmique.",
+      "short_def": "Cellule sans vrai noyau délimité par une membrane, à ADN circulaire dans le nucléoïde."
+    },
+    {
+      "id": "vb39",
+      "cat": "Biologie cellulaire",
+      "term": "Eucaryote",
+      "def": "Cellule AVEC un vrai noyau délimité par une enveloppe nucléaire (double membrane).\nOrganites compartimentés dans des membranes.\nEx : cellules animales, végétales, champignons.",
+      "ex": "Eu = vrai. Toutes les cellules humaines sont eucaryotes. La compartimentation permet des réactions simultanées dans différents compartiments.",
+      "short_def": "Cellule possédant un vrai noyau délimité par une double membrane et des organites compartimentés."
+    },
+    {
+      "id": "vb40",
+      "cat": "Biologie cellulaire",
+      "term": "Cytoplasme",
+      "def": "Tout le contenu cellulaire situé À L'INTÉRIEUR de la membrane plasmique, SAUF le noyau.\n= Cytosol + tous les organites (mitochondries, ribosomes, Golgi…)",
+      "ex": "Attention : cytoplasme ≠ cytosol. Le cytosol est la partie liquide du cytoplasme. Analogie : le cytoplasme est la soupe (bouillon + légumes), le cytosol est uniquement le bouillon.",
+      "short_def": "Tout le contenu cellulaire à l'intérieur de la membrane plasmique, sauf le noyau."
+    },
+    {
+      "id": "vb41",
+      "cat": "Biologie cellulaire",
+      "term": "Cytosol / Hyaloplasme",
+      "def": "Cytosol = portion LIQUIDE du cytoplasme.\nSolution aqueuse contenant enzymes, métabolites, ions, ribosomes libres.\nHyaloplasme = synonyme de cytosol (terme plus ancien, encore utilisé au cours).",
+      "ex": "Cytosol = le bouillon de la soupe cellulaire (sans les légumes = sans les organites). Le cytosol occupe ~50% du volume cellulaire.",
+      "short_def": "La partie liquide du cytoplasme, solution aqueuse contenant enzymes et métabolites."
+    },
+    {
+      "id": "vb42",
+      "cat": "Biologie cellulaire",
+      "term": "Mitochondrie",
+      "def": "Organite à DOUBLE membrane :\n• Membrane externe : lisse\n• Membrane interne : plissée en CRÊTES MITOCHONDRIALES\nSiège de la respiration cellulaire → production d'ATP.\nTaille : 1–10 µm.",
+      "ex": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + ATP. Les crêtes augmentent la surface d'échange → plus d'ATP. Présente dans cellules animales ET végétales.",
+      "short_def": "Organite à double membrane siège de la respiration cellulaire, avec une membrane interne très plissée."
+    },
+    {
+      "id": "vb43",
+      "cat": "Biologie cellulaire",
+      "term": "Chloroplaste",
+      "def": "Organite à DOUBLE membrane, exclusif aux cellules VÉGÉTALES.\nContient des GRANA : empilements de thylakoïdes contenant la chlorophylle.\nSiège de la photosynthèse.\nTaille : 3–10 µm.",
+      "ex": "6CO₂ + 6H₂O + lumière → C₆H₁₂O₆ + 6O₂. C'est un plaste spécialisé. Les grana (piles de disques membraneux) sont très caractéristiques au MET.",
+      "short_def": "Organite à double membrane exclusif aux végétaux, contenant de la chlorophylle et siège de la photosynthèse."
+    },
+    {
+      "id": "vb44",
+      "cat": "Biologie cellulaire",
+      "term": "RER — Réticulum endoplasmique rugueux",
+      "def": "Réseau de sacs membraneux APLATIS (citernes) HÉRISSÉ DE RIBOSOMES → aspect rugueux.\nDirectement connecté à l'enveloppe nucléaire.\nFonction : synthèse des protéines destinées à l'EXPORT ou intégrées dans des membranes.",
+      "ex": "RER → vésicule → Golgi → destination finale. C'est la première étape du trajet des protéines sécrétées (ex : insuline, anticorps).",
+      "short_def": "Réseau de sacs aplatis hérissés de ribosomes, spécialisé dans la synthèse des protéines destinées à l'export."
+    },
+    {
+      "id": "vb45",
+      "cat": "Biologie cellulaire",
+      "term": "REL — Réticulum endoplasmique lisse",
+      "def": "Réseau tubulaire membraneux SANS RIBOSOMES → aspect lisse.\nFonctions :\n• Synthèse des LIPIDES\n• Détoxification (foie)\n• Stockage du Ca²⁺ (muscles)",
+      "ex": "Lisse = pas de ribosomes = pas de synthèse protéique directe. Très abondant dans les cellules hépatiques (détox) et musculaires (stockage Ca²⁺).",
+      "short_def": "Réseau tubulaire sans ribosomes impliqué dans la synthèse des lipides et la détoxification."
+    },
+    {
+      "id": "vb46",
+      "cat": "Biologie cellulaire",
+      "term": "Appareil de Golgi",
+      "def": "Empilement de saccules membraneux courbés = PILE D'ASSIETTES au MET.\nFonctions :\n• Reçoit les protéines du RER\n• Les MODIFIE (glycosylation, phosphorylation)\n• Les TRIE et les EXPÉDIE vers leur destination",
+      "ex": "Poste de tri et d'emballage de la cellule. Les bords des saccules bourgeonnent en vésicules. Produit aussi les lysosomes.",
+      "short_def": "Empilement de saccules membraneux qui modifie, trie et expédie les protéines vers leur destination finale."
+    },
+    {
+      "id": "vb47",
+      "cat": "Biologie cellulaire",
+      "term": "Lysosome",
+      "def": "Vésicule à SIMPLE MEMBRANE contenant des enzymes hydrolytiques acides (pH ~5).\nFonctions :\n• Digestion des macromolécules ingérées\n• Autophagie (destruction des organites usés)\n• Défense (destruction des pathogènes)",
+      "ex": "Estomac de la cellule. Produit par le Golgi. Absent des cellules végétales (remplacé par la vacuole). Le lysosome doit rester fermé — sa rupture digèrerait la cellule.",
+      "short_def": "Vésicule à pH acide contenant des enzymes digestives, qui dégrade macromolécules et organites usés."
+    },
+    {
+      "id": "vb48",
+      "cat": "Biologie cellulaire",
+      "term": "Peroxysome",
+      "def": "Petite vésicule à SIMPLE MEMBRANE, parfois avec un cœur cristallin dense au MET.\nFonctions :\n• Oxydation des acides gras\n• Produit du H₂O₂ (peroxyde) puis le DÉTRUIT immédiatement\n→ Protège la cellule contre l'oxydation.",
+      "ex": "Produit et neutralise H₂O₂ → protection cellulaire. Abondant dans le foie et les reins. Différent du lysosome par son contenu enzymatique.",
+      "short_def": "Petite vésicule qui oxyde les acides gras et neutralise immédiatement le peroxyde d'hydrogène qu'il produit."
+    },
+    {
+      "id": "vb49",
+      "cat": "Biologie cellulaire",
+      "term": "Ribosome",
+      "def": "Petite structure SANS MEMBRANE composée de 2 sous-unités (grande + petite) faites d'ARNr + protéines.\nSiège de la TRADUCTION.\n• Libre dans le cytosol → protéines intracellulaires\n• Fixé au RER → protéines exportées",
+      "ex": "Seul organite présent dans TOUTES les cellules vivantes (procaryotes + eucaryotes). Visible au MET comme de minuscules points sombres (~25 nm).",
+      "short_def": "Petite structure sans membrane, composée de deux sous-unités ARN+protéines, siège de la traduction."
+    },
+    {
+      "id": "vb50",
+      "cat": "Biologie cellulaire",
+      "term": "Perméase",
+      "def": "Protéine membranaire de TRANSPORT FACILITATEUR.\nPermet à une molécule spécifique de traverser la membrane par diffusion FACILITÉE, sans consommer d'ATP.\nTransport PASSIF : selon le gradient.",
+      "ex": "La perméase au glucose aide le glucose à entrer dans la cellule selon son gradient (de l'extérieur plus concentré vers l'intérieur). Sans énergie, mais avec une protéine spécifique.",
+      "short_def": "Protéine membranaire facilitant le passage d'une molécule spécifique selon son gradient, sans ATP."
+    },
+    {
+      "id": "vb51",
+      "cat": "Biologie cellulaire",
+      "term": "Vacuole centrale",
+      "def": "Grande vésicule (1 membrane = TONOPLASTE), exclusive aux cellules VÉGÉTALES adultes.\nOccupe jusqu'à 90% du volume cellulaire.\nFonctions : stockage eau/déchets/métabolites · maintien de la TURGESCENCE · rôle de lysosome.",
+      "ex": "Plus la plante vieillit, plus la vacuole grossit → fait croître la cellule sans synthèse massive de cytoplasme. C'est ce qui permet aux plantes de grandir rapidement.",
+      "short_def": "Grande structure à simple membrane exclusive aux végétaux adultes, pouvant occuper 90% du volume cellulaire."
+    },
+    {
+      "id": "vb52",
+      "cat": "Mutations",
+      "term": "Mutation",
+      "def": "Modification PERMANENTE de la séquence d'ADN.\n3 catégories :\n• Ponctuelles : 1–quelques nucléotides\n• Chromosomiques : structure d'un chromosome\n• Génomiques : nombre de chromosomes",
+      "ex": "Toute mutation n'est pas pathologique — certaines sont silencieuses. Les mutations germinales sont héréditaires (transmises aux enfants), les somatiques ne le sont pas.",
+      "short_def": "Modification permanente de la séquence d'ADN, classée selon l'échelle : nucléotide, chromosome ou génome."
+    },
+    {
+      "id": "vb53",
+      "cat": "Mutations",
+      "term": "Substitution",
+      "def": "Mutation ponctuelle : REMPLACEMENT d'une base par une autre.\n3 conséquences possibles :\n• Faux sens : AA différent → protéine altérée\n• Non-sens : → codon STOP → protéine tronquée\n• Silencieuse : même AA (code dégénéré)",
+      "ex": "Drépanocytose : GAG (Glu) → GTG (Val) = substitution faux sens. L'hémoglobine change de forme → globule rouge en faucille.",
+      "short_def": "Mutation ponctuelle remplaçant une base par une autre, pouvant être silencieuse, faux-sens ou non-sens."
+    },
+    {
+      "id": "vb54",
+      "cat": "Mutations",
+      "term": "Addition / Délétion",
+      "def": "Mutations ponctuelles :\n• Addition : INSERTION d'une base dans la séquence\n• Délétion : SUPPRESSION d'une base\nConséquence majeure : DÉCALAGE DU CADRE DE LECTURE (frameshift) → toute la séquence en aval est modifiée → protéine totalement altérée.",
+      "ex": "Comme supprimer une lettre dans une phrase : « le chat dort » → « l cha tdo rt » — tout devient illisible à partir du point de mutation.",
+      "short_def": "Mutations ponctuelles ajoutant ou supprimant une base, décalant entièrement le cadre de lecture en aval."
+    },
+    {
+      "id": "vb55",
+      "cat": "Mutations",
+      "term": "Drépanocytose",
+      "def": "Maladie génétique : substitution GAG → GTG sur le 6e codon du gène β-globine.\nRésultat : Glutamate (Glu) remplacé par Valine (Val) dans l'hémoglobine.\nGlobules rouges en FORME DE FAUCILLE → blocages dans les capillaires.",
+      "ex": "Mutation ponctuelle, faux sens, récessive (il faut 2 copies mutées pour être malade). Exemple parfait de lien mutation → structure protéine → maladie.",
+      "short_def": "Maladie génétique causée par une substitution sur le gène de l'hémoglobine, déformant les globules rouges en faucille."
+    },
+    {
+      "id": "vb56",
+      "cat": "Mutations",
+      "term": "Chorée de Huntington",
+      "def": "Maladie neurodégénérative due à une EXPANSION DE TRIPLET CAG sur le chromosome 4.\n• ≤35 répétitions : sain\n• >35 répétitions : malade (apparition ~40 ans)\nType de mutation : addition (répétition anormale).",
+      "ex": "Dominante : 1 seule copie mutée suffit. Touche les neurones du striatum → mouvements involontaires, démence progressive. Exemple de mutation dynamique.",
+      "short_def": "Maladie neurodégénérative dominante causée par une répétition excessive d'un triplet sur le chromosome 4."
+    },
+    {
+      "id": "vb57",
+      "cat": "Mutations",
+      "term": "Trisomie 21",
+      "def": "Mutation GÉNOMIQUE : présence de 3 chromosomes 21 au lieu de 2 → 47 chromosomes.\nCause : non-disjonction lors de la méiose.\nSyndrome de Down : déficience intellectuelle, traits caractéristiques, malformations cardiaques.",
+      "ex": "La trisomie 21 est la plus fréquente des trisomies viables. Risque augmente avec l'âge maternel. Visible au caryotype : 3 chr. 21.",
+      "short_def": "Anomalie génomique avec 47 chromosomes due à un troisième exemplaire du chromosome 21."
+    },
+    {
+      "id": "vb58",
+      "cat": "Mutations",
+      "term": "Syndrome de Turner",
+      "def": "Mutation génomique : caryotype 45, XO (manque un chromosome sexuel).\nFenotypiquement FÉMININ.\nCaractéristiques : petite taille, cou palmé, stérilité, absence de puberté spontanée.",
+      "ex": "XO = un seul chromosome X, pas de Y. La personne est féminine car absence de Y → pas de différenciation testiculaire. Visible au caryotype.",
+      "short_def": "Anomalie génomique chez une personne phénotypiquement féminine avec un seul chromosome sexuel (45, X)."
+    },
+    {
+      "id": "vb59",
+      "cat": "Mutations",
+      "term": "Syndrome de Klinefelter",
+      "def": "Mutation génomique : caryotype 47, XXY.\nPhénotypiquement MASCULIN.\nCaractéristiques : grande taille, caractères sexuels secondaires peu développés, stérilité, gynecomastie possible.",
+      "ex": "XXY : la présence du Y détermine le sexe masculin, mais le X surnuméraire perturbe la développement. Traitement possible à la testostérone.",
+      "short_def": "Anomalie génomique chez un homme possédant un chromosome X surnuméraire (47, XXY)."
+    },
+    {
+      "id": "vb60",
+      "cat": "Mutations",
+      "term": "Mutations chromosomiques — 5 types",
+      "def": "Affectent la STRUCTURE d'un chromosome :\n1. Délétion : perte d'un fragment\n2. Duplication : copie d'un fragment\n3. Inversion : retournement d'un fragment\n4. Insertion : fragment d'un autre chromosome\n5. Translocation : échange entre 2 chr. non homologues",
+      "ex": "Visibles au caryotype si le fragment est assez grand. La translocation t(9;22) cause la leucémie myéloïde chronique (chromosome Philadelphie).",
+      "short_def": "Les 5 types de mutations affectant la structure d'un chromosome : délétion, duplication, inversion, insertion, translocation."
+    },
+    {
+      "id": "vb61",
+      "cat": "Cycle cellulaire",
+      "term": "Interphase — G1, S, G2",
+      "def": "Phase entre deux divisions. Comprend :\n• G1 : croissance, synthèse protéines (check-point ressources)\n• S (Synthèse) : réplication ADN → 100% → 200%\n• G2 : vérification ADN, préparation mitose (check-point intégrité)\n• G0 : cellule hors cycle, exerce sa fonction normalement",
+      "ex": "L'interphase dure des heures (G1~8h, S~6h, G2~4h) vs la mitose qui dure ~1h. La phase S est critique : toute erreur non corrigée peut devenir une mutation.",
+      "short_def": "La longue phase entre deux divisions cellulaires, comprenant la croissance, la réplication de l'ADN et la préparation."
+    },
+    {
+      "id": "vb62",
+      "cat": "Cycle cellulaire",
+      "term": "Réplication semi-conservative",
+      "def": "Mode de réplication de l'ADN en phase S :\n1. Les 2 brins de la double hélice se séparent\n2. Chaque brin sert de MATRICE pour synthèse d'un nouveau brin\nRésultat : 2 molécules, chacune avec 1 ANCIEN brin + 1 NOUVEAU brin.",
+      "ex": "Semi-conservatif = chaque molécule fille CONSERVE un brin original. Si la réplication était conservative, une molécule aurait 2 anciens brins, l'autre 2 nouveaux.",
+      "short_def": "Mode de copie de l'ADN produisant deux molécules filles contenant chacune un brin original et un brin neuf."
+    },
+    {
+      "id": "vb63",
+      "cat": "Cycle cellulaire",
+      "term": "Prophase",
+      "def": "1ère phase de la mitose :\n• Condensation de l'ADN → chromosomes visibles (X)\n• Disparition de la MEMBRANE NUCLÉAIRE\n• Formation du FUSEAU MITOTIQUE (microtubules)\n• Migration des centrosomes vers les pôles opposés",
+      "ex": "Signal de début de division : les chromosomes bichromatidiens deviennent visibles pour la 1ère fois. La disparition de la membrane nucléaire libère les chromosomes pour qu'ils puissent être capturés.",
+      "short_def": "1ère phase de la mitose : condensation de l'ADN, disparition de la membrane nucléaire, formation du fuseau."
+    },
+    {
+      "id": "vb64",
+      "cat": "Cycle cellulaire",
+      "term": "Métaphase",
+      "def": "3ème phase de la mitose :\nLes chromosomes s'ALIGNENT AU CENTRE de la cellule sur la PLAQUE ÉQUATORIALE.\nChaque chromatide est reliée au fuseau via le kinétochore.\nC'est la phase où les chromosomes sont le plus condensés et le plus visibles.",
+      "ex": "La métaphase est la phase idéale pour réaliser un CARYOTYPE — les chromosomes sont parfaitement alignés et visibles. Le fuseau exerce une tension égale sur les 2 chromatides.",
+      "short_def": "Phase de la mitose où les chromosomes s'alignent parfaitement au centre de la cellule."
+    },
+    {
+      "id": "vb65",
+      "cat": "Cycle cellulaire",
+      "term": "Anaphase",
+      "def": "4ème phase de la mitose :\nSÉPARATION des chromatides sœurs → migration vers les PÔLES OPPOSÉS.\nChaque pôle reçoit un jeu COMPLET de chromosomes (identiques à la cellule mère).\nLa cellule s'allonge.",
+      "ex": "L'anaphase est la phase courte mais critique : si les chromatides ne se séparent pas correctement → non-disjonction → trisomie ou monosomie.",
+      "short_def": "Phase de la mitose où les copies du chromosome se séparent et migrent vers les pôles opposés."
+    },
+    {
+      "id": "vb66",
+      "cat": "Cycle cellulaire",
+      "term": "Télophase & Cytocinèse",
+      "def": "Télophase : REFORMATION de la membrane nucléaire autour de chaque jeu de chromosomes, décondensation des chromosomes.\nCytocinèse : séparation physique du cytoplasme :\n• Animal : anneau contractile d'actine\n• Végétal : plaque cellulaire",
+      "ex": "La cytocinèse ≠ mitose. La mitose divise le noyau, la cytocinèse divise le cytoplasme. Résultat final : 2 cellules filles génétiquement identiques à la cellule mère.",
+      "short_def": "Phase finale de la mitose : reformation des membranes nucléaires et séparation du cytoplasme en deux cellules."
+    },
+    {
+      "id": "vb67",
+      "cat": "Cycle cellulaire",
+      "term": "Fuseau mitotique",
+      "def": "Réseau de MICROTUBULES formé depuis les centrosomes lors de la prophase.\nResponsable du déplacement des chromosomes :\n• Vers la plaque équatoriale (métaphase)\n• Vers les pôles (anaphase)\nSe désassemble en télophase.",
+      "ex": "Le fuseau = les « câbles » qui tirent les chromosomes. C'est le cytosquelette en action. Les substances qui bloquent le fuseau (colchicine, taxol) sont utilisées en chimio.",
+      "short_def": "Réseau de microtubules formé depuis les centrosomes, responsable du déplacement des chromosomes."
+    },
+    {
+      "id": "vb68",
+      "cat": "Cycle cellulaire",
+      "term": "Kinétochore",
+      "def": "Complexe protéique formé SUR LE CENTROMÈRE lors de la prométaphase.\nSert de POINT D'ANCRAGE des microtubules du fuseau sur le chromosome.\nL'histone spéciale CENH₃ remplace les histones classiques pour former le kinétochore.",
+      "ex": "Sans kinétochore, les microtubules ne peuvent pas s'accrocher aux chromosomes → pas de séparation des chromatides → cellule non viable.",
+      "short_def": "Complexe protéique formé sur le centromère qui sert de point d'ancrage aux microtubules du fuseau."
+    },
+    {
+      "id": "vb69",
+      "cat": "Cycle cellulaire",
+      "term": "Inhibition de contact",
+      "def": "Mécanisme de régulation : les cellules normales CESSENT DE SE DIVISER quand elles entrent en contact avec leurs voisines (couche continue formée).\nLes cellules CANCÉREUSES échappent à cette inhibition → prolifération anarchique.",
+      "ex": "Si on retire des cellules d'une couche confluente, les cellules adjacentes recommencent à se diviser pour combler le vide. Ce mécanisme est PERDU dans les cellules cancéreuses.",
+      "short_def": "Mécanisme par lequel les cellules normales arrêtent de se diviser lorsqu'elles sont en contact avec leurs voisines."
+    },
+    {
+      "id": "vb70",
+      "cat": "Cycle cellulaire",
+      "term": "Tumeur bénigne",
+      "def": "Masse de cellules anormales à croissance LENTE et LOCALISÉE.\nNe produit pas de métastases.\nN'envahit pas les tissus voisins.\nPeut généralement être retirée chirurgicalement sans récidive.",
+      "ex": "Bénigne = sans danger immédiat. Ex : fibrome utérin, lipome. Peut devenir maligne si mutations supplémentaires s'accumulent.",
+      "short_def": "Masse cellulaire anormale à croissance lente et localisée, sans envahissement des tissus voisins."
+    },
+    {
+      "id": "vb71",
+      "cat": "Cycle cellulaire",
+      "term": "Tumeur maligne & Métastase",
+      "def": "Tumeur maligne : masse cellulaire qui ENVAHIT les tissus voisins.\nMétastase : cellules tumorales qui se DÉTACHENT de la tumeur principale, voyagent via le sang ou la lymphe et colonisent d'autres organes.",
+      "ex": "Maligne = cancéreuse. Ex : le cancer du sein peut métastaser dans les poumons, le foie, les os. Les métastases sont la principale cause de mortalité par cancer.",
+      "short_def": "Masse cancéreuse qui envahit les tissus voisins et peut libérer des cellules colonisant d'autres organes."
+    },
+    {
+      "id": "vb72",
+      "cat": "Transport membranaire",
+      "term": "Bicouche phospholipidique",
+      "def": "Structure de base de la membrane plasmique :\n• 2 feuillets de phospholipides\n• Têtes HYDROPHILES vers l'extérieur et l'intérieur\n• Queues HYDROPHOBES au centre (loin de l'eau)\nEgalement : cholestérol, protéines transmembranaires, glycoprotéines.",
+      "ex": "Mosaïque fluide : les phospholipides peuvent se déplacer latéralement → la membrane est dynamique, pas rigide. Cette fluidité est régulée par le cholestérol.",
+      "short_def": "Structure de base de la membrane : deux feuillets de phospholipides, têtes hydrophiles à l'extérieur, queues hydrophobes au centre."
+    },
+    {
+      "id": "vb73",
+      "cat": "Transport membranaire",
+      "term": "Gradient de concentration",
+      "def": "Différence de concentration d'une substance entre 2 zones.\n• Selon le gradient : du + concentré → le – concentré (SPONTANÉ, sans énergie)\n• Contre le gradient : du – concentré → le + concentré (nécessite ATP)",
+      "ex": "Les molécules « descendent » naturellement leur gradient, comme l'eau descend une colline. Maintenir un gradient (ex : Na⁺/K⁺) nécessite une dépense d'énergie continue.",
+      "short_def": "Différence de concentration d'une substance entre deux zones, déterminant le sens spontané du transport."
+    },
+    {
+      "id": "vb74",
+      "cat": "Transport membranaire",
+      "term": "Transport passif",
+      "def": "Déplacement d'une substance SELON son gradient de concentration, SANS consommation d'ATP.\nDeux types :\n• Diffusion simple (sans protéine)\n• Diffusion facilitée (avec canal ou perméase)",
+      "ex": "Passif = sans énergie = spontané. O₂ et CO₂ traversent librement la membrane. Le glucose entre grâce à une perméase (facilitée mais passive).",
+      "short_def": "Déplacement d'une substance selon son gradient de concentration, spontané et sans consommation d'ATP."
+    },
+    {
+      "id": "vb75",
+      "cat": "Transport membranaire",
+      "term": "Transport actif",
+      "def": "Déplacement d'une substance CONTRE son gradient de concentration, nécessitant de l'ATP.\nExemples :\n• Pompe Na⁺/K⁺ (ions)\n• Endocytose / Exocytose (grosses molécules)",
+      "ex": "Actif = coûte de l'énergie. La cellule dépense ~30% de son ATP pour faire fonctionner la pompe Na⁺/K⁺ — indispensable à l'influx nerveux et à la contraction musculaire.",
+      "short_def": "Déplacement d'une substance contre son gradient de concentration, nécessitant obligatoirement de l'ATP."
+    },
+    {
+      "id": "vb76",
+      "cat": "Transport membranaire",
+      "term": "Diffusion simple",
+      "def": "Passage DIRECT d'une molécule à travers la bicouche lipidique, SANS protéine.\nRéservé aux molécules :\n• Petites\n• Non chargées\n• Non polaires (hydrophobes)\nEx : O₂, CO₂, eau (osmose).",
+      "ex": "O₂ diffuse des alvéoles pulmonaires vers le sang selon son gradient. CO₂ fait l'inverse. Ce transport ne nécessite aucune protéine — la molécule traverse directement les phospholipides.",
+      "short_def": "Passage direct de petites molécules non chargées à travers la bicouche lipidique, sans protéine intermédiaire."
+    },
+    {
+      "id": "vb77",
+      "cat": "Transport membranaire",
+      "term": "Diffusion facilitée",
+      "def": "Passage selon le gradient via une PROTÉINE MEMBRANAIRE :\n• Canal ionique : pour les ions chargés (Na⁺, K⁺, Cl⁻)\n• Perméase : pour les grosses molécules polaires (glucose)\nPASSIF : sans ATP, selon le gradient.",
+      "ex": "Le glucose entre dans les cellules via une perméase GLUT — sans énergie, selon son gradient. Les ions traversent via des canaux ioniques sélectifs (ex : canal K⁺).",
+      "short_def": "Passage selon le gradient via une protéine membranaire (canal ou transporteur), passif et sélectif."
+    },
+    {
+      "id": "vb78",
+      "cat": "Transport membranaire",
+      "term": "Osmose",
+      "def": "Cas particulier de diffusion simple : déplacement de l'EAU à travers une membrane SEMI-PERMÉABLE.\nSens : milieu hypotonique (moins concentré) → milieu hypertonique (plus concentré).\nVia des protéines spécialisées : les AQUAPORINES.",
+      "ex": "L'eau va vers là où il y a « plus de sel ». Si on plonge une cellule animale dans de l'eau pure (hypotonique) → l'eau entre → la cellule gonfle et peut éclater (lyse).",
+      "short_def": "Déplacement de l'eau à travers une membrane semi-perméable du milieu le moins concentré vers le plus concentré."
+    },
+    {
+      "id": "vb79",
+      "cat": "Transport membranaire",
+      "term": "Milieux isotonique / hypertonique / hypotonique",
+      "def": "Par rapport à la cellule :\n• Isotonique : même concentration → pas de mouvement net d'eau\n• Hypertonique : + concentré → eau SORT → cellule se ratatine\n• Hypotonique : moins concentré → eau ENTRE → cellule gonfle",
+      "ex": "Le sérum physiologique (NaCl 0,9%) est isotonique aux cellules humaines → utilisé en perfusion. Eau pure = hypotonique → danger pour les cellules animales (lyse).",
+      "short_def": "Classification d'un milieu en fonction de sa concentration par rapport à la cellule, déterminant le sens du mouvement d'eau."
+    },
+    {
+      "id": "vb80",
+      "cat": "Transport membranaire",
+      "term": "Pompe Na⁺/K⁺ ATPase",
+      "def": "Pompe protéique membranaire (TRANSPORT ACTIF) :\nPour 1 ATP consommé :\n• Expulse 3 Na⁺ HORS de la cellule\n• Fait entrer 2 K⁺ DANS la cellule\nMaintient les gradients ioniques essentiels à l'influx nerveux.",
+      "ex": "3 Na⁺ sortent, 2 K⁺ entrent = 1 ATP. L'intérieur de la cellule est riche en K⁺ et pauvre en Na⁺ grâce à cette pompe. Sans elle : plus d'influx nerveux, plus de contraction musculaire.",
+      "short_def": "Pompe active expulsant 3 Na⁺ et faisant entrer 2 K⁺ en consommant un ATP, essentielle à l'influx nerveux."
+    },
+    {
+      "id": "vb81",
+      "cat": "Transport membranaire",
+      "term": "Endocytose",
+      "def": "Transport actif faisant ENTRER des substances dans la cellule par déformation de la membrane (formation d'une vésicule).\n• Phagocytose : ingestion de SOLIDES (microbes, débris)\n• Pinocytose : ingestion de LIQUIDES",
+      "ex": "Les globules blancs (macrophages) phagocytent les bactéries. Phago = manger · pino = boire. Nécessite de l'ATP pour déformer la membrane.",
+      "short_def": "Mécanisme actif faisant entrer de grosses substances dans la cellule par déformation de la membrane en vésicule."
+    },
+    {
+      "id": "vb82",
+      "cat": "Transport membranaire",
+      "term": "Exocytose",
+      "def": "Transport actif faisant SORTIR des substances de la cellule.\nUne vésicule remplie de molécules FUSIONNE avec la membrane plasmique et libère son contenu à l'extérieur.",
+      "ex": "Sécrétion d'insuline par le pancréas : les granules d'insuline fusionnent avec la membrane → insuline libérée dans le sang. Trajet protéine exportée : RER → Golgi → vésicule → exocytose.",
+      "short_def": "Mécanisme actif par lequel une vésicule interne fusionne avec la membrane pour libérer son contenu à l'extérieur."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "id": "controle-bio-02",
+  "matiere": "bio",
+  "numero": 2,
+  "titre": "Biologie — Synthèse des protéines & Mutations",
+  "date_generation": "2026-06-10",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Explique le déroulement de la transcription : qui fait quoi, où, et dans quel sens ?",
+      "concepts": ["transcription", "ARN polymérase", "brin matrice", "ARNm"]
+    },
+    {
+      "id": "q2",
+      "texte": "Qu'est-ce que l'épissage alternatif et quelle est son importance biologique ?",
+      "concepts": ["épissage alternatif", "exons", "introns", "ARN pré-messager"]
+    },
+    {
+      "id": "q3",
+      "texte": "Décris le rôle des trois sites A, P et E du ribosome lors de la traduction.",
+      "concepts": ["ribosome", "site A", "site P", "site E", "ARNt", "traduction"]
+    },
+    {
+      "id": "q4",
+      "texte": "Explique la drépanocytose : quelle mutation est en cause, quel est l'effet sur la protéine et sur le patient ?",
+      "concepts": ["drépanocytose", "substitution", "hémoglobine", "globule rouge"]
+    },
+    {
+      "id": "q5",
+      "texte": "Quelle est la différence entre une mutation chromosomique et une mutation génomique ? Donne un exemple de chaque.",
+      "concepts": ["mutation chromosomique", "mutation génomique", "trisomie 21", "délétion"]
+    }
+  ]
+}

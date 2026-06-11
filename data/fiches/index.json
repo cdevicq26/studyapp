@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fiche-geo-03",
+    "matiere": "geo",
+    "titre": "Géo C3 — Arctique, Ressources & Transport",
+    "sous_titre": "Cryosphère, géopolitique Arctique, sable, Anvers"
+  },
+  {
+    "id": "fiche-geo-04",
+    "matiere": "geo",
+    "titre": "Géo C4 — Méthode, Europe & Cocaïne",
+    "sous_titre": "Grille A/B/C, DIPP, UE/Schengen, trafic cocaïne"
+  },
+  {
+    "id": "fiche-philo-03",
+    "matiere": "philo",
+    "titre": "Philo C3 — Platon",
+    "sous_titre": "Connaissance, âme & politique"
+  },
+  {
+    "id": "fiche-philo-04",
+    "matiere": "philo",
+    "titre": "Philo C4 — Aristote",
+    "sous_titre": "Éthique, vertu & politique"
+  },
+  {
+    "id": "fiche-bio-02",
+    "matiere": "bio",
+    "titre": "Bio C2 — Synthèse des protéines & Mutations",
+    "sous_titre": "Transcription, traduction, drépanocytose"
+  },
+  {
+    "id": "fiche-bio-03",
+    "matiere": "bio",
+    "titre": "Bio C3 — Cycle cellulaire, Transport & Organites",
+    "sous_titre": "Mitose, transport membranaire, organites"
+  }
+]

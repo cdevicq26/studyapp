@@ -1,0 +1,193 @@
+{
+  "flashcards": [
+    {
+      "id": "vp1",
+      "cat": "Concepts généraux",
+      "term": "Concept philosophique",
+      "def": "Outil de pensée qui change notre regard sur le monde — et donc nos actions.\nDifférent d'un simple mot : un concept regroupe une signification précise et engagée.",
+      "ex": "Le concept de « liberté » ne désigne pas juste l'absence de contraintes — il engage une vision du sujet, de la responsabilité, de la société."
+    },
+    {
+      "id": "vp2",
+      "cat": "Contexte athénien",
+      "term": "Démocratie directe",
+      "def": "Système politique où le peuple vote lui-même les lois (sans représentants).\nOpposée à la démocratie indirecte (représentative).\nÀ Athènes : excluait femmes, esclaves, enfants, étrangers.",
+      "ex": "À l'Agora d'Athènes, les citoyens débattaient et votaient directement — d'où l'importance de la rhétorique."
+    },
+    {
+      "id": "vp3",
+      "cat": "Contexte athénien",
+      "term": "Agora",
+      "def": "Place publique d'Athènes, lieu de l'assemblée des citoyens et du débat politique.\nCentre de la vie démocratique directe.",
+      "ex": "C'est sur l'Agora que les Sophistes exerçaient leur rhétorique pour influencer les décisions collectives."
+    },
+    {
+      "id": "vp4",
+      "cat": "Les Sophistes",
+      "term": "Rhétorique",
+      "def": "Art de maîtriser la parole pour convaincre.\nDans une démocratie directe, savoir parler = avoir du pouvoir.\nLes Sophistes étaient les maîtres de la rhétorique.",
+      "ex": "Rhétorique → persuasion → pouvoir : celui qui parle le mieux à l'Agora obtient ce qu'il veut."
+    },
+    {
+      "id": "vp5",
+      "cat": "Les Sophistes",
+      "term": "Sophiste",
+      "def": "Enseignant itinérant de la Grèce antique, maître de la rhétorique.\nAidait ses clients à gagner des procès ou influencer l'assemblée.\nPour Platon, ils confondent persuasion et vérité.",
+      "ex": "Un Sophiste pouvait défendre n'importe quelle cause — bonne ou mauvaise — pourvu qu'on le paye."
+    },
+    {
+      "id": "vp6",
+      "cat": "Les Sophistes",
+      "term": "Sophisme",
+      "def": "Argument présenté comme valide mais trompeur ou fallacieux.\nUne erreur de raisonnement habillée en logique.",
+      "ex": "« Pile je gagne, face tu perds » — semble juste mais cache une asymétrie."
+    },
+    {
+      "id": "vp7",
+      "cat": "Les Sophistes",
+      "term": "Pharmakon",
+      "def": "Mot grec (φαρμακον) signifiant ce qui est à la fois remède et poison selon le contexte.\nSymbole du double-tranchant : utile ou dangereux selon qui le manie.",
+      "ex": "La rhétorique est un pharmakon : outil de démocratie entre de bonnes mains, outil de démagogie entre de mauvaises."
+    },
+    {
+      "id": "vp8",
+      "cat": "Les Sophistes",
+      "term": "Démagogie",
+      "def": "Dire ce qui plaît aux autres pour renforcer sa position, sans se soucier de la vérité.\nDérive négative de la rhétorique dans une démocratie.",
+      "ex": "Le Sophiste démagogue promet ce que la foule veut entendre, même si c'est faux ou néfaste."
+    },
+    {
+      "id": "vp9",
+      "cat": "Doxa et Épistémè",
+      "term": "Doxa",
+      "def": "Opinion, impression sensible — la « vérité » telle qu'elle est perçue par les sens et les croyances communes.\nPour les Sophistes : seule forme de vérité accessible.\nPour Platon : insuffisante, relative, changeante.",
+      "ex": "« La Terre est plate » était la doxa pendant des siècles — puis elle a changé."
+    },
+    {
+      "id": "vp10",
+      "cat": "Doxa et Épistémè",
+      "term": "Épistémè",
+      "def": "Savoir vrai, connaissance certaine accessible par l'âme et la raison (pas les sens).\nAbsolue, immuable — opposée à la doxa.\nModèle : les mathématiques (théorème de Pythagore est vrai pour toujours).",
+      "ex": "La démonstration de Pythagore est une épistémè : vraie hier, aujourd'hui et demain, universellement."
+    },
+    {
+      "id": "vp11",
+      "cat": "Platon — Épistémologie",
+      "term": "Maïeutique",
+      "def": "Méthode de Socrate : « l'art d'accoucher les âmes ».\nNe transmet pas le savoir — aide l'interlocuteur à trouver la vérité qui est déjà en lui.\n2 étapes : 1) Ironie/Aporie (déconstruire les certitudes) → 2) Accouchement (formuler la vérité).",
+      "ex": "Socrate ne dit jamais la réponse : il pose des questions jusqu'à ce que l'autre la trouve lui-même."
+    },
+    {
+      "id": "vp12",
+      "cat": "Platon — Épistémologie",
+      "term": "Aporie",
+      "def": "État d'impasse intellectuelle, de doute radical.\nProduite par Socrate lors de la première étape de la maïeutique.\nL'interlocuteur réalise qu'il ne sait pas ce qu'il croyait savoir → table rase productive.",
+      "ex": "Socrate interroge un général sur le courage jusqu'à ce que le général avoue qu'il n'a aucune définition solide."
+    },
+    {
+      "id": "vp13",
+      "cat": "Platon — Épistémologie",
+      "term": "Réminiscence",
+      "def": "Pour Platon : apprendre = se souvenir.\nL'âme aurait déjà connu les Idées dans une vie antérieure ; elle les retrouve progressivement.\nLié à la maïeutique : Socrate aide l'âme à se « ressouvenir ».",
+      "ex": "Un enfant qui comprend une vérité mathématique ne l'apprend pas — il s'en souvient (théorie platonicienne)."
+    },
+    {
+      "id": "vp14",
+      "cat": "Platon — Ontologie",
+      "term": "Idée (chez Platon)",
+      "def": "Concept d'une réalité intelligible et universelle — la forme parfaite et immuable d'une chose.\nLes choses sensibles ne sont que des copies imparfaites des Idées.\nAccessible à l'âme, pas aux sens.",
+      "ex": "L'Idée de « chaise » n'est pas une chaise particulière : c'est le concept pur de chaise, parfait et éternel."
+    },
+    {
+      "id": "vp15",
+      "cat": "Platon — Ontologie",
+      "term": "Mythe de la Caverne",
+      "def": "Allégorie de Platon (La République, Livre VII) illustrant les 3 grandes questions philosophiques.\nDes prisonniers ne voient que des ombres → un libéré découvre la réalité → le soleil = le Bien.\nOmbres = opinions (doxa) · Réalité = Idées (épistémè) · Soleil = le Bien.",
+      "ex": "Néo dans Matrix prend la pilule rouge = sortir de la caverne (métaphore directe)."
+    },
+    {
+      "id": "vp16",
+      "cat": "Platon — Ontologie",
+      "term": "Métempsychose",
+      "def": "Réincarnation de l'âme dans un nouveau corps après la mort.\nPour Platon : l'âme oublie ses souvenirs en se réincarnant mais conserve les Idées (réminiscence).",
+      "ex": "La métempsychose explique pourquoi on peut « apprendre » une vérité mathématique : l'âme la connaissait déjà."
+    },
+    {
+      "id": "vp17",
+      "cat": "Platon — Éthique",
+      "term": "Alétheia",
+      "def": "Mot grec pour « vérité », littéralement « dévoilement ».\nLa vérité ne tombe pas du ciel — elle doit être découverte activement par un effort.\nLiée à l'ascèse : se priver pour accéder à la vérité.",
+      "ex": "Découvrir une vérité mathématique exige un effort de pensée — elle ne se livre pas passivement."
+    },
+    {
+      "id": "vp18",
+      "cat": "Platon — Éthique",
+      "term": "Ascèse",
+      "def": "Travail sur soi visant à diminuer l'importance du corps pour libérer l'âme.\nNe signifie pas se faire souffrir (≠ masochisme) : remettre le corps à sa place de tremplin.\nLié à la quête du Bien et de la vérité.",
+      "ex": "Jeûne, chasteté, méditation : remettre le corps au service de l'âme, pas l'inverse."
+    },
+    {
+      "id": "vp19",
+      "cat": "Platon — Politique",
+      "term": "Despotisme éclairé",
+      "def": "Régime où seuls les philosophes (proches du Bien et de la vérité) devraient gouverner.\nPosition de Platon : opposée à la démocratie rhétorique des Sophistes.\nLe philosophe-roi est celui qui a « vu » le Bien.",
+      "ex": "Platon est allé en Sicile pour tenter de former un dirigeant philosophe — l'expérience a échoué."
+    },
+    {
+      "id": "vp20",
+      "cat": "Aristote — Bases",
+      "term": "Aristote (384–322 av. J.-C.)",
+      "def": "Philosophe grec, élève de Platon à l'Académie, précepteur d'Alexandre le Grand.\nFonde le Lycée (335 av. J.-C.) comme concurrent de l'Académie.\nDivergence fondamentale avec Platon : Choses → Idées (pas Idées → Choses).",
+      "ex": "Dans « L'École d'Athènes » de Raphaël : Platon pointe vers le haut, Aristote vers le bas."
+    },
+    {
+      "id": "vp21",
+      "cat": "Aristote — Éthique",
+      "term": "Médieté",
+      "def": "Juste milieu vertueux entre un excès (trop) et un défaut (trop peu) dans une situation donnée.\nDepend des capacités de chacun dans son contexte — pas de règle universelle.\nVice = excès OU défaut. Vertu = médieté.",
+      "ex": "Courage (médieté) entre témérité (excès) et lâcheté (défaut) — selon la situation de la bataille."
+    },
+    {
+      "id": "vp22",
+      "cat": "Aristote — Éthique",
+      "term": "Phronesis",
+      "def": "Prudence, sagesse pratique — l'art d'agir vertueusement.\n2 étapes : 1) contextualiser (connaître la situation) → 2) délibérer (trouver la médieté).\nS'acquiert par l'expérience, pas par des règles abstraites.",
+      "ex": "Un médecin phronimos sait adapter son traitement au patient, pas juste suivre un protocole standard."
+    },
+    {
+      "id": "vp23",
+      "cat": "Aristote — Éthique",
+      "term": "Vertu",
+      "def": "Disposition acquise à agir selon la médieté dans une situation donnée.\nPrésuppose la liberté : sans liberté, il n'y a ni vertu ni vice.\nS'acquiert par l'habitude et l'expérience.",
+      "ex": "La générosité est une vertu — médieté entre la prodigalité (trop donner) et l'avarice (pas assez)."
+    },
+    {
+      "id": "vp24",
+      "cat": "Aristote — Éthique",
+      "term": "Vice",
+      "def": "Action ou disposition s'éloignant de la médieté (par excès ou par défaut).\nComme la vertu, présuppose la liberté.\nVice et vertu sont proportionnels au degré de liberté.",
+      "ex": "La témérité (trop de courage) et la lâcheté (trop peu) sont toutes deux des vices."
+    },
+    {
+      "id": "vp25",
+      "cat": "Aristote — Politique",
+      "term": "Équité",
+      "def": "Justice distributive adaptée aux capacités et besoins de chacun.\nOpposée à l'égalité arithmétique (même chose pour tous).\nPour Aristote : l'équité est plus juste que l'égalité stricte.",
+      "ex": "Impôt proportionnel au revenu (équité) vs impôt fixe de 2000€ pour tous (égalité formelle mais injuste)."
+    },
+    {
+      "id": "vp26",
+      "cat": "Aristote — Politique",
+      "term": "Lycée",
+      "def": "École philosophique fondée par Aristote à Athènes en 335 av. J.-C.\nConcurrente de l'Académie de Platon.\nInstituait une approche fondée sur l'observation du monde sensible.",
+      "ex": "Au Lycée, Aristote marchait en enseignant (« péripatéticiens » = ceux qui se promènent)."
+    },
+    {
+      "id": "vp27",
+      "cat": "Période hellénistique",
+      "term": "Période hellénistique",
+      "def": "Période historique de 323 av. J.-C. (mort d'Alexandre le Grand) à 31 av. J.-C. (bataille d'Actium).\nExpansion de la culture grecque à travers tout l'Empire d'Alexandre.",
+      "ex": "La philosophie hellénistique (stoïcisme, épicurisme) se développe après la mort d'Aristote."
+    }
+  ]
+}

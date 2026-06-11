@@ -6,96 +6,2049 @@
   "exam": "2026-06-17",
   "type": "Écrit",
   "flashcards": [
-    {"id":"b1","cat":"Biologistes","term":"Crick, Watson, Wilkins","def":"Prix Nobel 1962 : ont élucidé la structure de la double hélice d'ADN (25 avril 1953). Rosalind Franklin (exclue du Nobel, morte 1958) a fourni les clichés RX décisifs.","ex":"Ex : Double hélice = deux brins antiparallèles reliés par des bases azotées (A=T, C≡G)"},
-    {"id":"b2","cat":"Biologistes","term":"Fleming","def":"Lysozyme (1922, enzyme antibactérienne dans les sécrétions) puis pénicilline (1928, champignon Penicillium). Prix Nobel 1945. Ne pas confondre les deux dates !","ex":"Ex : pénicilline = premier antibiotique découvert par hasard sur une boîte de Pétri"},
-    {"id":"b3","cat":"Biologistes","term":"Mendel (1822–1884)","def":"Moine catholique, Brno. Lois de la génétique héréditaire sur les pois. Loi de ségrégation des allèles + loi d'assortiment indépendant. Publié 33 ans après sa mort.","ex":"Ex : base de la génétique moderne, avant la découverte de l'ADN"},
-    {"id":"b4","cat":"Biologistes","term":"Darwin (1809–1882)","def":"Naturaliste britannique. Voyage sur le Beagle. 1859 : L'Origine des espèces — sélection naturelle : les individus les mieux adaptés se reproduisent davantage.","ex":"Ex : variation → sélection naturelle → mutation → évolution des espèces"},
-    {"id":"b5","cat":"Biologistes","term":"Chargaff","def":"Règle de Chargaff : dans l'ADN, %A = %T et %C = %G. Les purines = les pyrimidines. Exemple humain : ~30% A/T, ~20% G/C (variable selon l'espèce).","ex":"Ex : fondamental pour comprendre la complémentarité et la double hélice antiparallèle"},
-    {"id":"b6","cat":"Biologistes","term":"De Duve (1917–2013, Belge)","def":"Prix Nobel 1974 : découverte des lysosomes (organites de digestion cellulaire). Biologiste belge, UCLouvain.","ex":"Ex : lysosomes = 'poubelles' de la cellule — hydrolysent macromolécules et organites usés"},
-    {"id":"b7","cat":"Biologistes","term":"Van Beneden (1846–1910, Liège)","def":"Biologiste belge de l'Université de Liège. Découverte des chromosomes et de la méiose (XIXe siècle).","ex":"Ex : la méiose = division qui produit les gamètes haploïdes (ovule, spermatozoïde)"},
-    {"id":"b8","cat":"Biologistes","term":"Van Montagu (1933, Gand)","def":"Biochimiste belge. Découverte du Ti-plasmide / Agrobacterium tumefaciens → premier OGM. Prix Roi Baudouin 1997, Prix Japan 1998.","ex":"Ex : le Ti-plasmide sert de vecteur pour insérer des gènes dans les cellules végétales"},
-    {"id":"b9","cat":"Biologistes","term":"Hammerling — expérience Acétabularia","def":"Expérience sur l'algue Acétabularia (monocellulaire, 6 cm). Interchange des noyaux de deux espèces → le chapeau suit le noyau greffé. Conclusion : le noyau détermine les caractéristiques de la cellule.","ex":"Ex : Acétabularia crenulata + A. mediterranea — le type de chapeau change avec le noyau transplanté"},
-    {"id":"b10","cat":"Biologistes","term":"Rachel Carson (1907–1969)","def":"Biologiste marine. 'Printemps silencieux' (1962) : dénonce le DDT et ses effets sur la faune. Fondatrice du mouvement écologiste moderne.","ex":"Ex : le DDT = pesticide qui s'accumule dans la chaîne alimentaire et décime les oiseaux"},
-    {"id":"b11","cat":"Notion de vivant","term":"6 critères du vivant","def":"① Croissance (augmentation nb cellules + volume) ② Reproduction (survie de l'espèce) ③ Adaptation/évolution ④ Structure cellulaire (≥1 cellule) ⑤ Échanges matière/énergie (photosynthèse, respiration) ⑥ Réaction aux stimuli","ex":"Ex : un virus manque la plupart de ces critères — pas de cellule propre, ne se reproduit pas seul"},
-    {"id":"b12","cat":"Notion de vivant","term":"Pourquoi les virus ne sont pas vivants","def":"Les virus ne possèdent pas de cellules propres, ne se reproduisent pas de manière autonome (besoin d'un hôte), n'ont pas de métabolisme propre. Parasites intracellulaires obligatoires.","ex":"Ex : bactériophage = virus qui infecte les bactéries — injecte ADN dans la bactérie hôte"},
-    {"id":"b13","cat":"Notion de vivant","term":"Classification de Linné (7 niveaux)","def":"Domaine → Règne → Embranchement → Classe → Ordre → Famille → Genre → Espèce. Nom latin : 2 mots en italique (Genre + espèce). Ex : Homo sapiens, Sciurus carolinensis.","ex":"Ex : Karl Von Linné (1707–1778) = père de la systématique moderne"},
-    {"id":"b14","cat":"Notion de vivant","term":"3 domaines du vivant","def":"Archéobactéries (pas de noyau, milieux extrêmes) · Eubactéries (pas de noyau, bactéries communes) · Eucaryotes (noyau présent : animaux, végétaux, champignons, protistes)","ex":"Ex : les archéobactéries vivent dans des sources hydrothermales (thermoacidophiles)"},
-    {"id":"b15","cat":"Notion de vivant","term":"4 règnes des eucaryotes","def":"Animaux : multicellulaire, hétérotrophe par ingestion. Végétaux : multicellulaire, autotrophe (photosynthèse). Mycètes : hétérotrophe par absorption. Protistes : unicellulaire.","ex":"Ex : champignons = mycètes (hétérotrophes par absorption, pas par ingestion)"},
-    {"id":"b16","cat":"Notion de vivant","term":"Hiérarchie du vivant (niveaux d'organisation)","def":"Cellulaire : Atomes → Molécule → Macromolécule → Organite → Cellule. Organisme : Tissu → Organe → Système d'organes → Organisme. Populations : Population → Espèce → Communauté → Écosystème","ex":"Ex : la biologie s'intéresse à tous ces niveaux, de la molécule à l'écosystème"},
-    {"id":"b17","cat":"Chimie du vivant","term":"Structure de l'ADN","def":"Nucléotide = Phosphate (P) + Sucre désoxyribose (5C) + Base azotée. Double hélice antiparallèle. A = T (2 liaisons H), C ≡ G (3 liaisons H). Lecture 5'→3'.","ex":"Ex : 4 bases : A (adénine), T (thymine), C (cytosine), G (guanine)"},
-    {"id":"b18","cat":"Chimie du vivant","term":"4 niveaux de condensation de l'ADN","def":"① Double hélice (2 nm) ② Nucléosome : hélice autour d'un octamère d'histones (H2A×2, H2B×2, H3×2, H4×2) + H1 → 'collier de perles' (10 nm) ③ Chromatine (30 nm, état normal) ④ Chromosome (division cellulaire uniquement)","ex":"Ex : hétérochromatine (foncée, gènes inactifs) vs euchromatine (claire, gènes actifs)"},
-    {"id":"b19","cat":"Chimie du vivant","term":"ADN vs ARN — tableau comparatif","def":"ADN : désoxyribose / double brin bicaténaire / bases ATGC / longue durée de vie / stockage information. ARN : ribose / simple brin monocaténaire / bases AUGC (U remplace T) / courte durée / transport et expression","ex":"Ex : 3 types d'ARN : ARNm (messager), ARNt (transport), ARNr (ribosomal)"},
-    {"id":"b20","cat":"Chimie du vivant","term":"Dogme fondamental","def":"ADN → (transcription, noyau, ARN polymérase) → ARNm → (traduction, ribosome, cytoplasme) → Protéine. Sens unique de l'information génétique.","ex":"Ex : exception = rétrovirus (VIH) : transcription inverse ARN → ADN (rétrotranscriptase)"},
-    {"id":"b21","cat":"Chimie du vivant","term":"Transcription","def":"Copie d'un gène ADN en ARNm. Lieu : noyau. Enzyme : ARN polymérase. Produit : ARN pré-messager (transcrit primaire). Sort du noyau par les pores nucléaires.","ex":"Ex : brin matrice lu 3'→5', ARNm synthétisé 5'→3' avec complément U à la place de T"},
-    {"id":"b22","cat":"Chimie du vivant","term":"Modifications post-transcriptionnelles","def":"Deux ajouts sur l'ARN pré-messager : ① Coiffe 5' (7-méthylguanosine + 3 phosphates) ② Queue 3' poly-A (100–250 adénines). Rôles : augmenter durée de vie ARNm, faciliter export noyau, faciliter reconnaissance ribosomes.","ex":"Ex : sans ces modifications, l'ARNm serait dégradé avant d'atteindre le ribosome"},
-    {"id":"b23","cat":"Chimie du vivant","term":"Épissage et épissage alternatif","def":"Épissage standard : retire les introns (non-codants) et conserve les exons (codants) → ARNm mature. Épissage alternatif : recombinaison différente des exons → 1 gène code pour plusieurs protéines !","ex":"Ex : gène CGRP → ARNm calcitonine (hormone) OU ARNm CGRP (neurotransmetteur) selon le tissu"},
-    {"id":"b24","cat":"Chimie du vivant","term":"Traduction — sites du ribosome","def":"Codon (ARNm, 3 bases) → anticodon (ARNt) → acide aminé. Sites du ribosome : A (Aminoacyl = ARNt entrant avec nouvel AA), P (Peptidyl = chaîne en cours), E (Exit = ARNt vide sortant).","ex":"Ex : AUG = START (méthionine). UAA, UAG, UGA = STOP. 64 codons = 61 codants + 3 STOP"},
-    {"id":"b25","cat":"Chimie du vivant","term":"Protéines — 4 niveaux structurels","def":"Primaire : séquence linéaire AA. Secondaire : hélice α ou feuillet β. Tertiaire : repliement 3D dans l'espace. Quaternaire : assemblage de plusieurs chaînes (ex : hémoglobine = 4 sous-unités).","ex":"Ex : hémoglobine = structure quaternaire (2 chaînes α + 2 chaînes β)"},
-    {"id":"b26","cat":"Chimie du vivant","term":"7 fonctions des protéines","def":"① Enzymatique (enzymes digestives) ② Structurale (kératine, collagène) ③ Transport (hémoglobine) ④ Défense (anticorps) ⑤ Hormonale (insuline) ⑥ Réceptrice (récepteurs membranaires) ⑦ Contractile/motrice (actine, myosine)","ex":"Ex : hémoglobine = protéine de transport (O₂) avec 4 niveaux structurels"},
-    {"id":"b27","cat":"Chimie du vivant","term":"9 acides aminés essentiels","def":"Histidine, Isoleucine, Leucine, Lysine, Méthionine, Phénylalanine, Thréonine, Tryptophane, Valine. Doivent être apportés par l'alimentation (corps ne peut pas les synthétiser).","ex":"Ex : les AA non-essentiels (alanine, glycine...) sont synthétisés par le corps"},
-    {"id":"b28","cat":"Chimie du vivant","term":"Glucides — structure et formule","def":"Formule générale : CₙH₂ₙOₙ. Glucose/Fructose/Galactose : C₆H₁₂O₆ = isomères. Ribose : C₅H₁₀O₅. Glycémie normale : 0,9–1,1 g/L. Régulation : insuline (hyperglycémie) ↔ glucagon (hypoglycémie).","ex":"Ex : glycogène (réserve animaux), amidon (réserve végétaux), cellulose (structure paroi végétale)"},
-    {"id":"b29","cat":"Chimie du vivant","term":"Lipides — phospholipide et membrane","def":"Phospholipide = tête hydrophile (phosphate + glycérol, aime l'eau) + 2 queues hydrophobes (acides gras, repoussent l'eau) → bicouche membranaire spontanée. Cholestérol module la fluidité.","ex":"Ex : queues hydrophobes orientées vers l'intérieur de la bicouche, têtes vers l'eau (intérieur/extérieur cellule)"},
-    {"id":"b30","cat":"Mutations","term":"3 types de mutations","def":"Ponctuelles (1 nucléotide modifié) · Chromosomiques (structure d'un chromosome modifiée, nb inchangé) · Génomiques (nombre de chromosomes modifié).","ex":"Ex : trisomie 21 = génomique ; drépanocytose = ponctuelle ; translocation = chromosomique"},
-    {"id":"b31","cat":"Mutations","term":"4 types de mutations ponctuelles","def":"Substitution (1 base remplacée) · Addition (1 base ajoutée) · Délétion (1 base supprimée) · Inversion (séquence inversée). Exemples sur ATCGTTCAG → ATCCTTCAG (substitution), ATCGATTCAG (addition)...","ex":"Ex : addition et délétion créent un décalage du cadre de lecture → protéine souvent non fonctionnelle"},
-    {"id":"b32","cat":"Mutations","term":"Conséquences d'une substitution","def":"Faux sens : change l'acide aminé → protéine différente (ex : drépanocytose GAG→GTG). Non-sens : crée un codon STOP prématuré → protéine tronquée. Silencieuse : code dégénéré → même AA, pas d'effet.","ex":"Ex : GGG→GGT = silencieuse (les deux codent PRO) ; GAG→GTG = faux sens (GLU→VAL)"},
-    {"id":"b33","cat":"Mutations","term":"Drépanocytose","def":"Mutation ponctuelle (substitution) : GAG→GTG sur le 6e codon du gène de la β-globine. GLU (acide glutamique, hydrophile) remplacé par VAL (valine, hydrophobe) → agrégation des protéines → globules rouges en faucille.","ex":"Ex : avantage hétérozygote : porteurs d'1 allèle = résistance partielle au paludisme (Afrique sub-saharienne)"},
-    {"id":"b34","cat":"Mutations","term":"Chorée de Huntington","def":"Répétition du triplet CAG sur le chromosome 4. ≤35 répétitions = sain. >35 = malade (maladie neurodégénérative héréditaire, transmission autosomique dominante). Symptômes vers 40–50 ans.","ex":"Ex : plus le nombre de répétitions est élevé, plus les symptômes apparaissent tôt"},
-    {"id":"b35","cat":"Mutations","term":"5 mutations chromosomiques","def":"Délétion (perte d'un segment) · Duplication (répétition d'un segment) · Inversion (segment retourné) · Insertion (ajout d'un segment étranger) · Translocation (échange entre chromosomes non-homologues)","ex":"Ex : translocation entre chr 9 et 22 → chromosome Philadelphie → leucémie myéloïde chronique"},
-    {"id":"b36","cat":"Mutations","term":"Trisomie 21 — Syndrome de Down","def":"Mutation génomique : 3 chromosomes 21 au lieu de 2 (47 chromosomes au total). Caractéristiques : problèmes cardiaques, taille réduite, yeux bridés, tête ronde, nez écrasé, nuque large, retard mental.","ex":"Ex : liée à une non-disjonction lors de la méiose (ovule ou spermatozoïde reçoit 2 chr.21)"},
-    {"id":"b37","cat":"Mutations","term":"Klinefelter (XXY) et Turner (XO)","def":"Klinefelter (XXY) : stérilité, répartition graisses atypique, développement des seins, problème pilosité, possible retard mental. Turner (XO) : gros retard développement physique/mental, stérilité, très petite taille.","ex":"Ex : ces syndromes sont des mutations génomiques (nombre anormal de chromosomes sexuels)"},
-    {"id":"b38","cat":"La Cellule","term":"4 structures universelles (toute cellule)","def":"ADN (information génétique) + Membrane plasmique (frontière) + Ribosomes (synthèse protéines) + Cytosol (milieu intracellulaire). Présentes dans procaryotes ET eucaryotes.","ex":"Ex : une bactérie (procaryote) possède ces 4 structures mais pas de noyau ni mitochondrie"},
-    {"id":"b39","cat":"La Cellule","term":"Cytoplasme vs Cytosol vs Hyaloplasme","def":"Cytoplasme = tout ce qui est dans la cellule SAUF le noyau (organites + cytosol). Cytosol = liquide cytoplasmique (solution aqueuse sans organites). Hyaloplasme = synonyme de cytosol chez certains auteurs.","ex":"Ex : les ribosomes libres flottent dans le cytosol ; les mitochondries sont dans le cytoplasme"},
-    {"id":"b40","cat":"La Cellule","term":"Nombre de membranes des organites","def":"0 membrane : ribosomes, cytosquelette. 1 membrane : Golgi, RE, lysosome, peroxysome, vacuole. 2 membranes : noyau (enveloppe nucléaire), mitochondrie, chloroplaste.","ex":"Ex : noyau et mitochondrie ont 2 membranes — la mitochondrie a des crêtes mitochondriales (membrane interne repliée)"},
-    {"id":"b41","cat":"La Cellule","term":"Tableau comparatif : animale / végétale / procaryote","def":"Animale ✓ : noyau, membrane, ribosomes, ADN, mitochondries, centrioles. Végétale ✓ + : chloroplaste, vacuole centrale, paroi cellulosique, plasmodesmes. Procaryote ✗ : pas de noyau, pas d'organites membranaires.","ex":"Ex : procaryote = nucléoïde (ADN circulaire) + plasmides, paroi cellulaire, flagelle"},
-    {"id":"b42","cat":"La Cellule","term":"Organites exclusifs cellule végétale","def":"4 exclusivités végétales : Chloroplaste (photosynthèse, 2 membranes) · Vacuole centrale (stockage, déchets, croissance) · Paroi cellulosique (rigidité, protection) · Plasmodesmes (canaux entre cellules voisines)","ex":"Ex : la paroi cellulosique empêche la lyse osmotique → cellule végétale turgescente en milieu hypotonique"},
-    {"id":"b43","cat":"La Cellule","term":"Rôle des organites clés","def":"Mitochondrie (ATP, respiration, 2 membranes) · Noyau (ADN, 2 membranes) · Golgi (tri/emballage/sécrétion protéines) · RER (synthèse protéines avec ribosomes) · REL (réactions métaboliques sans ribosomes) · Lysosome (digestion intracellulaire)","ex":"Ex : protéines sécrétées : RER → Golgi (modification) → vésicule → membrane (exocytose)"},
-    {"id":"b44","cat":"La Cellule","term":"Tailles cellulaires","def":"Ribosome : ~20–30 nm · Virus : 20–300 nm · Bactérie : ~1–10 µm · Cellule animale : ~10–100 µm · Cellule végétale : ~10–100 µm. 1 µm = 1000 nm. Ribosomes visibles uniquement au MET.","ex":"Ex : les virus sont plus petits que les bactéries → franchissent les filtres antibactériens"},
-    {"id":"b45","cat":"La Cellule","term":"Équations respiration et photosynthèse","def":"Respiration : C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + ATP (mitochondrie). Photosynthèse : 6 CO₂ + 6 H₂O + lumière → C₆H₁₂O₆ + 6 O₂ (chloroplaste). Les deux équations sont inverses.","ex":"Ex : la photosynthèse capte l'énergie lumineuse et la stocke en glucides (énergie chimique)"},
-    {"id":"b46","cat":"Cycle cellulaire","term":"Phases du cycle : G1 / S / G2 / M / C / G0","def":"G1 (croissance, organites) → S (réplication ADN, 100%→200%) → G2 (vérification intégrité ADN) → M (mitose) → C (cytocinèse). G0 = quiescence (hors cycle, fonctionnelle). Interphase = G1+S+G2.","ex":"Ex : certaines cellules nerveuses adultes restent en G0 définitivement (ne se divisent plus)"},
-    {"id":"b47","cat":"Cycle cellulaire","term":"Réplication semi-conservative (Phase S)","def":"ADN bicaténaire → déroulement → 2 brins monocaténaires → chacun sert de matrice → 2 ADN bicaténaires, chacun avec 1 brin ancien + 1 brin nouveau. Conservation d'un brin parental = 'semi-conservative'.","ex":"Ex : à la fin de la phase S, la cellule possède 200% d'ADN (quantité doublée)"},
-    {"id":"b48","cat":"Cycle cellulaire","term":"Graphique évolution ADN au cours du cycle","def":"G1 : 100% (ADN non répliqué). S : montée progressive 100%→200% (réplication en cours). G2 : 200% (réplication terminée). M : reste à 200%. C (cytocinèse) : retour à 100% par cellule fille.","ex":"Ex : si une cellule est à 200% d'ADN, elle est en phase G2 ou M (pas encore divisée)"},
-    {"id":"b49","cat":"Cycle cellulaire","term":"5 phases de la mitose (PPMAT)","def":"Prophase (condensation chromosomes, disparition membrane noyau, formation fuseau) → Prométaphase (kinétochores s'attachent aux microtubules) → Métaphase (chromosomes alignés plaque équatoriale) → Anaphase (séparation chromatides sœurs) → Télophase (reformation membrane noyau, 2 noyaux)","ex":"Ex : après la télophase = cytocinèse : anneau contractile (animal) ou plaque cellulaire (végétal)"},
-    {"id":"b50","cat":"Cycle cellulaire","term":"Cancer et inhibition de contact","def":"Cellules normales : forment une couche mono-cellulaire puis cessent de se diviser (inhibition de contact). Cellules cancéreuses : échappent à ce contrôle → multiplication anarchique → tumeur maligne (métastases) ou bénigne (localisée).","ex":"Ex : traitements : chirurgie, radiothérapie, chimiothérapie, hormonothérapie, immunothérapie"},
-    {"id":"b51","cat":"Cycle cellulaire","term":"Contrôle du cycle cellulaire","def":"Check G1 : vérifie disponibilité nutriments. Check G2 : vérifie intégrité de l'ADN. Signaux chimiques : hormones de croissance, molécules signal. Proto-oncogènes (activés → cancer) vs gènes suppresseurs de tumeur (inactivés → cancer).","ex":"Ex : le gène p53 = suppresseur de tumeur — mutant dans >50% des cancers humains"},
-    {"id":"b52","cat":"Transport membranaire","term":"Structure de la membrane plasmique","def":"Bicouche phospholipidique (~7 nm) : têtes hydrophiles vers l'eau (extérieur/intérieur), queues hydrophobes au centre. + Cholestérol (fluidité) + Protéines transmembranaires + Glycoprotéines/Glycolipides (reconnaissance). Modèle : mosaïque fluide.","ex":"Ex : la membrane est fluide et semi-perméable : filtre sélectif de tout ce qui entre/sort de la cellule"},
-    {"id":"b53","cat":"Transport membranaire","term":"Transport passif vs actif","def":"Passif : suit le gradient de concentration, sans énergie (ATP). Actif : contre le gradient, consomme de l'ATP. Types passifs : diffusion simple, diffusion facilitée, osmose. Types actifs : pompes ioniques, endocytose, exocytose.","ex":"Ex : pompe Na⁺/K⁺ = actif : 3 Na⁺ sortent, 2 K⁺ entrent, 1 ATP consommé"},
-    {"id":"b54","cat":"Transport membranaire","term":"Diffusion simple vs facilitée","def":"Simple : petites molécules apolaires (O₂, CO₂) traversent directement la bicouche sans protéine. Facilitée : via canal (aquaporine = eau, ions Na⁺/K⁺/Cl⁻) ou via perméase (ex : GLUT = glucose). Les deux = passif (selon gradient).","ex":"Ex : O₂ traverse directement → diffusion simple. Glucose traverse via GLUT → diffusion facilitée"},
-    {"id":"b55","cat":"Transport membranaire","term":"Osmose","def":"Diffusion de l'eau à travers membrane semi-perméable, du milieu hypotonique (peu concentré) vers le milieu hypertonique (plus concentré). Via aquaporines. Cellule animale en milieu hypo → lyse. Végétale → turgescence (paroi résiste).","ex":"Ex : cellule végétale en milieu hypertonique → plasmolysée (membrane se détache de la paroi)"},
-    {"id":"b56","cat":"Transport membranaire","term":"Pompe Na⁺/K⁺","def":"Pompe active (consomme ATP) : 3 Na⁺ sortent, 2 K⁺ entrent par cycle. Maintient gradient électrochimique essentiel pour influx nerveux, contraction musculaire, potentiel de membrane.","ex":"Ex : sans cette pompe → équilibre des concentrations → impossibilité de conduire l'influx nerveux"},
-    {"id":"b57","cat":"Transport membranaire","term":"Endocytose et exocytose","def":"Endocytose (entrée) : phagocytose (solides, ex : macrophages avalent bactéries) et pinocytose (liquides). Exocytose (sortie) : vésicule de Golgi fusionne avec membrane → sécrétion (hormones, enzymes, neurotransmetteurs).","ex":"Ex : sécrétion d'insuline par le pancréas = exocytose (vésicules de stockage fusionnent avec la membrane)"}
+    {
+      "id": "b17",
+      "cat": "Chimie du vivant",
+      "term": "Structure de l'ADN",
+      "def": "Nucléotide = Phosphate (P) + Sucre désoxyribose (5C) + Base azotée. Double hélice antiparallèle. A = T (2 liaisons H), C ≡ G (3 liaisons H). Lecture 5'→3'.",
+      "ex": "Ex : 4 bases : A (adénine), T (thymine), C (cytosine), G (guanine)"
+    },
+    {
+      "id": "b18",
+      "cat": "Chimie du vivant",
+      "term": "4 niveaux de condensation de l'ADN",
+      "def": "① Double hélice (2 nm) ② Nucléosome : hélice autour d'un octamère d'histones (H2A×2, H2B×2, H3×2, H4×2) + H1 → 'collier de perles' (10 nm) ③ Chromatine (30 nm, état normal) ④ Chromosome (division cellulaire uniquement)",
+      "ex": "Ex : hétérochromatine (foncée, gènes inactifs) vs euchromatine (claire, gènes actifs)"
+    },
+    {
+      "id": "b19",
+      "cat": "Chimie du vivant",
+      "term": "ADN vs ARN — tableau comparatif",
+      "def": "ADN : désoxyribose / double brin bicaténaire / bases ATGC / longue durée de vie / stockage information. ARN : ribose / simple brin monocaténaire / bases AUGC (U remplace T) / courte durée / transport et expression",
+      "ex": "Ex : 3 types d'ARN : ARNm (messager), ARNt (transport), ARNr (ribosomal)"
+    },
+    {
+      "id": "b20",
+      "cat": "Chimie du vivant",
+      "term": "Dogme fondamental",
+      "def": "ADN → (transcription, noyau, ARN polymérase) → ARNm → (traduction, ribosome, cytoplasme) → Protéine. Sens unique de l'information génétique.",
+      "ex": "Ex : exception = rétrovirus (VIH) : transcription inverse ARN → ADN (rétrotranscriptase)"
+    },
+    {
+      "id": "b21",
+      "cat": "Chimie du vivant",
+      "term": "Transcription",
+      "def": "Copie d'un gène ADN en ARNm. Lieu : noyau. Enzyme : ARN polymérase. Produit : ARN pré-messager (transcrit primaire). Sort du noyau par les pores nucléaires.",
+      "ex": "Ex : brin matrice lu 3'→5', ARNm synthétisé 5'→3' avec complément U à la place de T"
+    },
+    {
+      "id": "b22",
+      "cat": "Chimie du vivant",
+      "term": "Modifications post-transcriptionnelles",
+      "def": "Deux ajouts sur l'ARN pré-messager : ① Coiffe 5' (7-méthylguanosine + 3 phosphates) ② Queue 3' poly-A (100–250 adénines). Rôles : augmenter durée de vie ARNm, faciliter export noyau, faciliter reconnaissance ribosomes.",
+      "ex": "Ex : sans ces modifications, l'ARNm serait dégradé avant d'atteindre le ribosome"
+    },
+    {
+      "id": "b23",
+      "cat": "Chimie du vivant",
+      "term": "Épissage et épissage alternatif",
+      "def": "Épissage standard : retire les introns (non-codants) et conserve les exons (codants) → ARNm mature. Épissage alternatif : recombinaison différente des exons → 1 gène code pour plusieurs protéines !",
+      "ex": "Ex : gène CGRP → ARNm calcitonine (hormone) OU ARNm CGRP (neurotransmetteur) selon le tissu"
+    },
+    {
+      "id": "b24",
+      "cat": "Chimie du vivant",
+      "term": "Traduction — sites du ribosome",
+      "def": "Codon (ARNm, 3 bases) → anticodon (ARNt) → acide aminé. Sites du ribosome : A (Aminoacyl = ARNt entrant avec nouvel AA), P (Peptidyl = chaîne en cours), E (Exit = ARNt vide sortant).",
+      "ex": "Ex : AUG = START (méthionine). UAA, UAG, UGA = STOP. 64 codons = 61 codants + 3 STOP"
+    },
+    {
+      "id": "b30",
+      "cat": "Mutations",
+      "term": "3 types de mutations",
+      "def": "Ponctuelles (1 nucléotide modifié) · Chromosomiques (structure d'un chromosome modifiée, nb inchangé) · Génomiques (nombre de chromosomes modifié).",
+      "ex": "Ex : trisomie 21 = génomique ; drépanocytose = ponctuelle ; translocation = chromosomique"
+    },
+    {
+      "id": "b31",
+      "cat": "Mutations",
+      "term": "4 types de mutations ponctuelles",
+      "def": "Substitution (1 base remplacée) · Addition (1 base ajoutée) · Délétion (1 base supprimée) · Inversion (séquence inversée). Exemples sur ATCGTTCAG → ATCCTTCAG (substitution), ATCGATTCAG (addition)...",
+      "ex": "Ex : addition et délétion créent un décalage du cadre de lecture → protéine souvent non fonctionnelle"
+    },
+    {
+      "id": "b32",
+      "cat": "Mutations",
+      "term": "Conséquences d'une substitution",
+      "def": "Faux sens : change l'acide aminé → protéine différente (ex : drépanocytose GAG→GTG). Non-sens : crée un codon STOP prématuré → protéine tronquée. Silencieuse : code dégénéré → même AA, pas d'effet.",
+      "ex": "Ex : GGG→GGT = silencieuse (les deux codent PRO) ; GAG→GTG = faux sens (GLU→VAL)"
+    },
+    {
+      "id": "b33",
+      "cat": "Mutations",
+      "term": "Drépanocytose",
+      "def": "Mutation ponctuelle (substitution) : GAG→GTG sur le 6e codon du gène de la β-globine. GLU (acide glutamique, hydrophile) remplacé par VAL (valine, hydrophobe) → agrégation des protéines → globules rouges en faucille.",
+      "ex": "Ex : avantage hétérozygote : porteurs d'1 allèle = résistance partielle au paludisme (Afrique sub-saharienne)"
+    },
+    {
+      "id": "b34",
+      "cat": "Mutations",
+      "term": "Chorée de Huntington",
+      "def": "Répétition du triplet CAG sur le chromosome 4. ≤35 répétitions = sain. >35 = malade (maladie neurodégénérative héréditaire, transmission autosomique dominante). Symptômes vers 40–50 ans.",
+      "ex": "Ex : plus le nombre de répétitions est élevé, plus les symptômes apparaissent tôt"
+    },
+    {
+      "id": "b35",
+      "cat": "Mutations",
+      "term": "5 mutations chromosomiques",
+      "def": "Délétion (perte d'un segment) · Duplication (répétition d'un segment) · Inversion (segment retourné) · Insertion (ajout d'un segment étranger) · Translocation (échange entre chromosomes non-homologues)",
+      "ex": "Ex : translocation entre chr 9 et 22 → chromosome Philadelphie → leucémie myéloïde chronique"
+    },
+    {
+      "id": "b36",
+      "cat": "Mutations",
+      "term": "Trisomie 21 — Syndrome de Down",
+      "def": "Mutation génomique : 3 chromosomes 21 au lieu de 2 (47 chromosomes au total). Caractéristiques : problèmes cardiaques, taille réduite, yeux bridés, tête ronde, nez écrasé, nuque large, retard mental.",
+      "ex": "Ex : liée à une non-disjonction lors de la méiose (ovule ou spermatozoïde reçoit 2 chr.21)"
+    },
+    {
+      "id": "b37",
+      "cat": "Mutations",
+      "term": "Klinefelter (XXY) et Turner (XO)",
+      "def": "Klinefelter (XXY) : stérilité, répartition graisses atypique, développement des seins, problème pilosité, possible retard mental. Turner (XO) : gros retard développement physique/mental, stérilité, très petite taille.",
+      "ex": "Ex : ces syndromes sont des mutations génomiques (nombre anormal de chromosomes sexuels)"
+    },
+    {
+      "id": "b38",
+      "cat": "La Cellule",
+      "term": "4 structures universelles (toute cellule)",
+      "def": "ADN (information génétique) + Membrane plasmique (frontière) + Ribosomes (synthèse protéines) + Cytosol (milieu intracellulaire). Présentes dans procaryotes ET eucaryotes.",
+      "ex": "Ex : une bactérie (procaryote) possède ces 4 structures mais pas de noyau ni mitochondrie"
+    },
+    {
+      "id": "b39",
+      "cat": "La Cellule",
+      "term": "Cytoplasme vs Cytosol vs Hyaloplasme",
+      "def": "Cytoplasme = tout ce qui est dans la cellule SAUF le noyau (organites + cytosol). Cytosol = liquide cytoplasmique (solution aqueuse sans organites). Hyaloplasme = synonyme de cytosol chez certains auteurs.",
+      "ex": "Ex : les ribosomes libres flottent dans le cytosol ; les mitochondries sont dans le cytoplasme"
+    },
+    {
+      "id": "b40",
+      "cat": "La Cellule",
+      "term": "Nombre de membranes des organites",
+      "def": "0 membrane : ribosomes, cytosquelette. 1 membrane : Golgi, RE, lysosome, peroxysome, vacuole. 2 membranes : noyau (enveloppe nucléaire), mitochondrie, chloroplaste.",
+      "ex": "Ex : noyau et mitochondrie ont 2 membranes — la mitochondrie a des crêtes mitochondriales (membrane interne repliée)"
+    },
+    {
+      "id": "b41",
+      "cat": "La Cellule",
+      "term": "Tableau comparatif : animale / végétale / procaryote",
+      "def": "Animale ✓ : noyau, membrane, ribosomes, ADN, mitochondries, centrioles. Végétale ✓ + : chloroplaste, vacuole centrale, paroi cellulosique, plasmodesmes. Procaryote ✗ : pas de noyau, pas d'organites membranaires.",
+      "ex": "Ex : procaryote = nucléoïde (ADN circulaire) + plasmides, paroi cellulaire, flagelle"
+    },
+    {
+      "id": "b42",
+      "cat": "La Cellule",
+      "term": "Organites exclusifs cellule végétale",
+      "def": "4 exclusivités végétales : Chloroplaste (photosynthèse, 2 membranes) · Vacuole centrale (stockage, déchets, croissance) · Paroi cellulosique (rigidité, protection) · Plasmodesmes (canaux entre cellules voisines)",
+      "ex": "Ex : la paroi cellulosique empêche la lyse osmotique → cellule végétale turgescente en milieu hypotonique"
+    },
+    {
+      "id": "b43",
+      "cat": "La Cellule",
+      "term": "Rôle des organites clés",
+      "def": "Mitochondrie (ATP, respiration, 2 membranes) · Noyau (ADN, 2 membranes) · Golgi (tri/emballage/sécrétion protéines) · RER (synthèse protéines avec ribosomes) · REL (réactions métaboliques sans ribosomes) · Lysosome (digestion intracellulaire)",
+      "ex": "Ex : protéines sécrétées : RER → Golgi (modification) → vésicule → membrane (exocytose)"
+    },
+    {
+      "id": "b44",
+      "cat": "La Cellule",
+      "term": "Tailles cellulaires",
+      "def": "Ribosome : ~20–30 nm · Virus : 20–300 nm · Bactérie : ~1–10 µm · Cellule animale : ~10–100 µm · Cellule végétale : ~10–100 µm. 1 µm = 1000 nm. Ribosomes visibles uniquement au MET.",
+      "ex": "Ex : les virus sont plus petits que les bactéries → franchissent les filtres antibactériens"
+    },
+    {
+      "id": "b45",
+      "cat": "La Cellule",
+      "term": "Équations respiration et photosynthèse",
+      "def": "Respiration : C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O + ATP (mitochondrie). Photosynthèse : 6 CO₂ + 6 H₂O + lumière → C₆H₁₂O₆ + 6 O₂ (chloroplaste). Les deux équations sont inverses.",
+      "ex": "Ex : la photosynthèse capte l'énergie lumineuse et la stocke en glucides (énergie chimique)"
+    },
+    {
+      "id": "b46",
+      "cat": "Cycle cellulaire",
+      "term": "Phases du cycle : G1 / S / G2 / M / C / G0",
+      "def": "G1 (croissance, organites) → S (réplication ADN, 100%→200%) → G2 (vérification intégrité ADN) → M (mitose) → C (cytocinèse). G0 = quiescence (hors cycle, fonctionnelle). Interphase = G1+S+G2.",
+      "ex": "Ex : certaines cellules nerveuses adultes restent en G0 définitivement (ne se divisent plus)"
+    },
+    {
+      "id": "b47",
+      "cat": "Cycle cellulaire",
+      "term": "Réplication semi-conservative (Phase S)",
+      "def": "ADN bicaténaire → déroulement → 2 brins monocaténaires → chacun sert de matrice → 2 ADN bicaténaires, chacun avec 1 brin ancien + 1 brin nouveau. Conservation d'un brin parental = 'semi-conservative'.",
+      "ex": "Ex : à la fin de la phase S, la cellule possède 200% d'ADN (quantité doublée)"
+    },
+    {
+      "id": "b48",
+      "cat": "Cycle cellulaire",
+      "term": "Graphique évolution ADN au cours du cycle",
+      "def": "G1 : 100% (ADN non répliqué). S : montée progressive 100%→200% (réplication en cours). G2 : 200% (réplication terminée). M : reste à 200%. C (cytocinèse) : retour à 100% par cellule fille.",
+      "ex": "Ex : si une cellule est à 200% d'ADN, elle est en phase G2 ou M (pas encore divisée)"
+    },
+    {
+      "id": "b49",
+      "cat": "Cycle cellulaire",
+      "term": "5 phases de la mitose (PPMAT)",
+      "def": "Prophase (condensation chromosomes, disparition membrane noyau, formation fuseau) → Prométaphase (kinétochores s'attachent aux microtubules) → Métaphase (chromosomes alignés plaque équatoriale) → Anaphase (séparation chromatides sœurs) → Télophase (reformation membrane noyau, 2 noyaux)",
+      "ex": "Ex : après la télophase = cytocinèse : anneau contractile (animal) ou plaque cellulaire (végétal)"
+    },
+    {
+      "id": "b50",
+      "cat": "Cycle cellulaire",
+      "term": "Cancer et inhibition de contact",
+      "def": "Cellules normales : forment une couche mono-cellulaire puis cessent de se diviser (inhibition de contact). Cellules cancéreuses : échappent à ce contrôle → multiplication anarchique → tumeur maligne (métastases) ou bénigne (localisée).",
+      "ex": "Ex : traitements : chirurgie, radiothérapie, chimiothérapie, hormonothérapie, immunothérapie"
+    },
+    {
+      "id": "b51",
+      "cat": "Cycle cellulaire",
+      "term": "Contrôle du cycle cellulaire",
+      "def": "Check G1 : vérifie disponibilité nutriments. Check G2 : vérifie intégrité de l'ADN. Signaux chimiques : hormones de croissance, molécules signal. Proto-oncogènes (activés → cancer) vs gènes suppresseurs de tumeur (inactivés → cancer).",
+      "ex": "Ex : le gène p53 = suppresseur de tumeur — mutant dans >50% des cancers humains"
+    },
+    {
+      "id": "b52",
+      "cat": "Transport membranaire",
+      "term": "Structure de la membrane plasmique",
+      "def": "Bicouche phospholipidique (~7 nm) : têtes hydrophiles vers l'eau (extérieur/intérieur), queues hydrophobes au centre. + Cholestérol (fluidité) + Protéines transmembranaires + Glycoprotéines/Glycolipides (reconnaissance). Modèle : mosaïque fluide.",
+      "ex": "Ex : la membrane est fluide et semi-perméable : filtre sélectif de tout ce qui entre/sort de la cellule"
+    },
+    {
+      "id": "b53",
+      "cat": "Transport membranaire",
+      "term": "Transport passif vs actif",
+      "def": "Passif : suit le gradient de concentration, sans énergie (ATP). Actif : contre le gradient, consomme de l'ATP. Types passifs : diffusion simple, diffusion facilitée, osmose. Types actifs : pompes ioniques, endocytose, exocytose.",
+      "ex": "Ex : pompe Na⁺/K⁺ = actif : 3 Na⁺ sortent, 2 K⁺ entrent, 1 ATP consommé"
+    },
+    {
+      "id": "b54",
+      "cat": "Transport membranaire",
+      "term": "Diffusion simple vs facilitée",
+      "def": "Simple : petites molécules apolaires (O₂, CO₂) traversent directement la bicouche sans protéine. Facilitée : via canal (aquaporine = eau, ions Na⁺/K⁺/Cl⁻) ou via perméase (ex : GLUT = glucose). Les deux = passif (selon gradient).",
+      "ex": "Ex : O₂ traverse directement → diffusion simple. Glucose traverse via GLUT → diffusion facilitée"
+    },
+    {
+      "id": "b55",
+      "cat": "Transport membranaire",
+      "term": "Osmose",
+      "def": "Diffusion de l'eau à travers membrane semi-perméable, du milieu hypotonique (peu concentré) vers le milieu hypertonique (plus concentré). Via aquaporines. Cellule animale en milieu hypo → lyse. Végétale → turgescence (paroi résiste).",
+      "ex": "Ex : cellule végétale en milieu hypertonique → plasmolysée (membrane se détache de la paroi)"
+    },
+    {
+      "id": "b56",
+      "cat": "Transport membranaire",
+      "term": "Pompe Na⁺/K⁺",
+      "def": "Pompe active (consomme ATP) : 3 Na⁺ sortent, 2 K⁺ entrent par cycle. Maintient gradient électrochimique essentiel pour influx nerveux, contraction musculaire, potentiel de membrane.",
+      "ex": "Ex : sans cette pompe → équilibre des concentrations → impossibilité de conduire l'influx nerveux"
+    },
+    {
+      "id": "b57",
+      "cat": "Transport membranaire",
+      "term": "Endocytose et exocytose",
+      "def": "Endocytose (entrée) : phagocytose (solides, ex : macrophages avalent bactéries) et pinocytose (liquides). Exocytose (sortie) : vésicule de Golgi fusionne avec membrane → sécrétion (hormones, enzymes, neurotransmetteurs).",
+      "ex": "Ex : sécrétion d'insuline par le pancréas = exocytose (vésicules de stockage fusionnent avec la membrane)"
+    }
   ],
   "qcm": [
-    {"id":"bq1","q":"Quel est le principe de la règle de Chargaff ?","opts":["%A = %T et %C = %G dans tout ADN (purines = pyrimidines)","A=G (~25%) et C=T (~25%) dans tout ADN","A+T = 50% et C+G = 50% dans tout ADN","A=C (~30%) et T=G (~20%) dans tout ADN"],"ans":0,"exp":"Règle de Chargaff : %A = %T (liés par 2 liaisons H) et %C = %G (liés par 3 liaisons H). Les pourcentages varient selon l'espèce (~30% A/T et ~20% G/C chez l'humain)."},
-    {"id":"bq2","q":"Fleming : quelles sont ses deux découvertes et leurs dates ?","opts":["Lysozyme 1928 · Pénicilline 1922","Pénicilline 1928 · Lysozyme 1935","Lysozyme 1922 · Pénicilline 1928","Pénicilline 1922 · Lysozyme 1940"],"ans":2,"exp":"Fleming : Lysozyme en 1922 (enzyme antibactérienne dans les sécrétions) et Pénicilline en 1928 (champignon Penicillium contamine une boîte de Pétri = premier antibiotique). Prix Nobel 1945."},
-    {"id":"bq3","q":"Quel est le dogme fondamental de la biologie moléculaire ?","opts":["ARN → ADN (rétrotranscription) → Protéine","Protéine → ARNm → ADN (sens inverse)","ADN → Protéine directement sans intermédiaire","ADN → (transcription) → ARNm → (traduction) → Protéine"],"ans":3,"exp":"ADN (noyau, ARN polymérase) → ARNm → Ribosome (cytoplasme) → Protéine. Sens unique. Exception : rétrovirus (VIH) = ARN → ADN via rétrotranscriptase."},
-    {"id":"bq4","q":"Quelles sont les 4 structures présentes dans TOUTE cellule (procaryote ET eucaryote) ?","opts":["Ribosomes + Golgi + RE + Membrane","ADN + Noyau + Mitochondrie + Membrane","ADN + Chloroplaste + Vacuole + Cytosol","ADN + Membrane plasmique + Ribosomes + Cytosol"],"ans":3,"exp":"Ces 4 structures sont universelles : ADN, membrane plasmique, ribosomes, cytosol. Les procaryotes n'ont pas de noyau (nucléoïde à la place) ni d'organites membranaires."},
-    {"id":"bq5","q":"Quelles sont les 5 phases de la mitose dans l'ordre (PPMAT) ?","opts":["Interphase → Prophase → Métaphase → Anaphase → Cytocinèse","Prométaphase → Prophase → Métaphase → Anaphase → Télophase","Prophase → Métaphase → Anaphase → Télophase (PMAT)","Prophase → Prométaphase → Métaphase → Anaphase → Télophase"],"ans":3,"exp":"PPMAT : Prophase (condensation + disparition membrane noyau) → Prométaphase (kinétochores) → Métaphase (alignement équatorial) → Anaphase (séparation chromatides) → Télophase (2 noyaux). Puis Cytocinèse."},
-    {"id":"bq6","q":"Quelle maladie résulte de la mutation GAG→GTG sur le 6e codon de la β-globine ?","opts":["Trisomie 21 — chromosome surnuméraire","Chorée de Huntington — répétition CAG","Klinefelter — chromosome sexuel supplémentaire","Drépanocytose — GLU→VAL, globules rouges en faucille"],"ans":3,"exp":"Drépanocytose : substitution GAG→GTG. Acide glutamique (GLU, hydrophile) → Valine (VAL, hydrophobe) au 6e AA. Agrégation des protéines → globules rouges en faucille. Avantage hétérozygote contre le paludisme."},
-    {"id":"bq7","q":"Dans la traduction, que signifient les sites A, P et E du ribosome ?","opts":["A = ARNm · P = Protéine · E = Enzyme","A = Actif · P = Passif · E = Exocytose","A = Anticodon · P = Peptide · E = Expression","A = Aminoacyl (ARNt entrant) · P = Peptidyl (chaîne en cours) · E = Exit (ARNt sortant)"],"ans":3,"exp":"Sites du ribosome : A (Aminoacyl) = ARNt entrant avec nouvel acide aminé. P (Peptidyl) = ARNt portant la chaîne peptidique en cours de synthèse. E (Exit) = ARNt vide qui quitte le ribosome."},
-    {"id":"bq8","q":"Qu'est-ce que l'épissage alternatif et quel est son intérêt ?","opts":["Retrait uniquement des introns → ARNm standard","Addition de la coiffe 5' et queue poly-A sur l'ARNm","Recombinaison des exons de manière différente → 1 gène code pour plusieurs protéines","Passage de l'ARNm du noyau au cytoplasme"],"ans":2,"exp":"Épissage alternatif : après retrait des introns, les exons sont recombinés différemment selon le tissu → 1 seul gène peut produire plusieurs protéines différentes. Exemple : gène CGRP → calcitonine OU CGRP."},
-    {"id":"bq9","q":"Pourquoi les virus ne sont-ils pas considérés comme des êtres vivants ?","opts":["Ils sont trop petits pour être vivants (< 1 µm)","Ils n'ont pas d'ADN propre","Ils ne peuvent pas se déplacer","Ils n'ont pas de cellule, pas de métabolisme propre et ne se reproduisent pas seuls"],"ans":3,"exp":"6 critères du vivant : cellule, reproduction autonome, métabolisme, adaptation, croissance, réponse aux stimuli. Les virus manquent la plupart — parasites intracellulaires obligatoires (besoin d'une cellule hôte)."},
-    {"id":"bq10","q":"Quelle est la différence entre transport passif et transport actif ?","opts":["Passif : pour les ions uniquement · Actif : pour les molécules organiques","Passif : lent (heures) · Actif : rapide (secondes)","Passif : consomme de l'ATP · Actif : suit le gradient","Passif : suit le gradient, sans ATP · Actif : contre le gradient, consomme ATP"],"ans":3,"exp":"Transport passif : du + concentré vers le – concentré, spontané, sans énergie. Transport actif : contre le gradient (de – vers +), nécessite ATP. Exemple : pompe Na⁺/K⁺ = actif."},
-    {"id":"bq11","q":"Combien de chromosomes possède un caryotype humain normal ?","opts":["44 chromosomes = 22 paires d'autosomes","48 chromosomes = 24 paires","46 chromosomes = 23 paires toutes identiques","46 chromosomes = 22 paires autosomes + 1 paire sexuelle"],"ans":3,"exp":"46 chromosomes = 23 paires diploïdes. 22 paires d'autosomes (non sexuels) + 1 paire sexuelle (XX = femme, XY = homme). Trisomie 21 = 47 chromosomes."},
-    {"id":"bq12","q":"Quelle est la découverte de Van Montagu ?","opts":["Découverte des lysosomes (Prix Nobel 1974)","Découverte des chromosomes et de la méiose","Découverte du Ti-plasmide / Agrobacterium → premier OGM","Règles de la génétique mendélienne (expériences sur les pois)"],"ans":2,"exp":"Marc Van Montagu (biologiste belge, Gand, 1933) : découverte du Ti-plasmide d'Agrobacterium tumefaciens → outil pour créer les premiers OGM. Prix Roi Baudouin 1997, Prix Japan 1998."},
-    {"id":"bq13","q":"Quelle est la classification de Linné de la plus large à la plus précise ?","opts":["Règne → Classe → Ordre → Genre → Espèce (5 niveaux)","Domaine → Règne → Embranchement → Classe → Ordre → Famille → Genre → Espèce","Espèce → Genre → Famille → Ordre → Classe → Embranchement → Règne → Domaine","Domaine → Embranchement → Classe → Ordre → Famille → Genre → Espèce"],"ans":1,"exp":"8 niveaux (du + large au + précis) : Domaine → Règne → Embranchement → Classe → Ordre → Famille → Genre → Espèce. Nom latin = Genre espèce (italique). Ex : Homo sapiens."},
-    {"id":"bq14","q":"Quels sont les 3 domaines du vivant et leurs caractéristiques ?","opts":["Virus / Bactéries / Eucaryotes","Procaryotes / Eucaryotes / Archées (sans distinction de noyau)","Animaux / Végétaux / Champignons","Archéobactéries (pas noyau, milieux extrêmes) · Eubactéries (pas noyau, bactéries) · Eucaryotes (noyau présent)"],"ans":3,"exp":"3 domaines : Archéobactéries (milieux extrêmes, thermoacidophiles), Eubactéries (bactéries communes), Eucaryotes (noyau = animaux, végétaux, champignons, protistes). Les virus ne sont dans aucun domaine."},
-    {"id":"bq15","q":"Quelles sont les 4 modifications de condensation de l'ADN jusqu'au chromosome ?","opts":["ADN → Histone → Centromère → Chromosome","Double hélice (2 nm) → Nucléosome/collier de perles (10 nm) → Chromatine (30 nm) → Chromosome","Double hélice → Intron → Exon → Chromosome","ARN → ADN → Chromatide → Chromosome"],"ans":1,"exp":"4 niveaux : ① Double hélice (2 nm) ② Nucléosome (ADN autour d'octamère d'histones, 10 nm, 'collier de perles') ③ Chromatine (état standard dans cellule) ④ Chromosome (uniquement lors de la division cellulaire)."},
-    {"id":"bq16","q":"Quelle est la différence entre cytocinèse animale et végétale ?","opts":["Animal : plaque cellulaire · Végétal : anneau contractile","Les deux utilisent un anneau contractile d'actine","Les deux forment une plaque cellulaire de cellulose","Animal : anneau contractile (actine + myosine) · Végétal : plaque cellulaire entre les 2 noyaux"],"ans":3,"exp":"Cytocinèse animale : anneau contractile de filaments d'actine et myosine II → pince la cellule (sillon de division). Végétale : formation d'une plaque cellulaire entre les 2 noyaux → nouvelle paroi."},
-    {"id":"bq17","q":"Que se passe-t-il lors de la prophase de la mitose ?","opts":["Les chromosomes s'alignent sur la plaque équatoriale","Les chromatides sœurs se séparent vers les pôles","La membrane nucléaire se reforme autour de chaque lot","Condensation des chromosomes, disparition membrane nucléaire, formation du fuseau mitotique"],"ans":3,"exp":"Prophase : condensation de l'ADN en chromosomes visibles (X bichromatidien), disparition de l'enveloppe nucléaire, développement du fuseau de microtubules, migration des centrosomes vers les pôles."},
-    {"id":"bq18","q":"Combien d'ATP la pompe Na⁺/K⁺ consomme-t-elle, et combien d'ions échange-t-elle ?","opts":["1 ATP, 2 Na⁺ sortent, 3 K⁺ entrent","2 ATP, 3 Na⁺ sortent, 3 K⁺ entrent","3 ATP, 3 Na⁺ sortent, 2 K⁺ entrent","1 ATP, 3 Na⁺ sortent, 2 K⁺ entrent"],"ans":3,"exp":"Pompe Na⁺/K⁺ ATPase : 1 ATP consommé → 3 Na⁺ sortent (hors de la cellule) + 2 K⁺ entrent (dans la cellule). Maintient le gradient électrochimique essentiel pour l'influx nerveux."},
-    {"id":"bq19","q":"Quelle est la différence entre phagocytose et pinocytose ?","opts":["Phagocytose : liquides · Pinocytose : solides","Phagocytose : exocytose · Pinocytose : endocytose","Ce sont deux mots pour le même mécanisme","Phagocytose : ingestion de solides (bactéries) · Pinocytose : ingestion de liquides"],"ans":3,"exp":"Les deux = endocytose (entrée de matière). Phagocytose = ingestion de particules solides (macrophages avalent bactéries). Pinocytose = ingestion de liquides (vésicules de petite taille)."},
-    {"id":"bq20","q":"Qu'est-ce que le syndrome de Turner et quel est son caryotype ?","opts":["XXY — stérilité + développement des seins","Trisomie 21 — 47 chromosomes","XXX — femme fertile","XO — monosomie sexuelle : retard développement, stérilité, petite taille"],"ans":3,"exp":"Syndrome de Turner (XO) : manque 1 chromosome sexuel (monosomie). Caractéristiques : gros retard développement physique et mental, stérilité, très petite taille (ne répond pas à la puberté)."},
-    {"id":"bq21","q":"À quoi sert la coiffe 5' ajoutée sur l'ARNm lors des modifications post-transcriptionnelles ?","opts":["Elle code pour le premier codon de la protéine","Elle s'apparie avec le codon STOP UAA","Elle forme un pont avec la queue poly-A","Elle augmente la durée de vie de l'ARNm, facilite l'export du noyau et la reconnaissance par les ribosomes"],"ans":3,"exp":"Coiffe 5' = 7-méthylguanosine avec 3 phosphates, ajoutée en 5' de l'ARNm. Rôles : augmenter durée de vie ARNm (protection contre dégradation), faciliter export hors du noyau, faciliter reconnaissance par ribosomes."},
-    {"id":"bq22","q":"Qu'est-ce que la réplication semi-conservative de l'ADN ?","opts":["Seuls 50% des cellules répliquent leur ADN lors de la phase S","L'ADN est copié 2 fois pour sécurité, 1 copie est détruite","L'ADN est détruit puis recréé entièrement à chaque division","Chaque double hélice fille garde 1 brin parental + 1 brin nouvellement synthétisé"],"ans":3,"exp":"Semi-conservative : l'ADN se déroule, chaque brin sert de matrice → 2 nouvelles doubles hélices, chacune avec 1 brin ancien (conservé) + 1 brin nouveau. Lieu : phase S du cycle cellulaire."},
-    {"id":"bq23","q":"Quels sont les 4 règnes des eucaryotes et leur mode nutritionnel ?","opts":["Bactéries/Virus/Plantes/Animaux","Archées/Protistes/Végétaux/Animaux","Animaux (ingestion) / Végétaux (photosynthèse) / Mycètes (absorption) / Protistes (unicellulaires)","Animaux/Plantes/Champignons (tous multicellulaires)"],"ans":2,"exp":"4 règnes eucaryotes : Animaux (multicellulaire, hétérotrophe par ingestion) · Végétaux (multicellulaire, autotrophe par photosynthèse) · Mycètes (hétérotrophe par absorption, H₂S) · Protistes (unicellulaire)."},
-    {"id":"bq24","q":"Dans quel organite se déroule la photosynthèse et dans lequel la respiration cellulaire ?","opts":["Photosynthèse : mitochondrie · Respiration : chloroplaste","Photosynthèse : ribosome · Respiration : lysosome","Les deux se déroulent dans le noyau","Photosynthèse : chloroplaste · Respiration : mitochondrie"],"ans":3,"exp":"Photosynthèse : chloroplaste (cellule végétale) — capte lumière → glucose + O₂. Respiration : mitochondrie (toutes cellules eucaryotes) — glucose + O₂ → CO₂ + H₂O + ATP. Les deux équations sont inverses."},
-    {"id":"bq25","q":"Quelle est la conclusion de l'expérience de Hammerling avec l'Acétabularia ?","opts":["La forme du chapeau dépend de la lumière reçue","Les deux espèces produisent un chapeau hybride","L'ARN messager détermine les caractéristiques, pas le noyau","Le noyau détermine les caractéristiques et la vie de la cellule"],"ans":3,"exp":"Hammerling a échangé les noyaux de 2 espèces d'Acétabularia → le chapeau qui repousse correspond au noyau greffé, pas à la tige d'origine. Conclusion : c'est le noyau qui détermine les caractéristiques de la cellule."},
-    {"id":"bq26","q":"Quelles molécules traversent la membrane par diffusion SIMPLE (sans protéine) ?","opts":["Eau (H₂O) et glucose","Na⁺, K⁺, Cl⁻ (ions chargés)","Glucose via GLUT et eau via aquaporine","Petites molécules apolaires : O₂, CO₂, éthanol (pas l'eau qui passe via aquaporine)"],"ans":3,"exp":"Diffusion simple : petites molécules non chargées et apolaires traversent directement la bicouche phospholipidique. O₂, CO₂, éthanol. L'eau est polaire mais très petite → passe surtout via aquaporines (facilitée)."},
-    {"id":"bq27","q":"Qu'arrive-t-il à une cellule animale placée dans un milieu hypotonique ?","opts":["Elle se plasm olyse (membrane se détache)","Elle devient turgescente (paroi résiste)","Elle ne change pas (milieu isotonique = équilibre)","Elle se lyse (éclate) car l'eau entre massivement"],"ans":3,"exp":"Milieu hypotonique = moins concentré que la cellule → l'eau entre par osmose → la cellule gonfle et éclate (lyse). La cellule végétale résiste car sa paroi cellulosique s'oppose à la pression = turgescence."},
-    {"id":"bq28","q":"Qu'est-ce que la chorée de Huntington et quel est son mécanisme moléculaire ?","opts":["Trisomie 21 — non-disjonction à la méiose","Translocation entre chromosomes 9 et 22","Drépanocytose — substitution GAG→GTG","Répétition du triplet CAG sur chromosome 4 (>35 fois = malade), maladie neurodégénérative dominante"],"ans":3,"exp":"Chorée de Huntington : maladie autosomique dominante. Répétition du triplet CAG sur le chr.4. ≤35 répétitions = sain. >35 = malade (début ~40-50 ans, neurodégénératif). Plus de répétitions = début plus précoce."},
-    {"id":"bq29","q":"Quels organites possèdent DEUX membranes ?","opts":["Golgi (2 membranes) et RE (1 membrane)","Lysosome (2 membranes) et vacuole (1 membrane)","Ribosome (1 membrane) et peroxysome (2 membranes)","Noyau (enveloppe nucléaire double), mitochondrie (2 membranes), chloroplaste (2 membranes)"],"ans":3,"exp":"3 organites à 2 membranes : le noyau (enveloppe nucléaire double avec pores), la mitochondrie (membrane externe + membrane interne avec crêtes), le chloroplaste (membrane externe + interne + thylakoïdes)."},
-    {"id":"bq30","q":"Quelle est la différence entre tumeur bénigne et tumeur maligne ?","opts":["Bénigne = maligne mais traitée à temps","Bénigne et maligne se traitent de la même façon","Bénigne = fatale · Maligne = guérissable","Bénigne : localisée, volume limité, n'envahit pas · Maligne : envahit tissus voisins et produit des métastases"],"ans":3,"exp":"Tumeur bénigne : croissance lente, localisée, encapsulée, n'envahit pas les tissus voisins, pas de métastases. Tumeur maligne (cancer) : envahit les tissus adjacents, peut produire des métastases (cellules qui colonisent d'autres organes)."},
-    {"id":"bq31","q":"Qu'est-ce que l'épissage standard lors de la transcription ?","opts":["Ajout de la queue poly-A en 3' de l'ARNm","Découpage de l'ARNm mature en petits fragments pour le transport","Dégradation de l'ARNm après la traduction","Retrait des introns (non-codants) et conservation des exons (codants) → ARNm mature"],"ans":3,"exp":"Épissage standard : l'ARN pré-messager (transcrit primaire) contient introns (régions non-codantes, retirées) et exons (codants, conservés). Le résultat = ARNm mature qui sort du noyau pour être traduit."},
-    {"id":"bq32","q":"Quel biologiste belge a découvert les lysosomes et quel prix a-t-il reçu ?","opts":["Van Beneden — découverte des chromosomes (XIXe)","Darwin — Prix Nobel de biologie évolutive","Fleming — Prix Nobel 1945 pour la pénicilline","Christian de Duve — Prix Nobel 1974 (UCLouvain)"],"ans":3,"exp":"Christian de Duve (1917–2013, biologiste belge de l'UCLouvain) a reçu le Prix Nobel de Médecine en 1974 pour la découverte des lysosomes (organites de digestion intracellulaire = 'poubelles de la cellule')."}
+    {
+      "id": "bq3",
+      "q": "Quel est le dogme fondamental de la biologie moléculaire ?",
+      "opts": [
+        "ARN → ADN (rétrotranscription) → Protéine",
+        "Protéine → ARNm → ADN (sens inverse)",
+        "ADN → Protéine directement sans intermédiaire",
+        "ADN → (transcription) → ARNm → (traduction) → Protéine"
+      ],
+      "ans": 3,
+      "exp": "ADN (noyau, ARN polymérase) → ARNm → Ribosome (cytoplasme) → Protéine. Sens unique. Exception : rétrovirus (VIH) = ARN → ADN via rétrotranscriptase."
+    },
+    {
+      "id": "bq4",
+      "q": "Quelles sont les 4 structures présentes dans TOUTE cellule (procaryote ET eucaryote) ?",
+      "opts": [
+        "Ribosomes + Golgi + RE + Membrane",
+        "ADN + Noyau + Mitochondrie + Membrane",
+        "ADN + Chloroplaste + Vacuole + Cytosol",
+        "ADN + Membrane plasmique + Ribosomes + Cytosol"
+      ],
+      "ans": 3,
+      "exp": "Ces 4 structures sont universelles : ADN, membrane plasmique, ribosomes, cytosol. Les procaryotes n'ont pas de noyau (nucléoïde à la place) ni d'organites membranaires."
+    },
+    {
+      "id": "bq5",
+      "q": "Quelles sont les 5 phases de la mitose dans l'ordre (PPMAT) ?",
+      "opts": [
+        "Interphase → Prophase → Métaphase → Anaphase → Cytocinèse",
+        "Prométaphase → Prophase → Métaphase → Anaphase → Télophase",
+        "Prophase → Métaphase → Anaphase → Télophase (PMAT)",
+        "Prophase → Prométaphase → Métaphase → Anaphase → Télophase"
+      ],
+      "ans": 3,
+      "exp": "PPMAT : Prophase (condensation + disparition membrane noyau) → Prométaphase (kinétochores) → Métaphase (alignement équatorial) → Anaphase (séparation chromatides) → Télophase (2 noyaux). Puis Cytocinèse."
+    },
+    {
+      "id": "bq6",
+      "q": "Quelle maladie résulte de la mutation GAG→GTG sur le 6e codon de la β-globine ?",
+      "opts": [
+        "Trisomie 21 — chromosome surnuméraire",
+        "Chorée de Huntington — répétition CAG",
+        "Klinefelter — chromosome sexuel supplémentaire",
+        "Drépanocytose — GLU→VAL, globules rouges en faucille"
+      ],
+      "ans": 3,
+      "exp": "Drépanocytose : substitution GAG→GTG. Acide glutamique (GLU, hydrophile) → Valine (VAL, hydrophobe) au 6e AA. Agrégation des protéines → globules rouges en faucille. Avantage hétérozygote contre le paludisme."
+    },
+    {
+      "id": "bq7",
+      "q": "Dans la traduction, que signifient les sites A, P et E du ribosome ?",
+      "opts": [
+        "A = ARNm · P = Protéine · E = Enzyme",
+        "A = Actif · P = Passif · E = Exocytose",
+        "A = Anticodon · P = Peptide · E = Expression",
+        "A = Aminoacyl (ARNt entrant) · P = Peptidyl (chaîne en cours) · E = Exit (ARNt sortant)"
+      ],
+      "ans": 3,
+      "exp": "Sites du ribosome : A (Aminoacyl) = ARNt entrant avec nouvel acide aminé. P (Peptidyl) = ARNt portant la chaîne peptidique en cours de synthèse. E (Exit) = ARNt vide qui quitte le ribosome."
+    },
+    {
+      "id": "bq8",
+      "q": "Qu'est-ce que l'épissage alternatif et quel est son intérêt ?",
+      "opts": [
+        "Retrait uniquement des introns → ARNm standard",
+        "Addition de la coiffe 5' et queue poly-A sur l'ARNm",
+        "Recombinaison des exons de manière différente → 1 gène code pour plusieurs protéines",
+        "Passage de l'ARNm du noyau au cytoplasme"
+      ],
+      "ans": 2,
+      "exp": "Épissage alternatif : après retrait des introns, les exons sont recombinés différemment selon le tissu → 1 seul gène peut produire plusieurs protéines différentes. Exemple : gène CGRP → calcitonine OU CGRP."
+    },
+    {
+      "id": "bq10",
+      "q": "Quelle est la différence entre transport passif et transport actif ?",
+      "opts": [
+        "Passif : pour les ions uniquement · Actif : pour les molécules organiques",
+        "Passif : lent (heures) · Actif : rapide (secondes)",
+        "Passif : consomme de l'ATP · Actif : suit le gradient",
+        "Passif : suit le gradient, sans ATP · Actif : contre le gradient, consomme ATP"
+      ],
+      "ans": 3,
+      "exp": "Transport passif : du + concentré vers le – concentré, spontané, sans énergie. Transport actif : contre le gradient (de – vers +), nécessite ATP. Exemple : pompe Na⁺/K⁺ = actif."
+    },
+    {
+      "id": "bq11",
+      "q": "Combien de chromosomes possède un caryotype humain normal ?",
+      "opts": [
+        "44 chromosomes = 22 paires d'autosomes",
+        "48 chromosomes = 24 paires",
+        "46 chromosomes = 23 paires toutes identiques",
+        "46 chromosomes = 22 paires autosomes + 1 paire sexuelle"
+      ],
+      "ans": 3,
+      "exp": "46 chromosomes = 23 paires diploïdes. 22 paires d'autosomes (non sexuels) + 1 paire sexuelle (XX = femme, XY = homme). Trisomie 21 = 47 chromosomes."
+    },
+    {
+      "id": "bq15",
+      "q": "Quelles sont les 4 modifications de condensation de l'ADN jusqu'au chromosome ?",
+      "opts": [
+        "ADN → Histone → Centromère → Chromosome",
+        "Double hélice (2 nm) → Nucléosome/collier de perles (10 nm) → Chromatine (30 nm) → Chromosome",
+        "Double hélice → Intron → Exon → Chromosome",
+        "ARN → ADN → Chromatide → Chromosome"
+      ],
+      "ans": 1,
+      "exp": "4 niveaux : ① Double hélice (2 nm) ② Nucléosome (ADN autour d'octamère d'histones, 10 nm, 'collier de perles') ③ Chromatine (état standard dans cellule) ④ Chromosome (uniquement lors de la division cellulaire)."
+    },
+    {
+      "id": "bq16",
+      "q": "Quelle est la différence entre cytocinèse animale et végétale ?",
+      "opts": [
+        "Animal : plaque cellulaire · Végétal : anneau contractile",
+        "Les deux utilisent un anneau contractile d'actine",
+        "Les deux forment une plaque cellulaire de cellulose",
+        "Animal : anneau contractile (actine + myosine) · Végétal : plaque cellulaire entre les 2 noyaux"
+      ],
+      "ans": 3,
+      "exp": "Cytocinèse animale : anneau contractile de filaments d'actine et myosine II → pince la cellule (sillon de division). Végétale : formation d'une plaque cellulaire entre les 2 noyaux → nouvelle paroi."
+    },
+    {
+      "id": "bq17",
+      "q": "Que se passe-t-il lors de la prophase de la mitose ?",
+      "opts": [
+        "Les chromosomes s'alignent sur la plaque équatoriale",
+        "Les chromatides sœurs se séparent vers les pôles",
+        "La membrane nucléaire se reforme autour de chaque lot",
+        "Condensation des chromosomes, disparition membrane nucléaire, formation du fuseau mitotique"
+      ],
+      "ans": 3,
+      "exp": "Prophase : condensation de l'ADN en chromosomes visibles (X bichromatidien), disparition de l'enveloppe nucléaire, développement du fuseau de microtubules, migration des centrosomes vers les pôles."
+    },
+    {
+      "id": "bq18",
+      "q": "Combien d'ATP la pompe Na⁺/K⁺ consomme-t-elle, et combien d'ions échange-t-elle ?",
+      "opts": [
+        "1 ATP, 2 Na⁺ sortent, 3 K⁺ entrent",
+        "2 ATP, 3 Na⁺ sortent, 3 K⁺ entrent",
+        "3 ATP, 3 Na⁺ sortent, 2 K⁺ entrent",
+        "1 ATP, 3 Na⁺ sortent, 2 K⁺ entrent"
+      ],
+      "ans": 3,
+      "exp": "Pompe Na⁺/K⁺ ATPase : 1 ATP consommé → 3 Na⁺ sortent (hors de la cellule) + 2 K⁺ entrent (dans la cellule). Maintient le gradient électrochimique essentiel pour l'influx nerveux."
+    },
+    {
+      "id": "bq19",
+      "q": "Quelle est la différence entre phagocytose et pinocytose ?",
+      "opts": [
+        "Phagocytose : liquides · Pinocytose : solides",
+        "Phagocytose : exocytose · Pinocytose : endocytose",
+        "Ce sont deux mots pour le même mécanisme",
+        "Phagocytose : ingestion de solides (bactéries) · Pinocytose : ingestion de liquides"
+      ],
+      "ans": 3,
+      "exp": "Les deux = endocytose (entrée de matière). Phagocytose = ingestion de particules solides (macrophages avalent bactéries). Pinocytose = ingestion de liquides (vésicules de petite taille)."
+    },
+    {
+      "id": "bq20",
+      "q": "Qu'est-ce que le syndrome de Turner et quel est son caryotype ?",
+      "opts": [
+        "XXY — stérilité + développement des seins",
+        "Trisomie 21 — 47 chromosomes",
+        "XXX — femme fertile",
+        "XO — monosomie sexuelle : retard développement, stérilité, petite taille"
+      ],
+      "ans": 3,
+      "exp": "Syndrome de Turner (XO) : manque 1 chromosome sexuel (monosomie). Caractéristiques : gros retard développement physique et mental, stérilité, très petite taille (ne répond pas à la puberté)."
+    },
+    {
+      "id": "bq21",
+      "q": "À quoi sert la coiffe 5' ajoutée sur l'ARNm lors des modifications post-transcriptionnelles ?",
+      "opts": [
+        "Elle code pour le premier codon de la protéine",
+        "Elle s'apparie avec le codon STOP UAA",
+        "Elle forme un pont avec la queue poly-A",
+        "Elle augmente la durée de vie de l'ARNm, facilite l'export du noyau et la reconnaissance par les ribosomes"
+      ],
+      "ans": 3,
+      "exp": "Coiffe 5' = 7-méthylguanosine avec 3 phosphates, ajoutée en 5' de l'ARNm. Rôles : augmenter durée de vie ARNm (protection contre dégradation), faciliter export hors du noyau, faciliter reconnaissance par ribosomes."
+    },
+    {
+      "id": "bq22",
+      "q": "Qu'est-ce que la réplication semi-conservative de l'ADN ?",
+      "opts": [
+        "Seuls 50% des cellules répliquent leur ADN lors de la phase S",
+        "L'ADN est copié 2 fois pour sécurité, 1 copie est détruite",
+        "L'ADN est détruit puis recréé entièrement à chaque division",
+        "Chaque double hélice fille garde 1 brin parental + 1 brin nouvellement synthétisé"
+      ],
+      "ans": 3,
+      "exp": "Semi-conservative : l'ADN se déroule, chaque brin sert de matrice → 2 nouvelles doubles hélices, chacune avec 1 brin ancien (conservé) + 1 brin nouveau. Lieu : phase S du cycle cellulaire."
+    },
+    {
+      "id": "bq23",
+      "q": "Quels sont les 4 règnes des eucaryotes et leur mode nutritionnel ?",
+      "opts": [
+        "Bactéries/Virus/Plantes/Animaux",
+        "Archées/Protistes/Végétaux/Animaux",
+        "Animaux (ingestion) / Végétaux (photosynthèse) / Mycètes (absorption) / Protistes (unicellulaires)",
+        "Animaux/Plantes/Champignons (tous multicellulaires)"
+      ],
+      "ans": 2,
+      "exp": "4 règnes eucaryotes : Animaux (multicellulaire, hétérotrophe par ingestion) · Végétaux (multicellulaire, autotrophe par photosynthèse) · Mycètes (hétérotrophe par absorption, H₂S) · Protistes (unicellulaire)."
+    },
+    {
+      "id": "bq24",
+      "q": "Dans quel organite se déroule la photosynthèse et dans lequel la respiration cellulaire ?",
+      "opts": [
+        "Photosynthèse : mitochondrie · Respiration : chloroplaste",
+        "Photosynthèse : ribosome · Respiration : lysosome",
+        "Les deux se déroulent dans le noyau",
+        "Photosynthèse : chloroplaste · Respiration : mitochondrie"
+      ],
+      "ans": 3,
+      "exp": "Photosynthèse : chloroplaste (cellule végétale) — capte lumière → glucose + O₂. Respiration : mitochondrie (toutes cellules eucaryotes) — glucose + O₂ → CO₂ + H₂O + ATP. Les deux équations sont inverses."
+    },
+    {
+      "id": "bq26",
+      "q": "Quelles molécules traversent la membrane par diffusion SIMPLE (sans protéine) ?",
+      "opts": [
+        "Eau (H₂O) et glucose",
+        "Na⁺, K⁺, Cl⁻ (ions chargés)",
+        "Glucose via GLUT et eau via aquaporine",
+        "Petites molécules apolaires : O₂, CO₂, éthanol (pas l'eau qui passe via aquaporine)"
+      ],
+      "ans": 3,
+      "exp": "Diffusion simple : petites molécules non chargées et apolaires traversent directement la bicouche phospholipidique. O₂, CO₂, éthanol. L'eau est polaire mais très petite → passe surtout via aquaporines (facilitée)."
+    },
+    {
+      "id": "bq27",
+      "q": "Qu'arrive-t-il à une cellule animale placée dans un milieu hypotonique ?",
+      "opts": [
+        "Elle se plasm olyse (membrane se détache)",
+        "Elle devient turgescente (paroi résiste)",
+        "Elle ne change pas (milieu isotonique = équilibre)",
+        "Elle se lyse (éclate) car l'eau entre massivement"
+      ],
+      "ans": 3,
+      "exp": "Milieu hypotonique = moins concentré que la cellule → l'eau entre par osmose → la cellule gonfle et éclate (lyse). La cellule végétale résiste car sa paroi cellulosique s'oppose à la pression = turgescence."
+    },
+    {
+      "id": "bq28",
+      "q": "Qu'est-ce que la chorée de Huntington et quel est son mécanisme moléculaire ?",
+      "opts": [
+        "Trisomie 21 — non-disjonction à la méiose",
+        "Translocation entre chromosomes 9 et 22",
+        "Drépanocytose — substitution GAG→GTG",
+        "Répétition du triplet CAG sur chromosome 4 (>35 fois = malade), maladie neurodégénérative dominante"
+      ],
+      "ans": 3,
+      "exp": "Chorée de Huntington : maladie autosomique dominante. Répétition du triplet CAG sur le chr.4. ≤35 répétitions = sain. >35 = malade (début ~40-50 ans, neurodégénératif). Plus de répétitions = début plus précoce."
+    },
+    {
+      "id": "bq29",
+      "q": "Quels organites possèdent DEUX membranes ?",
+      "opts": [
+        "Golgi (2 membranes) et RE (1 membrane)",
+        "Lysosome (2 membranes) et vacuole (1 membrane)",
+        "Ribosome (1 membrane) et peroxysome (2 membranes)",
+        "Noyau (enveloppe nucléaire double), mitochondrie (2 membranes), chloroplaste (2 membranes)"
+      ],
+      "ans": 3,
+      "exp": "3 organites à 2 membranes : le noyau (enveloppe nucléaire double avec pores), la mitochondrie (membrane externe + membrane interne avec crêtes), le chloroplaste (membrane externe + interne + thylakoïdes)."
+    },
+    {
+      "id": "bq30",
+      "q": "Quelle est la différence entre tumeur bénigne et tumeur maligne ?",
+      "opts": [
+        "Bénigne = maligne mais traitée à temps",
+        "Bénigne et maligne se traitent de la même façon",
+        "Bénigne = fatale · Maligne = guérissable",
+        "Bénigne : localisée, volume limité, n'envahit pas · Maligne : envahit tissus voisins et produit des métastases"
+      ],
+      "ans": 3,
+      "exp": "Tumeur bénigne : croissance lente, localisée, encapsulée, n'envahit pas les tissus voisins, pas de métastases. Tumeur maligne (cancer) : envahit les tissus adjacents, peut produire des métastases (cellules qui colonisent d'autres organes)."
+    },
+    {
+      "id": "bq31",
+      "q": "Qu'est-ce que l'épissage standard lors de la transcription ?",
+      "opts": [
+        "Ajout de la queue poly-A en 3' de l'ARNm",
+        "Découpage de l'ARNm mature en petits fragments pour le transport",
+        "Dégradation de l'ARNm après la traduction",
+        "Retrait des introns (non-codants) et conservation des exons (codants) → ARNm mature"
+      ],
+      "ans": 3,
+      "exp": "Épissage standard : l'ARN pré-messager (transcrit primaire) contient introns (régions non-codantes, retirées) et exons (codants, conservés). Le résultat = ARNm mature qui sort du noyau pour être traduit."
+    }
+  ],
+  "qcmImg": [
+    {
+      "id": "bm1",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-1.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "Appareil de Golgi",
+        "Centriole/Centrosome"
+      ],
+      "ans": 3,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm2",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-2.jpg",
+      "opts": [
+        "Cytosol",
+        "Noyau",
+        "Mitochondrie",
+        "Appareil de Golgi",
+        "Ribosome"
+      ],
+      "ans": 3,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm3",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-3.jpg",
+      "opts": [
+        "Noyau",
+        "Centriole/Centrosome",
+        "Mitochondrie",
+        "Cytosol",
+        "Appareil de Golgi"
+      ],
+      "ans": 4,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm4",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-4.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Noyau",
+        "Centriole/Centrosome",
+        "REL",
+        "Cytosol"
+      ],
+      "ans": 0,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm5",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-5.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centriole/Centrosome",
+        "Peroxysome/Lysosome",
+        "Mitochondrie",
+        "REL"
+      ],
+      "ans": 0,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm6",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-6.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Mitochondrie",
+        "Centriole/Centrosome",
+        "Noyau",
+        "Appareil de Golgi"
+      ],
+      "ans": 4,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm7",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-7.jpg",
+      "opts": [
+        "Noyau",
+        "Ribosome",
+        "Peroxysome/Lysosome",
+        "REL",
+        "Appareil de Golgi"
+      ],
+      "ans": 4,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm8",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-8.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Appareil de Golgi",
+        "Ribosome",
+        "Cytosol",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 1,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm9",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-9.jpg",
+      "opts": [
+        "REL",
+        "Appareil de Golgi",
+        "Peroxysome/Lysosome",
+        "Noyau",
+        "Mitochondrie"
+      ],
+      "ans": 1,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm10",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/appareil-de-golgi-10.jpg",
+      "opts": [
+        "REL",
+        "Appareil de Golgi",
+        "Peroxysome/Lysosome",
+        "Noyau",
+        "Mitochondrie"
+      ],
+      "ans": 1,
+      "exp": "Appareil de Golgi — Empilement de saccules en pile d'assiettes — synthétise, modifie, trie et sécrète les protéines cellulaires."
+    },
+    {
+      "id": "bm11",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-1.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Ribosome",
+        "Mitochondrie",
+        "RER",
+        "Centriole/Centrosome"
+      ],
+      "ans": 4,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm12",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-2.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Appareil de Golgi",
+        "Mitochondrie",
+        "Ribosome",
+        "REL"
+      ],
+      "ans": 0,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm13",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-3.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "Centriole/Centrosome",
+        "RER"
+      ],
+      "ans": 3,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm14",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-4.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Noyau",
+        "REL",
+        "Cytosol",
+        "Centriole/Centrosome"
+      ],
+      "ans": 4,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm15",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-5.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "REL",
+        "Ribosome",
+        "Centriole/Centrosome"
+      ],
+      "ans": 4,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm16",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-6.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Peroxysome/Lysosome",
+        "Membrane plasmique",
+        "Cytosol",
+        "Ribosome"
+      ],
+      "ans": 0,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm17",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-7.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Noyau",
+        "Appareil de Golgi",
+        "Ribosome",
+        "RER"
+      ],
+      "ans": 0,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm18",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-8.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Noyau",
+        "Mitochondrie",
+        "Cytosol",
+        "Ribosome"
+      ],
+      "ans": 0,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm19",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-9.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Appareil de Golgi",
+        "Ribosome",
+        "Membrane plasmique",
+        "Noyau"
+      ],
+      "ans": 0,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm20",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/centriole-centrosome-10.jpg",
+      "opts": [
+        "Noyau",
+        "Appareil de Golgi",
+        "Centriole/Centrosome",
+        "Membrane plasmique",
+        "Ribosome"
+      ],
+      "ans": 2,
+      "exp": "Centriole/Centrosome — Masse granuleuse contenant une paire de centrioles (structures cylindriques courtes, souvent perpendiculaires) — forme les cils et flagelles."
+    },
+    {
+      "id": "bm21",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-1.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Mitochondrie",
+        "Centriole/Centrosome",
+        "Noyau",
+        "Cytosol"
+      ],
+      "ans": 4,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm22",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-2.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Ribosome",
+        "Cytosol",
+        "Membrane plasmique",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 2,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm23",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-3.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Cytosol",
+        "Ribosome",
+        "Peroxysome/Lysosome",
+        "Membrane plasmique"
+      ],
+      "ans": 1,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm24",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-4.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Appareil de Golgi",
+        "Cytosol",
+        "Centriole/Centrosome",
+        "Ribosome"
+      ],
+      "ans": 2,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm25",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-5.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "RER",
+        "Cytosol",
+        "Appareil de Golgi",
+        "Mitochondrie"
+      ],
+      "ans": 2,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm26",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-6.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Cytosol",
+        "Peroxysome/Lysosome",
+        "RER",
+        "Noyau"
+      ],
+      "ans": 1,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm27",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-7.jpg",
+      "opts": [
+        "Cytosol",
+        "REL",
+        "RER",
+        "Mitochondrie",
+        "Ribosome"
+      ],
+      "ans": 0,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm28",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-8.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "Mitochondrie",
+        "REL",
+        "Ribosome"
+      ],
+      "ans": 1,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm29",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-9.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "REL",
+        "Appareil de Golgi"
+      ],
+      "ans": 2,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm30",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/cytosol-10.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Ribosome",
+        "Cytosol",
+        "Centriole/Centrosome",
+        "RER"
+      ],
+      "ans": 2,
+      "exp": "Cytosol — Matrice de fond du cytoplasme, aspect granuleux homogène."
+    },
+    {
+      "id": "bm31",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-1.jpg",
+      "opts": [
+        "RER",
+        "Noyau",
+        "REL",
+        "Membrane plasmique",
+        "Centriole/Centrosome"
+      ],
+      "ans": 3,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm32",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-2.jpg",
+      "opts": [
+        "Ribosome",
+        "Mitochondrie",
+        "Centriole/Centrosome",
+        "Membrane plasmique",
+        "RER"
+      ],
+      "ans": 3,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm33",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-3.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Membrane plasmique",
+        "Cytosol",
+        "Mitochondrie",
+        "Ribosome"
+      ],
+      "ans": 1,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm34",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-4.jpg",
+      "opts": [
+        "Ribosome",
+        "Membrane plasmique",
+        "REL",
+        "RER",
+        "Centriole/Centrosome"
+      ],
+      "ans": 1,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm35",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-5.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "RER",
+        "Peroxysome/Lysosome",
+        "Appareil de Golgi",
+        "Noyau"
+      ],
+      "ans": 0,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm36",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-6.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Noyau",
+        "Cytosol",
+        "Appareil de Golgi",
+        "Centriole/Centrosome"
+      ],
+      "ans": 0,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm37",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-7.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Appareil de Golgi",
+        "Centriole/Centrosome",
+        "Mitochondrie",
+        "Membrane plasmique"
+      ],
+      "ans": 4,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm38",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-8.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "RER",
+        "Membrane plasmique",
+        "Cytosol",
+        "Mitochondrie"
+      ],
+      "ans": 2,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm39",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-9.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Mitochondrie",
+        "Noyau",
+        "Centriole/Centrosome",
+        "Membrane plasmique"
+      ],
+      "ans": 4,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm40",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/membrane-plasmique-10.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Centriole/Centrosome",
+        "Cytosol",
+        "Noyau",
+        "Ribosome"
+      ],
+      "ans": 0,
+      "exp": "Membrane plasmique — Fine ligne double (bicouche lipidique) délimitant la cellule."
+    },
+    {
+      "id": "bm41",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-1.jpg",
+      "opts": [
+        "Noyau",
+        "RER",
+        "Mitochondrie",
+        "Cytosol",
+        "REL"
+      ],
+      "ans": 2,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm42",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-2.jpg",
+      "opts": [
+        "Mitochondrie",
+        "RER",
+        "Appareil de Golgi",
+        "Cytosol",
+        "Centriole/Centrosome"
+      ],
+      "ans": 0,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm43",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-3.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Membrane plasmique",
+        "Peroxysome/Lysosome",
+        "RER",
+        "Centriole/Centrosome"
+      ],
+      "ans": 0,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm44",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-4.jpg",
+      "opts": [
+        "RER",
+        "Cytosol",
+        "REL",
+        "Mitochondrie",
+        "Centriole/Centrosome"
+      ],
+      "ans": 3,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm45",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-5.jpg",
+      "opts": [
+        "Cytosol",
+        "Noyau",
+        "Peroxysome/Lysosome",
+        "Membrane plasmique",
+        "Mitochondrie"
+      ],
+      "ans": 4,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm46",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-6.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "RER",
+        "Ribosome",
+        "Centriole/Centrosome",
+        "Mitochondrie"
+      ],
+      "ans": 4,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm47",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-7.jpg",
+      "opts": [
+        "Mitochondrie",
+        "RER",
+        "Cytosol",
+        "REL",
+        "Appareil de Golgi"
+      ],
+      "ans": 0,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm48",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-8.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Cytosol",
+        "Membrane plasmique",
+        "Centriole/Centrosome",
+        "Noyau"
+      ],
+      "ans": 0,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm49",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-9.jpg",
+      "opts": [
+        "REL",
+        "Cytosol",
+        "Mitochondrie",
+        "Centriole/Centrosome",
+        "Appareil de Golgi"
+      ],
+      "ans": 2,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm50",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/mitochondrie-10.jpg",
+      "opts": [
+        "REL",
+        "Cytosol",
+        "Mitochondrie",
+        "Peroxysome/Lysosome",
+        "Noyau"
+      ],
+      "ans": 2,
+      "exp": "Mitochondrie — Forme allongée (patate), crêtes mitochondriales, double membrane — respiration cellulaire (production d'ATP)."
+    },
+    {
+      "id": "bm51",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-1.jpg",
+      "opts": [
+        "Ribosome",
+        "RER",
+        "Membrane plasmique",
+        "Noyau",
+        "REL"
+      ],
+      "ans": 3,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm52",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-2.jpg",
+      "opts": [
+        "Cytosol",
+        "Noyau",
+        "Membrane plasmique",
+        "Appareil de Golgi",
+        "RER"
+      ],
+      "ans": 1,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm53",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-3.jpg",
+      "opts": [
+        "Noyau",
+        "REL",
+        "Mitochondrie",
+        "Ribosome",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 0,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm54",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-4.jpg",
+      "opts": [
+        "Cytosol",
+        "Appareil de Golgi",
+        "Mitochondrie",
+        "REL",
+        "Noyau"
+      ],
+      "ans": 4,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm55",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-5.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Noyau",
+        "REL",
+        "Membrane plasmique",
+        "Centriole/Centrosome"
+      ],
+      "ans": 1,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm56",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-6.jpg",
+      "opts": [
+        "Noyau",
+        "Membrane plasmique",
+        "RER",
+        "Cytosol",
+        "Appareil de Golgi"
+      ],
+      "ans": 0,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm57",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-7.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Noyau",
+        "Mitochondrie",
+        "RER",
+        "Cytosol"
+      ],
+      "ans": 1,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm58",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-8.jpg",
+      "opts": [
+        "Ribosome",
+        "Noyau",
+        "Centriole/Centrosome",
+        "Cytosol",
+        "Membrane plasmique"
+      ],
+      "ans": 1,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm59",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-9.jpg",
+      "opts": [
+        "REL",
+        "Noyau",
+        "Cytosol",
+        "Ribosome",
+        "Appareil de Golgi"
+      ],
+      "ans": 1,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm60",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/noyau-10.jpg",
+      "opts": [
+        "Noyau",
+        "RER",
+        "Membrane plasmique",
+        "Peroxysome/Lysosome",
+        "Ribosome"
+      ],
+      "ans": 0,
+      "exp": "Noyau — Ovoïde, double membrane (enveloppe nucléaire perforée de pores) — contient l'ADN."
+    },
+    {
+      "id": "bm61",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-1.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Noyau",
+        "Centriole/Centrosome",
+        "RER",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 4,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm62",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-2.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "REL",
+        "Centriole/Centrosome",
+        "Mitochondrie",
+        "Membrane plasmique"
+      ],
+      "ans": 0,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm63",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-3.jpg",
+      "opts": [
+        "RER",
+        "REL",
+        "Membrane plasmique",
+        "Centriole/Centrosome",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 4,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm64",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-4.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Ribosome",
+        "REL",
+        "Peroxysome/Lysosome",
+        "RER"
+      ],
+      "ans": 3,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm65",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-5.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Mitochondrie",
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "RER"
+      ],
+      "ans": 2,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm66",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-6.jpg",
+      "opts": [
+        "RER",
+        "Noyau",
+        "REL",
+        "Membrane plasmique",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 4,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm67",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-7.jpg",
+      "opts": [
+        "Cytosol",
+        "Peroxysome/Lysosome",
+        "Ribosome",
+        "Membrane plasmique",
+        "RER"
+      ],
+      "ans": 1,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm68",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-8.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Peroxysome/Lysosome",
+        "Appareil de Golgi",
+        "Mitochondrie",
+        "Ribosome"
+      ],
+      "ans": 1,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm69",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-9.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Noyau",
+        "RER",
+        "REL",
+        "Centriole/Centrosome"
+      ],
+      "ans": 0,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm70",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/peroxysome-lysosome-10.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Membrane plasmique",
+        "Centriole/Centrosome",
+        "REL",
+        "Ribosome"
+      ],
+      "ans": 0,
+      "exp": "Peroxysome/Lysosome — Petits organites arrondis à simple membrane — fonctions métaboliques (peroxysome, H₂O₂) ou digestion (lysosome)."
+    },
+    {
+      "id": "bm71",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-1.jpg",
+      "opts": [
+        "Ribosome",
+        "REL",
+        "Peroxysome/Lysosome",
+        "Mitochondrie",
+        "Membrane plasmique"
+      ],
+      "ans": 1,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm72",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-2.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Noyau",
+        "REL",
+        "Mitochondrie",
+        "Membrane plasmique"
+      ],
+      "ans": 2,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm73",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-3.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Peroxysome/Lysosome",
+        "REL",
+        "Membrane plasmique",
+        "Appareil de Golgi"
+      ],
+      "ans": 2,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm74",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-4.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Mitochondrie",
+        "RER",
+        "Cytosol",
+        "REL"
+      ],
+      "ans": 4,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm75",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-5.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Ribosome",
+        "REL",
+        "Centriole/Centrosome",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 2,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm76",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-6.jpg",
+      "opts": [
+        "Noyau",
+        "REL",
+        "Membrane plasmique",
+        "Cytosol",
+        "RER"
+      ],
+      "ans": 1,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm77",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-7.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Appareil de Golgi",
+        "Centriole/Centrosome",
+        "Mitochondrie",
+        "REL"
+      ],
+      "ans": 4,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm78",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-8.jpg",
+      "opts": [
+        "RER",
+        "Peroxysome/Lysosome",
+        "Centriole/Centrosome",
+        "REL",
+        "Appareil de Golgi"
+      ],
+      "ans": 3,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm79",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-9.jpg",
+      "opts": [
+        "REL",
+        "Ribosome",
+        "Noyau",
+        "Cytosol",
+        "Membrane plasmique"
+      ],
+      "ans": 0,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm80",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rel-10.jpg",
+      "opts": [
+        "Mitochondrie",
+        "REL",
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "Noyau"
+      ],
+      "ans": 1,
+      "exp": "REL — Réticulum endoplasmique lisse : tubules sans ribosomes, réseau de canaux sinueux — réactions métaboliques."
+    },
+    {
+      "id": "bm81",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-1.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Appareil de Golgi",
+        "REL",
+        "RER",
+        "Noyau"
+      ],
+      "ans": 3,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm82",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-2.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Noyau",
+        "RER",
+        "Centriole/Centrosome",
+        "Appareil de Golgi"
+      ],
+      "ans": 2,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm83",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-3.jpg",
+      "opts": [
+        "Cytosol",
+        "Peroxysome/Lysosome",
+        "RER",
+        "Ribosome",
+        "Noyau"
+      ],
+      "ans": 2,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm84",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-4.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "REL",
+        "RER",
+        "Centriole/Centrosome",
+        "Cytosol"
+      ],
+      "ans": 2,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm85",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-5.jpg",
+      "opts": [
+        "Ribosome",
+        "REL",
+        "Mitochondrie",
+        "RER",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 3,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm86",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-6.jpg",
+      "opts": [
+        "RER",
+        "Membrane plasmique",
+        "Noyau",
+        "Appareil de Golgi",
+        "Peroxysome/Lysosome"
+      ],
+      "ans": 0,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm87",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-7.jpg",
+      "opts": [
+        "RER",
+        "Peroxysome/Lysosome",
+        "Membrane plasmique",
+        "Noyau",
+        "Appareil de Golgi"
+      ],
+      "ans": 0,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm88",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-8.jpg",
+      "opts": [
+        "Mitochondrie",
+        "Noyau",
+        "Peroxysome/Lysosome",
+        "Cytosol",
+        "RER"
+      ],
+      "ans": 4,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm89",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-9.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Ribosome",
+        "Appareil de Golgi",
+        "RER",
+        "Centriole/Centrosome"
+      ],
+      "ans": 3,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm90",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/rer-10.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Ribosome",
+        "RER",
+        "Membrane plasmique",
+        "REL"
+      ],
+      "ans": 2,
+      "exp": "RER — Réticulum endoplasmique rugueux : canaux parallèles couverts de ribosomes — fabrication des protéines et membranes."
+    },
+    {
+      "id": "bm91",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-1.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Mitochondrie",
+        "Ribosome",
+        "REL",
+        "Noyau"
+      ],
+      "ans": 2,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm92",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-2.jpg",
+      "opts": [
+        "Peroxysome/Lysosome",
+        "Ribosome",
+        "Noyau",
+        "Cytosol",
+        "REL"
+      ],
+      "ans": 1,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm93",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-3.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "REL",
+        "Ribosome",
+        "Membrane plasmique",
+        "Noyau"
+      ],
+      "ans": 2,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm94",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-4.jpg",
+      "opts": [
+        "RER",
+        "REL",
+        "Membrane plasmique",
+        "Ribosome",
+        "Noyau"
+      ],
+      "ans": 3,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm95",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-5.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "Centriole/Centrosome",
+        "Ribosome",
+        "Mitochondrie",
+        "Cytosol"
+      ],
+      "ans": 2,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm96",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-6.jpg",
+      "opts": [
+        "Mitochondrie",
+        "RER",
+        "Ribosome",
+        "Appareil de Golgi",
+        "REL"
+      ],
+      "ans": 2,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm97",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-7.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "Mitochondrie",
+        "Appareil de Golgi",
+        "Ribosome",
+        "Cytosol"
+      ],
+      "ans": 3,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm98",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-8.jpg",
+      "opts": [
+        "Membrane plasmique",
+        "RER",
+        "Appareil de Golgi",
+        "Ribosome",
+        "Cytosol"
+      ],
+      "ans": 3,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm99",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-9.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Peroxysome/Lysosome",
+        "Centriole/Centrosome",
+        "RER",
+        "Ribosome"
+      ],
+      "ans": 4,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    },
+    {
+      "id": "bm100",
+      "cat": "Microscopie cellulaire",
+      "q": "Quel organite cellulaire est représenté sur cette image de microscopie électronique ?",
+      "img": "img/microscopie/ribosome-10.jpg",
+      "opts": [
+        "Centriole/Centrosome",
+        "REL",
+        "Mitochondrie",
+        "Peroxysome/Lysosome",
+        "Ribosome"
+      ],
+      "ans": 4,
+      "exp": "Ribosome — Petits points sombres et granuleux, libres dans le cytosol ou fixés au RER — fabrique les protéines."
+    }
   ]
 }

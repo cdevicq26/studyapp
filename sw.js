@@ -1,4 +1,4 @@
-const CACHE = 'studyapp-v8';
+const CACHE = 'studyapp-v54';
 const ASSETS = [
   '/',
   '/index.html',
@@ -11,6 +11,7 @@ const ASSETS = [
   '/data/bio.json',
   '/data/maths.json',
   '/data/chimie.json',
+  '/data/dashboard.json',
 ];
 
 self.addEventListener('install', e => {
@@ -35,7 +36,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request).then(res => {
-      if (res.ok && e.request.url.includes('/data/')) {
+      if (res.ok && (e.request.url.includes('/data/') || e.request.url.includes('/img/'))) {
         caches.open(CACHE).then(c => c.put(e.request, res.clone()));
       }
       return res;

@@ -1,0 +1,34 @@
+{
+  "id": "controle-geo-03",
+  "matiere": "geo",
+  "numero": 3,
+  "titre": "Géographie — Arctique, Ressources & Transport",
+  "date_generation": "2026-06-10",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Explique pourquoi l'Arctique est au centre de tensions géopolitiques aujourd'hui. Quels sont les enjeux et qui sont les acteurs ?",
+      "concepts": ["Arctique", "ZEE", "ressources énergétiques", "routes maritimes", "OTAN", "Russie", "5 États riverains"]
+    },
+    {
+      "id": "q2",
+      "texte": "Qu'est-ce que la cryosphère ? Explique comment son recul crée une boucle de rétroaction climatique.",
+      "concepts": ["cryosphère", "banquise", "inlandsis", "pergélisol", "albédo", "boucle de rétroaction", "GES"]
+    },
+    {
+      "id": "q3",
+      "texte": "Le sable est devenu une ressource stratégique mondiale. Explique pourquoi, qui le consomme, quels problèmes cela pose.",
+      "concepts": ["sable fluvial", "béton", "remblaiement", "mafia du sable", "Singapour", "non renouvelable"]
+    },
+    {
+      "id": "q4",
+      "texte": "Explique ce qu'est un HUB maritime. Pourquoi Anvers est-il le premier hub européen ? Donne au moins 4 arguments.",
+      "concepts": ["HUB", "hinterland", "multimodal", "EVP", "conteneur", "situation", "site", "Anvers"]
+    },
+    {
+      "id": "q5",
+      "texte": "Qu'est-ce que l'Earth Overshoot Day ? Comment est-il calculé et que nous dit-il sur notre rapport aux ressources ?",
+      "concepts": ["Earth Overshoot Day", "biocapacité", "empreinte écologique", "non renouvelable", "2025 : 24 juillet"]
+    }
+  ]
+}
