@@ -1141,14 +1141,14 @@ function answerQCM(chosen) {
   opts[currentAns].classList.add('correct');
   if (!correct) opts[chosen].classList.add('wrong');
 
-  if (correct) { qcmSession.correct++; toast('✓ Bonne réponse !'); }
-  else toast('✗ Pas tout à fait…');
+  if (correct) qcmSession.correct++;
 
   updateQCM(subId, q.id, correct);
 
   if (q.exp) {
+    const expHtml = q.exp.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     document.getElementById('qcm-expl').innerHTML =
-      `<div class="qcm-explanation">💡 ${q.exp}</div>`;
+      `<div class="qcm-explanation">💡 ${expHtml}</div>`;
   }
 
   const nextBtn = document.getElementById('qcm-next');
