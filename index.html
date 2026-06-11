@@ -41,6 +41,19 @@
 </div>
 
 <div id="toast"></div>
+
+<div id="question-modal" class="qmodal">
+  <div class="qmodal-box">
+    <div class="qmodal-title">❓ Poser une question</div>
+    <div class="qmodal-context" id="qmodal-context"></div>
+    <textarea id="qmodal-input" class="qmodal-input" placeholder="Qu'est-ce qui n'est pas clair ?"></textarea>
+    <div class="qmodal-actions">
+      <button class="qmodal-btn qmodal-cancel" onclick="closeQuestionModal()">Annuler</button>
+      <button class="qmodal-btn qmodal-save" onclick="saveQuestion()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
 <script src="/app.js"></script>
 </body>
 </html>

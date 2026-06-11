@@ -3,6 +3,9 @@
 // ═══════════════════════════════════════════════════
 // CONSTANTS
 // ═══════════════════════════════════════════════════
+// Garder en phase avec CACHE dans sw.js à chaque déploiement
+const APP_VERSION = 'v55';
+
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
 const SUBJECT_COLORS = {
@@ -40,12 +43,13 @@ const FR_MONTHS_A = ['jan', 'fév', 'mar', 'avr', 'mai', 'juin', 'juil', 'aoû',
 // ═══════════════════════════════════════════════════
 function openDB() {
   return new Promise((res, rej) => {
-    const req = indexedDB.open('studyapp', 3);
+    const req = indexedDB.open('studyapp', 4);
     req.onupgradeneeded = e => {
       const d = e.target.result;
       if (!d.objectStoreNames.contains('progress')) d.createObjectStore('progress');
       if (!d.objectStoreNames.contains('qcm_progress')) d.createObjectStore('qcm_progress');
       if (!d.objectStoreNames.contains('controle_responses')) d.createObjectStore('controle_responses');
+      if (!d.objectStoreNames.contains('questions')) d.createObjectStore('questions', { keyPath: 'id' });
     };
     req.onsuccess = e => res(e.target.result);
     req.onerror = e => rej(e);
@@ -184,6 +188,89 @@ async function getQCMStats(subjectId) {
     }
   });
   return { total: s.qcm.length, mastered, attempts: totalAttempts };
+}
+
+// ═══════════════════════════════════════════════════
+// QUESTIONS — "?" pour signaler une incompréhension
+// ═══════════════════════════════════════════════════
+let questionContext = null;
+
+function buildQuestionContext() {
+  if (learnSubView === 'flashcard' && fcSession) {
+    const card = fcSession.cards[fcSession.idx];
+    const subId = card._subject || fcSession.subjectId;
+    return {
+      type: 'flashcard',
+      subject: (subjects[subId] || {}).name || subId,
+      id: card.id,
+      label: `Carte : ${card.term}`,
+      term: card.term,
+      def: card.def
+    };
+  }
+  if (learnSubView === 'qcm' && qcmSession) {
+    const q = qcmSession.questions[qcmSession.idx];
+    const subId = q._subject || qcmSession.subjectId;
+    return {
+      type: q.img ? 'qcm-image' : 'qcm',
+      subject: (subjects[subId] || {}).name || subId,
+      id: q.id,
+      label: `QCM : ${q.q}`,
+      question: q.q,
+      img: q.img || null,
+      opts: q.opts,
+      ans: q.opts[q.ans]
+    };
+  }
+  return { type: 'autre', label: 'Question générale', view: learnSubView };
+}
+
+function openQuestionModal() {
+  questionContext = buildQuestionContext();
+  document.getElementById('qmodal-context').textContent = questionContext.label;
+  document.getElementById('qmodal-input').value = '';
+  document.getElementById('question-modal').classList.add('show');
+}
+
+function closeQuestionModal() {
+  document.getElementById('question-modal').classList.remove('show');
+  questionContext = null;
+}
+
+async function saveQuestion() {
+  const text = document.getElementById('qmodal-input').value.trim();
+  if (!text) { toast('Écris ta question d\'abord'); return; }
+
+  const tx = db.transaction('questions', 'readwrite');
+  tx.objectStore('questions').put({
+    id: `q-${Date.now()}`,
+    date: new Date().toISOString(),
+    question: text,
+    context: questionContext
+  });
+  await new Promise(res => tx.oncomplete = res);
+
+  toast('Question enregistrée !');
+  closeQuestionModal();
+}
+
+async function getAllQuestions() {
+  return new Promise(res => {
+    const tx = db.transaction('questions', 'readonly');
+    const req = tx.objectStore('questions').getAll();
+    req.onsuccess = () => res(req.result);
+  });
+}
+
+async function exportQuestions() {
+  const questions = await getAllQuestions();
+  if (!questions.length) { toast('Aucune question enregistrée'); return; }
+  const blob = new Blob(['﻿' + JSON.stringify({ questions, exported: new Date().toISOString() }, null, 2)], { type: 'application/json;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `studyapp-questions-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  toast(`${questions.length} question(s) exportée(s) !`);
 }
 
 // ═══════════════════════════════════════════════════
@@ -948,6 +1035,7 @@ function renderFlashcard() {
         <div class="fc-progress-fill" style="width:${pct}%; background:${col.primary}"></div>
       </div>
       <div class="fc-counter">${idx + 1}/${cards.length}</div>
+      <button class="help-btn" onclick="openQuestionModal()">?</button>
     </div>
     <div class="fc-card-area">
       <div class="fc-card" id="fc-card" onclick="flipCard()">
@@ -1117,6 +1205,7 @@ function renderQCM() {
       <div class="fc-progress-fill" style="width:${pct}%; background:${col.primary}"></div>
     </div>
     <div class="fc-counter">${idx + 1}/${questions.length}</div>
+    <button class="help-btn" onclick="openQuestionModal()">?</button>
   </div>
   <div class="qcm-body">
     <div class="qcm-question">${q.q}</div>
@@ -1573,12 +1662,17 @@ async function renderStats() {
       <div class="ab-icon">📤</div>
       <div class="ab-info"><div class="ab-title">Exporter</div><div class="ab-sub">Télécharger ma progression JSON</div></div>
     </div>
+    <div class="action-btn action-export" onclick="exportQuestions()">
+      <div class="ab-icon">❓</div>
+      <div class="ab-info"><div class="ab-title">Exporter mes questions</div><div class="ab-sub">Télécharger les questions enregistrées (JSON)</div></div>
+    </div>
     <div class="action-btn" onclick="runMigration()">
       <div class="ab-icon">🔧</div>
       <div class="ab-info"><div class="ab-title">Récupérer vocab perdu</div><div class="ab-sub">Migration ancienne clé → nouvelles clés</div></div>
     </div>
   </div>
   <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
+  <div class="app-version">StudyOS ${APP_VERSION}</div>
   `;
 }
 
