@@ -14,6 +14,20 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<div id="lock-screen">
+  <div class="lock-box">
+    <div class="lock-logo">📚</div>
+    <div class="lock-title">StudyOS</div>
+    <div class="lock-sub">Code à 6 chiffres pour Charles</div>
+    <input id="lock-pin" class="lock-pin" type="tel" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="••••••">
+    <div id="lock-error" class="lock-error"></div>
+    <button id="lock-submit" class="lock-submit">Connexion</button>
+    <div class="lock-divider">ou</div>
+    <button id="lock-guest" class="lock-guest">Continuer en invité</button>
+    <div class="lock-guest-note">Mode invité : rien n'est sauvegardé sur cet appareil</div>
+  </div>
+</div>
+
 <div id="app">
   <div id="view-home"    class="view active"></div>
   <div id="view-learn"   class="view"></div>

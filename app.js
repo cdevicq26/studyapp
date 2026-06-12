@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v59';
+const APP_VERSION = 'v60';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -19,10 +19,14 @@ const SUBJECT_COLORS = {
 
 const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
 
+// Code d'accès Charles (6 chiffres) — à changer ici si besoin
+const CHARLES_CODE = '270609';
+
 // ═══════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════
 let db;
+let GUEST_MODE = false;
 let subjects = {};
 let currentSubject = null;
 let fcSession = null;
@@ -79,6 +83,59 @@ async function dbClear() {
     tx.objectStore('qcm_progress').clear();
     tx.oncomplete = () => res();
   });
+}
+
+// ═══════════════════════════════════════════════════
+// MODE INVITÉ — base en mémoire (rien n'est persisté)
+// Implémente la même interface que IndexedDB (transaction/objectStore)
+// ═══════════════════════════════════════════════════
+function createMemDB() {
+  const KEY_PATH = { questions: 'id' };
+  const stores = {
+    progress: new Map(),
+    qcm_progress: new Map(),
+    controle_responses: new Map(),
+    questions: new Map(),
+  };
+
+  function makeRequest(compute) {
+    const req = {};
+    req.result = compute();
+    Promise.resolve().then(() => { if (req.onsuccess) req.onsuccess({ target: req }); });
+    return req;
+  }
+
+  return {
+    transaction(storeNames) {
+      const tx = {};
+      Promise.resolve().then(() => { if (tx.oncomplete) tx.oncomplete(); });
+      tx.objectStore = name => {
+        const map = stores[name];
+        return {
+          get: key => makeRequest(() => map.get(key)),
+          getAll: () => makeRequest(() => Array.from(map.values())),
+          put: (value, key) => makeRequest(() => {
+            map.set(KEY_PATH[name] ? value[KEY_PATH[name]] : key, value);
+          }),
+          clear: () => makeRequest(() => map.clear()),
+          openCursor: () => {
+            const entries = Array.from(map.entries());
+            let i = 0;
+            const req = {};
+            const emit = () => Promise.resolve().then(() => {
+              req.result = i < entries.length
+                ? { key: entries[i][0], value: entries[i++][1], continue: emit }
+                : null;
+              if (req.onsuccess) req.onsuccess({ target: req });
+            });
+            emit();
+            return req;
+          },
+        };
+      };
+      return tx;
+    },
+  };
 }
 
 // ═══════════════════════════════════════════════════
@@ -1601,13 +1658,16 @@ function selectWeekDay(weekIdx, dayIdx) {
   renderWeekGrid();
 }
 
+const guestAgendaChecked = {};
 function getAgendaChecked(dateKey) {
+  if (GUEST_MODE) return guestAgendaChecked[dateKey] || {};
   try { return JSON.parse(localStorage.getItem(`agenda-checked-${dateKey}`) || '{}'); } catch { return {}; }
 }
 function toggleAgendaTask(dateKey, taskIdx) {
   const checked = getAgendaChecked(dateKey);
   checked[taskIdx] = !checked[taskIdx];
-  localStorage.setItem(`agenda-checked-${dateKey}`, JSON.stringify(checked));
+  if (GUEST_MODE) guestAgendaChecked[dateKey] = checked;
+  else localStorage.setItem(`agenda-checked-${dateKey}`, JSON.stringify(checked));
   renderAgendaDetail();
 }
 
@@ -1943,7 +2003,15 @@ async function resetProgress() {
 // ═══════════════════════════════════════════════════
 async function init() {
   try {
-    db = await openDB();
+    db = GUEST_MODE ? createMemDB() : await openDB();
+
+    if (GUEST_MODE) {
+      const banner = document.createElement('div');
+      banner.className = 'guest-banner';
+      banner.textContent = '👤 Mode invité — rien n\'est sauvegardé';
+      document.body.prepend(banner);
+    }
+
     await loadAllSubjects();
     await loadDashboard();
     migrateOldVocabProgress().then(n => { if (n > 0) console.log(`Migration vocab: ${n} cartes récupérées`); });
@@ -1976,7 +2044,48 @@ async function init() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+// ═══════════════════════════════════════════════════
+// LOCK SCREEN
+// ═══════════════════════════════════════════════════
+function setupLockScreen() {
+  const screen = document.getElementById('lock-screen');
+  const input = document.getElementById('lock-pin');
+  const error = document.getElementById('lock-error');
+
+  function tryUnlock() {
+    if (input.value === CHARLES_CODE) {
+      localStorage.setItem('studyos-auth', 'charles');
+      screen.remove();
+      init();
+    } else {
+      error.textContent = 'Code incorrect';
+      input.value = '';
+      input.focus();
+    }
+  }
+
+  document.getElementById('lock-submit').addEventListener('click', tryUnlock);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+  input.addEventListener('input', () => {
+    error.textContent = '';
+    if (input.value.length === 6) tryUnlock();
+  });
+
+  document.getElementById('lock-guest').addEventListener('click', () => {
+    GUEST_MODE = true;
+    screen.remove();
+    init();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('studyos-auth') === 'charles') {
+    document.getElementById('lock-screen').remove();
+    init();
+  } else {
+    setupLockScreen();
+  }
+});
 
 // ═══════════════════════════════════════════════════
 // CONTRÔLES DIGITAUX

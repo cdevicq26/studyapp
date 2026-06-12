@@ -1081,3 +1081,52 @@ body {
   padding: 6px 8px; border-bottom: 1px solid var(--sh-l);
   color: var(--text-2); vertical-align: top;
 }
+
+/* ── LOCK SCREEN ── */
+#lock-screen {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--bg); padding: 24px;
+}
+.lock-box {
+  width: 100%; max-width: 320px;
+  background: var(--bg); border-radius: var(--r);
+  box-shadow: var(--raise);
+  padding: 32px 28px; text-align: center;
+}
+.lock-logo { font-size: 40px; margin-bottom: 8px; }
+.lock-title { font-size: 22px; font-weight: 900; color: var(--text); letter-spacing: -.5px; }
+.lock-sub { font-size: 13px; color: var(--muted); margin-top: 4px; margin-bottom: 20px; }
+.lock-pin {
+  width: 100%; border: none; outline: none; background: var(--bg);
+  box-shadow: var(--inset); border-radius: var(--r-sm);
+  padding: 14px; font-size: 24px; text-align: center; letter-spacing: .5em;
+  color: var(--text); font-family: inherit; font-weight: 700;
+}
+.lock-error {
+  min-height: 18px; font-size: 12px; color: #dc2626; margin-top: 8px;
+}
+.lock-submit {
+  width: 100%; border: none; background: var(--accent); color: #fff;
+  border-radius: var(--r-sm); padding: 14px; font-size: 15px; font-weight: 700;
+  margin-top: 4px; box-shadow: var(--raise-sm); cursor: pointer;
+}
+.lock-submit:active { box-shadow: var(--press); }
+.lock-divider {
+  font-size: 12px; color: var(--muted); text-transform: uppercase;
+  letter-spacing: .1em; margin: 18px 0;
+}
+.lock-guest {
+  width: 100%; border: none; background: var(--bg); color: var(--text);
+  box-shadow: var(--raise-sm); border-radius: var(--r-sm);
+  padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+.lock-guest:active { box-shadow: var(--press); }
+.lock-guest-note { font-size: 11px; color: var(--muted); margin-top: 10px; }
+
+.guest-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  background: var(--accent); color: #fff; text-align: center;
+  font-size: 12px; font-weight: 700; padding: 6px 12px;
+  letter-spacing: .02em;
+}
