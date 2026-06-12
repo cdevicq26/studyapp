@@ -40,5 +40,26 @@
     "titre": "Bio — Cycle cellulaire, Transport & Organites",
     "questions": 5,
     "fiche_id": "fiche-bio-03"
+  },
+  {
+    "id": "controle-geo-05",
+    "matiere": "geo",
+    "titre": "Géo — Sweep complet (tout le programme)",
+    "questions": 15,
+    "fiche_id": "fiche-geo-05"
+  },
+  {
+    "id": "controle-philo-05",
+    "matiere": "philo",
+    "titre": "Philo — Sweep complet (Sophistes, Platon, Aristote)",
+    "questions": 17,
+    "fiche_id": "fiche-philo-05"
+  },
+  {
+    "id": "controle-bio-04",
+    "matiere": "bio",
+    "titre": "Bio — Sweep complet (tout le programme)",
+    "questions": 11,
+    "fiche_id": "fiche-bio-04"
   }
 ]

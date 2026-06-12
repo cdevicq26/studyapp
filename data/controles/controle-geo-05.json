@@ -1,0 +1,84 @@
+{
+  "id": "controle-geo-05",
+  "matiere": "geo",
+  "numero": 5,
+  "titre": "Géographie — Sweep complet (Méthode, Europe, Ressources, Arctique, Sable, Cocaïne)",
+  "date_generation": "2026-06-12",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Décris les 5 étapes de la démarche scientifique appliquée en géographie, et explique comment elles s'articulent avec le schéma systémique.",
+      "concepts": ["Observer", "Problématiser", "Collecter des données", "Analyser", "Construire un schéma systémique", "Conclure", "ressource", "acteurs", "flux", "conséquences"]
+    },
+    {
+      "id": "q2",
+      "texte": "Explique ce que sont l'Union européenne, la Zone euro et l'Espace Schengen. Donne le nombre d'États dans chacun et cite des exemples de pays qui n'appartiennent pas aux trois en même temps.",
+      "concepts": ["Union européenne", "27 États", "Traité de Rome 1957", "Zone euro", "20 pays", "1999", "11 pays fondateurs", "Espace Schengen", "29 États", "1985/1995", "Suisse", "Norvège", "Islande", "Liechtenstein", "Irlande", "Chypre"]
+    },
+    {
+      "id": "q3",
+      "texte": "Qu'est-ce que la dorsale européenne ? Qui en est l'auteur, quel est son tracé, et quels sont les obstacles géographiques qu'elle doit franchir ?",
+      "concepts": ["dorsale européenne", "Banane bleue", "Roger Brunet", "années 1980", "Liverpool", "Milan", "vallée du Rhin", "100 millions d'habitants", "Manche", "Tunnel sous la Manche", "Alpes", "tunnels alpins"]
+    },
+    {
+      "id": "q4",
+      "texte": "Qu'est-ce que l'Earth Overshoot Day ? Donne sa définition, sa formule de calcul, et explique pourquoi tous les pays n'ont pas la même date.",
+      "concepts": ["Earth Overshoot Day", "Jour du Dépassement", "biocapacité", "empreinte écologique", "365 jours", "24 juillet 2025", "1,75 Terre", "Country Overshoot Day", "Belgique mars"]
+    },
+    {
+      "id": "q5",
+      "texte": "Explique les chocs pétroliers de 1973 et 1979 : quelles en étaient les causes et quelles ont été les conséquences sur le prix du pétrole et sur l'économie mondiale ?",
+      "concepts": ["choc pétrolier 1973", "guerre du Kippour", "OPEP", "embargo", "prix x4", "choc pétrolier 1979", "révolution iranienne", "prix double", "récession", "énergies alternatives"]
+    },
+    {
+      "id": "q6",
+      "texte": "Décris la cryosphère et ses composants (banquise, inlandsis, pergélisol, toundra, taïga). Explique ensuite la boucle de rétroaction liée à la fonte de la banquise.",
+      "concepts": ["cryosphère", "banquise", "mer gelée", "inlandsis", "Groenland", "pergélisol", "toundra", "taïga", "boucle de rétroaction", "albédo", "absorption de chaleur", "méthane"]
+    },
+    {
+      "id": "q7",
+      "texte": "Quelles sont les ressources énergétiques de l'Arctique (en pourcentage des réserves mondiales) ? Explique aussi ce qu'est une ZEE et pourquoi elle est centrale dans les enjeux géopolitiques arctiques.",
+      "concepts": ["pétrole 13%", "gaz naturel 30%", "offshore", "ZEE", "200 milles marins", "370 km", "eaux internationales", "Russie drapeau 2007", "fonte banquise"]
+    },
+    {
+      "id": "q8",
+      "texte": "Présente les deux nouvelles routes maritimes arctiques. Quel est leur intérêt commercial et stratégique, et quels pays/alliances sont concernés par ces enjeux ?",
+      "concepts": ["route maritime du Nord-Ouest", "Canada", "route maritime du Nord-Est", "Russie", "réduction 30 à 40%", "Suez", "Panama", "OTAN", "UE", "géopolitique"]
+    },
+    {
+      "id": "q9",
+      "texte": "Donne la carte d'identité du sable comme ressource (taille des grains, type, renouvelabilité) et explique pourquoi le sable du désert ne peut pas servir à la construction.",
+      "concepts": ["sédiment", "0,063 à 2 mm", "minérale", "non renouvelable", "deuxième ressource mondiale", "sable granuleux", "anguleux", "sable du désert arrondi", "érosion éolienne", "n'adhère pas au ciment"]
+    },
+    {
+      "id": "q10",
+      "texte": "Explique le cas de Singapour : comment ce pays a-t-il agrandi son territoire, depuis quand, et quel problème géopolitique cela a-t-il créé avec l'Indonésie ?",
+      "concepts": ["remblaiement", "land reclamation", "depuis 1973", "Indonésie", "Malaisie", "interdiction d'exportation 2007", "îles côtières disparaissent", "sable granuleux"]
+    },
+    {
+      "id": "q11",
+      "texte": "Quelles sont les conséquences écologiques et sociales de l'extraction de sable ? Donne au moins un exemple concret tiré d'une étude de cas vue en classe.",
+      "concepts": ["érosion des berges", "destruction des mangroves", "pollution nappes phréatiques", "Vietnam", "Delta du Mékong", "750 km de berges", "Cambodge", "Koh Sralao", "pêcheurs", "mafia du sable"]
+    },
+    {
+      "id": "q12",
+      "texte": "Pourquoi le port d'Anvers est-il devenu un hub mondial du trafic de cocaïne ? Donne au moins 4 arguments géographiques ou économiques.",
+      "concepts": ["2e port d'Europe", "8,5 millions EVP", "5% scanné", "Escaut", "multimodal", "dorsale européenne", "hinterland", "corruption douanes", "121 tonnes saisies 2023"]
+    },
+    {
+      "id": "q13",
+      "texte": "Qu'est-ce que l'effet ballon ? Explique ce concept avec l'exemple du programme Air Bridge Denial et ses conséquences sur la production de coca en Amérique du Sud.",
+      "concepts": ["effet ballon", "balloon effect", "modèle géographique", "Air Bridge Denial", "USA années 1990", "Pérou", "Bolivie", "Colombie", "40 000 ha", "170 000 ha", "production mondiale x4"]
+    },
+    {
+      "id": "q14",
+      "texte": "Explique pourquoi on peut dire que la cocaïne est une ressource 'mondialisée' mais en même temps 'semi-mondialisée'. Comment la DIPP s'applique-t-elle à cette ressource illicite ?",
+      "concepts": ["DIPP", "Division Internationale des Processus Productifs", "production Colombie Pérou Bolivie", "transit Afrique de l'Ouest", "Nigeria", "Anvers", "hémisphère Nord", "ressource illicite", "routes commerciales légales"]
+    },
+    {
+      "id": "q15",
+      "texte": "Définis les notions de site et de situation, puis applique ces deux concepts au port d'Anvers.",
+      "concepts": ["site", "caractéristiques physiques", "situation", "position relative", "Escaut", "dorsale européenne", "hinterland", "multimodal"]
+    }
+  ]
+}

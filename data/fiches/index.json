@@ -34,5 +34,23 @@
     "matiere": "bio",
     "titre": "Bio C3 — Cycle cellulaire, Transport & Organites",
     "sous_titre": "Mitose, transport membranaire, organites"
+  },
+  {
+    "id": "fiche-geo-05",
+    "matiere": "geo",
+    "titre": "Géo — Sweep complet",
+    "sous_titre": "Vue d'ensemble de tout le programme (Ch0 à Ch5)"
+  },
+  {
+    "id": "fiche-philo-05",
+    "matiere": "philo",
+    "titre": "Philo — Sweep complet",
+    "sous_titre": "Vue d'ensemble de tout le programme (Sophistes, Platon, Aristote)"
+  },
+  {
+    "id": "fiche-bio-04",
+    "matiere": "bio",
+    "titre": "Bio — Sweep complet",
+    "sous_titre": "Vue d'ensemble de tout le programme (Ch3 à Ch7)"
   }
 ]

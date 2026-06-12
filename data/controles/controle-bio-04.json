@@ -1,0 +1,64 @@
+{
+  "id": "controle-bio-04",
+  "matiere": "bio",
+  "numero": 4,
+  "titre": "Biologie — Sweep complet (Acides nucléiques, Mutations, Cellule, Cycle cellulaire, Membrane)",
+  "date_generation": "2026-06-12",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Décris la structure d'un nucléotide d'ADN et explique comment deux brins d'ADN s'associent pour former la double hélice (orientation des brins, appariement des bases, type de liaison).",
+      "concepts": ["nucléotide", "phosphate", "désoxyribose", "base azotée", "double hélice", "brins antiparallèles", "5' vers 3'", "A=T (2 liaisons H)", "C≡G (3 liaisons H)"]
+    },
+    {
+      "id": "q2",
+      "texte": "Décris le dogme fondamental de la biologie : qu'est-ce que la transcription et la traduction, où se déroulent-elles, et quelles molécules interviennent à chaque étape ? Décris ensuite ce qui se passe au niveau du ribosome lors de la traduction (sites A, P, E, codon, anticodon, ARNt).",
+      "concepts": ["transcription", "ARN polymérase", "noyau", "ARNm", "traduction", "ribosome", "cytosol ou RER", "codon", "anticodon", "ARNt", "site A", "site P", "site E", "codon START AUG", "codon STOP"]
+    },
+    {
+      "id": "q3",
+      "texte": "Qu'est-ce qu'une mutation ? Décris les 3 grandes catégories de mutations (ponctuelles, chromosomiques, génomiques) et donne un exemple concret pour chacune.",
+      "concepts": ["mutation", "modification de la séquence ADN", "mutations ponctuelles", "mutations chromosomiques", "mutations génomiques", "exemple drépanocytose", "exemple translocation/délétion", "exemple trisomie 21"]
+    },
+    {
+      "id": "q4",
+      "texte": "Une portion de brin codant d'ADN est : 5'-GAG-3' et code normalement pour l'acide glutamique. Une mutation transforme cette séquence en 5'-GTG-3', ce qui code pour la valine. De quel type de mutation ponctuelle s'agit-il (substitution, addition, délétion ou inversion) ? Quelle est la conséquence sur la protéine (faux sens, non-sens ou silencieuse) ? À quelle maladie cet exemple précis correspond-il, et quel est son effet sur les globules rouges ?",
+      "concepts": ["substitution", "faux sens", "GAG vers GTG", "Glu vers Val", "drépanocytose", "hémoglobine S", "globule rouge en faucille"]
+    },
+    {
+      "id": "q5",
+      "texte": "Quelles sont les 4 structures présentes dans toute cellule, qu'elle soit procaryote ou eucaryote ? Construis ensuite un tableau comparatif entre une cellule animale, une cellule végétale et une cellule procaryote (bactérie) pour les critères suivants : noyau, mitochondries, chloroplastes, vacuole centrale, paroi cellulaire/cellulosique.",
+      "concepts": ["ADN", "membrane", "ribosome", "cytosol", "noyau présent chez eucaryotes seulement", "mitochondries absentes chez procaryotes", "chloroplastes seulement chez végétale", "vacuole centrale chez végétale", "paroi cellulosique chez végétale", "paroi cellulaire chez procaryote (autre type)"]
+    },
+    {
+      "id": "q6",
+      "texte": "Décris le trajet complet d'une protéine destinée à être sécrétée hors de la cellule, depuis sa synthèse jusqu'à sa libération. Pour chaque organite traversé, précise le nombre de membranes qui l'entourent et son rôle dans ce trajet.",
+      "concepts": ["ribosome accroché au RER (0 membrane)", "RER (1 membrane)", "vésicule de transport", "appareil de Golgi (1 membrane) - tri et modification", "exocytose", "membrane plasmique"]
+    },
+    {
+      "id": "q7",
+      "texte": "Décris les différentes phases du cycle cellulaire (G1, S, G2, M, C, G0) en expliquant ce qui se passe dans chacune. Explique ensuite comment évolue la quantité d'ADN de la cellule au cours du cycle, de G1 jusqu'à la formation des cellules filles.",
+      "concepts": ["G1 croissance", "S réplication ADN", "G2 préparation", "M mitose", "C cytocinèse", "G0 quiescence", "interphase = G1+S+G2", "réplication semi-conservative", "100% vers 200% en S", "200% vers 100% après cytocinèse", "cellules filles génétiquement identiques"]
+    },
+    {
+      "id": "q8",
+      "texte": "Décris les 5 phases de la mitose (prophase, prométaphase, métaphase, anaphase, télophase) en expliquant pour chacune ce qui arrive aux chromosomes et à l'enveloppe nucléaire. Si tu observais au microscope une cellule où les chromatides sœurs sont en train de migrer chacune vers un pôle opposé de la cellule, dans quelle phase serait-elle ?",
+      "concepts": ["prophase - condensation, disparition membrane nucléaire, fuseau mitotique", "prométaphase - kinétochore", "métaphase - alignement plaque équatoriale", "anaphase - séparation chromatides sœurs", "télophase - reformation membrane nucléaire, décondensation", "anaphase = chromatides migrant vers pôles opposés"]
+    },
+    {
+      "id": "q9",
+      "texte": "Décris la structure générale de la membrane plasmique (bicouche phospholipidique, orientation des têtes/queues, autres composants). Explique ensuite la différence entre transport passif et transport actif, en donnant un exemple précis de chaque (avec mécanisme).",
+      "concepts": ["bicouche phospholipidique", "tête hydrophile vers extérieur/intérieur", "queues hydrophobes vers intérieur de la bicouche", "protéines intégrales/périphériques", "cholestérol", "transport passif - selon gradient - sans ATP", "diffusion simple ou facilitée", "transport actif - contre gradient - avec ATP", "pompe Na/K"]
+    },
+    {
+      "id": "q10",
+      "texte": "Une cellule animale est placée dans une solution hypotonique, puis une autre cellule animale identique est placée dans une solution hypertonique. Que va-t-il se passer dans chaque cas et pourquoi ? Que se passerait-il différemment si on faisait la même expérience avec des cellules végétales ?",
+      "concepts": ["hypotonique - eau entre - cellule lysée (animale)", "hypertonique - eau sort - cellule crénelée (animale)", "osmose - du moins concentré vers le plus concentré", "aquaporines", "cellule végétale - paroi cellulosique résiste - turgescente en hypotonique", "cellule végétale plasmolysée en hypertonique"]
+    },
+    {
+      "id": "q11",
+      "texte": "Décris le fonctionnement de la pompe Na⁺/K⁺ : combien d'ions sodium et potassium sont déplacés à chaque cycle, dans quel sens (par rapport à leur gradient), et combien d'ATP est consommé ? Pourquoi ce transport est-il qualifié d'actif ?",
+      "concepts": ["pompe Na+/K+ ATPase", "3 Na+ sortent de la cellule", "2 K+ entrent dans la cellule", "1 ATP consommé par cycle", "transport contre le gradient de concentration", "nécessite de l'énergie (ATP)"]
+    }
+  ]
+}

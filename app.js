@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v55';
+const APP_VERSION = 'v56';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 

@@ -1,0 +1,94 @@
+{
+  "id": "controle-philo-05",
+  "matiere": "philo",
+  "numero": 5,
+  "titre": "Philosophie — Sweep complet (Sophistes, Platon, Aristote)",
+  "date_generation": "2026-06-12",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Le contexte démocratique d'Athènes a permis l'émergence des Sophistes. Explique le lien entre démocratie directe, rhétorique et pouvoir. Qu'est-ce que le pharmakon, et pourquoi les Sophistes en sont-ils une bonne illustration ?",
+      "concepts": ["démocratie directe", "agora", "rhétorique", "persuasion", "pouvoir", "pharmakon", "double-tranchant", "démagogie"]
+    },
+    {
+      "id": "q2",
+      "texte": "Qu'est-ce qu'un sophisme ? En quoi est-ce différent de la rhétorique en général ? Donne un exemple.",
+      "concepts": ["sophisme", "argument fallacieux", "apparence de validité", "rhétorique", "manipulation"]
+    },
+    {
+      "id": "q3",
+      "texte": "Qu'est-ce que la doxa selon les Sophistes ? Pourquoi pensent-ils qu'il n'existe pas de vérité absolue ? Donne un exemple utilisé en classe.",
+      "concepts": ["doxa", "opinion", "relativisme", "vérité absolue", "opinion majoritaire", "Terre plate/ronde"]
+    },
+    {
+      "id": "q4",
+      "texte": "Qui était Socrate, et pourquoi est-il difficile de savoir ce qu'il pensait vraiment ? Explique en quoi consiste la maïeutique, en détaillant ses deux étapes.",
+      "concepts": ["Socrate", "n'a rien écrit", "dialogues de Platon", "ambiguïté jeunesse/maturité/vieillesse", "maïeutique", "ironie", "aporie", "accouchement des âmes"]
+    },
+    {
+      "id": "q5",
+      "texte": "Que veut dire Socrate quand il affirme \"Je sais que je ne sais rien\" ? Explique le sens réel de cette phrase, en évitant le contresens habituel.",
+      "concepts": ["je sais que je ne sais rien", "humilité épistémique", "reconnaître ses limites", "ouverture à la vérité", "sagesse"]
+    },
+    {
+      "id": "q6",
+      "texte": "Compare la doxa et l'épistémè selon Platon (nature, source, valeur). En quoi cette opposition s'oppose-t-elle directement à la position des Sophistes ?",
+      "concepts": ["doxa", "épistémè", "opinion", "savoir vrai", "sensible", "intelligible", "âme", "corps", "mathématiques", "opposition aux Sophistes"]
+    },
+    {
+      "id": "q7",
+      "texte": "Raconte le Mythe de la Caverne de Platon (résumé narratif), puis explique les 3 questions philosophiques que ce mythe permet de poser.",
+      "concepts": ["mythe de la caverne", "prisonniers", "ombres", "feu", "soleil", "le Bien", "question ontologique", "question épistémologique", "question morale-politique"]
+    },
+    {
+      "id": "q8",
+      "texte": "Définis l'alétheia et l'ascèse chez Platon. Pourquoi, selon Platon, faut-il faire un effort pour accéder à la vérité, et pourquoi cet effort passe-t-il par le corps ?",
+      "concepts": ["alétheia", "dévoilement", "vérité découverte non fabriquée", "ascèse", "diminuer le corps", "tremplin de l'âme", "apprendre à mourir"]
+    },
+    {
+      "id": "q9",
+      "texte": "Qu'est-ce que la réminiscence chez Platon, et quel est son lien avec la métempsychose ? En quoi cette théorie explique-t-elle ce que signifie \"apprendre\" pour Platon ?",
+      "concepts": ["réminiscence", "métempsychose", "âme immortelle", "oubli", "se souvenir des Idées", "apprendre = se souvenir"]
+    },
+    {
+      "id": "q10",
+      "texte": "Décris les 3 classes sociales de la cité idéale selon Platon et leur lien avec les parties du corps humain. Qu'entend-on par \"despotisme éclairé\", et en quoi s'oppose-t-il à la démocratie des Sophistes ?",
+      "concepts": ["3 classes sociales", "artisans", "militaires", "philosophes", "tête/cœur/bas-ventre", "chacun sa fonction", "despotisme éclairé", "philosophe-roi", "opposition démocratie"]
+    },
+    {
+      "id": "q11",
+      "texte": "Dans le film Matrix, Néo et Cypher illustrent deux attitudes opposées face à la vérité, en lien avec le Mythe de la Caverne. Explique cette analogie : qui représente quoi, et pourquoi Cypher n'est-il PAS le philosophe ?",
+      "concepts": ["Matrix", "Néo", "pilule rouge", "sortie de la caverne", "Cypher", "retour à l'ignorance", "trahison de la vérité", "vivre dans l'ignorance = la mort"]
+    },
+    {
+      "id": "q12",
+      "texte": "Présente brièvement le parcours d'Aristote (de l'Académie au Lycée) et explique la divergence fondamentale entre Platon et Aristote sur l'origine des idées, en t'appuyant sur L'École d'Athènes de Raphaël.",
+      "concepts": ["biographie Aristote", "élève de Platon à l'Académie", "précepteur d'Alexandre le Grand", "Lycée", "Idées → choses", "choses → idées", "École d'Athènes", "main vers le haut/bas"]
+    },
+    {
+      "id": "q13",
+      "texte": "Pour Aristote, le Bien est pluriel et non unique comme chez Platon. Explique cette idée avec des exemples, puis présente les 3 voies mensongères vers le bonheur et pourquoi elles échouent.",
+      "concepts": ["Biens pluriels", "auto-détermination de l'homme", "plaisir", "argent", "admiration/reconnaissance", "instant présent", "frustration"]
+    },
+    {
+      "id": "q14",
+      "texte": "Explique le concept de médieté chez Aristote avec l'exemple du courage. Pourquoi la médieté dépend-elle du contexte et de la personne, et pas d'une règle universelle ?",
+      "concepts": ["médieté", "juste milieu", "excès", "défaut", "vice", "vertu", "courage/témérité/lâcheté", "relatif au contexte et à la personne"]
+    },
+    {
+      "id": "q15",
+      "texte": "Qu'est-ce que la phronesis ? Explique ses deux étapes et pourquoi, selon Aristote, on ne peut pas être vertueux sans expérience.",
+      "concepts": ["phronesis", "prudence", "sagesse pratique", "contextualisation", "délibération", "expérience", "conséquences vs intentions"]
+    },
+    {
+      "id": "q16",
+      "texte": "Aristote affirme que la liberté est une condition de la vertu et du vice. Explique cette idée à l'aide du cas Eichmann et de la réponse de Sartre.",
+      "concepts": ["vertu et vice présupposent la liberté", "Eichmann", "obéir aux ordres", "Sartre", "toujours libre toujours responsable", "cas par cas"]
+    },
+    {
+      "id": "q17",
+      "texte": "Pour Aristote, justice ne signifie pas égalité, mais équité. Explique cette distinction avec l'exemple de l'impôt, puis fais un bilan comparatif global entre Platon et Aristote (connaissance, méthode, politique).",
+      "concepts": ["justice ≠ égalité", "équité", "donner selon possibilités recevoir selon besoins", "impôt", "Platon vs Aristote bilan", "épistémè vs expérience", "despotisme éclairé vs équité"]
+    }
+  ]
+}
