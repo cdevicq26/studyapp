@@ -2050,5 +2050,273 @@
       "ans": 4,
       "exp": "Ribosome — **Comment le reconnaître :** tout petits points sombres et granuleux, soit libres et dispersés dans le cytosol, soit fixés à la surface du RER. **Fonction :** fabrique les protéines par traduction de l'ARNm."
     }
+  ],
+  "qcmColor": [
+    {
+      "id": "bc1",
+      "img": "img/coloration/coloration-01.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Mitochondries",
+      "bleu": "Appareil de Golgi"
+    },
+    {
+      "id": "bc2",
+      "img": "img/coloration/coloration-02.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Membrane plasmique",
+      "bleu": "Mitochondries"
+    },
+    {
+      "id": "bc3",
+      "img": "img/coloration/coloration-03.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Noyau",
+      "bleu": "Nucléole"
+    },
+    {
+      "id": "bc4",
+      "img": "img/coloration/coloration-04.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Microtubules / centrosome",
+      "bleu": "Centrioles"
+    },
+    {
+      "id": "bc5",
+      "img": "img/coloration/coloration-05.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Appareil de Golgi",
+      "bleu": "Granules de sécrétion"
+    },
+    {
+      "id": "bc6",
+      "img": "img/coloration/coloration-06.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Mitochondries",
+      "bleu": "RER (réticulum endoplasmique rugueux)"
+    },
+    {
+      "id": "bc7",
+      "img": "img/coloration/coloration-07.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "REL (réticulum endoplasmique lisse)",
+      "bleu": "Appareil de Golgi"
+    },
+    {
+      "id": "bc8",
+      "img": "img/coloration/coloration-08.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Granules de sécrétion",
+      "bleu": "Noyau"
+    },
+    {
+      "id": "bc9",
+      "img": "img/coloration/coloration-09.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Vésicules / vacuoles",
+      "bleu": "REL (réticulum endoplasmique lisse)"
+    },
+    {
+      "id": "bc10",
+      "img": "img/coloration/coloration-10.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Centrioles",
+      "bleu": "RER (réticulum endoplasmique rugueux)"
+    },
+    {
+      "id": "bc11",
+      "img": "img/coloration/coloration-11.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Mitochondries",
+      "bleu": "Appareil de Golgi"
+    },
+    {
+      "id": "bc12",
+      "img": "img/coloration/coloration-12.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Appareil de Golgi",
+      "bleu": "RER (réticulum endoplasmique rugueux)"
+    },
+    {
+      "id": "bc13",
+      "img": "img/coloration/coloration-13.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Noyau",
+      "bleu": "Mitochondries"
+    },
+    {
+      "id": "bc14",
+      "img": "img/coloration/coloration-14.jpg",
+      "opts": [
+        "Appareil de Golgi",
+        "Centrioles",
+        "Granules de sécrétion",
+        "Membrane plasmique",
+        "Microtubules / centrosome",
+        "Mitochondries",
+        "Noyau",
+        "Nucléole",
+        "REL (réticulum endoplasmique lisse)",
+        "RER (réticulum endoplasmique rugueux)",
+        "Vésicules / vacuoles"
+      ],
+      "rose": "Mitochondries",
+      "bleu": "Noyau"
+    }
   ]
 }

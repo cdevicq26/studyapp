@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v56';
+const APP_VERSION = 'v57';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -27,9 +27,10 @@ let subjects = {};
 let currentSubject = null;
 let fcSession = null;
 let qcmSession = null;
+let qcmColorSession = null;
 let dashboardData = null;
 let currentView = 'home';
-let learnSubView = 'grid'; // 'grid' | 'detail' | 'flashcard' | 'qcm'
+let learnSubView = 'grid'; // 'grid' | 'detail' | 'flashcard' | 'qcm' | 'qcm-color'
 let studyTab = 'reviser'; // 'reviser' | 'explorer'
 
 // Agenda
@@ -220,6 +221,20 @@ function buildQuestionContext() {
       img: q.img || null,
       opts: q.opts,
       ans: q.opts[q.ans]
+    };
+  }
+  if (learnSubView === 'qcm-color' && qcmColorSession) {
+    const q = qcmColorSession.questions[qcmColorSession.idx];
+    const subId = qcmColorSession.subjectId;
+    return {
+      type: 'qcm-color',
+      subject: (subjects[subId] || {}).name || subId,
+      id: q.id,
+      label: `QCM Coloration : organites rose/bleu`,
+      img: q.img,
+      rose: q.rose,
+      bleu: q.bleu,
+      opts: q.opts
     };
   }
   return { type: 'autre', label: 'Question générale', view: learnSubView };
@@ -828,6 +843,13 @@ async function openSubjectDetail(id) {
       <div class="ab-arrow">›</div>
     </div>
     ` : ''}
+    ${s.qcmColor && s.qcmColor.length ? `
+    <div class="action-btn" onclick="startQCMColor('${id}')">
+      <div class="ab-icon">🎨</div>
+      <div class="ab-info"><div class="ab-title">QCM Coloration</div><div class="ab-sub">${s.qcmColor.length} images — identifie les organites rose/bleu</div></div>
+      <div class="ab-arrow">›</div>
+    </div>
+    ` : ''}
   </div>
   <div class="subj-mastery">${b3pct}% maîtrisé · ${stats.b3} cartes en B3 · ${qcmStats.mastered}/${qcmStats.total} QCM</div>
   `;
@@ -1277,6 +1299,126 @@ function renderQCMEnd() {
       : `<button class="btn-primary" onclick="startQCM('${subjectId}', '${mode}')">Recommencer</button>
          <button class="btn-secondary" onclick="openSubjectDetail('${subjectId}')">Retour à ${s.name}</button>`
     }
+  </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════
+// QCM COLORATION (image avec organites colorés rose/bleu)
+// ═══════════════════════════════════════════════════
+async function startQCMColor(subjectId) {
+  const s = subjects[subjectId];
+  qcmColorSession = { subjectId, questions: shuffle([...s.qcmColor]), idx: 0, correct: 0, parts: 0 };
+  learnSubView = 'qcm-color';
+  renderQCMColor();
+}
+
+function renderQCMColor() {
+  const { subjectId, questions, idx } = qcmColorSession;
+  const view = document.getElementById('view-learn');
+
+  if (idx >= questions.length) { renderQCMColorEnd(); return; }
+
+  const q = questions[idx];
+  const col = SUBJECT_COLORS[subjectId] || { primary: '#5C6BC0' };
+  const pct = Math.round((idx / questions.length) * 100);
+
+  const optsHtml = q.opts.map(o => `<option value="${o}">${o}</option>`).join('');
+
+  view.innerHTML = `
+  <div class="qcm-header">
+    <button class="back-btn" onclick="openSubjectDetail('${subjectId}')">←</button>
+    <div class="fc-progress-bar">
+      <div class="fc-progress-fill" style="width:${pct}%; background:${col.primary}"></div>
+    </div>
+    <div class="fc-counter">${idx + 1}/${questions.length}</div>
+    <button class="help-btn" onclick="openQuestionModal()">?</button>
+  </div>
+  <div class="qcm-body">
+    <div class="qcm-question">Identifie les organites colorés sur cette image</div>
+    <img class="qcm-img" src="${q.img}" alt="Image de microscopie colorée">
+    <div class="qcmc-group">
+      <label class="qcmc-label qcmc-rose">🔴 Organite en rose</label>
+      <select class="qcmc-select" id="qcmc-rose">
+        <option value="">— Choisis une réponse —</option>
+        ${optsHtml}
+      </select>
+    </div>
+    <div class="qcmc-group">
+      <label class="qcmc-label qcmc-bleu">🔵 Organite en bleu</label>
+      <select class="qcmc-select" id="qcmc-bleu">
+        <option value="">— Choisis une réponse —</option>
+        ${optsHtml}
+      </select>
+    </div>
+    <button class="btn-primary" id="qcmc-validate" onclick="validateQCMColor()">Valider</button>
+    <div id="qcmc-feedback"></div>
+  </div>
+  <button class="qcm-next-btn" id="qcm-next" onclick="nextQCMColor()">
+    ${idx + 1 < questions.length ? 'Question suivante →' : 'Voir les résultats'}
+  </button>
+  `;
+}
+
+function validateQCMColor() {
+  const { questions, idx } = qcmColorSession;
+  const q = questions[idx];
+  const roseSel = document.getElementById('qcmc-rose');
+  const bleuSel = document.getElementById('qcmc-bleu');
+
+  if (!roseSel.value || !bleuSel.value) { toast('Choisis une réponse pour chaque couleur'); return; }
+
+  const roseOk = roseSel.value === q.rose;
+  const bleuOk = bleuSel.value === q.bleu;
+
+  roseSel.classList.add(roseOk ? 'correct' : 'wrong');
+  bleuSel.classList.add(bleuOk ? 'correct' : 'wrong');
+  roseSel.disabled = true;
+  bleuSel.disabled = true;
+  document.getElementById('qcmc-validate').disabled = true;
+
+  if (roseOk) qcmColorSession.parts++;
+  if (bleuOk) qcmColorSession.parts++;
+  if (roseOk && bleuOk) qcmColorSession.correct++;
+
+  let feedback = '';
+  if (!roseOk) feedback += `<div class="qcm-explanation">🔴 Réponse attendue : <strong>${q.rose}</strong></div>`;
+  if (!bleuOk) feedback += `<div class="qcm-explanation">🔵 Réponse attendue : <strong>${q.bleu}</strong></div>`;
+  if (roseOk && bleuOk) feedback = `<div class="qcm-explanation">💡 Bravo, les deux organites sont corrects !</div>`;
+  document.getElementById('qcmc-feedback').innerHTML = feedback;
+
+  const nextBtn = document.getElementById('qcm-next');
+  if (nextBtn) nextBtn.classList.add('show');
+}
+
+function nextQCMColor() { qcmColorSession.idx++; renderQCMColor(); }
+
+function renderQCMColorEnd() {
+  const { subjectId, questions, correct, parts } = qcmColorSession;
+  const s = subjects[subjectId];
+  const view = document.getElementById('view-learn');
+  const totalParts = questions.length * 2;
+  const pct = Math.round((parts / totalParts) * 100);
+  const emoji = pct >= 80 ? '🎉' : pct >= 60 ? '💪' : '📖';
+  const msg = pct >= 80 ? 'Excellente reconnaissance !' : pct >= 60 ? 'Bon travail !' : 'Révise les organites manqués !';
+
+  view.innerHTML = `
+  <div class="qcm-header">
+    <button class="back-btn" onclick="openSubjectDetail('${subjectId}')">←</button>
+    <div style="font-size:15px;font-weight:700;flex:1;text-align:center;color:var(--text)">QCM Coloration terminé</div>
+    <div style="width:40px"></div>
+  </div>
+  <div class="session-end">
+    <div class="se-icon">${emoji}</div>
+    <div class="se-title">${msg}</div>
+    <div class="se-sub">${s.name} · ${questions.length} image${questions.length > 1 ? 's' : ''} · ${correct}/${questions.length} entièrement correctes</div>
+    <div class="se-scores">
+      <div class="ses-item" style="color:#ef4444"><div class="ses-n">${totalParts - parts}</div><div class="ses-l">Organites ratés</div></div>
+      <div class="ses-item" style="color:#16a34a"><div class="ses-n">${parts}</div><div class="ses-l">Organites OK</div></div>
+      <div class="ses-item" style="color:var(--accent)"><div class="ses-n">${pct}%</div><div class="ses-l">Score</div></div>
+    </div>
+    <button class="btn-primary" onclick="startQCMColor('${subjectId}')">Recommencer</button>
+    <button class="btn-secondary" onclick="openSubjectDetail('${subjectId}')">Retour à ${s.name}</button>
   </div>
   `;
 }

@@ -731,6 +731,26 @@ body {
 }
 .qcm-next-btn.show { opacity: 1; pointer-events: auto; }
 
+/* ── 10b. QCM COLORATION ── */
+.qcmc-group { margin-bottom: 14px; }
+.qcmc-label {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; color: var(--text-2);
+  margin-bottom: 8px;
+}
+.qcmc-select {
+  width: 100%; background: var(--bg); box-shadow: var(--raise-sm);
+  border-radius: var(--r-sm); border: none; padding: 14px 16px;
+  font-size: 14px; font-weight: 500; color: var(--text);
+  font-family: 'Inter', sans-serif; appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.qcmc-select:disabled { opacity: .85; }
+.qcmc-select.correct { box-shadow: var(--inset-sm); color: #16a34a; font-weight: 700; }
+.qcmc-select.wrong { box-shadow: var(--inset-sm); color: #ef4444; }
+#qcmc-validate { width: 100%; margin: 6px 0 14px; }
+#qcmc-validate:disabled { opacity: .5; }
+
 /* ── 11. SESSION END ── */
 .session-end {
   display: flex; flex-direction: column;
