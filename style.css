@@ -683,7 +683,7 @@ body {
 .fc-oui { color: #16a34a; }
 
 /* ── 10. QCM SESSION ── */
-.qcm-body { padding: 10px 16px; }
+.qcm-body { padding: 10px 16px calc(56px + env(safe-area-inset-bottom, 0) + 80px); }
 .qcm-arena { padding: 10px 16px 100px; }
 .qcm-question {
   background: var(--bg); box-shadow: var(--raise);
@@ -692,7 +692,7 @@ body {
   line-height: 1.5; margin-bottom: 16px;
 }
 .qcm-img {
-  display: block; width: 100%; max-height: 240px; object-fit: contain;
+  display: block; width: 100%; max-height: 240px; aspect-ratio: 4 / 3; object-fit: contain;
   background: #fff; border-radius: var(--r); box-shadow: var(--raise);
   margin-bottom: 16px; padding: 8px;
 }

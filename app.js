@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v61';
+const APP_VERSION = 'v62';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -414,6 +414,11 @@ function formatDate(dateStr) {
 
 function capFirst(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
+// Date locale (YYYY-MM-DD) — éviter le décalage de toISOString() (UTC)
+function localDateStr(d = new Date()) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 // ═══════════════════════════════════════════════════
 // NAVIGATION
 // ═══════════════════════════════════════════════════
@@ -529,7 +534,7 @@ async function renderHome() {
   }));
 
   // Today planning
-  const todayStr = new Date().toISOString().slice(0, 10);
+  const todayStr = localDateStr();
   const todayPlan = dashboardData ? (dashboardData.planning || []).find(p => p.fullDate === todayStr) : null;
   let todayTasksHTML = '';
   if (todayPlan) {
@@ -1547,7 +1552,7 @@ function buildAgendaWeeks() {
     for (let d = 0; d < 7; d++) {
       const dt = new Date(monday);
       dt.setDate(monday.getDate() + w * 7 + d);
-      const fullDate = dt.toISOString().slice(0, 10);
+      const fullDate = localDateStr(dt);
       week.push({ dt, fullDate, plan: byDate[fullDate] || null });
     }
     agendaWeeks.push(week);
@@ -1564,7 +1569,7 @@ function renderAgenda() {
   }
   buildAgendaWeeks();
 
-  const todayStr = new Date().toISOString().slice(0, 10);
+  const todayStr = localDateStr();
   agendaWeekIdx = 0; agendaDaySelected = null;
   outer: for (let wi = 0; wi < agendaWeeks.length; wi++) {
     for (const day of agendaWeeks[wi]) {
@@ -1603,14 +1608,17 @@ function renderWeekNav() {
 function changeAgendaWeek(dir) {
   const next = agendaWeekIdx + dir;
   if (next < 0 || next >= agendaWeeks.length) return;
-  agendaWeekIdx = next; agendaDaySelected = null;
+  agendaWeekIdx = next;
+  const todayStr = localDateStr();
+  agendaDaySelected = agendaWeeks[next].find(day => day.fullDate === todayStr) || null;
   renderWeekNav(); renderWeekGrid();
-  document.getElementById('agenda-detail-wrap').innerHTML = '';
+  if (agendaDaySelected) renderAgendaDetail();
+  else document.getElementById('agenda-detail-wrap').innerHTML = '';
 }
 
 function renderWeekGrid() {
   const week = agendaWeeks[agendaWeekIdx];
-  const todayStr = new Date().toISOString().slice(0, 10);
+  const todayStr = localDateStr();
   const cells = week.map((day, i) => {
     const { dt, fullDate, plan } = day;
     const name = WDAY_NAMES[dt.getDay()];
@@ -2474,6 +2482,10 @@ function finalizeControleTimer() {
 function validateControleAnswer() {
   const textarea = document.getElementById('ctrl-answer');
   const reponse = (textarea?.value || '').trim();
+  if (!reponse) {
+    toast('Écris au moins quelques mots avant de valider');
+    return;
+  }
   const timing = finalizeControleTimer();
   const q = controleSession.data.questions[controleSession.idx];
 
