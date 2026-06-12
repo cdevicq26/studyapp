@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v60';
+const APP_VERSION = 'v61';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -20,7 +20,7 @@ const SUBJECT_COLORS = {
 const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
 
 // Code d'accès Charles (6 chiffres) — à changer ici si besoin
-const CHARLES_CODE = '270609';
+const CHARLES_CODE = '124816';
 
 // ═══════════════════════════════════════════════════
 // STATE
@@ -2010,6 +2010,9 @@ async function init() {
       banner.className = 'guest-banner';
       banner.textContent = '👤 Mode invité — rien n\'est sauvegardé';
       document.body.prepend(banner);
+
+      const statsNav = document.querySelector('.nav-btn[data-nav="stats"]');
+      if (statsNav) statsNav.remove();
     }
 
     await loadAllSubjects();
