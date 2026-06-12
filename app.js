@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v62';
+const APP_VERSION = 'v63';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -2560,7 +2560,7 @@ async function finishControle() {
         <div style="font-size:40px">📝</div>
         <div style="font-size:18px;font-weight:900;margin-top:8px">${data.titre}</div>
         <div style="font-size:13px;color:var(--muted);margin-top:4px">${reponses.length} questions · ${mins} min au total</div>
-        <div style="margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:var(--bg);box-shadow:var(--raise-sm);border-radius:20px;padding:6px 14px">
+        <div style="margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 14px">
           <span style="font-size:13px;font-weight:700;color:var(--muted)">Facilité moyenne</span>
           <span style="font-size:15px;font-weight:900;color:${avgEaseInfo.color}">${avgEase}/10 — ${avgEaseInfo.label}</span>
         </div>
