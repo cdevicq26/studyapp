@@ -313,6 +313,7 @@ body {
 .subject-cell:active { background: var(--accent-l); }
 .sc-top { display: flex; align-items: center; gap: 10px; }
 .sc-top .ring-label { font-size: 18px; }
+.subj-header .ring-label { font-size: 20px; }
 .sc-info { width: 100%; min-width: 0; }
 .sc-name { font-size: 17px; font-weight: 800; color: var(--text); white-space: normal; word-break: break-word; letter-spacing: -.2px; }
 .sc-days { font-size: 13px; font-weight: 700; }

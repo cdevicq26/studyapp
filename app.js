@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v83';
+const APP_VERSION = 'v84';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -728,7 +728,7 @@ async function renderSubjectPage(id) {
     </div>` : '';
 
   view.innerHTML = `
-  <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
+  <div class="subj-header" style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
     <button class="back-btn" onclick="showView('home')">←</button>
     <div style="flex:1">
       <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px">${s.name}</div>
