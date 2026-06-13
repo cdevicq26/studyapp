@@ -59,6 +59,14 @@ body {
 .view.active { display: block; }
 
 /* ── 4. NAVBAR FLAT ── */
+.bottom-fade {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: calc(110px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to top, var(--bg) 0%, var(--bg) 30%, rgba(255,255,255,0) 100%);
+  pointer-events: none; z-index: 90;
+  transition: opacity var(--transition);
+}
+.bottom-fade.hidden { opacity: 0; }
 .navbar {
   position: fixed;
   bottom: calc(20px + env(safe-area-inset-bottom, 0px));
@@ -73,6 +81,12 @@ body {
   box-shadow: var(--shadow);
   display: flex; align-items: center;
   padding: 6px 8px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.navbar.navbar-hidden {
+  transform: translateX(-50%) translateY(120%);
+  opacity: 0;
+  pointer-events: none;
 }
 .nav-btn {
   flex: 1;

@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v74';
+const APP_VERSION = 'v75';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -431,6 +431,11 @@ function localDateStr(d = new Date()) {
 // ═══════════════════════════════════════════════════
 // NAVIGATION
 // ═══════════════════════════════════════════════════
+function setNavbarVisible(visible) {
+  document.querySelector('.navbar')?.classList.toggle('navbar-hidden', !visible);
+  document.querySelector('.bottom-fade')?.classList.toggle('hidden', !visible);
+}
+
 function showView(name) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -440,6 +445,7 @@ function showView(name) {
   const btn = document.querySelector(`[data-nav="${name}"]`);
   if (btn) btn.classList.add('active');
   currentView = name;
+  if (name !== 'learn') setNavbarVisible(true);
   if (name === 'home') renderHome();
   else if (name === 'agenda') renderAgenda();
   else if (name === 'stats') renderStats();
@@ -637,6 +643,7 @@ async function renderHome() {
 // ═══════════════════════════════════════════════════
 async function renderSubjectPage(id) {
   learnSubView = 'subject';
+  setNavbarVisible(true);
   currentSubject = id;
   const s = subjects[id];
   const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
@@ -913,6 +920,8 @@ async function startFlashcards(subjectId, mode) {
 function renderFlashcard() {
   const { subjectId, cards, idx } = fcSession;
   const view = document.getElementById('view-learn');
+  learnSubView = 'flashcard';
+  setNavbarVisible(false);
 
   if (idx >= cards.length) { renderFlashcardEnd(); return; }
 
@@ -1003,6 +1012,7 @@ async function answerCard(score) {
 }
 
 function renderFlashcardEnd() {
+  setNavbarVisible(true);
   const { subjectId, cards, correct, bof, wrong, mode } = fcSession;
   const isVocabEnd = subjectId === 'vocab' || subjectId.startsWith('vocab_');
   const isAntiVocabEnd = subjectId === 'antivocab' || subjectId.startsWith('antivocab_');
@@ -1089,6 +1099,8 @@ async function startQCMImg(subjectId, mode) {
 function renderQCM() {
   const { subjectId, questions, idx } = qcmSession;
   const view = document.getElementById('view-learn');
+  learnSubView = 'qcm';
+  setNavbarVisible(false);
 
   if (idx >= questions.length) { renderQCMEnd(); return; }
 
@@ -1158,6 +1170,7 @@ function answerQCM(chosen) {
 function nextQCM() { qcmSession.idx++; renderQCM(); }
 
 function renderQCMEnd() {
+  setNavbarVisible(true);
   const { subjectId, questions, correct, mode } = qcmSession;
   const s = subjects[subjectId];
   const view = document.getElementById('view-learn');
@@ -1199,6 +1212,8 @@ async function startQCMColor(subjectId) {
 function renderQCMColor() {
   const { subjectId, questions, idx } = qcmColorSession;
   const view = document.getElementById('view-learn');
+  learnSubView = 'qcm-color';
+  setNavbarVisible(false);
 
   if (idx >= questions.length) { renderQCMColorEnd(); return; }
 
@@ -1277,6 +1292,7 @@ function validateQCMColor() {
 function nextQCMColor() { qcmColorSession.idx++; renderQCMColor(); }
 
 function renderQCMColorEnd() {
+  setNavbarVisible(true);
   const { subjectId, questions, correct, parts } = qcmColorSession;
   const s = subjects[subjectId];
   const view = document.getElementById('view-learn');
@@ -2044,6 +2060,7 @@ async function startControle(id) {
 
 // ── Rendu d'une question ──
 function renderControleQuestion() {
+  setNavbarVisible(false);
   const { data, idx, reponses } = controleSession;
   const view = document.getElementById('view-learn');
   const q = data.questions[idx];
@@ -2172,6 +2189,7 @@ function validateControleAnswer() {
 
 // ── Fin de contrôle ──
 async function finishControle() {
+  setNavbarVisible(true);
   const { controleId, data, reponses, dateDebut } = controleSession;
   const col = SUBJECT_COLORS[data.matiere] || { primary: '#5C6BC0' };
   const view = document.getElementById('view-learn');
