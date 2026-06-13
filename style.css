@@ -1021,11 +1021,14 @@ body {
   min-height: 18px; font-size: 12px; color: #dc2626; margin-top: 8px;
 }
 .lock-submit {
-  width: 100%; border: none; background: var(--accent); color: #fff;
+  width: 100%; border: 2px solid var(--border); background: var(--accent); color: #fff;
   border-radius: var(--r-sm); padding: 14px; font-size: 15px; font-weight: 700;
   margin-top: 4px; box-shadow: var(--shadow-sm); cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--transition), transform var(--transition);
 }
-.lock-submit:active { background: #8a2f24; }
+.lock-submit:active { background: #8a2f24; transform: scale(.98); }
 .lock-divider {
   font-size: 12px; color: var(--muted); text-transform: uppercase;
   letter-spacing: .1em; margin: 18px 0;
@@ -1034,13 +1037,17 @@ body {
   width: 100%; border: 2px solid var(--border); background: var(--surface); color: var(--text);
   box-shadow: var(--shadow-sm); border-radius: var(--r-sm);
   padding: 14px; font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--transition), transform var(--transition);
 }
-.lock-guest:active { background: var(--accent-l); }
+.lock-guest:active { background: var(--accent-l); transform: scale(.98); }
 .lock-guest-note { font-size: 11px; color: var(--muted); margin-top: 10px; }
 
 .guest-banner {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
   background: var(--accent); color: #fff; text-align: center;
   font-size: 12px; font-weight: 700; padding: 6px 12px;
-  letter-spacing: .02em;
+  letter-spacing: .02em; font-family: 'Poppins', sans-serif;
+  border-bottom: 2px solid var(--border);
 }
