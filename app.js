@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v89';
+const APP_VERSION = 'v90';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -17,7 +17,10 @@ const ACCENT_PRESETS = [
   { name: 'Rose',    primary: '#DB2777', light: '#FCE4F1' },
 ];
 
+let guestName = '';
+
 function getDisplayName() {
+  if (GUEST_MODE) return guestName || 'invité';
   return localStorage.getItem('studyos-name') || 'Charles';
 }
 
@@ -2141,9 +2144,22 @@ function setupLockScreen() {
   });
 
   document.getElementById('lock-guest').addEventListener('click', () => {
-    GUEST_MODE = true;
-    screen.remove();
-    init();
+    document.getElementById('lock-guest').style.display = 'none';
+    document.querySelector('.lock-divider').style.display = 'none';
+    document.querySelector('.lock-guest-note').style.display = 'none';
+    const form = document.getElementById('lock-guest-form');
+    form.style.display = 'block';
+    const nameInput = document.getElementById('lock-guest-name');
+    nameInput.focus();
+
+    const start = () => {
+      GUEST_MODE = true;
+      guestName = nameInput.value.trim();
+      screen.remove();
+      init();
+    };
+    document.getElementById('lock-guest-start').addEventListener('click', start);
+    nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') start(); });
   });
 }
 

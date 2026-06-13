@@ -1065,6 +1065,11 @@ body {
 }
 .lock-guest:active { background: var(--accent-l); transform: scale(.98); }
 .lock-guest-note { font-size: 11px; color: var(--muted); margin-top: 10px; }
+.lock-guest-form { margin-top: 18px; }
+.lock-guest-name {
+  font-size: 17px; text-align: left; letter-spacing: normal;
+  text-transform: none; font-weight: 700; padding: 14px;
+}
 
 .guest-banner {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
