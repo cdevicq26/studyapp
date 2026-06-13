@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v78';
+const APP_VERSION = 'v79';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -46,6 +46,15 @@ const SUBJECT_SHORT = {
   francais: 'Français',
   maths:    'Math',
   chimie:   'Chimie',
+};
+
+const SUBJECT_ICONS = {
+  geo:      '🌍',
+  philo:    '🧠',
+  bio:      '🧬',
+  francais: '📖',
+  maths:    '📐',
+  chimie:   '🧪',
 };
 
 const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
@@ -563,10 +572,12 @@ async function renderHome() {
     if (!s) return null;
     const stats = await getSubjectStats(id);
     const qcmStats = await getQCMStats(id);
+    const dueQCM = await getDueQCMs(id);
     const flashPct = stats.total ? Math.round((stats.b1 * 0.25 + stats.b2 * 0.6 + stats.b3 * 1.0) / stats.total * 100) : 0;
     const checklistPct = dashboardData?.subjects?.[id]?.checklist?.pct ?? null;
     const score = combinedScore({ flashPct, qcmTotal: qcmStats.total, qcmMastered: qcmStats.mastered, checklistPct });
-    return { id, s, score };
+    const due = (stats.due || 0) + dueQCM.length;
+    return { id, s, score, due };
   }));
 
   const globalScore = (() => {
@@ -577,16 +588,24 @@ async function renderHome() {
 
   const progCards = subjectScores.map(entry => {
     if (!entry) return '';
-    const { id, s, score } = entry;
+    const { id, s, score, due } = entry;
     const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
     const days = daysUntil(s.exam);
+    const ctaText = due > 0 ? `${due} à revoir` : 'À jour ✓';
 
     return `
     <div class="subject-cell" onclick="goToSubject('${id}')">
-      ${progressRing(score, col.primary, 56)}
+      <div class="sc-top">
+        <span class="sc-icon">${SUBJECT_ICONS[id] || '📘'}</span>
+        ${progressRing(score, col.primary, 56)}
+      </div>
       <div class="sc-info">
         <div class="sc-name">${SUBJECT_SHORT[id] || s.name}</div>
-        <div class="sc-days" style="color:${col.primary}">${days}j</div>
+        <div class="sc-days" style="color:${col.primary}">Examen dans ${days}j</div>
+      </div>
+      <div class="sc-cta" style="background:${col.primary}1A;color:${col.primary}">
+        <span>${ctaText}</span>
+        ${CHEVRON_ICON}
       </div>
     </div>`;
   });
