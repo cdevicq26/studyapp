@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v73';
+const APP_VERSION = 'v74';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -18,6 +18,15 @@ const SUBJECT_COLORS = {
   francais: { primary: '#EC4899' },
   maths:    { primary: '#EAB308' },
   chimie:   { primary: '#22C55E' },
+};
+
+const SUBJECT_SHORT = {
+  geo:      'Géo',
+  philo:    'Philo',
+  bio:      'Bio',
+  francais: 'Français',
+  maths:    'Math',
+  chimie:   'Chimie',
 };
 
 const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
@@ -476,7 +485,7 @@ async function renderHome() {
 
   // Greeting
   const h = new Date().getHours();
-  const greeting = h >= 18 ? 'Bonsoir Charles' : (h >= 12 ? 'Bon après-midi' : 'Bonjour Charles');
+  const greeting = h >= 18 ? 'Bonsoir' : (h >= 12 ? 'Bon après-midi' : 'Bonjour');
   const dateStr = new Date().toLocaleDateString('fr-BE', { weekday: 'long', day: 'numeric', month: 'long' });
 
   // Next exam hero card
@@ -510,7 +519,7 @@ async function renderHome() {
           <div class="nec-name">${ne.name}</div>
           <div class="nec-type">${ne.type} · ${formatDate(ne.date)}</div>
         </div>
-        <div class="nec-days" style="color:${daysColor}">${days}j</div>
+        <div class="nec-days" style="background:${daysColor}">${days}j</div>
       </div>
       <div style="margin-top:14px">
         <div class="nec-prog-label">Concepts maîtrisés (B3)</div>
@@ -547,10 +556,10 @@ async function renderHome() {
     const days = daysUntil(s.exam);
 
     return `
-    <div class="subject-cell" style="border-left:6px solid ${col.primary};background:${col.primary}0D" onclick="goToSubject('${id}')">
+    <div class="subject-cell" onclick="goToSubject('${id}')">
       ${progressRing(score, col.primary, 48)}
       <div class="sc-info">
-        <div class="sc-name">${s.name}</div>
+        <div class="sc-name">${SUBJECT_SHORT[id] || s.name}</div>
         <div class="sc-days" style="color:${col.primary}">${days}j</div>
       </div>
     </div>`;
@@ -597,8 +606,8 @@ async function renderHome() {
 
   view.innerHTML = `
   <div class="home-header">
-    <div class="home-greeting">${capFirst(dateStr)}</div>
-    <div class="home-date">${greeting}</div>
+    <div class="home-greeting">${greeting}, Charles</div>
+    <div class="home-date">${capFirst(dateStr)}</div>
   </div>
 
   <div class="global-score-card">
@@ -729,22 +738,27 @@ async function renderSubjectPage(id) {
     <div class="lstat" style="--c:#16a34a"><div class="lstat-n">${stats.b3}</div><div class="lstat-l">Boîte 3</div></div>
   </div>
 
-  <div class="section-label">Réviser</div>
+  <div class="section-label">Flashcards</div>
   <div class="action-list">
     <div class="action-btn" onclick="startFlashcards('${id}','due')">
-      <div class="ab-info"><div class="ab-title">Flashcards Leitner</div><div class="ab-sub">${dueFC.length} cartes dues aujourd'hui</div></div>
-      <div class="ab-arrow">›</div>
-    </div>
-    <div class="action-btn" onclick="startQCM('${id}','due')">
-      <div class="ab-info"><div class="ab-title">QCM Leitner</div><div class="ab-sub">${qcmDue.length} questions dues</div></div>
+      <div class="ab-info"><div class="ab-title">À réviser aujourd'hui</div><div class="ab-sub">${dueFC.length} carte${dueFC.length === 1 ? '' : 's'} due${dueFC.length === 1 ? '' : 's'}</div></div>
       <div class="ab-arrow">›</div>
     </div>
     <div class="action-btn" onclick="startFlashcards('${id}','all')">
-      <div class="ab-info"><div class="ab-title">Toutes les cartes</div><div class="ab-sub">${s.flashcards.length} au total</div></div>
+      <div class="ab-info"><div class="ab-title">Toutes les flashcards</div><div class="ab-sub">${s.flashcards.length} carte${s.flashcards.length === 1 ? '' : 's'} au total</div></div>
+      <div class="ab-arrow">›</div>
+    </div>
+  </div>
+  <div class="subj-mastery">${b3pct}% maîtrisé · ${stats.b3} cartes en boîte 3</div>
+
+  <div class="section-label">QCM</div>
+  <div class="action-list">
+    <div class="action-btn" onclick="startQCM('${id}','due')">
+      <div class="ab-info"><div class="ab-title">À réviser aujourd'hui</div><div class="ab-sub">${qcmDue.length} question${qcmDue.length === 1 ? '' : 's'} due${qcmDue.length === 1 ? '' : 's'}</div></div>
       <div class="ab-arrow">›</div>
     </div>
     <div class="action-btn" onclick="startQCM('${id}','quick')">
-      <div class="ab-info"><div class="ab-title">QCM rapide</div><div class="ab-sub">5 questions aléatoires</div></div>
+      <div class="ab-info"><div class="ab-title">Session rapide</div><div class="ab-sub">5 questions aléatoires</div></div>
       <div class="ab-arrow">›</div>
     </div>
     <div class="action-btn" onclick="startQCM('${id}','all')">
@@ -764,7 +778,7 @@ async function renderSubjectPage(id) {
     </div>
     ` : ''}
   </div>
-  <div class="subj-mastery">${b3pct}% maîtrisé · ${stats.b3} cartes en B3 · ${qcmStats.mastered}/${qcmStats.total} QCM</div>
+  <div class="subj-mastery">${qcmStats.mastered}/${qcmStats.total} QCM maîtrisés</div>
 
   ${vocabHTML}
   ${fichesHTML}
@@ -1783,9 +1797,8 @@ async function init() {
         if (e.data && e.data.type === 'SW_UPDATED') {
           const b = document.createElement('div');
           b.className = 'update-banner';
-          b.innerHTML = `Nouvelle version disponible <button onclick="location.reload()">Recharger</button>`;
+          b.innerHTML = `<div class="update-banner-box">Nouvelle version disponible<button onclick="location.reload()">Recharger</button></div>`;
           document.body.appendChild(b);
-          setTimeout(() => b.remove(), 12000);
         }
       });
     }

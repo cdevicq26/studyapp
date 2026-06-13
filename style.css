@@ -133,7 +133,7 @@ body {
 /* Progress bar */
 .prog-track {
   height: 8px; border-radius: 4px;
-  background: #FCCBB4; border: 1px solid var(--border);
+  background: #EDEAE5; border: 1px solid var(--border);
   overflow: hidden;
 }
 .prog-fill { height: 100%; border-radius: 4px; transition: width .6s ease; min-width: 4px; }
@@ -161,7 +161,7 @@ body {
 .view-header {
   padding: max(env(safe-area-inset-top, 0), 52px) 20px 16px;
 }
-.view-title { font-family: var(--font-display); font-size: 44px; font-weight: 700; color: var(--accent); letter-spacing: -.5px; line-height: 1; }
+.view-title { font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 800; color: var(--text); letter-spacing: -.3px; line-height: 1; }
 .view-sub { font-size: 13px; color: var(--muted); margin-top: 3px; font-weight: 500; }
 .loading-state { padding: 40px 20px; text-align: center; color: var(--muted); font-size: 13px; font-weight: 600; }
 
@@ -235,23 +235,29 @@ body {
 
 /* Update banner */
 .update-banner {
-  position: fixed; top: env(safe-area-inset-top, 0); left: 0; right: 0;
-  background: var(--accent); color: #fff;
-  padding: 12px 20px; z-index: 999;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: 14px; font-weight: 600;
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(21,19,15,.45);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
 }
-.update-banner button {
-  background: rgba(255,255,255,.2); border: none; color: #fff;
-  padding: 6px 14px; border-radius: 20px; cursor: pointer;
-  font-weight: 700; font-family: 'Poppins', sans-serif;
+.update-banner-box {
+  background: var(--surface); border: 2px solid var(--border); box-shadow: var(--shadow);
+  border-radius: var(--r); padding: 24px; width: 100%; max-width: 320px;
+  text-align: center; font-size: 15px; font-weight: 700; color: var(--text);
+}
+.update-banner-box button {
+  display: block; width: 100%; margin-top: 16px;
+  background: var(--accent); border: 2px solid var(--border); color: #fff;
+  padding: 12px 14px; border-radius: var(--r-xs); cursor: pointer;
+  font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 14px;
+  box-shadow: var(--shadow-xs);
 }
 
 /* ── 6. VUE HOME ── */
 .home-header {
-  padding: max(env(safe-area-inset-top, 0), 52px) 20px 0;
+  padding: max(env(safe-area-inset-top, 0), 52px) 20px 16px;
 }
-.home-greeting { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
+.home-greeting { font-size: 16px; font-weight: 600; color: var(--text-2); font-family: 'Poppins', sans-serif; }
 .home-date { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--text); letter-spacing: -.5px; line-height: 1; margin-top: 4px; }
 
 /* Next exam card */
@@ -273,7 +279,7 @@ body {
 .nec-type { font-size: 12px; color: var(--muted); margin-top: 2px; font-weight: 500; }
 .nec-days {
   font-size: 22px; font-weight: 900; flex-shrink: 0; letter-spacing: -1px;
-  background: var(--accent-l); border-radius: var(--r-xs);
+  color: #fff; border-radius: var(--r-xs); border: 2px solid var(--border);
   padding: 8px 14px; line-height: 1;
 }
 .nec-prog-label { font-size: 11px; color: var(--muted); font-weight: 600; }
@@ -335,7 +341,7 @@ body {
 .today-task-place { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); flex-shrink: 0; margin-top: 2px; }
 .today-task-text { line-height: 1.4; }
 .today-task-time { font-size: 11px; font-weight: 700; color: var(--muted); min-width: 64px; }
-.today-exam-band { padding: 14px 16px; font-size: 14px; font-weight: 800; color: #fff; }
+.today-exam-band { padding: 14px 16px; font-size: 14px; font-weight: 800; color: #15130F; border-bottom: 2px solid var(--border); border-radius: var(--r-sm) var(--r-sm) 0 0; }
 .today-empty { padding: 14px 16px; font-size: 13px; color: var(--muted); font-style: italic; }
 
 /* Compat for old home card layout */
@@ -718,7 +724,7 @@ body {
 }
 .agenda-detail-header { padding: 14px 18px; border-bottom: 2px solid var(--border); }
 .adh-date { font-size: 15px; font-weight: 800; color: var(--text); }
-.adh-exam-tag { display: inline-block; margin-top: 6px; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #fff; }
+.adh-exam-tag { display: inline-block; margin-top: 6px; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #15130F; border: 1px solid var(--border); }
 
 .agenda-day-list { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 8px; }
 .agenda-day-row {
@@ -734,7 +740,7 @@ body {
 .agenda-day-row.is-past { opacity: .45; }
 .agenda-day-row.is-past .adr-date, .agenda-day-row.is-past .agenda-row-count { color: var(--muted); }
 .adr-date { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
-.agenda-row-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; color: #fff; }
+.agenda-row-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; color: #15130F; border: 1px solid var(--border); }
 .agenda-row-count { font-size: 12px; font-weight: 700; color: var(--muted); }
 .adr-chevron { font-size: 16px; color: var(--muted); width: 16px; text-align: center; }
 .agenda-day-detail {
@@ -793,7 +799,7 @@ body {
 .at-row.at-done .at-check svg { display: block; }
 .at-text { font-size: 13px; color: var(--text); line-height: 1.4; flex: 1; white-space: normal; word-break: break-word; }
 .at-row.at-done .at-text { text-decoration: line-through; color: var(--muted); }
-.agenda-exam-band { padding: 16px 18px; font-size: 15px; font-weight: 800; color: #fff; }
+.agenda-exam-band { padding: 16px 18px; font-size: 15px; font-weight: 800; color: #15130F; border-bottom: 2px solid var(--border); }
 .agenda-empty { padding: 20px; text-align: center; font-size: 13px; color: var(--muted); font-style: italic; }
 .agenda-no-data {
   margin: 40px 16px; padding: 40px 24px;

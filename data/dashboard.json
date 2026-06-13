@@ -1,21 +1,21 @@
 {
-  "generated": "2026-06-08T16:44:13",
+  "generated": "2026-06-13T17:08:15",
   "synced_by": "Claude Sonnet 4.6",
   "subjects": {
     "geo": {
       "name": "Géographie",
       "exam": "2026-06-15",
       "type": "Oral",
-      "color": "#005703",
+      "color": "#2F8FE0",
       "emoji": "🌍",
       "checklist": {
         "total": 70,
-        "pct": 19,
+        "pct": 29,
         "counts": {
-          "ok": 7,
-          "partial": 12,
-          "gap": 2,
-          "untested": 49
+          "ok": 13,
+          "partial": 15,
+          "gap": 13,
+          "untested": 29
         }
       }
     },
@@ -23,7 +23,7 @@
       "name": "Philosophie",
       "exam": "2026-06-16",
       "type": "Écrit",
-      "color": "#CC5A00",
+      "color": "#8B5CF6",
       "emoji": "🧠",
       "checklist": {
         "total": 43,
@@ -40,16 +40,16 @@
       "name": "Biologie",
       "exam": "2026-06-17",
       "type": "Écrit",
-      "color": "#00CC03",
+      "color": "#14B8A6",
       "emoji": "🧬",
       "checklist": {
-        "total": 59,
+        "total": 57,
         "pct": 3,
         "counts": {
           "ok": 0,
           "partial": 3,
           "gap": 0,
-          "untested": 56
+          "untested": 54
         }
       }
     },
@@ -57,7 +57,7 @@
       "name": "Mathématiques",
       "exam": "2026-06-19",
       "type": "Oral",
-      "color": "#CC00C8",
+      "color": "#EAB308",
       "emoji": "📐",
       "checklist": {
         "total": 40,
@@ -74,7 +74,7 @@
       "name": "Français",
       "exam": "2026-06-22",
       "type": "Oral",
-      "color": "#F0C000",
+      "color": "#EC4899",
       "emoji": "📚",
       "checklist": {
         "total": 45,
@@ -91,7 +91,7 @@
       "name": "Chimie",
       "exam": "2026-06-23",
       "type": "Oral",
-      "color": "#9124FF",
+      "color": "#22C55E",
       "emoji": "⚗️",
       "checklist": {
         "total": 29,
@@ -279,7 +279,7 @@
       "day": "Lun",
       "fullDate": "2026-06-15",
       "isExam": true,
-      "examColor": "#005703",
+      "examColor": "#2F8FE0",
       "tasks": [
         {
           "time": "Matin",
@@ -298,7 +298,7 @@
       "day": "Mar",
       "fullDate": "2026-06-16",
       "isExam": true,
-      "examColor": "#CC5A00",
+      "examColor": "#8B5CF6",
       "tasks": [
         {
           "time": "Matin",
@@ -317,7 +317,7 @@
       "day": "Mer",
       "fullDate": "2026-06-17",
       "isExam": true,
-      "examColor": "#00CC03",
+      "examColor": "#14B8A6",
       "tasks": [
         {
           "time": "Matin",
@@ -355,7 +355,7 @@
       "day": "Ven",
       "fullDate": "2026-06-19",
       "isExam": true,
-      "examColor": "#CC00C8",
+      "examColor": "#EAB308",
       "tasks": [
         {
           "time": "Matin",
@@ -427,7 +427,7 @@
       "day": "Lun",
       "fullDate": "2026-06-22",
       "isExam": true,
-      "examColor": "#F0C000",
+      "examColor": "#EC4899",
       "tasks": [
         {
           "time": "Matin",
@@ -446,7 +446,7 @@
       "day": "Mar",
       "fullDate": "2026-06-23",
       "isExam": true,
-      "examColor": "#9124FF",
+      "examColor": "#22C55E",
       "tasks": [
         {
           "time": "Matin",
@@ -466,8 +466,8 @@
     "name": "Géographie",
     "date": "2026-06-15",
     "type": "Oral",
-    "color": "#005703",
+    "color": "#2F8FE0",
     "emoji": "🌍",
-    "days": 7
+    "days": 2
   }
 }
