@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v63';
+const APP_VERSION = 'v64';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -34,8 +34,7 @@ let qcmSession = null;
 let qcmColorSession = null;
 let dashboardData = null;
 let currentView = 'home';
-let learnSubView = 'grid'; // 'grid' | 'detail' | 'flashcard' | 'qcm' | 'qcm-color'
-let studyTab = 'reviser'; // 'reviser' | 'explorer'
+let learnSubView = 'subject'; // 'subject' | 'flashcard' | 'qcm' | 'qcm-color' | 'fiche-view' | 'controle-question'
 
 // Agenda
 let agendaWeeks = [], agendaWeekIdx = 0, agendaDaySelected = null;
@@ -432,9 +431,6 @@ function showView(name) {
   if (btn) btn.classList.add('active');
   currentView = name;
   if (name === 'home') renderHome();
-  else if (name === 'learn') {
-    if (learnSubView === 'grid') renderStudyView();
-  }
   else if (name === 'agenda') renderAgenda();
   else if (name === 'stats') renderStats();
 }
@@ -442,7 +438,33 @@ function showView(name) {
 // Navigate to subject from home card
 function goToSubject(id) {
   showView('learn');
-  openSubjectDetail(id);
+  renderSubjectPage(id);
+}
+
+// ═══════════════════════════════════════════════════
+// SCORE COMBINÉ
+// ═══════════════════════════════════════════════════
+function combinedScore({ flashPct, qcmTotal, qcmMastered, checklistPct }) {
+  const parts = [flashPct];
+  if (qcmTotal > 0) parts.push(Math.round(qcmMastered / qcmTotal * 100));
+  if (checklistPct != null) parts.push(checklistPct);
+  return Math.round(parts.reduce((a, b) => a + b, 0) / parts.length);
+}
+
+// Rond de progression SVG
+function progressRing(pct, color, size = 64) {
+  const r = 16;
+  const c = 2 * Math.PI * r;
+  return `
+  <div class="ring" style="width:${size}px;height:${size}px">
+    <svg viewBox="0 0 36 36">
+      <circle class="ring-bg" cx="18" cy="18" r="${r}"/>
+      <circle class="ring-fill" cx="18" cy="18" r="${r}"
+        stroke-dasharray="${(pct / 100 * c).toFixed(2)} ${c.toFixed(2)}"
+        style="stroke:${color}"/>
+    </svg>
+    <div class="ring-label">${pct}%</div>
+  </div>`;
 }
 
 // ═══════════════════════════════════════════════════
@@ -500,38 +522,39 @@ async function renderHome() {
     </div>`;
   }
 
-  // Subject grid
-  const dashSubjects = (dashboardData && dashboardData.subjects) ? dashboardData.subjects : {};
-  const progCards = await Promise.all(SUBJECTS_ORDER.map(async id => {
+  // Subject grid — score combiné par matière
+  const subjectScores = await Promise.all(SUBJECTS_ORDER.map(async id => {
     const s = subjects[id];
-    if (!s) return '';
+    if (!s) return null;
+    const stats = await getSubjectStats(id);
+    const qcmStats = await getQCMStats(id);
+    const flashPct = stats.total ? Math.round((stats.b1 * 0.25 + stats.b2 * 0.6 + stats.b3 * 1.0) / stats.total * 100) : 0;
+    const checklistPct = dashboardData?.subjects?.[id]?.checklist?.pct ?? null;
+    const score = combinedScore({ flashPct, qcmTotal: qcmStats.total, qcmMastered: qcmStats.mastered, checklistPct });
+    return { id, s, score };
+  }));
+
+  const globalScore = (() => {
+    const valid = subjectScores.filter(Boolean);
+    if (!valid.length) return 0;
+    return Math.round(valid.reduce((sum, v) => sum + v.score, 0) / valid.length);
+  })();
+
+  const progCards = subjectScores.map(entry => {
+    if (!entry) return '';
+    const { id, s, score } = entry;
     const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0', light: '#EEF0FA', emoji: '📖' };
     const days = daysUntil(s.exam);
-    const progress = await getCardProgress(id);
-    const total = s.flashcards.length;
-    let b1 = 0, b2 = 0, b3 = 0;
-    s.flashcards.forEach(c => {
-      const p = progress[c.id];
-      if (!p) return;
-      if (p.box === 1) b1++;
-      else if (p.box === 2) b2++;
-      else b3++;
-    });
-    // Score pondéré : B1=25%, B2=60%, B3=100%
-    const score = b1 * 0.25 + b2 * 0.6 + b3 * 1.0;
-    const masteryPct = total ? Math.round(score / total * 100) : 0;
 
     return `
     <div class="subject-cell" onclick="goToSubject('${id}')">
-      <div class="sc-emoji">${col.emoji}</div>
-      <div class="sc-name">${s.name}</div>
-      <div class="sc-days" style="color:${col.primary}">${days}j</div>
-      <div class="prog-track" style="margin-top:8px">
-        <div class="prog-fill" style="width:${masteryPct}%;background:${col.primary}"></div>
+      ${progressRing(score, col.primary, 48)}
+      <div class="sc-info">
+        <div class="sc-name">${col.emoji} ${s.name}</div>
+        <div class="sc-days" style="color:${col.primary}">${days}j</div>
       </div>
-      <div style="font-size:10px;color:var(--muted);margin-top:3px;font-weight:600">${masteryPct}%</div>
     </div>`;
-  }));
+  });
 
   // Today planning
   const todayStr = localDateStr();
@@ -579,6 +602,14 @@ async function renderHome() {
     <div class="home-date">${greeting} 👋</div>
   </div>
 
+  <div class="global-score-card">
+    ${progressRing(globalScore, 'var(--accent)', 76)}
+    <div class="gsc-info">
+      <div class="gsc-label">Avancement global</div>
+      <div class="gsc-sub">Moyenne de tes ${subjectScores.filter(Boolean).length} matières</div>
+    </div>
+  </div>
+
   ${nextExamHTML}
 
   <div class="section-label">Matières</div>
@@ -594,256 +625,10 @@ async function renderHome() {
 }
 
 // ═══════════════════════════════════════════════════
-// VIEW 2+3 — ÉTUDIER (Réviser + Explorer fusionnés)
+// VIEW 2 — PAGE MATIÈRE UNIFIÉE
 // ═══════════════════════════════════════════════════
-
-function setStudyTab(tab) {
-  studyTab = tab;
-  renderStudyView();
-}
-
-async function renderStudyView() {
-  learnSubView = 'grid';
-  const view = document.getElementById('view-learn');
-
-  const segCtrl = `
-  <div class="seg-ctrl">
-    <button class="seg-btn${studyTab === 'reviser' ? ' active' : ''}" onclick="setStudyTab('reviser')">Réviser</button>
-    <button class="seg-btn${studyTab === 'explorer' ? ' active' : ''}" onclick="setStudyTab('explorer')">Explorer</button>
-  </div>`;
-
-  if (studyTab === 'reviser') {
-    const now = Date.now();
-
-    // ── Matières : FC + QCM dus ──
-    let totalFC = 0, totalQCM = 0;
-    const subjectData = [];
-
-    for (const id of SUBJECTS_ORDER) {
-      const s = subjects[id];
-      if (!s) continue;
-      const col = SUBJECT_COLORS[id];
-      const fcDue = await getDueCards(id);
-      const qcmDue = await getDueQCMs(id);
-      totalFC += fcDue.length;
-      totalQCM += qcmDue.length;
-      if (fcDue.length > 0 || qcmDue.length > 0) {
-        subjectData.push({ id, name: s.name, col, fcDue: fcDue.length, qcmDue: qcmDue.length });
-      }
-    }
-
-    // ── Vocabulaire dû ──
-    const vocabDue = [];
-    for (const [srcId, src] of Object.entries(VOCAB_SOURCES)) {
-      await loadVocabSource(srcId);
-      const allCards = (vocabCache[srcId] || { flashcards: [] }).flashcards;
-      const progress = await getCardProgress(`vocab_${srcId}`);
-      const due = allCards.filter(c => { const p = progress[c.id]; return !p || p.nextReview <= now; });
-      if (due.length > 0) vocabDue.push({ srcId, src, count: due.length });
-    }
-
-    const totalAll = totalFC + totalQCM + vocabDue.reduce((s, v) => s + v.count, 0);
-
-    const counterHTML = totalAll === 0
-      ? `<div class="today-counter-card all-done"><div class="tc-left"><div class="tc-all-done">🎉 Tout est à jour !</div><div class="tc-label">Reviens demain pour la suite.</div></div></div>`
-      : `<div class="today-counter-card">
-           <div class="tc-left">
-             <div class="tc-num">${totalAll}</div>
-             <div class="tc-label">à réviser aujourd'hui</div>
-           </div>
-           <button class="tc-btn btn-accent" onclick="startTodaySession()">Tout réviser</button>
-         </div>`;
-
-    const subjectRows = subjectData.map(d => {
-      const total = d.fcDue + d.qcmDue;
-      const details = [
-        d.fcDue > 0 ? `${d.fcDue} FC` : '',
-        d.qcmDue > 0 ? `${d.qcmDue} QCM` : ''
-      ].filter(Boolean).join(' · ');
-      return `
-      <div class="today-subject-row" style="border-left-color:${d.col.primary}">
-        <div class="tsr-emoji">${d.col.emoji}</div>
-        <div class="tsr-info">
-          <div class="tsr-name">${d.name}</div>
-          <div class="tsr-count">${details}</div>
-        </div>
-        <button class="btn" style="color:${d.col.primary};padding:10px 14px;font-size:13px" onclick="startSubjectRevision('${d.id}')">Réviser</button>
-      </div>`;
-    }).join('');
-
-    const vocabRows = vocabDue.map(v => `
-      <div class="today-subject-row" style="border-left-color:${v.src.color}">
-        <div class="tsr-emoji">${v.src.emoji}</div>
-        <div class="tsr-info">
-          <div class="tsr-name">${v.src.name}</div>
-          <div class="tsr-count">${v.count} termes dus</div>
-        </div>
-        <button class="btn" style="color:${v.src.color};padding:10px 14px;font-size:13px" onclick="startVocab('${v.srcId}',null)">Réviser</button>
-      </div>`).join('');
-
-    view.innerHTML = `
-    <div class="view-header"><div class="view-title">Étudier</div></div>
-    ${segCtrl}
-    ${counterHTML}
-    ${subjectData.length > 0 ? `
-      <div class="section-label">Par matière</div>
-      <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">${subjectRows}</div>` : ''}
-    ${vocabDue.length > 0 ? `
-      <div class="section-label">Vocabulaire</div>
-      <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">${vocabRows}</div>` : ''}
-    ${totalAll === 0 ? '' : `<div class="today-note">💡 Boîtes Leitner : B1 → 1j · B2 → 3j · B3 → 7j</div>`}
-    `;
-  } else {
-    // — Onglet Explorer : vocabulaire + matières
-    const subjectCards = await Promise.all(SUBJECTS_ORDER.map(async id => {
-      const s = subjects[id];
-      if (!s) return '';
-      const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0', light: '#EEF0FA', emoji: '📖' };
-      const stats = await getSubjectStats(id);
-      const days = daysUntil(s.exam);
-      const b1pct = stats.total ? Math.round(stats.b1 / stats.total * 100) : 0;
-      const b2pct = stats.total ? Math.round(stats.b2 / stats.total * 100) : 0;
-      const b3pct2 = stats.total ? Math.round(stats.b3 / stats.total * 100) : 0;
-      return `
-      <div class="subject-learn-card" onclick="openSubjectDetail('${id}')">
-        <div class="slc-header">
-          <div class="slc-left">
-            <div class="slc-emoji">${col.emoji}</div>
-            <div>
-              <div class="slc-name">${s.name}</div>
-              <div class="slc-meta">${s.flashcards.length} cartes · ${s.qcm.length} QCM</div>
-            </div>
-          </div>
-          <div class="slc-days" style="color:${col.primary}">${days}j</div>
-        </div>
-        <div class="leitner-bars">
-          <div class="lb-row"><div class="lb-dot" style="background:#ef4444"></div><div class="lb-track"><div style="width:${b1pct}%;background:#ef4444" class="lb-fill"></div></div><div class="lb-n">${stats.b1}</div></div>
-          <div class="lb-row"><div class="lb-dot" style="background:#f97316"></div><div class="lb-track"><div style="width:${b2pct}%;background:#f97316" class="lb-fill"></div></div><div class="lb-n">${stats.b2}</div></div>
-          <div class="lb-row"><div class="lb-dot" style="background:#16a34a"></div><div class="lb-track"><div style="width:${b3pct2}%;background:#16a34a" class="lb-fill"></div></div><div class="lb-n">${stats.b3}</div></div>
-        </div>
-        ${stats.due > 0 ? `<div class="due-badge" style="background:${col.primary}">${stats.due} à revoir</div>` : ''}
-      </div>`;
-    }));
-
-    await Promise.all(Object.keys(VOCAB_SOURCES).map(id => loadVocabSource(id)));
-    const vocabCards = Object.entries(VOCAB_SOURCES).map(([id, src]) => {
-      const data = vocabCache[id];
-      const count = data ? data.flashcards.length : 0;
-      const cats  = data ? [...new Set(data.flashcards.map(c => c.cat))].length : 0;
-      return `<div class="vocab-card" onclick="openVocabDetail('${id}')" style="border-left-color:${src.color}">
-        <div class="vc-left">
-          <div class="vc-icon">${src.emoji}</div>
-          <div>
-            <div class="vc-name">${src.name}</div>
-            <div class="vc-meta">${count} termes · ${cats} thèmes</div>
-          </div>
-        </div>
-        <div class="vc-arrow">›</div>
-      </div>`;
-    }).join('');
-
-    const antiVocabCards = Object.entries(VOCAB_SOURCES).map(([id, src]) => {
-      const data = vocabCache[id];
-      const count = data ? data.flashcards.length : 0;
-      return `<div class="vocab-card" onclick="openAntiVocabDetail('${id}')" style="border-left-color:${src.color};opacity:.9">
-        <div class="vc-left">
-          <div class="vc-icon">🔄</div>
-          <div>
-            <div class="vc-name">${src.name.replace('Vocabulaire', 'Anti-vocab')}</div>
-            <div class="vc-meta">${count} définitions → trouver le terme</div>
-          </div>
-        </div>
-        <div class="vc-arrow">›</div>
-      </div>`;
-    }).join('');
-
-    view.innerHTML = `
-    <div class="view-header"><div class="view-title">Étudier</div></div>
-    ${segCtrl}
-    <div class="mix-row">
-      <button class="mix-btn" onclick="startMix('flashcard')">🔀 Mix Flashcards</button>
-      <button class="mix-btn" onclick="startMix('qcm')">🎯 Mix QCM</button>
-    </div>
-    <div class="section-label">Vocabulaire</div>
-    <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">${vocabCards}</div>
-    <div class="section-label">Anti-vocabulaire</div>
-    <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">${antiVocabCards}</div>
-    <div class="section-label">Fiches de révision</div>
-    <div style="padding:0 16px;margin-bottom:14px">
-      <div class="vocab-card" onclick="openFichesList()" style="border-left-color:#ca8a04">
-        <div class="vc-left">
-          <div class="vc-icon">📖</div>
-          <div>
-            <div class="vc-name">Mes fiches</div>
-            <div class="vc-meta">À lire le soir, contrôle à froid le lendemain</div>
-          </div>
-        </div>
-        <div class="vc-arrow">›</div>
-      </div>
-    </div>
-    <div class="section-label">Contrôles</div>
-    <div style="padding:0 16px;margin-bottom:14px">
-      <div class="vocab-card" onclick="openControleList()" style="border-left-color:#6d28d9">
-        <div class="vc-left">
-          <div class="vc-icon">📝</div>
-          <div>
-            <div class="vc-name">Mes contrôles</div>
-            <div class="vc-meta">Questions ouvertes · timer caché · export JSON</div>
-          </div>
-        </div>
-        <div class="vc-arrow">›</div>
-      </div>
-    </div>
-    <div class="section-label">Matières</div>
-    ${subjectCards.join('')}
-    <div style="height:20px"></div>
-    `;
-  }
-}
-
-// Alias pour compatibilité (appelé par openVocabDetail, etc.)
-function renderLearnGrid() { renderStudyView(); }
-
-async function startTodaySession() {
-  const allDue = [];
-  for (const id of SUBJECTS_ORDER) {
-    const due = await getDueCards(id);
-    due.forEach(c => allDue.push({ ...c, _subject: id }));
-  }
-  if (allDue.length === 0) { toast('Rien à réviser !'); return; }
-  fcSession = { subjectId: 'mix', cards: shuffle(allDue), idx: 0, correct: 0, bof: 0, wrong: 0, mode: 'today' };
-  learnSubView = 'flashcard';
-  showView('learn');
-  renderFlashcard();
-}
-
-async function startSubjectTodaySession(subjectId) {
-  const due = await getDueCards(subjectId);
-  if (due.length === 0) { toast('Rien à réviser pour cette matière !'); return; }
-  await startFlashcards(subjectId, 'due');
-  showView('learn');
-}
-
-async function startSubjectRevision(subjectId) {
-  const fcDue = await getDueCards(subjectId);
-  const qcmDue = await getDueQCMs(subjectId);
-  if (fcDue.length === 0 && qcmDue.length === 0) { toast('Tout est à jour !'); return; }
-  if (fcDue.length === 0) { await startQCM(subjectId, 'due'); return; }
-  // Lance FC en premier, puis QCM si dispo
-  fcSession = {
-    subjectId,
-    cards: fcDue,
-    idx: 0, correct: 0, bof: 0, wrong: 0, mode: 'due',
-    _qcmAfter: qcmDue.length > 0 ? subjectId : null
-  };
-  learnSubView = 'flashcard';
-  showView('learn');
-  renderFlashcard();
-}
-
-// 3b — détail sujet
-async function openSubjectDetail(id) {
-  learnSubView = 'detail';
+async function renderSubjectPage(id) {
+  learnSubView = 'subject';
   currentSubject = id;
   const s = subjects[id];
   const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0', light: '#EEF0FA', emoji: '📖' };
@@ -855,14 +640,93 @@ async function openSubjectDetail(id) {
   const days = daysUntil(s.exam);
 
   const b3pct = stats.total ? Math.round(stats.b3 / stats.total * 100) : 0;
+  const flashPct = stats.total ? Math.round((stats.b1 * 0.25 + stats.b2 * 0.6 + stats.b3 * 1.0) / stats.total * 100) : 0;
+  const checklistPct = dashboardData?.subjects?.[id]?.checklist?.pct ?? null;
+  const score = combinedScore({ flashPct, qcmTotal: qcmStats.total, qcmMastered: qcmStats.mastered, checklistPct });
+
+  // ── Vocabulaire / anti-vocabulaire ──
+  const vocabSrc = VOCAB_SOURCES[id];
+  let vocabHTML = '';
+  if (vocabSrc) {
+    await loadVocabSource(id);
+    const data = vocabCache[id];
+    const count = data ? data.flashcards.length : 0;
+    const cats = data ? [...new Set(data.flashcards.map(c => c.cat))].length : 0;
+    vocabHTML = `
+    <div class="section-label">Vocabulaire</div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+      <div class="vocab-card" onclick="openVocabDetail('${id}')" style="border-left-color:${vocabSrc.color}">
+        <div class="vc-left">
+          <div class="vc-icon">${vocabSrc.emoji}</div>
+          <div><div class="vc-name">${vocabSrc.name}</div><div class="vc-meta">${count} termes · ${cats} thèmes</div></div>
+        </div>
+        <div class="vc-arrow">›</div>
+      </div>
+      <div class="vocab-card" onclick="openAntiVocabDetail('${id}')" style="border-left-color:${vocabSrc.color};opacity:.9">
+        <div class="vc-left">
+          <div class="vc-icon">🔄</div>
+          <div><div class="vc-name">${vocabSrc.name.replace('Vocabulaire', 'Anti-vocab')}</div><div class="vc-meta">${count} définitions → trouver le terme</div></div>
+        </div>
+        <div class="vc-arrow">›</div>
+      </div>
+    </div>`;
+  }
+
+  // ── Fiches de révision de cette matière ──
+  const allFiches = await loadFicheIndex();
+  const fiches = allFiches.filter(f => f.matiere === id);
+  const fichesHTML = fiches.length ? `
+    <div class="section-label">Fiches de révision</div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+      ${fiches.map(f => `
+      <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openFicheView('${f.id}')">
+        <div class="tsr-emoji">📖</div>
+        <div class="tsr-info"><div class="tsr-name">${f.titre}</div><div class="tsr-count">${f.sous_titre || ''}</div></div>
+        <div class="vc-arrow">›</div>
+      </div>`).join('')}
+    </div>` : '';
+
+  // ── Contrôles disponibles + réponses sauvegardées pour cette matière ──
+  let available = [];
+  try {
+    const r = await fetch('/data/controles/index.json');
+    available = await r.json();
+  } catch { available = []; }
+  const controles = available.filter(c => c.matiere === id);
+  const responses = await dbGetAllControles();
+  const savedIds = Object.keys(responses).filter(rid => responses[rid].matiere === id);
+
+  const controlesHTML = (controles.length || savedIds.length) ? `
+    <div class="section-label">Contrôles</div>
+    <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
+      ${controles.map(item => `
+      <div class="today-subject-row" style="border-left-color:${col.primary}">
+        <div class="tsr-emoji">📝</div>
+        <div class="tsr-info"><div class="tsr-name">${item.titre}</div><div class="tsr-count">${item.questions} questions</div></div>
+        ${item.fiche_id ? `<button class="btn" style="color:${col.primary};padding:10px 12px;font-size:13px" onclick="openFicheView('${item.fiche_id}')" title="Lire la fiche">📖</button>` : ''}
+        <button class="btn" style="color:${col.primary};padding:10px 14px;font-size:13px" onclick="startControle('${item.id}')">Démarrer</button>
+      </div>`).join('')}
+      ${savedIds.map(rid => {
+        const r = responses[rid];
+        const date = new Date(r.date).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+        const mins = Math.round(r.duree_totale_secondes / 60);
+        return `
+        <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openControleResult('${rid}')">
+          <div class="tsr-emoji">📝</div>
+          <div class="tsr-info"><div class="tsr-name">${r.titre}</div><div class="tsr-count">${date} · ${mins} min</div></div>
+          <button class="btn" style="color:${col.primary};padding:7px 12px;font-size:12px" onclick="event.stopPropagation();exportControleResponse('${rid}')">↗</button>
+        </div>`;
+      }).join('')}
+    </div>` : '';
 
   view.innerHTML = `
   <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
-    <button class="back-btn" onclick="renderLearnGrid()">←</button>
-    <div>
+    <button class="back-btn" onclick="showView('home')">←</button>
+    <div style="flex:1">
       <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px">${col.emoji} ${s.name}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">${s.type || 'Matière'} · dans ${days} jours · ${formatDate(s.exam)}</div>
     </div>
+    ${progressRing(score, col.primary, 52)}
   </div>
 
   <div class="leitner-stat-row">
@@ -914,6 +778,11 @@ async function openSubjectDetail(id) {
     ` : ''}
   </div>
   <div class="subj-mastery">${b3pct}% maîtrisé · ${stats.b3} cartes en B3 · ${qcmStats.mastered}/${qcmStats.total} QCM</div>
+
+  ${vocabHTML}
+  ${fichesHTML}
+  ${controlesHTML}
+  <div style="height:20px"></div>
   `;
 }
 
@@ -940,7 +809,7 @@ async function openVocabDetail(sourceId = 'bio') {
 
   view.innerHTML = `
   <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
-    <button class="back-btn" onclick="renderLearnGrid()">←</button>
+    <button class="back-btn" onclick="renderSubjectPage('${sourceId}')">←</button>
     <div>
       <div style="font-size:20px;font-weight:900;color:var(--text)">${src.emoji} ${src.name}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">${cards.length} termes · ${cats.length} thèmes</div>
@@ -994,7 +863,7 @@ async function openAntiVocabDetail(sourceId = 'bio') {
 
   view.innerHTML = `
   <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
-    <button class="back-btn" onclick="renderStudyView()">←</button>
+    <button class="back-btn" onclick="renderSubjectPage('${sourceId}')">←</button>
     <div>
       <div style="font-size:20px;font-weight:900;color:var(--text)">🔄 Anti-vocab ${src.name.replace('Vocabulaire ','')}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">Définition → trouver le terme · ${cards.length} cartes</div>
@@ -1031,33 +900,6 @@ async function startAntiVocab(sourceId = 'bio', cat = null) {
   renderFlashcard();
 }
 
-// MIX MODE
-// ═══════════════════════════════════════════════════
-async function startMix(mode) {
-  if (mode === 'flashcard') {
-    let allCards = [];
-    for (const id of SUBJECTS_ORDER) {
-      const s = subjects[id];
-      if (!s) continue;
-      s.flashcards.forEach(c => allCards.push({ ...c, _subject: id }));
-    }
-    allCards = shuffle(allCards);
-    fcSession = { subjectId: 'mix', cards: allCards, idx: 0, correct: 0, bof: 0, wrong: 0, mode: 'mix' };
-    learnSubView = 'flashcard';
-    renderFlashcard();
-  } else {
-    let allQCM = [];
-    for (const id of SUBJECTS_ORDER) {
-      const s = subjects[id];
-      if (!s) continue;
-      s.qcm.forEach(q => allQCM.push({ ...q, _subject: id }));
-    }
-    qcmSession = { subjectId: 'mix', questions: shuffle(allQCM).slice(0, 20), idx: 0, correct: 0, mode: 'mix' };
-    learnSubView = 'qcm';
-    renderQCM();
-  }
-}
-
 // ═══════════════════════════════════════════════════
 // FLASHCARD SESSION
 // ═══════════════════════════════════════════════════
@@ -1073,7 +915,6 @@ async function startFlashcards(subjectId, mode) {
 
 function renderFlashcard() {
   const { subjectId, cards, idx } = fcSession;
-  const isMix = subjectId === 'mix';
   const view = document.getElementById('view-learn');
 
   if (idx >= cards.length) { renderFlashcardEnd(); return; }
@@ -1085,8 +926,8 @@ function renderFlashcard() {
   const vocabColor = (isVocab || isAntiVocab) ? (fcSession._color || '#0891b2') : null;
   const col = (isVocab || isAntiVocab) ? { primary: vocabColor } : (SUBJECT_COLORS[subId] || { primary: '#5C6BC0' });
   const pct = Math.round((idx / cards.length) * 100);
-  const catLabel = (isVocab || isAntiVocab) ? card.cat : isMix ? `${(subjects[subId] || {}).name || subId} · ${card.cat}` : card.cat;
-  const backRef = (isVocab || isAntiVocab) ? (fcSession._backFn || 'renderStudyView()') : isMix ? 'renderStudyView()' : `openSubjectDetail('${subjectId}')`;
+  const catLabel = card.cat;
+  const backRef = (isVocab || isAntiVocab) ? (fcSession._backFn || `renderSubjectPage('${subjectId}')`) : `renderSubjectPage('${subjectId}')`;
 
   const frontContent = isAntiVocab
     ? `<div class="fc-cat">${catLabel}</div>
@@ -1166,19 +1007,17 @@ async function answerCard(score) {
 
 function renderFlashcardEnd() {
   const { subjectId, cards, correct, bof, wrong, mode } = fcSession;
-  const isMix = subjectId === 'mix';
   const isVocabEnd = subjectId === 'vocab' || subjectId.startsWith('vocab_');
   const isAntiVocabEnd = subjectId === 'antivocab' || subjectId.startsWith('antivocab_');
   const isVocabAny = isVocabEnd || isAntiVocabEnd;
 
-  const sessionName = isMix ? 'Mix'
-    : isAntiVocabEnd ? 'Anti-vocabulaire'
+  const sessionName = isAntiVocabEnd ? 'Anti-vocabulaire'
     : isVocabEnd ? 'Vocabulaire'
     : (subjects[subjectId] || {}).name || subjectId;
 
-  const backFn = isMix || isVocabAny
-    ? (fcSession._backFn || 'renderStudyView()')
-    : `openSubjectDetail('${subjectId}')`;
+  const backFn = isVocabAny
+    ? (fcSession._backFn || `renderSubjectPage('${subjectId}')`)
+    : `renderSubjectPage('${subjectId}')`;
 
   const view = document.getElementById('view-learn');
   const total = cards.length;
@@ -1193,17 +1032,10 @@ function renderFlashcardEnd() {
        <div class="ses-item" style="color:#f97316"><div class="ses-n">${bof}</div><div class="ses-l">Bof</div></div>
        <div class="ses-item" style="color:#16a34a"><div class="ses-n">${correct}</div><div class="ses-l">Oui</div></div>`;
 
-  const qcmAfter = fcSession._qcmAfter;
   const actionHtml = isVocabAny
     ? `<button class="btn-primary" onclick="${backFn}">Retour</button>`
-    : isMix
-    ? `<button class="btn-primary" onclick="startMix('flashcard')">Recommencer</button>
-       <button class="btn-secondary" onclick="renderStudyView()">Retour</button>`
-    : qcmAfter
-    ? `<button class="btn-primary" onclick="startQCM('${qcmAfter}','due')">Continuer → QCM</button>
-       <button class="btn-secondary" onclick="renderStudyView()">Retour</button>`
     : `<button class="btn-primary" onclick="startFlashcards('${subjectId}', '${mode}')">Recommencer</button>
-       <button class="btn-secondary" onclick="openSubjectDetail('${subjectId}')">Retour</button>`;
+       <button class="btn-secondary" onclick="renderSubjectPage('${subjectId}')">Retour</button>`;
 
   view.innerHTML = `
   <div class="fc-header">
@@ -1260,7 +1092,6 @@ async function startQCMImg(subjectId, mode) {
 
 function renderQCM() {
   const { subjectId, questions, idx } = qcmSession;
-  const isMix = subjectId === 'mix';
   const view = document.getElementById('view-learn');
 
   if (idx >= questions.length) { renderQCMEnd(); return; }
@@ -1269,7 +1100,7 @@ function renderQCM() {
   const subId = q._subject || subjectId;
   const col = SUBJECT_COLORS[subId] || { primary: '#5C6BC0' };
   const pct = Math.round((idx / questions.length) * 100);
-  const backFn = isMix ? 'renderLearnGrid()' : `openSubjectDetail('${subjectId}')`;
+  const backFn = `renderSubjectPage('${subjectId}')`;
 
   // Shuffle options, track new correct index
   const nOpts = q.opts.length;
@@ -1332,13 +1163,12 @@ function nextQCM() { qcmSession.idx++; renderQCM(); }
 
 function renderQCMEnd() {
   const { subjectId, questions, correct, mode } = qcmSession;
-  const isMix = subjectId === 'mix';
-  const s = isMix ? { name: 'Mix' } : subjects[subjectId];
+  const s = subjects[subjectId];
   const view = document.getElementById('view-learn');
   const pct = Math.round((correct / questions.length) * 100);
   const emoji = pct >= 80 ? '🎉' : pct >= 60 ? '💪' : '📖';
   const msg = pct >= 80 ? 'Excellente maîtrise !' : pct >= 60 ? 'Bon travail !' : 'Révise les notions manquées !';
-  const backFn = isMix ? 'renderLearnGrid()' : `openSubjectDetail('${subjectId}')`;
+  const backFn = `renderSubjectPage('${subjectId}')`;
 
   view.innerHTML = `
   <div class="qcm-header">
@@ -1355,12 +1185,8 @@ function renderQCMEnd() {
       <div class="ses-item" style="color:#16a34a"><div class="ses-n">${correct}</div><div class="ses-l">Correctes</div></div>
       <div class="ses-item" style="color:var(--accent)"><div class="ses-n">${pct}%</div><div class="ses-l">Score</div></div>
     </div>
-    ${isMix
-      ? `<button class="btn-primary" onclick="startMix('qcm')">Recommencer</button>
-         <button class="btn-secondary" onclick="renderLearnGrid()">Retour aux matières</button>`
-      : `<button class="btn-primary" onclick="startQCM('${subjectId}', '${mode}')">Recommencer</button>
-         <button class="btn-secondary" onclick="openSubjectDetail('${subjectId}')">Retour à ${s.name}</button>`
-    }
+    <button class="btn-primary" onclick="startQCM('${subjectId}', '${mode}')">Recommencer</button>
+    <button class="btn-secondary" onclick="renderSubjectPage('${subjectId}')">Retour à ${s.name}</button>
   </div>
   `;
 }
@@ -1389,7 +1215,7 @@ function renderQCMColor() {
 
   view.innerHTML = `
   <div class="qcm-header">
-    <button class="back-btn" onclick="openSubjectDetail('${subjectId}')">←</button>
+    <button class="back-btn" onclick="renderSubjectPage('${subjectId}')">←</button>
     <div class="fc-progress-bar">
       <div class="fc-progress-fill" style="width:${pct}%; background:${col.primary}"></div>
     </div>
@@ -1466,7 +1292,7 @@ function renderQCMColorEnd() {
 
   view.innerHTML = `
   <div class="qcm-header">
-    <button class="back-btn" onclick="openSubjectDetail('${subjectId}')">←</button>
+    <button class="back-btn" onclick="renderSubjectPage('${subjectId}')">←</button>
     <div style="font-size:15px;font-weight:700;flex:1;text-align:center;color:var(--text)">QCM Coloration terminé</div>
     <div style="width:40px"></div>
   </div>
@@ -1480,7 +1306,7 @@ function renderQCMColorEnd() {
       <div class="ses-item" style="color:var(--accent)"><div class="ses-n">${pct}%</div><div class="ses-l">Score</div></div>
     </div>
     <button class="btn-primary" onclick="startQCMColor('${subjectId}')">Recommencer</button>
-    <button class="btn-secondary" onclick="openSubjectDetail('${subjectId}')">Retour à ${s.name}</button>
+    <button class="btn-secondary" onclick="renderSubjectPage('${subjectId}')">Retour à ${s.name}</button>
   </div>
   `;
 }
@@ -2003,7 +1829,7 @@ async function resetProgress() {
   if (!confirm('Remettre toute la progression à zéro ?')) return;
   await dbClear();
   toast('Progression réinitialisée');
-  renderLearnGrid();
+  renderStats();
 }
 
 // ═══════════════════════════════════════════════════
@@ -2229,46 +2055,12 @@ function renderMarkdown(md) {
   return html;
 }
 
-// ── Vue liste des fiches ──
-async function openFichesList() {
-  learnSubView = 'fiches-list';
-  const view = document.getElementById('view-learn');
-  const fiches = await loadFicheIndex();
-
-  const rows = fiches.map(f => {
-    const col = SUBJECT_COLORS[f.matiere] || { primary: '#5C6BC0', emoji: '📖' };
-    return `
-    <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openFicheView('${f.id}')">
-      <div class="tsr-emoji">${col.emoji || '📖'}</div>
-      <div class="tsr-info">
-        <div class="tsr-name">${f.titre}</div>
-        <div class="tsr-count">${f.sous_titre || ''}</div>
-      </div>
-      <div class="vc-arrow">›</div>
-    </div>`;
-  }).join('');
-
-  view.innerHTML = `
-  <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
-    <button class="back-btn" onclick="setStudyTab('explorer')">←</button>
-    <div style="font-size:20px;font-weight:900;color:var(--text)">📖 Fiches de révision</div>
-  </div>
-  ${fiches.length > 0 ? `
-  <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">${rows}</div>` : `
-  <div style="padding:40px 24px;text-align:center;color:var(--muted)">
-    <div style="font-size:40px;margin-bottom:12px">📖</div>
-    <div style="font-weight:700">Aucune fiche disponible</div>
-  </div>`}
-  <div style="height:100px"></div>
-  `;
-}
-
 // ── Vue lecture d'une fiche ──
 async function openFicheView(id) {
   learnSubView = 'fiche-view';
   const view = document.getElementById('view-learn');
   const md = await loadFicheData(id);
-  if (!md) { toast('Fiche introuvable'); openFichesList(); return; }
+  if (!md) { toast('Fiche introuvable'); renderSubjectPage(currentSubject); return; }
 
   const fiches = await loadFicheIndex();
   const meta = fiches.find(f => f.id === id) || {};
@@ -2277,7 +2069,7 @@ async function openFicheView(id) {
   view.innerHTML = `
   <div class="ctrl-layout">
     <div class="ctrl-header">
-      <button class="back-btn" onclick="openFichesList()">←</button>
+      <button class="back-btn" onclick="renderSubjectPage(currentSubject)">←</button>
       <div style="flex:1;font-size:15px;font-weight:800;color:${col.primary};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${meta.titre || 'Fiche'}</div>
     </div>
     <div class="ctrl-body fiche-content">
@@ -2297,73 +2089,6 @@ async function loadControleData(id) {
     controleCache[id] = await r.json();
     return controleCache[id];
   } catch { return null; }
-}
-
-// ── Vue liste des contrôles ──
-async function openControleList() {
-  learnSubView = 'controle-list';
-  const view = document.getElementById('view-learn');
-  const responses = await dbGetAllControles();
-  const savedIds = Object.keys(responses);
-
-  // Lister les fichiers disponibles (on hardcode les IDs pour l'instant, le serveur ne liste pas)
-  // On tente de charger une liste index
-  let available = [];
-  try {
-    const r = await fetch('/data/controles/index.json');
-    available = await r.json();
-  } catch { available = []; }
-
-  const savedRows = savedIds.map(id => {
-    const r = responses[id];
-    const col = SUBJECT_COLORS[r.matiere] || { primary: '#5C6BC0', emoji: '📝' };
-    const date = new Date(r.date).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
-    const mins = Math.round(r.duree_totale_secondes / 60);
-    return `
-    <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openControleResult('${id}')">
-      <div class="tsr-emoji">${col.emoji || '📝'}</div>
-      <div class="tsr-info">
-        <div class="tsr-name">${r.titre}</div>
-        <div class="tsr-count">${date} · ${mins} min · ${r.reponses.length} questions</div>
-      </div>
-      <button class="btn" style="color:${col.primary};padding:7px 12px;font-size:12px" onclick="event.stopPropagation();exportControleResponse('${id}')">↗</button>
-    </div>`;
-  }).join('');
-
-  const availableRows = available.map(item => {
-    const col = SUBJECT_COLORS[item.matiere] || { primary: '#5C6BC0', emoji: '📝' };
-    const done = !!responses[item.id + '-' + new Date().toISOString().slice(0,10)];
-    return `
-    <div class="today-subject-row" style="border-left-color:${col.primary}">
-      <div class="tsr-emoji">${col.emoji || '📝'}</div>
-      <div class="tsr-info">
-        <div class="tsr-name">${item.titre}</div>
-        <div class="tsr-count">${item.questions} questions</div>
-      </div>
-      ${item.fiche_id ? `<button class="btn" style="color:${col.primary};padding:10px 12px;font-size:13px" onclick="openFicheView('${item.fiche_id}')" title="Lire la fiche">📖</button>` : ''}
-      <button class="btn" style="color:${col.primary};padding:10px 14px;font-size:13px" onclick="startControle('${item.id}')">Démarrer</button>
-    </div>`;
-  }).join('');
-
-  view.innerHTML = `
-  <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
-    <button class="back-btn" onclick="setStudyTab('explorer')">←</button>
-    <div style="font-size:20px;font-weight:900;color:var(--text)">📝 Contrôles</div>
-  </div>
-  ${available.length > 0 ? `
-  <div class="section-label">Disponibles</div>
-  <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">${availableRows}</div>` : ''}
-  ${savedIds.length > 0 ? `
-  <div class="section-label">Mes réponses sauvegardées</div>
-  <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:20px">${savedRows}</div>` : ''}
-  ${available.length === 0 && savedIds.length === 0 ? `
-  <div style="padding:40px 24px;text-align:center;color:var(--muted)">
-    <div style="font-size:40px;margin-bottom:12px">📝</div>
-    <div style="font-weight:700">Aucun contrôle disponible</div>
-    <div style="font-size:13px;margin-top:6px">Demande à Claude de générer un contrôle pour commencer.</div>
-  </div>` : ''}
-  <div style="height:100px"></div>
-  `;
 }
 
 // ── Démarrer un contrôle ──
@@ -2573,8 +2298,8 @@ async function finishControle() {
       <button class="ctrl-validate-btn" style="background:${col.primary}" onclick="exportControleResponse('${responseId}')">
         📤 Exporter pour correction Claude
       </button>
-      <button class="btn" style="padding:14px;font-size:14px;font-weight:700;width:100%" onclick="openControleList()">
-        Retour aux contrôles
+      <button class="btn" style="padding:14px;font-size:14px;font-weight:700;width:100%" onclick="renderSubjectPage(currentSubject)">
+        Retour
       </button>
     </div>
   </div>
@@ -2585,7 +2310,7 @@ async function finishControle() {
 function abortControle() {
   if (!confirm('Abandonner ce contrôle ? Les réponses ne seront pas sauvegardées.')) return;
   controleSession = null;
-  openControleList();
+  renderSubjectPage(currentSubject);
 }
 
 // ── Exporter les réponses (copie dans presse-papier + téléchargement) ──
@@ -2624,7 +2349,7 @@ async function openControleResult(id) {
   view.innerHTML = `
   <div class="ctrl-layout">
     <div class="ctrl-header">
-      <button class="back-btn" onclick="openControleList()">←</button>
+      <button class="back-btn" onclick="renderSubjectPage('${data.matiere}')">←</button>
       <div style="font-size:15px;font-weight:700;flex:1;text-align:center">${data.titre}</div>
       <div style="width:40px"></div>
     </div>
