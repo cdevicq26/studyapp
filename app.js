@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v79';
+const APP_VERSION = 'v81';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -591,12 +591,12 @@ async function renderHome() {
     const { id, s, score, due } = entry;
     const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
     const days = daysUntil(s.exam);
-    const ctaText = due > 0 ? `${due} à revoir` : 'À jour ✓';
+    const ctaText = due > 0 ? `${due} exercice${due > 1 ? 's' : ''}` : 'Tout est fait ✓';
 
     return `
     <div class="subject-cell" onclick="goToSubject('${id}')">
       <div class="sc-top">
-        <span class="sc-icon">${SUBJECT_ICONS[id] || '📘'}</span>
+        <span class="sc-icon" style="background:${col.primary}1A">${SUBJECT_ICONS[id] || '📘'}</span>
         ${progressRing(score, col.primary, 56)}
       </div>
       <div class="sc-info">
