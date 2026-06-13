@@ -791,47 +791,64 @@ body {
 .stats-header { padding: max(env(safe-area-inset-top, 0), 52px) 20px 16px; }
 .stats-title { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -.8px; }
 
-.stats-globals { display: flex; gap: 10px; padding: 0 16px 4px; }
-.stat-metric, .sg-card {
-  flex: 1; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  border-radius: var(--r-sm); padding: 14px 10px; text-align: center;
+.b-legend {
+  margin: 0 16px 10px; padding: 8px 12px;
+  background: var(--accent-l); border-radius: var(--r-xs);
+  font-size: 11px; color: var(--text-2); font-weight: 600;
 }
-.sm-num, .sg-num { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -1px; }
-.sm-label, .sg-lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-top: 3px; }
 
-.stats-subject {
+.stats-subject-row {
   margin: 0 16px 10px;
   background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  border-radius: var(--r-sm); padding: 16px;
+  border-radius: var(--r-sm); padding: 12px 16px;
   border-left: 4px solid var(--muted);
 }
-.stats-subject .ss-name { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 10px; }
-.ss-row-label, .ssc-row-label {
-  font-size: 10px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: .06em; color: var(--muted); margin-bottom: 4px;
+.ssr-top { display: flex; align-items: center; justify-content: space-between; }
+.ssr-name { font-size: 14px; font-weight: 800; color: var(--text); }
+.ssr-score { font-size: 14px; font-weight: 800; }
+.ssr-bar-bg { height: 6px; border-radius: 3px; background: var(--border); margin-top: 8px; overflow: hidden; }
+.ssr-bar { height: 6px; border-radius: 3px; transition: width .6s ease; }
+.ssr-details { margin-top: 10px; }
+.ssr-details summary {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted); cursor: pointer; -webkit-tap-highlight-color: transparent;
 }
-.ss-bar-bg { height: 6px; border-radius: 3px; background: var(--border); margin-bottom: 6px; overflow: hidden; }
-.ss-bar { height: 6px; border-radius: 3px; transition: width .6s ease; }
-.ss-detail { display: flex; gap: 12px; font-size: 12px; font-weight: 600; }
-.ssc-detail { font-size: 11px; color: var(--muted); font-weight: 600; margin-top: 3px; }
-.ssc-header { display: flex; align-items: center; justify-content: space-between; font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
-.ssc-days { font-size: 18px; font-weight: 900; }
+.ssr-detail-row { display: flex; gap: 12px; font-size: 12px; font-weight: 600; color: var(--text-2); margin-top: 8px; }
+.ssr-detail-row span:first-child { flex: 1; color: var(--muted); font-weight: 700; }
 
-.stats-actions { display: flex; flex-direction: column; gap: 8px; padding: 8px 16px; }
+.stats-vocab-row {
+  margin: 0 16px 8px; display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  border-radius: var(--r-sm); padding: 12px 16px;
+  border-left: 4px solid var(--muted);
+}
+.svr-name { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
+.svr-meta { font-size: 11px; color: var(--muted); font-weight: 600; }
+.svr-pct { font-size: 14px; font-weight: 800; min-width: 38px; text-align: right; }
+
 .action-sync .ab-title { color: var(--accent); }
 .action-export .ab-title { color: #059669; }
 
+.danger-zone {
+  margin: 16px 16px 8px; padding: 12px;
+  background: #fef2f2; border: 1px solid #fecaca;
+  border-radius: var(--r-sm);
+}
+.danger-label {
+  font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+  color: #ef4444; margin-bottom: 8px;
+}
 .reset-btn {
-  margin: 8px 16px 24px; width: calc(100% - 32px);
+  width: 100%;
   background: var(--surface); color: #ef4444;
-  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  border-radius: var(--r-sm); padding: 14px;
+  border: 1px solid #fecaca; box-shadow: var(--shadow-sm);
+  border-radius: var(--r-xs); padding: 14px;
   font-size: 14px; font-weight: 600; cursor: pointer;
   font-family: 'Inter', sans-serif; display: block;
   -webkit-tap-highlight-color: transparent;
   transition: background var(--transition);
 }
-.reset-btn:active { background: #fef2f2; }
+.reset-btn:active { background: #fee2e2; }
 
 .app-version {
   text-align: center; font-size: 11px; color: var(--muted);

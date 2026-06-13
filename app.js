@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v65';
+const APP_VERSION = 'v66';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -1527,51 +1527,57 @@ function toggleAgendaTask(dateKey, taskIdx) {
 async function renderStats() {
   const view = document.getElementById('view-stats');
 
-  let totalSeen = 0, totalB3 = 0, totalQCMMastered = 0, totalVocabB3 = 0;
+  let totalSeen = 0, totalB3 = 0, totalVocabB3 = 0;
 
   // ── Matières régulières ──
-  const rows = await Promise.all(SUBJECTS_ORDER.map(async id => {
+  const subjectData = await Promise.all(SUBJECTS_ORDER.map(async id => {
     const s = subjects[id];
-    if (!s) return '';
+    if (!s) return null;
     const stats = await getSubjectStats(id);
     const qcmStats = await getQCMStats(id);
     const progress = await getCardProgress(id);
     const seen = Object.keys(progress).length;
-    const pct = stats.total ? Math.round(stats.b3 / stats.total * 100) : 0;
-    const qPct = qcmStats.total ? Math.round(qcmStats.mastered / qcmStats.total * 100) : 0;
+    const flashPct = stats.total ? Math.round((stats.b1 * 0.25 + stats.b2 * 0.6 + stats.b3 * 1.0) / stats.total * 100) : 0;
+    const checklistPct = dashboardData?.subjects?.[id]?.checklist?.pct ?? null;
+    const score = combinedScore({ flashPct, qcmTotal: qcmStats.total, qcmMastered: qcmStats.mastered, checklistPct });
 
     totalSeen += seen;
     totalB3 += stats.b3;
-    totalQCMMastered += qcmStats.mastered;
 
-    const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
-    const dashSub = (dashboardData && dashboardData.subjects && dashboardData.subjects[id]) || {};
-    const checklistPct = dashSub.checklist ? (dashSub.checklist.pct || 0) : 0;
+    return { id, s, stats, qcmStats, checklistPct, score };
+  }));
+
+  const validSubjects = subjectData.filter(Boolean);
+  const globalScore = validSubjects.length
+    ? Math.round(validSubjects.reduce((sum, v) => sum + v.score, 0) / validSubjects.length)
+    : 0;
+
+  const subjectRows = validSubjects.map(({ id, s, stats, qcmStats, checklistPct, score }) => {
+    const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0', emoji: '📖' };
+    const flashPct = stats.total ? Math.round(stats.b3 / stats.total * 100) : 0;
+    const qPct = qcmStats.total ? Math.round(qcmStats.mastered / qcmStats.total * 100) : 0;
 
     return `
-    <div class="stats-subject" style="border-left-color:${col.primary}">
-      <div class="ss-name">${col.emoji || ''} ${s.name}</div>
-      ${checklistPct > 0 ? `
-      <div class="ss-row-label">Cours (checklist)</div>
-      <div class="ss-bar-bg"><div class="ss-bar" style="width:${checklistPct}%; background:${col.primary}"></div></div>
-      <div class="ss-detail" style="margin-top:4px"><span style="color:${col.primary}">${checklistPct}% vu</span></div>
-      ` : ''}
-      <div class="ss-row-label" style="${checklistPct > 0 ? 'margin-top:12px' : ''}">Flashcards</div>
-      <div class="ss-bar-bg"><div class="ss-bar" style="width:${pct}%; background:${col.primary}"></div></div>
-      <div class="ss-detail" style="margin-top:4px">
-        <span style="color:#ef4444">✗ ${stats.b1}</span>
-        <span style="color:#f97316">~ ${stats.b2}</span>
-        <span style="color:#16a34a">✓ ${stats.b3}</span>
-        <span style="color:var(--muted)">${pct}%</span>
+    <div class="stats-subject-row" style="border-left-color:${col.primary}">
+      <div class="ssr-top">
+        <div class="ssr-name">${col.emoji || ''} ${s.name}</div>
+        <div class="ssr-score" style="color:${col.primary}">${score}%</div>
       </div>
-      <div class="ss-row-label" style="margin-top:12px">QCM</div>
-      <div class="ss-bar-bg"><div class="ss-bar" style="width:${qPct}%; background:${col.primary}; opacity:.65"></div></div>
-      <div class="ss-detail" style="margin-top:4px">
-        <span style="color:#16a34a">✓ ${qcmStats.mastered}</span>
-        <span style="color:var(--muted)">${qcmStats.mastered}/${qcmStats.total} maîtrisés</span>
-      </div>
+      <div class="ssr-bar-bg"><div class="ssr-bar" style="width:${score}%; background:${col.primary}"></div></div>
+      <details class="ssr-details">
+        <summary>Détail Leitner</summary>
+        ${checklistPct != null ? `<div class="ssr-detail-row"><span>Cours (checklist)</span><span>${checklistPct}% vu</span></div>` : ''}
+        <div class="ssr-detail-row">
+          <span>Flashcards</span>
+          <span style="color:#ef4444">✗ ${stats.b1}</span>
+          <span style="color:#f97316">~ ${stats.b2}</span>
+          <span style="color:#16a34a">✓ ${stats.b3}</span>
+          <span>${flashPct}%</span>
+        </div>
+        ${qcmStats.total ? `<div class="ssr-detail-row"><span>QCM</span><span>${qcmStats.mastered}/${qcmStats.total} maîtrisés</span><span>${qPct}%</span></div>` : ''}
+      </details>
     </div>`;
-  }));
+  }).join('');
 
   // ── Vocabulaire & Anti-vocabulaire ──
   const vocabRows = [];
@@ -1581,36 +1587,26 @@ async function renderStats() {
     const total = allCards.length;
     if (!total) continue;
 
-    const now = Date.now();
     for (const prefix of ['vocab', 'antivocab']) {
       const key = `${prefix}_${srcId}`;
       const progress = await getCardProgress(key);
       const seen = Object.keys(progress).length;
       if (!seen) continue;
 
-      let b1 = 0, b2 = 0, b3 = 0;
+      let b3 = 0;
       allCards.forEach(c => {
         const p = progress[c.id];
-        if (!p) { b1++; return; }
-        if (p.box === 1) b1++;
-        else if (p.box === 2) b2++;
-        else b3++;
+        if (p && p.box === 3) b3++;
       });
       const pct = total ? Math.round(b3 / total * 100) : 0;
       totalVocabB3 += b3;
 
       const label = prefix === 'vocab' ? `${src.emoji} ${src.name}` : `🔄 Anti-vocab ${src.name.replace('Vocabulaire ', '')}`;
       vocabRows.push(`
-      <div class="stats-subject" style="border-left-color:${src.color}">
-        <div class="ss-name">${label}</div>
-        <div class="ss-row-label">${seen}/${total} termes vus</div>
-        <div class="ss-bar-bg"><div class="ss-bar" style="width:${pct}%; background:${src.color}"></div></div>
-        <div class="ss-detail" style="margin-top:4px">
-          <span style="color:#ef4444">B1 ${b1}</span>
-          <span style="color:#f97316">B2 ${b2}</span>
-          <span style="color:#16a34a">B3 ${b3}</span>
-          <span style="color:var(--muted)">${pct}% maîtrisés</span>
-        </div>
+      <div class="stats-vocab-row" style="border-left-color:${src.color}">
+        <span class="svr-name">${label}</span>
+        <span class="svr-meta">${seen}/${total} vus</span>
+        <span class="svr-pct" style="color:${src.color}">${pct}%</span>
       </div>`);
     }
   }
@@ -1618,18 +1614,21 @@ async function renderStats() {
   view.innerHTML = `
   <div class="view-header"><div class="view-title">Stats</div></div>
 
-  <div class="stats-globals">
-    <div class="sg-card"><div class="sg-num">${totalSeen}</div><div class="sg-lbl">cartes vues</div></div>
-    <div class="sg-card"><div class="sg-num">${totalB3}</div><div class="sg-lbl">en B3</div></div>
-    <div class="sg-card"><div class="sg-num">${totalVocabB3}</div><div class="sg-lbl">vocab B3</div></div>
+  <div class="global-score-card">
+    ${progressRing(globalScore, '#6366F1', 64)}
+    <div class="gsc-info">
+      <div class="gsc-label">Avancement global</div>
+      <div class="gsc-sub">${totalSeen} cartes vues · ${totalB3} en B3 · ${totalVocabB3} vocab B3</div>
+    </div>
   </div>
 
   <div class="section-label">Par matière</div>
-  ${rows.join('')}
+  <div class="b-legend">💡 B1 = à revoir demain · B2 = dans 3 jours · B3 = maîtrisé (7 jours)</div>
+  ${subjectRows}
 
   ${vocabRows.length ? `<div class="section-label">Vocabulaire</div>${vocabRows.join('')}` : ''}
 
-  <div class="section-label">Actions</div>
+  <div class="section-label">Outils</div>
   <div class="action-list" style="margin-bottom:8px">
     <div class="action-btn action-sync" onclick="syncWithWiki()">
       <div class="ab-icon">🔄</div>
@@ -1648,7 +1647,11 @@ async function renderStats() {
       <div class="ab-info"><div class="ab-title">Récupérer vocab perdu</div><div class="ab-sub">Migration ancienne clé → nouvelles clés</div></div>
     </div>
   </div>
-  <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
+
+  <div class="danger-zone">
+    <div class="danger-label">Zone danger</div>
+    <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
+  </div>
   <div class="app-version">StudyOS ${APP_VERSION}</div>
   `;
 }
