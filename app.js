@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v82';
+const APP_VERSION = 'v83';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -72,9 +72,10 @@ let currentSubject = null;
 let fcSession = null;
 let qcmSession = null;
 let qcmColorSession = null;
+let metDbSession = null;
 let dashboardData = null;
 let currentView = 'home';
-let learnSubView = 'subject'; // 'subject' | 'flashcard' | 'qcm' | 'qcm-color' | 'fiche-view' | 'controle-question'
+let learnSubView = 'subject'; // 'subject' | 'flashcard' | 'qcm' | 'qcm-color' | 'met-db' | 'fiche-view' | 'controle-question'
 
 // Agenda
 let agendaDays = [];
@@ -324,7 +325,7 @@ function buildQuestionContext() {
       type: 'qcm-color',
       subject: (subjects[subId] || {}).name || subId,
       id: q.id,
-      label: `QCM Coloration : organites rose/bleu`,
+      label: `QCM Microscopie : organites rose/bleu`,
       img: q.img,
       rose: q.rose,
       bleu: q.bleu,
@@ -652,7 +653,6 @@ async function renderSubjectPage(id) {
   const view = document.getElementById('view-learn');
   const days = daysUntil(s.exam);
 
-  const b3pct = stats.total ? Math.round(stats.b3 / stats.total * 100) : 0;
   const flashPct = stats.total ? Math.round((stats.b1 * 0.25 + stats.b2 * 0.6 + stats.b3 * 1.0) / stats.total * 100) : 0;
   const checklistPct = dashboardData?.subjects?.[id]?.checklist?.pct ?? null;
   const score = combinedScore({ flashPct, qcmTotal: qcmStats.total, qcmMastered: qcmStats.mastered, checklistPct });
@@ -734,7 +734,7 @@ async function renderSubjectPage(id) {
       <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px">${s.name}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">${s.type || 'Matière'} · dans ${days} jours · ${formatDate(s.exam)}</div>
     </div>
-    ${progressRing(score, col.primary, 52)}
+    ${progressRing(score, col.primary, 52, String(score))}
   </div>
 
   <div class="leitner-stat-row">
@@ -754,7 +754,6 @@ async function renderSubjectPage(id) {
       <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
   </div>
-  <div class="subj-mastery">${b3pct}% maîtrisé · ${stats.b3} cartes en boîte 3</div>
 
   <div class="section-label">QCM</div>
   <div class="action-list">
@@ -771,19 +770,18 @@ async function renderSubjectPage(id) {
       <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     ${s.qcmImg && s.qcmImg.length ? `
-    <div class="action-btn" onclick="startQCMImg('${id}','quick')">
-      <div class="ab-info"><div class="ab-title">QCM Microscopie</div><div class="ab-sub">10 images aléatoires (sur ${s.qcmImg.length})</div></div>
+    <div class="action-btn" onclick="startMETDatabase('${id}')">
+      <div class="ab-info"><div class="ab-title">MET Database</div><div class="ab-sub">${s.qcmImg.length} images de microscopie électronique à parcourir</div></div>
       <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     ` : ''}
     ${s.qcmColor && s.qcmColor.length ? `
     <div class="action-btn" onclick="startQCMColor('${id}')">
-      <div class="ab-info"><div class="ab-title">QCM Coloration</div><div class="ab-sub">${s.qcmColor.length} images — identifie les organites rose/bleu</div></div>
+      <div class="ab-info"><div class="ab-title">QCM Microscopie</div><div class="ab-sub">${s.qcmColor.length} images — identifie les organites rose/bleu</div></div>
       <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     ` : ''}
   </div>
-  <div class="subj-mastery">${qcmStats.mastered}/${qcmStats.total} QCM maîtrisés</div>
 
   ${vocabHTML}
   ${fichesHTML}
@@ -1079,21 +1077,6 @@ async function startQCM(subjectId, mode) {
   renderQCM();
 }
 
-async function startQCMImg(subjectId, mode) {
-  const s = subjects[subjectId];
-  let questions;
-
-  if (mode === 'quick') {
-    questions = shuffle([...s.qcmImg]).slice(0, 10);
-  } else {
-    questions = shuffle([...s.qcmImg]);
-  }
-
-  qcmSession = { subjectId, questions, idx: 0, correct: 0, mode: 'img-' + mode };
-  learnSubView = 'qcm';
-  renderQCM();
-}
-
 function renderQCM() {
   const { subjectId, questions, idx } = qcmSession;
   const view = document.getElementById('view-learn');
@@ -1256,8 +1239,15 @@ function renderQCMColor() {
   `;
 }
 
+function organelleExplanation(subjectId, name) {
+  const s = subjects[subjectId];
+  if (!s || !s.qcmImg) return null;
+  const entry = s.qcmImg.find(q => q.opts[q.ans] === name);
+  return entry ? entry.exp : null;
+}
+
 function validateQCMColor() {
-  const { questions, idx } = qcmColorSession;
+  const { subjectId, questions, idx } = qcmColorSession;
   const q = questions[idx];
   const roseSel = document.getElementById('qcmc-rose');
   const bleuSel = document.getElementById('qcmc-bleu');
@@ -1277,10 +1267,14 @@ function validateQCMColor() {
   if (bleuOk) qcmColorSession.parts++;
   if (roseOk && bleuOk) qcmColorSession.correct++;
 
-  let feedback = '';
-  if (!roseOk) feedback += `<div class="qcm-explanation">Réponse attendue (rose) : <strong>${q.rose}</strong></div>`;
-  if (!bleuOk) feedback += `<div class="qcm-explanation">Réponse attendue (bleu) : <strong>${q.bleu}</strong></div>`;
-  if (roseOk && bleuOk) feedback = `<div class="qcm-explanation">Bravo, les deux organites sont corrects !</div>`;
+  const fmt = t => (t || '').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  const roseExp = organelleExplanation(subjectId, q.rose);
+  const bleuExp = organelleExplanation(subjectId, q.bleu);
+
+  const feedback = `
+    <div class="qcm-explanation"><strong class="qcmc-rose-text">${roseOk ? '✓' : '✗'} Rose — ${q.rose}</strong>${roseExp ? `<br>${fmt(roseExp)}` : ''}</div>
+    <div class="qcm-explanation"><strong class="qcmc-bleu-text">${bleuOk ? '✓' : '✗'} Bleu — ${q.bleu}</strong>${bleuExp ? `<br>${fmt(bleuExp)}` : ''}</div>
+  `;
   document.getElementById('qcmc-feedback').innerHTML = feedback;
 
   const nextBtn = document.getElementById('qcm-next');
@@ -1301,7 +1295,7 @@ function renderQCMColorEnd() {
   view.innerHTML = `
   <div class="qcm-header">
     <button class="back-btn" onclick="renderSubjectPage('${subjectId}')">←</button>
-    <div style="font-size:15px;font-weight:700;flex:1;text-align:center;color:var(--text)">QCM Coloration terminé</div>
+    <div style="font-size:15px;font-weight:700;flex:1;text-align:center;color:var(--text)">QCM Microscopie terminé</div>
     <div style="width:40px"></div>
   </div>
   <div class="session-end">
@@ -1317,6 +1311,57 @@ function renderQCMColorEnd() {
     <button class="btn-secondary" onclick="renderSubjectPage('${subjectId}')">Retour à ${s.name}</button>
   </div>
   `;
+}
+
+// ═══════════════════════════════════════════════════
+// MET DATABASE (banque d'images de microscopie électronique)
+// ═══════════════════════════════════════════════════
+function startMETDatabase(subjectId) {
+  const s = subjects[subjectId];
+  metDbSession = { subjectId, order: shuffle([...Array(s.qcmImg.length).keys()]), pos: 0 };
+  learnSubView = 'met-db';
+  renderMETDatabase();
+}
+
+function renderMETDatabase() {
+  const { subjectId, order, pos } = metDbSession;
+  const s = subjects[subjectId];
+  const q = s.qcmImg[order[pos]];
+  const view = document.getElementById('view-learn');
+  learnSubView = 'met-db';
+  setNavbarVisible(false);
+
+  const name = q.opts[q.ans];
+  const exp = (q.exp || '').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+  view.innerHTML = `
+  <div class="qcm-header">
+    <button class="back-btn" onclick="renderSubjectPage('${subjectId}')">←</button>
+    <div style="font-size:15px;font-weight:700;flex:1;text-align:center;color:var(--text)">MET Database</div>
+    <div class="fc-counter">${pos + 1}/${order.length}</div>
+  </div>
+  <div class="qcm-body">
+    <img class="qcm-img" src="${q.img}" alt="Image de microscopie électronique">
+    <div class="qcm-question" style="text-align:center">${name}</div>
+    ${exp ? `<div class="qcm-explanation">${exp}</div>` : ''}
+  </div>
+  <button class="qcm-next-btn show" onclick="nextMETDatabase()">Suivant →</button>
+  `;
+}
+
+function nextMETDatabase() {
+  metDbSession.pos++;
+  if (metDbSession.pos >= metDbSession.order.length) {
+    const s = subjects[metDbSession.subjectId];
+    const last = metDbSession.order[metDbSession.order.length - 1];
+    let newOrder = shuffle([...Array(s.qcmImg.length).keys()]);
+    if (newOrder.length > 1 && newOrder[0] === last) {
+      [newOrder[0], newOrder[1]] = [newOrder[1], newOrder[0]];
+    }
+    metDbSession.order = newOrder;
+    metDbSession.pos = 0;
+  }
+  renderMETDatabase();
 }
 
 // ═══════════════════════════════════════════════════

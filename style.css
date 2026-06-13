@@ -433,8 +433,6 @@ body {
 .learn-header { padding: max(env(safe-area-inset-top, 0), 52px) 20px 16px; }
 .learn-title { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -.8px; }
 
-.subj-mastery { text-align: center; padding: 16px 22px 24px; font-size: 13px; color: var(--muted); font-weight: 600; }
-
 /* Subject learn card (alternative layout if used) */
 .subject-learn-card {
   background: var(--surface); border: 2px solid var(--border); box-shadow: var(--shadow-sm);
@@ -645,6 +643,9 @@ body {
 .qcm-next-btn.show { opacity: 1; pointer-events: auto; }
 
 /* ── 10b. QCM COLORATION ── */
+.qcmc-rose-text { color: #ec4899; }
+.qcmc-bleu-text { color: #3b82f6; }
+.qcm-explanation + .qcm-explanation { margin-top: -4px; }
 .qcmc-group { margin-bottom: 14px; }
 .qcmc-label {
   display: flex; align-items: center; gap: 8px;
