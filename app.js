@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v88';
+const APP_VERSION = 'v89';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -32,11 +32,69 @@ function applyStoredAccent() {
 }
 
 // ═══════════════════════════════════════════════════
+// LEVÉ / COUCHÉ DU SOLEIL (pour le mode "Auto")
+// ═══════════════════════════════════════════════════
+const DEFAULT_COORDS = { lat: 50.8503, lon: 4.3517 }; // Bruxelles, par défaut
+
+function getStoredCoords() {
+  try { return JSON.parse(localStorage.getItem('studyos-geo') || 'null'); }
+  catch { return null; }
+}
+
+function requestGeoOnce() {
+  if (getStoredCoords() || !navigator.geolocation) return;
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      localStorage.setItem('studyos-geo', JSON.stringify({ lat: pos.coords.latitude, lon: pos.coords.longitude }));
+      applyStoredTheme();
+    },
+    () => {},
+    { timeout: 10000 }
+  );
+}
+
+// Algorithme NOAA — heure UTC (en heures décimales) du lever/coucher du soleil
+function sunTimeUTC(lat, lon, date, isSunrise) {
+  const D2R = Math.PI / 180, R2D = 180 / Math.PI;
+  const dayOfYear = Math.floor((Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 86400000) + 1;
+  const zenith = 90.83;
+  const lngHour = lon / 15;
+  const t = isSunrise ? dayOfYear + ((6 - lngHour) / 24) : dayOfYear + ((18 - lngHour) / 24);
+  const M = (0.9856 * t) - 3.289;
+  let L = M + (1.916 * Math.sin(D2R * M)) + (0.020 * Math.sin(2 * D2R * M)) + 282.634;
+  L = (L + 360) % 360;
+  let RA = R2D * Math.atan(0.91764 * Math.tan(D2R * L));
+  RA = (RA + 360) % 360;
+  const Lq = Math.floor(L / 90) * 90, RAq = Math.floor(RA / 90) * 90;
+  RA = (RA + (Lq - RAq)) / 15;
+  const sinDec = 0.39782 * Math.sin(D2R * L);
+  const cosDec = Math.cos(Math.asin(sinDec));
+  const cosH = (Math.cos(D2R * zenith) - (sinDec * Math.sin(D2R * lat))) / (cosDec * Math.cos(D2R * lat));
+  if (cosH > 1 || cosH < -1) return null; // jour/nuit polaire
+  let H = isSunrise ? 360 - R2D * Math.acos(cosH) : R2D * Math.acos(cosH);
+  H = H / 15;
+  const T = H + RA - (0.06571 * t) - 6.622;
+  let UT = (T - lngHour) % 24;
+  if (UT < 0) UT += 24;
+  return UT;
+}
+
+function isNightTime() {
+  const { lat, lon } = getStoredCoords() || DEFAULT_COORDS;
+  const now = new Date();
+  const sunriseUTC = sunTimeUTC(lat, lon, now, true);
+  const sunsetUTC = sunTimeUTC(lat, lon, now, false);
+  if (sunriseUTC == null || sunsetUTC == null) return now.getHours() < 7 || now.getHours() >= 21;
+  const nowUTC = now.getUTCHours() + now.getUTCMinutes() / 60;
+  return nowUTC < sunriseUTC || nowUTC > sunsetUTC;
+}
+
+// ═══════════════════════════════════════════════════
 // THÈME (clair / sombre / auto)
 // ═══════════════════════════════════════════════════
 function applyStoredTheme() {
   const mode = localStorage.getItem('studyos-theme') || 'light';
-  const dark = mode === 'dark' || (mode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const dark = mode === 'dark' || (mode === 'auto' && isNightTime());
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', dark ? '#15171C' : '#FFFFFF');
@@ -46,14 +104,14 @@ function applyStoredTheme() {
 function setTheme(mode) {
   localStorage.setItem('studyos-theme', mode);
   applyStoredTheme();
+  if (mode === 'auto') requestGeoOnce();
   renderSettings();
 }
 
-if (window.matchMedia) {
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if ((localStorage.getItem('studyos-theme') || 'light') === 'auto') applyStoredTheme();
-  });
-}
+// En mode "Auto", revérifie périodiquement si le lever/coucher du soleil est franchi
+setInterval(() => {
+  if ((localStorage.getItem('studyos-theme') || 'light') === 'auto') applyStoredTheme();
+}, 10 * 60 * 1000);
 
 // ═══════════════════════════════════════════════════
 // TAILLE DE TEXTE
@@ -74,7 +132,10 @@ function setTextSize(size) {
 // ═══════════════════════════════════════════════════
 // DATES D'EXAMEN PERSONNALISÉES
 // ═══════════════════════════════════════════════════
+const guestExamDates = {};
+
 function getExamDateOverrides() {
+  if (GUEST_MODE) return guestExamDates;
   try { return JSON.parse(localStorage.getItem('studyos-examdates') || '{}'); }
   catch { return {}; }
 }
@@ -88,8 +149,8 @@ function setExamDate(subjectId, dateStr) {
   const overrides = getExamDateOverrides();
   if (dateStr) overrides[subjectId] = dateStr;
   else delete overrides[subjectId];
-  localStorage.setItem('studyos-examdates', JSON.stringify(overrides));
-  toast('Date d\'examen mise à jour');
+  if (!GUEST_MODE) localStorage.setItem('studyos-examdates', JSON.stringify(overrides));
+  toast(GUEST_MODE ? 'Date modifiée pour cette session uniquement' : 'Date d\'examen mise à jour');
 }
 
 // ═══════════════════════════════════════════════════
@@ -1847,6 +1908,7 @@ function renderSettings() {
     <div class="toggle-switch${remindersOn ? ' on' : ''}"><div class="toggle-knob"></div></div>
   </div>
 
+  ${GUEST_MODE ? '' : `
   <div class="section-label">Données</div>
   <div class="action-list" style="margin-bottom:8px">
     <div class="action-btn action-sync" onclick="syncWithWiki()">
@@ -1866,7 +1928,7 @@ function renderSettings() {
   <div class="danger-zone">
     <div class="danger-label">Zone danger</div>
     <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
-  </div>
+  </div>`}
   <div class="app-version">StudyOS ${APP_VERSION}</div>`;
 
   const input = document.getElementById('settings-name-input');
@@ -2088,6 +2150,7 @@ function setupLockScreen() {
 document.addEventListener('DOMContentLoaded', () => {
   applyStoredTheme();
   applyStoredTextSize();
+  if ((localStorage.getItem('studyos-theme') || 'light') === 'auto') requestGeoOnce();
   if (localStorage.getItem('studyos-auth') === 'charles') {
     document.getElementById('lock-screen').remove();
     init();
