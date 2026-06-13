@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v70';
+const APP_VERSION = 'v71';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -12,12 +12,12 @@ const PLACE_LABELS = { '🏠': 'Maison', '🏫': 'École' };
 function placeLabel(place) { return PLACE_LABELS[place] || place || ''; }
 
 const SUBJECT_COLORS = {
-  geo:      { primary: '#6F98C8' },
-  philo:    { primary: '#C54536' },
-  bio:      { primary: '#3A9FA7' },
-  francais: { primary: '#9F7EC8' },
-  maths:    { primary: '#D4A843' },
-  chimie:   { primary: '#5BAD8E' },
+  geo:      { primary: '#2F8FE0' },
+  philo:    { primary: '#8B5CF6' },
+  bio:      { primary: '#14B8A6' },
+  francais: { primary: '#EC4899' },
+  maths:    { primary: '#EAB308' },
+  chimie:   { primary: '#22C55E' },
 };
 
 const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
@@ -359,11 +359,11 @@ async function loadAllSubjects() {
 }
 
 const VOCAB_SOURCES = {
-  bio:      { file: '/data/vocabulaire-bio.json',      name: 'Vocabulaire Biologie',   color: '#3A9FA7' },
-  geo:      { file: '/data/vocabulaire-geo.json',      name: 'Vocabulaire Géographie', color: '#6F98C8' },
-  chimie:   { file: '/data/vocabulaire-chimie.json',   name: 'Vocabulaire Chimie',     color: '#5BAD8E' },
-  philo:    { file: '/data/vocabulaire-philo.json',    name: 'Vocabulaire Philo',      color: '#C54536' },
-  francais: { file: '/data/vocabulaire-francais.json', name: 'Vocabulaire Français',   color: '#9F7EC8' },
+  bio:      { file: '/data/vocabulaire-bio.json',      name: 'Vocabulaire Biologie',   color: '#14B8A6' },
+  geo:      { file: '/data/vocabulaire-geo.json',      name: 'Vocabulaire Géographie', color: '#2F8FE0' },
+  chimie:   { file: '/data/vocabulaire-chimie.json',   name: 'Vocabulaire Chimie',     color: '#22C55E' },
+  philo:    { file: '/data/vocabulaire-philo.json',    name: 'Vocabulaire Philo',      color: '#8B5CF6' },
+  francais: { file: '/data/vocabulaire-francais.json', name: 'Vocabulaire Français',   color: '#EC4899' },
 };
 const vocabCache = {};
 async function loadVocabSource(id) {
