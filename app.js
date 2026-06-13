@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v72';
+const APP_VERSION = 'v73';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -547,7 +547,7 @@ async function renderHome() {
     const days = daysUntil(s.exam);
 
     return `
-    <div class="subject-cell" style="border-left:6px solid ${col.primary}" onclick="goToSubject('${id}')">
+    <div class="subject-cell" style="border-left:6px solid ${col.primary};background:${col.primary}0D" onclick="goToSubject('${id}')">
       ${progressRing(score, col.primary, 48)}
       <div class="sc-info">
         <div class="sc-name">${s.name}</div>
