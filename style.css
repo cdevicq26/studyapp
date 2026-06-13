@@ -699,47 +699,34 @@ body {
 .agenda-header { padding: max(env(safe-area-inset-top, 0), 52px) 20px 8px; }
 .agenda-title { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -.8px; }
 
-.week-nav { display: flex; align-items: center; gap: 10px; padding: 10px 16px 14px; }
-.week-nav-btn {
-  width: 34px; height: 34px; border-radius: 11px;
-  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  cursor: pointer; color: var(--text);
-  font-size: 18px; display: flex; align-items: center; justify-content: center;
-  -webkit-tap-highlight-color: transparent;
-  font-family: 'Inter', sans-serif;
-  transition: background var(--transition);
-}
-.week-nav-btn:active { background: var(--accent-l); }
-.week-label { flex: 1; text-align: center; font-size: 13px; font-weight: 700; color: var(--text); }
-
-.week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 0 16px 16px; }
-.wday {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 14px; padding: 9px 3px;
-  text-align: center; cursor: pointer;
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
-  min-height: 68px; font-family: 'Inter', sans-serif;
-  -webkit-tap-highlight-color: transparent;
-  border-top: 3px solid transparent;
-  transition: background var(--transition);
-}
-.wday.active { background: var(--accent-l); border-color: var(--accent); }
-.wday.is-today { border-top-color: var(--accent); }
-.wday.no-data { opacity: .35; pointer-events: none; }
-.wday-name { font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-.wday-num { font-size: 20px; font-weight: 900; color: var(--text); line-height: 1; }
-.wday.active .wday-name, .wday.active .wday-num { color: var(--accent); }
-.wday-dot { width: 5px; height: 5px; border-radius: 50%; }
-.wday-exam-tag { font-size: 7px; font-weight: 800; text-transform: uppercase; padding: 1px 4px; border-radius: 3px; color: #fff; }
-
-.agenda-detail-wrap { padding: 0 16px 16px; }
-.agenda-detail {
+.agenda-today-card {
+  margin: 10px 16px 16px;
   background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
   border-radius: var(--r); overflow: hidden;
 }
 .agenda-detail-header { padding: 14px 18px; border-bottom: 1px solid var(--border); }
 .adh-date { font-size: 15px; font-weight: 800; color: var(--text); }
 .adh-exam-tag { display: inline-block; margin-top: 6px; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; color: #fff; }
+
+.agenda-day-list { padding: 0 16px 16px; display: flex; flex-direction: column; gap: 8px; }
+.agenda-day-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  border-radius: var(--r-sm); cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--transition);
+}
+.agenda-day-row:active { background: var(--accent-l); }
+.agenda-day-row.is-today { border-color: var(--accent); }
+.adr-date { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
+.agenda-row-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; color: #fff; }
+.agenda-row-count { font-size: 12px; font-weight: 700; color: var(--muted); }
+.adr-chevron { font-size: 16px; color: var(--muted); width: 16px; text-align: center; }
+.agenda-day-detail {
+  background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+  border-radius: var(--r-sm); overflow: hidden;
+}
 .agenda-progress-wrap {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 18px 2px;
@@ -770,15 +757,17 @@ body {
 
 .at-row {
   display: flex; align-items: center; gap: 12px;
-  padding: 11px 14px;
+  padding: 13px 14px;
   border-bottom: 1px solid var(--border);
+  border-left: 3px solid transparent;
   cursor: pointer; -webkit-tap-highlight-color: transparent;
   transition: opacity var(--transition);
 }
 .at-row:last-child { border-bottom: none; }
 .at-row:active { opacity: .7; }
+.at-icon { font-size: 18px; flex-shrink: 0; line-height: 1; }
 .at-check {
-  width: 22px; height: 22px; border-radius: 7px; flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 9px; flex-shrink: 0;
   background: var(--surface); border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
   transition: background var(--transition), border-color var(--transition);
@@ -786,9 +775,9 @@ body {
 .at-row.at-done .at-check {
   background: var(--accent); border-color: var(--accent);
 }
-.at-check svg { width: 13px; height: 13px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; display: none; }
+.at-check svg { width: 16px; height: 16px; fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; display: none; }
 .at-row.at-done .at-check svg { display: block; }
-.at-text { font-size: 13px; color: var(--text); line-height: 1.4; flex: 1; }
+.at-text { font-size: 13px; color: var(--text); line-height: 1.4; flex: 1; white-space: normal; word-break: break-word; }
 .at-row.at-done .at-text { text-decoration: line-through; color: var(--muted); }
 .agenda-exam-band { padding: 16px 18px; font-size: 15px; font-weight: 800; color: #fff; }
 .agenda-empty { padding: 20px; text-align: center; font-size: 13px; color: var(--muted); font-style: italic; }

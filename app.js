@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v64';
+const APP_VERSION = 'v65';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -37,10 +37,8 @@ let currentView = 'home';
 let learnSubView = 'subject'; // 'subject' | 'flashcard' | 'qcm' | 'qcm-color' | 'fiche-view' | 'controle-question'
 
 // Agenda
-let agendaWeeks = [], agendaWeekIdx = 0, agendaDaySelected = null;
+let agendaDays = [];
 
-const WDAY_NAMES = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
-const FR_MONTHS_A = ['jan', 'fév', 'mar', 'avr', 'mai', 'juin', 'juil', 'aoû', 'sep', 'oct', 'nov', 'déc'];
 
 // ═══════════════════════════════════════════════════
 // INDEXEDDB — spec-exact schema
@@ -1338,180 +1336,24 @@ function initSwipeFC(element, onLeft, onRight, onUp) {
   }, { passive: true });
 }
 
-// Swipe for agenda week
-function initSwipe(element, onLeft, onRight) {
-  if (!element) return;
-  let startX, startY;
-  element.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-  }, { passive: true });
-  element.addEventListener('touchend', e => {
-    if (startX == null) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    const dy = e.changedTouches[0].clientY - startY;
-    startX = startY = null;
-    if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)) return;
-    if (dx < -60) onLeft && onLeft();
-    else if (dx > 60) onRight && onRight();
-  }, { passive: true });
-}
-
 // ═══════════════════════════════════════════════════
 // VIEW 4 — AGENDA
 // ═══════════════════════════════════════════════════
-function buildAgendaWeeks() {
-  if (!dashboardData || !dashboardData.planning) return;
-  const planning = dashboardData.planning;
-  const byDate = {};
-  planning.forEach(p => { byDate[p.fullDate] = p; });
-
-  const firstDate = new Date(planning[0].fullDate);
-  firstDate.setHours(0, 0, 0, 0);
-  const dow = firstDate.getDay() || 7;
-  const monday = new Date(firstDate);
-  monday.setDate(firstDate.getDate() - dow + 1);
-
-  agendaWeeks = [];
-  for (let w = 0; w < 4; w++) {
-    const week = [];
-    for (let d = 0; d < 7; d++) {
-      const dt = new Date(monday);
-      dt.setDate(monday.getDate() + w * 7 + d);
-      const fullDate = localDateStr(dt);
-      week.push({ dt, fullDate, plan: byDate[fullDate] || null });
-    }
-    agendaWeeks.push(week);
-  }
+function detectTaskSubject(text) {
+  const t = text.toLowerCase();
+  if (/g[ée]o/.test(t)) return 'geo';
+  if (/philo/.test(t)) return 'philo';
+  if (/\bbio/.test(t)) return 'bio';
+  if (/math/.test(t)) return 'maths';
+  if (/fran[çc]/.test(t)) return 'francais';
+  if (/chimie/.test(t)) return 'chimie';
+  return null;
 }
 
-function renderAgenda() {
-  const view = document.getElementById('view-agenda');
-  if (!dashboardData || !dashboardData.planning || !dashboardData.planning.length) {
-    view.innerHTML = `
-    <div class="view-header"><div class="view-title">Agenda</div></div>
-    <div class="agenda-no-data"><div style="font-size:48px;margin-bottom:14px">📡</div><p>Aucun planning disponible.</p></div>`;
-    return;
-  }
-  buildAgendaWeeks();
-
-  const todayStr = localDateStr();
-  agendaWeekIdx = 0; agendaDaySelected = null;
-  outer: for (let wi = 0; wi < agendaWeeks.length; wi++) {
-    for (const day of agendaWeeks[wi]) {
-      if (day.fullDate === todayStr) { agendaWeekIdx = wi; agendaDaySelected = day; break outer; }
-    }
-  }
-
-  view.innerHTML = `
-  <div class="view-header"><div class="view-title">Agenda</div></div>
-  <div id="agenda-week-nav"></div>
-  <div id="agenda-week-grid"></div>
-  <div id="agenda-detail-wrap"></div>`;
-
-  renderWeekNav();
-  renderWeekGrid();
-  if (agendaDaySelected) renderAgendaDetail();
-
-  initSwipe(view,
-    () => { if (agendaWeekIdx < agendaWeeks.length - 1) { agendaWeekIdx++; agendaDaySelected = null; renderWeekNav(); renderWeekGrid(); document.getElementById('agenda-detail-wrap').innerHTML = ''; } },
-    () => { if (agendaWeekIdx > 0) { agendaWeekIdx--; agendaDaySelected = null; renderWeekNav(); renderWeekGrid(); document.getElementById('agenda-detail-wrap').innerHTML = ''; } }
-  );
-}
-
-function renderWeekNav() {
-  const week = agendaWeeks[agendaWeekIdx];
-  const mon = week[0].dt, sun = week[6].dt;
-  const label = `${mon.getDate()} ${FR_MONTHS_A[mon.getMonth()]} – ${sun.getDate()} ${FR_MONTHS_A[sun.getMonth()]}`;
-  document.getElementById('agenda-week-nav').innerHTML = `
-  <div class="week-nav">
-    <button class="week-nav-btn" onclick="changeAgendaWeek(-1)">‹</button>
-    <div class="week-label">${label}</div>
-    <button class="week-nav-btn" onclick="changeAgendaWeek(1)">›</button>
-  </div>`;
-}
-
-function changeAgendaWeek(dir) {
-  const next = agendaWeekIdx + dir;
-  if (next < 0 || next >= agendaWeeks.length) return;
-  agendaWeekIdx = next;
-  const todayStr = localDateStr();
-  agendaDaySelected = agendaWeeks[next].find(day => day.fullDate === todayStr) || null;
-  renderWeekNav(); renderWeekGrid();
-  if (agendaDaySelected) renderAgendaDetail();
-  else document.getElementById('agenda-detail-wrap').innerHTML = '';
-}
-
-function renderWeekGrid() {
-  const week = agendaWeeks[agendaWeekIdx];
-  const todayStr = localDateStr();
-  const cells = week.map((day, i) => {
-    const { dt, fullDate, plan } = day;
-    const name = WDAY_NAMES[dt.getDay()];
-    const num = dt.getDate();
-    const isToday = fullDate === todayStr;
-    const isActive = agendaDaySelected && agendaDaySelected.fullDate === fullDate;
-    const isExam = plan && plan.isExam;
-    const hasData = !!plan;
-    const borderColor = isExam
-      ? (plan.examColor || 'var(--accent)')
-      : isToday ? 'var(--accent)' : 'transparent';
-
-    let badge = '';
-    if (isExam && plan.examColor) {
-      const firstTask = plan.tasks && plan.tasks[0];
-      const subName = firstTask ? firstTask.text.replace(/.*—\s*/, '').split(' ')[0] : 'Exam';
-      badge = `<span class="wday-exam-tag" style="background:${plan.examColor}">${subName}</span>`;
-    } else if (hasData) {
-      badge = `<span class="wday-dot" style="background:var(--accent)"></span>`;
-    } else {
-      badge = `<span class="wday-dot"></span>`;
-    }
-
-    return `<button class="wday${isToday ? ' is-today' : ''}${isActive ? ' active' : ''}${!hasData ? ' no-data' : ''}"
-      style="border-top-color:${borderColor}"
-      onclick="selectWeekDay(${agendaWeekIdx},${i})">
-      <span class="wday-name">${name}</span>
-      <span class="wday-num">${num}</span>
-      ${badge}
-    </button>`;
-  }).join('');
-  document.getElementById('agenda-week-grid').innerHTML = `<div class="week-grid">${cells}</div>`;
-}
-
-function selectWeekDay(weekIdx, dayIdx) {
-  const day = agendaWeeks[weekIdx][dayIdx];
-  if (!day.plan) return;
-  if (agendaDaySelected && agendaDaySelected.fullDate === day.fullDate) {
-    agendaDaySelected = null;
-    document.getElementById('agenda-detail-wrap').innerHTML = '';
-  } else {
-    agendaDaySelected = day;
-    renderAgendaDetail();
-  }
-  renderWeekGrid();
-}
-
-const guestAgendaChecked = {};
-function getAgendaChecked(dateKey) {
-  if (GUEST_MODE) return guestAgendaChecked[dateKey] || {};
-  try { return JSON.parse(localStorage.getItem(`agenda-checked-${dateKey}`) || '{}'); } catch { return {}; }
-}
-function toggleAgendaTask(dateKey, taskIdx) {
+function slotsHTML(day) {
+  const plan = day;
+  const dateKey = plan.fullDate;
   const checked = getAgendaChecked(dateKey);
-  checked[taskIdx] = !checked[taskIdx];
-  if (GUEST_MODE) guestAgendaChecked[dateKey] = checked;
-  else localStorage.setItem(`agenda-checked-${dateKey}`, JSON.stringify(checked));
-  renderAgendaDetail();
-}
-
-function renderAgendaDetail() {
-  const wrap = document.getElementById('agenda-detail-wrap');
-  if (!wrap || !agendaDaySelected) return;
-  const { dt, plan } = agendaDaySelected;
-  const dateKey = plan.fullDate || dt.toISOString().slice(0, 10);
-  const checked = getAgendaChecked(dateKey);
-  const fullDateStr = dt.toLocaleDateString('fr-BE', { weekday: 'long', day: 'numeric', month: 'long' });
 
   let content = '';
   if (plan.isExam) {
@@ -1535,8 +1377,13 @@ function renderAgendaDetail() {
     const doneSlot = tasks.filter(t => checked[t.globalIdx]).length;
     const rows = tasks.map(t => {
       const isDone = !!checked[t.globalIdx];
-      return `<div class="at-row${isDone ? ' at-done' : ''}" onclick="toggleAgendaTask('${dateKey}', ${t.globalIdx})">
+      const subj = detectTaskSubject(t.text);
+      const col = subj ? SUBJECT_COLORS[subj] : null;
+      const icon = col ? col.emoji : (t.place || '📌');
+      const borderStyle = col ? `border-left-color:${col.primary}` : '';
+      return `<div class="at-row${isDone ? ' at-done' : ''}" style="${borderStyle}" onclick="toggleAgendaTask('${dateKey}', ${t.globalIdx})">
         <div class="at-check">${isDone ? '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>' : ''}</div>
+        <span class="at-icon">${icon}</span>
         <span class="at-text">${t.text}</span>
       </div>`;
     }).join('');
@@ -1549,15 +1396,11 @@ function renderAgendaDetail() {
     </div>`;
   });
 
-  if (!anySlot && !plan.isExam) content = `<div class="agenda-empty">Rien de prévu</div>`;
+  if (!anySlot && !plan.isExam) content = `<div class="agenda-empty">Rien de prévu ce jour</div>`;
 
   const totalAll = allTasks.length;
   const doneAll = allTasks.filter((_, i) => checked[i]).length;
   const progressPct = totalAll ? Math.round(doneAll / totalAll * 100) : 0;
-
-  const examTagHtml = (plan.isExam && plan.examColor)
-    ? `<span class="adh-exam-tag" style="background:${plan.examColor}">${(plan.tasks && plan.tasks[0]) ? plan.tasks[0].text : 'Examen'}</span>`
-    : '';
 
   const progressBar = totalAll ? `
     <div class="agenda-progress-wrap">
@@ -1567,17 +1410,115 @@ function renderAgendaDetail() {
       <span class="agenda-progress-label">${doneAll}/${totalAll}</span>
     </div>` : '';
 
-  wrap.innerHTML = `
-  <div class="agenda-detail-wrap">
-    <div class="agenda-detail">
+  return `${progressBar}${content}`;
+}
+
+function dayBadgeHTML(day) {
+  if (day.isExam) {
+    const examTask = day.tasks && day.tasks[0];
+    const subName = examTask ? examTask.text.replace(/.*—\s*/, '') : 'Examen';
+    return `<span class="agenda-row-tag" style="background:${day.examColor || 'var(--accent)'}">${subName}</span>`;
+  }
+  const tasks = day.tasks || [];
+  if (!tasks.length) return `<span class="agenda-row-count">—</span>`;
+  const checked = getAgendaChecked(day.fullDate);
+  const done = tasks.filter((_, i) => checked[i]).length;
+  return `<span class="agenda-row-count">${done}/${tasks.length}</span>`;
+}
+
+function renderAgenda() {
+  const view = document.getElementById('view-agenda');
+  if (!dashboardData || !dashboardData.planning || !dashboardData.planning.length) {
+    view.innerHTML = `
+    <div class="view-header"><div class="view-title">Agenda</div></div>
+    <div class="agenda-no-data"><div style="font-size:48px;margin-bottom:14px">📡</div><p>Aucun planning disponible.</p></div>`;
+    return;
+  }
+
+  agendaDays = dashboardData.planning;
+  const todayStr = localDateStr();
+  const todayDay = agendaDays.find(d => d.fullDate === todayStr);
+
+  let todayCardHTML;
+  if (todayDay) {
+    const dt = new Date(todayDay.fullDate);
+    const fullDateStr = dt.toLocaleDateString('fr-BE', { weekday: 'long', day: 'numeric', month: 'long' });
+    const examTagHtml = (todayDay.isExam && todayDay.examColor)
+      ? `<span class="adh-exam-tag" style="background:${todayDay.examColor}">${(todayDay.tasks && todayDay.tasks[0]) ? todayDay.tasks[0].text : 'Examen'}</span>`
+      : '';
+    todayCardHTML = `
+    <div class="agenda-today-card">
       <div class="agenda-detail-header">
-        <div class="adh-date">${capFirst(fullDateStr)}</div>
+        <div class="adh-date">Aujourd'hui — ${capFirst(fullDateStr)}</div>
         ${examTagHtml}
       </div>
-      ${progressBar}
-      ${content}
+      <div id="agenda-today-slots">${slotsHTML(todayDay)}</div>
+    </div>`;
+  } else {
+    todayCardHTML = `
+    <div class="agenda-today-card">
+      <div class="agenda-detail-header"><div class="adh-date">Aujourd'hui</div></div>
+      <div class="agenda-empty">Rien de prévu aujourd'hui</div>
+    </div>`;
+  }
+
+  const rows = agendaDays.map(day => {
+    const dt = new Date(day.fullDate);
+    const isToday = day.fullDate === todayStr;
+    const dayName = dt.toLocaleDateString('fr-BE', { weekday: 'short' });
+    return `
+    <div class="agenda-day-row${isToday ? ' is-today' : ''}" onclick="toggleAgendaDay('${day.fullDate}')">
+      <div class="adr-date">${capFirst(dayName)} ${day.date}</div>
+      <div id="agenda-row-badge-${day.fullDate}">${dayBadgeHTML(day)}</div>
+      <div class="adr-chevron" id="adr-chevron-${day.fullDate}">›</div>
     </div>
-  </div>`;
+    <div class="agenda-day-detail" id="agenda-day-detail-${day.fullDate}" style="display:none"></div>`;
+  }).join('');
+
+  view.innerHTML = `
+  <div class="view-header"><div class="view-title">Agenda</div></div>
+  ${todayCardHTML}
+  <div class="agenda-day-list">${rows}</div>`;
+}
+
+function toggleAgendaDay(fullDate) {
+  const detail = document.getElementById(`agenda-day-detail-${fullDate}`);
+  const chevron = document.getElementById(`adr-chevron-${fullDate}`);
+  if (!detail) return;
+  const isOpen = detail.style.display !== 'none';
+  if (isOpen) {
+    detail.style.display = 'none';
+    chevron.textContent = '›';
+  } else {
+    const day = agendaDays.find(d => d.fullDate === fullDate);
+    detail.innerHTML = slotsHTML(day);
+    detail.style.display = 'block';
+    chevron.textContent = '⌄';
+  }
+}
+
+const guestAgendaChecked = {};
+function getAgendaChecked(dateKey) {
+  if (GUEST_MODE) return guestAgendaChecked[dateKey] || {};
+  try { return JSON.parse(localStorage.getItem(`agenda-checked-${dateKey}`) || '{}'); } catch { return {}; }
+}
+function toggleAgendaTask(dateKey, taskIdx) {
+  const checked = getAgendaChecked(dateKey);
+  checked[taskIdx] = !checked[taskIdx];
+  if (GUEST_MODE) guestAgendaChecked[dateKey] = checked;
+  else localStorage.setItem(`agenda-checked-${dateKey}`, JSON.stringify(checked));
+
+  const day = agendaDays.find(d => d.fullDate === dateKey);
+  if (!day) return;
+
+  const todaySlots = document.getElementById('agenda-today-slots');
+  if (todaySlots && dateKey === localDateStr()) todaySlots.innerHTML = slotsHTML(day);
+
+  const detail = document.getElementById(`agenda-day-detail-${dateKey}`);
+  if (detail && detail.style.display !== 'none') detail.innerHTML = slotsHTML(day);
+
+  const badge = document.getElementById(`agenda-row-badge-${dateKey}`);
+  if (badge) badge.innerHTML = dayBadgeHTML(day);
 }
 
 // ═══════════════════════════════════════════════════
