@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v86';
+const APP_VERSION = 'v87';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -32,7 +32,7 @@ function applyStoredAccent() {
 // THÈME (clair / sombre / auto)
 // ═══════════════════════════════════════════════════
 function applyStoredTheme() {
-  const mode = localStorage.getItem('studyos-theme') || 'auto';
+  const mode = localStorage.getItem('studyos-theme') || 'light';
   const dark = mode === 'dark' || (mode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   const meta = document.querySelector('meta[name="theme-color"]');
@@ -47,7 +47,7 @@ function setTheme(mode) {
 
 if (window.matchMedia) {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if ((localStorage.getItem('studyos-theme') || 'auto') === 'auto') applyStoredTheme();
+    if ((localStorage.getItem('studyos-theme') || 'light') === 'auto') applyStoredTheme();
   });
 }
 
@@ -1788,7 +1788,7 @@ async function renderStats() {
 function renderSettings() {
   const view = document.getElementById('view-settings');
   const currentAccent = parseInt(localStorage.getItem('studyos-accent') || '0', 10);
-  const currentTheme = localStorage.getItem('studyos-theme') || 'auto';
+  const currentTheme = localStorage.getItem('studyos-theme') || 'light';
   const currentTextSize = localStorage.getItem('studyos-textsize') || 'normal';
   const remindersOn = localStorage.getItem('studyos-reminders') === 'on';
 
