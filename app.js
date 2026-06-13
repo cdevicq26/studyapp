@@ -4,7 +4,29 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v76';
+const APP_VERSION = 'v77';
+
+const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
+
+const ACCENT_PRESETS = [
+  { name: 'Orange',  primary: '#E8491F', light: '#FDE6DB' },
+  { name: 'Rouge',   primary: '#DC2626', light: '#FBE2E1' },
+  { name: 'Vert',    primary: '#16A34A', light: '#DCFCE7' },
+  { name: 'Bleu',    primary: '#2563EB', light: '#DBEAFE' },
+  { name: 'Violet',  primary: '#7C3AED', light: '#EDE3FB' },
+  { name: 'Rose',    primary: '#DB2777', light: '#FCE4F1' },
+];
+
+function getDisplayName() {
+  return localStorage.getItem('studyos-name') || 'Charles';
+}
+
+function applyStoredAccent() {
+  const idx = parseInt(localStorage.getItem('studyos-accent') || '0', 10);
+  const preset = ACCENT_PRESETS[idx] || ACCENT_PRESETS[0];
+  document.documentElement.style.setProperty('--accent', preset.primary);
+  document.documentElement.style.setProperty('--accent-l', preset.light);
+}
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -449,6 +471,7 @@ function showView(name) {
   if (name === 'home') renderHome();
   else if (name === 'agenda') renderAgenda();
   else if (name === 'stats') renderStats();
+  else if (name === 'settings') renderSettings();
 }
 
 // Navigate to subject from home card
@@ -612,7 +635,7 @@ async function renderHome() {
 
   view.innerHTML = `
   <div class="home-header">
-    <div class="home-greeting">${greeting}, Charles</div>
+    <div class="home-greeting">${greeting}, ${getDisplayName()}</div>
     <div class="home-date">${capFirst(dateStr)}</div>
   </div>
 
@@ -670,17 +693,17 @@ async function renderSubjectPage(id) {
     vocabHTML = `
     <div class="section-label">Vocabulaire</div>
     <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
-      <div class="vocab-card" onclick="openVocabDetail('${id}')" style="border-left-color:${vocabSrc.color}">
+      <div class="vocab-card" onclick="openVocabDetail('${id}')">
         <div class="vc-left">
           <div><div class="vc-name">${vocabSrc.name}</div><div class="vc-meta">${count} termes · ${cats} thèmes</div></div>
         </div>
-        <div class="vc-arrow">›</div>
+        <div class="vc-arrow">${CHEVRON_ICON}</div>
       </div>
-      <div class="vocab-card" onclick="openAntiVocabDetail('${id}')" style="border-left-color:${vocabSrc.color};opacity:.9">
+      <div class="vocab-card" onclick="openAntiVocabDetail('${id}')" style="opacity:.9">
         <div class="vc-left">
           <div><div class="vc-name">${vocabSrc.name.replace('Vocabulaire', 'Anti-vocab')}</div><div class="vc-meta">${count} définitions → trouver le terme</div></div>
         </div>
-        <div class="vc-arrow">›</div>
+        <div class="vc-arrow">${CHEVRON_ICON}</div>
       </div>
     </div>`;
   }
@@ -694,7 +717,7 @@ async function renderSubjectPage(id) {
       ${fiches.map(f => `
       <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openFicheView('${f.id}')">
         <div class="tsr-info"><div class="tsr-name">${f.titre}</div><div class="tsr-count">${f.sous_titre || ''}</div></div>
-        <div class="vc-arrow">›</div>
+        <div class="vc-arrow">${CHEVRON_ICON}</div>
       </div>`).join('')}
     </div>` : '';
 
@@ -749,11 +772,11 @@ async function renderSubjectPage(id) {
   <div class="action-list">
     <div class="action-btn" onclick="startFlashcards('${id}','due')">
       <div class="ab-info"><div class="ab-title">À réviser aujourd'hui</div><div class="ab-sub">${dueFC.length} carte${dueFC.length === 1 ? '' : 's'} due${dueFC.length === 1 ? '' : 's'}</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     <div class="action-btn" onclick="startFlashcards('${id}','all')">
       <div class="ab-info"><div class="ab-title">Toutes les flashcards</div><div class="ab-sub">${s.flashcards.length} carte${s.flashcards.length === 1 ? '' : 's'} au total</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
   </div>
   <div class="subj-mastery">${b3pct}% maîtrisé · ${stats.b3} cartes en boîte 3</div>
@@ -762,26 +785,26 @@ async function renderSubjectPage(id) {
   <div class="action-list">
     <div class="action-btn" onclick="startQCM('${id}','due')">
       <div class="ab-info"><div class="ab-title">À réviser aujourd'hui</div><div class="ab-sub">${qcmDue.length} question${qcmDue.length === 1 ? '' : 's'} due${qcmDue.length === 1 ? '' : 's'}</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     <div class="action-btn" onclick="startQCM('${id}','quick')">
       <div class="ab-info"><div class="ab-title">Session rapide</div><div class="ab-sub">5 questions aléatoires</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     <div class="action-btn" onclick="startQCM('${id}','all')">
       <div class="ab-info"><div class="ab-title">Tous les QCM</div><div class="ab-sub">${s.qcm.length} questions</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     ${s.qcmImg && s.qcmImg.length ? `
     <div class="action-btn" onclick="startQCMImg('${id}','quick')">
       <div class="ab-info"><div class="ab-title">QCM Microscopie</div><div class="ab-sub">10 images aléatoires (sur ${s.qcmImg.length})</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     ` : ''}
     ${s.qcmColor && s.qcmColor.length ? `
     <div class="action-btn" onclick="startQCMColor('${id}')">
       <div class="ab-info"><div class="ab-title">QCM Coloration</div><div class="ab-sub">${s.qcmColor.length} images — identifie les organites rose/bleu</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     ` : ''}
   </div>
@@ -810,7 +833,7 @@ async function openVocabDetail(sourceId = 'bio') {
     const n = cards.filter(c => c.cat === cat).length;
     return `<div class="action-btn" onclick="startVocab('${sourceId}','${cat.replace(/'/g,"\\'")}')">
       <div class="ab-info"><div class="ab-title">${cat}</div><div class="ab-sub">${n} termes</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>`;
   }).join('');
 
@@ -825,7 +848,7 @@ async function openVocabDetail(sourceId = 'bio') {
   <div style="padding:0 16px;margin-bottom:14px">
     <div class="action-btn" onclick="startVocab('${sourceId}',null)">
       <div class="ab-info"><div class="ab-title">Tous les termes (mélangés)</div><div class="ab-sub">${cards.length} cartes</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
   </div>
   <div class="section-label">Par thème</div>
@@ -862,7 +885,7 @@ async function openAntiVocabDetail(sourceId = 'bio') {
     const n = cards.filter(c => c.cat === cat).length;
     return `<div class="action-btn" onclick="startAntiVocab('${sourceId}','${cat.replace(/'/g,"\\'")}')">
       <div class="ab-info"><div class="ab-title">${cat}</div><div class="ab-sub">${n} définitions</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>`;
   }).join('');
 
@@ -877,7 +900,7 @@ async function openAntiVocabDetail(sourceId = 'bio') {
   <div style="padding:0 16px;margin-bottom:14px">
     <div class="action-btn" onclick="startAntiVocab('${sourceId}',null)">
       <div class="ab-info"><div class="ab-title">Tous les termes (mélangés)</div><div class="ab-sub">${cards.length} cartes</div></div>
-      <div class="ab-arrow">›</div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
   </div>
   <div class="section-label">Par thème</div>
@@ -1466,13 +1489,13 @@ function renderAgenda() {
     <div class="agenda-day-row${isToday ? ' is-today' : ''}" onclick="toggleAgendaDay('${day.fullDate}')">
       <div class="adr-date">${capFirst(dayName)} ${day.date}</div>
       <div id="agenda-row-badge-${day.fullDate}">${dayBadgeHTML(day)}</div>
-      <div class="adr-chevron" id="adr-chevron-${day.fullDate}">›</div>
+      <div class="adr-chevron" id="adr-chevron-${day.fullDate}">${CHEVRON_ICON}</div>
     </div>
     <div class="agenda-day-detail" id="agenda-day-detail-${day.fullDate}" style="display:none"></div>`;
   };
 
   const pastRows = agendaDays.filter(d => d.fullDate < todayStr).map(dayRow).join('');
-  const upcomingRows = agendaDays.filter(d => d.fullDate >= todayStr).map(dayRow).join('');
+  const upcomingRows = agendaDays.filter(d => d.fullDate > todayStr).map(dayRow).join('');
 
   view.innerHTML = `
   <div class="view-header"><div class="view-title">Agenda</div></div>
@@ -1480,7 +1503,7 @@ function renderAgenda() {
   ${pastRows ? `
   <div class="agenda-past-toggle" onclick="togglePastDays()">
     <span>Jours passés</span>
-    <span class="adr-chevron" id="past-toggle-chevron">›</span>
+    <span class="adr-chevron" id="past-toggle-chevron">${CHEVRON_ICON}</span>
   </div>
   <div class="agenda-day-list" id="agenda-past-list" style="display:none">${pastRows}</div>` : ''}
   <div class="agenda-day-list">${upcomingRows}</div>`;
@@ -1492,7 +1515,7 @@ function togglePastDays() {
   if (!list) return;
   const isOpen = list.style.display !== 'none';
   list.style.display = isOpen ? 'none' : 'block';
-  chevron.textContent = isOpen ? '›' : '⌄';
+  chevron.classList.toggle('open', !isOpen);
 }
 
 function toggleAgendaDay(fullDate) {
@@ -1502,12 +1525,12 @@ function toggleAgendaDay(fullDate) {
   const isOpen = detail.style.display !== 'none';
   if (isOpen) {
     detail.style.display = 'none';
-    chevron.textContent = '›';
+    chevron.classList.remove('open');
   } else {
     const day = agendaDays.find(d => d.fullDate === fullDate);
     detail.innerHTML = slotsHTML(day);
     detail.style.display = 'block';
-    chevron.textContent = '⌄';
+    chevron.classList.add('open');
   }
 }
 
@@ -1667,6 +1690,41 @@ async function renderStats() {
 }
 
 // ═══════════════════════════════════════════════════
+// RÉGLAGES
+// ═══════════════════════════════════════════════════
+function renderSettings() {
+  const view = document.getElementById('view-settings');
+  const currentAccent = parseInt(localStorage.getItem('studyos-accent') || '0', 10);
+
+  view.innerHTML = `
+  <div class="view-header"><div class="view-title">Réglages</div></div>
+  <div class="section-label">Profil</div>
+  <div class="card card-sm">
+    <label class="settings-label" for="settings-name-input">Nom affiché</label>
+    <input id="settings-name-input" class="settings-input" type="text" value="${getDisplayName()}" maxlength="20" placeholder="Charles">
+  </div>
+  <div class="section-label">Couleur d'accentuation</div>
+  <div class="settings-swatches">
+    ${ACCENT_PRESETS.map((p, i) => `
+    <button class="settings-swatch${i === currentAccent ? ' active' : ''}" style="background:${p.primary}" onclick="setAccentColor(${i})" aria-label="${p.name}"></button>`).join('')}
+  </div>
+  <div class="app-version-row">StudyOS ${APP_VERSION}</div>`;
+
+  const input = document.getElementById('settings-name-input');
+  input.addEventListener('change', () => {
+    const val = input.value.trim() || 'Charles';
+    localStorage.setItem('studyos-name', val);
+    input.value = val;
+  });
+}
+
+function setAccentColor(idx) {
+  localStorage.setItem('studyos-accent', String(idx));
+  applyStoredAccent();
+  renderSettings();
+}
+
+// ═══════════════════════════════════════════════════
 // EXPORT / SYNC / RESET
 // ═══════════════════════════════════════════════════
 async function getAllProgress() {
@@ -1815,7 +1873,7 @@ async function init() {
         if (e.data && e.data.type === 'SW_UPDATED') {
           const b = document.createElement('div');
           b.className = 'update-banner';
-          b.innerHTML = `<div class="update-banner-box">Nouvelle version disponible<button onclick="location.reload()">Recharger</button></div>`;
+          b.innerHTML = `<div class="update-banner-box">Nouvelle version disponible (${APP_VERSION})<button onclick="location.reload()">Recharger</button></div>`;
           document.body.appendChild(b);
         }
       });
@@ -1868,6 +1926,7 @@ function setupLockScreen() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  applyStoredAccent();
   if (localStorage.getItem('studyos-auth') === 'charles') {
     document.getElementById('lock-screen').remove();
     init();
