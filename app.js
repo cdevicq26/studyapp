@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v75';
+const APP_VERSION = 'v76';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -525,7 +525,7 @@ async function renderHome() {
           <div class="nec-name">${ne.name}</div>
           <div class="nec-type">${ne.type} · ${formatDate(ne.date)}</div>
         </div>
-        <div class="nec-days" style="background:${daysColor}">${days}j</div>
+        <div class="nec-days" style="color:${daysColor}">${days}j</div>
       </div>
       <div style="margin-top:14px">
         <div class="nec-prog-label">Concepts maîtrisés (B3)</div>
@@ -1351,17 +1351,6 @@ function initSwipeFC(element, onLeft, onRight, onUp) {
 // ═══════════════════════════════════════════════════
 // VIEW 4 — AGENDA
 // ═══════════════════════════════════════════════════
-function detectTaskSubject(text) {
-  const t = text.toLowerCase();
-  if (/g[ée]o/.test(t)) return 'geo';
-  if (/philo/.test(t)) return 'philo';
-  if (/\bbio/.test(t)) return 'bio';
-  if (/math/.test(t)) return 'maths';
-  if (/fran[çc]/.test(t)) return 'francais';
-  if (/chimie/.test(t)) return 'chimie';
-  return null;
-}
-
 function slotsHTML(day) {
   const plan = day;
   const dateKey = plan.fullDate;
@@ -1389,10 +1378,7 @@ function slotsHTML(day) {
     const doneSlot = tasks.filter(t => checked[t.globalIdx]).length;
     const rows = tasks.map(t => {
       const isDone = !!checked[t.globalIdx];
-      const subj = detectTaskSubject(t.text);
-      const col = subj ? SUBJECT_COLORS[subj] : null;
-      const borderStyle = col ? `border-left-color:${col.primary}` : '';
-      return `<div class="at-row${isDone ? ' at-done' : ''}" style="${borderStyle}" onclick="toggleAgendaTask('${dateKey}', ${t.globalIdx})">
+      return `<div class="at-row${isDone ? ' at-done' : ''}" onclick="toggleAgendaTask('${dateKey}', ${t.globalIdx})">
         <div class="at-check">${isDone ? '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>' : ''}</div>
         <span class="at-text">${t.text}</span>
       </div>`;
@@ -1472,24 +1458,41 @@ function renderAgenda() {
     </div>`;
   }
 
-  const rows = agendaDays.map(day => {
+  const dayRow = day => {
     const dt = new Date(day.fullDate);
     const isToday = day.fullDate === todayStr;
-    const isPast = day.fullDate < todayStr;
     const dayName = dt.toLocaleDateString('fr-BE', { weekday: 'short' });
     return `
-    <div class="agenda-day-row${isToday ? ' is-today' : ''}${isPast ? ' is-past' : ''}" onclick="toggleAgendaDay('${day.fullDate}')">
+    <div class="agenda-day-row${isToday ? ' is-today' : ''}" onclick="toggleAgendaDay('${day.fullDate}')">
       <div class="adr-date">${capFirst(dayName)} ${day.date}</div>
       <div id="agenda-row-badge-${day.fullDate}">${dayBadgeHTML(day)}</div>
       <div class="adr-chevron" id="adr-chevron-${day.fullDate}">›</div>
     </div>
     <div class="agenda-day-detail" id="agenda-day-detail-${day.fullDate}" style="display:none"></div>`;
-  }).join('');
+  };
+
+  const pastRows = agendaDays.filter(d => d.fullDate < todayStr).map(dayRow).join('');
+  const upcomingRows = agendaDays.filter(d => d.fullDate >= todayStr).map(dayRow).join('');
 
   view.innerHTML = `
   <div class="view-header"><div class="view-title">Agenda</div></div>
   ${todayCardHTML}
-  <div class="agenda-day-list">${rows}</div>`;
+  ${pastRows ? `
+  <div class="agenda-past-toggle" onclick="togglePastDays()">
+    <span>Jours passés</span>
+    <span class="adr-chevron" id="past-toggle-chevron">›</span>
+  </div>
+  <div class="agenda-day-list" id="agenda-past-list" style="display:none">${pastRows}</div>` : ''}
+  <div class="agenda-day-list">${upcomingRows}</div>`;
+}
+
+function togglePastDays() {
+  const list = document.getElementById('agenda-past-list');
+  const chevron = document.getElementById('past-toggle-chevron');
+  if (!list) return;
+  const isOpen = list.style.display !== 'none';
+  list.style.display = isOpen ? 'none' : 'block';
+  chevron.textContent = isOpen ? '›' : '⌄';
 }
 
 function toggleAgendaDay(fullDate) {
@@ -1570,7 +1573,7 @@ async function renderStats() {
     const qPct = qcmStats.total ? Math.round(qcmStats.mastered / qcmStats.total * 100) : 0;
 
     return `
-    <div class="stats-subject-row" style="border-left-color:${col.primary}">
+    <div class="stats-subject-row">
       <div class="ssr-top">
         <div class="ssr-name">${s.name}</div>
         <div class="ssr-score" style="color:${col.primary}">${score}%</div>
@@ -1635,7 +1638,6 @@ async function renderStats() {
   </div>
 
   <div class="section-label">Par matière</div>
-  <div class="b-legend">B1 = à revoir demain · B2 = dans 3 jours · B3 = maîtrisé (7 jours)</div>
   ${subjectRows}
 
   ${vocabRows.length ? `<div class="section-label">Vocabulaire</div>${vocabRows.join('')}` : ''}
