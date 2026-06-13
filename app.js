@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v87';
+const APP_VERSION = 'v88';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -21,11 +21,14 @@ function getDisplayName() {
   return localStorage.getItem('studyos-name') || 'Charles';
 }
 
+const DARK_ACTIVE_BG = '#2A2D34';
+
 function applyStoredAccent() {
   const idx = parseInt(localStorage.getItem('studyos-accent') || '0', 10);
   const preset = ACCENT_PRESETS[idx] || ACCENT_PRESETS[0];
   document.documentElement.style.setProperty('--accent', preset.primary);
-  document.documentElement.style.setProperty('--accent-l', preset.light);
+  const dark = document.documentElement.dataset.theme === 'dark';
+  document.documentElement.style.setProperty('--accent-l', dark ? DARK_ACTIVE_BG : preset.light);
 }
 
 // ═══════════════════════════════════════════════════
@@ -37,6 +40,7 @@ function applyStoredTheme() {
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.setAttribute('content', dark ? '#15171C' : '#FFFFFF');
+  applyStoredAccent();
 }
 
 function setTheme(mode) {
@@ -2082,7 +2086,6 @@ function setupLockScreen() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  applyStoredAccent();
   applyStoredTheme();
   applyStoredTextSize();
   if (localStorage.getItem('studyos-auth') === 'charles') {
