@@ -58,5 +58,47 @@
     "matiere": "bio",
     "titre": "Bio — Sweep complet",
     "sous_titre": "Vue d'ensemble de tout le programme (Ch3 à Ch7)"
+  },
+  {
+    "id": "fiche-geo-07",
+    "matiere": "geo",
+    "titre": "Géo C1 — L'Europe",
+    "sous_titre": "UE, zone euro, Schengen, dorsale européenne"
+  },
+  {
+    "id": "fiche-geo-08",
+    "matiere": "geo",
+    "titre": "Géo C2 — Les Ressources & Earth Overshoot Day",
+    "sous_titre": "Types de ressources, EOD, chocs pétroliers, DIPP"
+  },
+  {
+    "id": "fiche-geo-09",
+    "matiere": "geo",
+    "titre": "Géo C4 — Le Sable",
+    "sous_titre": "Béton, urbanisation, commerce mondial, cas Dubaï/Singapour"
+  },
+  {
+    "id": "fiche-geo-10",
+    "matiere": "geo",
+    "titre": "Géo C5 — La Cocaïne",
+    "sous_titre": "Effet ballon, routes, Anvers, géopolitique du trafic"
+  },
+  {
+    "id": "fiche-philo-06",
+    "matiere": "philo",
+    "titre": "Philo C1 — Les Sophistes",
+    "sous_titre": "Démocratie athénienne, rhétorique, pharmakon, doxa"
+  },
+  {
+    "id": "fiche-bio-05",
+    "matiere": "bio",
+    "titre": "Bio C3 — Chimie du vivant",
+    "sous_titre": "Biomolécules, ADN/ARN, transcription, traduction"
+  },
+  {
+    "id": "fiche-bio-06",
+    "matiere": "bio",
+    "titre": "Bio C5 — La Cellule",
+    "sous_titre": "Organites, MET, animale/végétale/procaryote"
   }
 ]

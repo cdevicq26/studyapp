@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v92';
+const APP_VERSION = 'v93';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
