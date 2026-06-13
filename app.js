@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v81';
+const APP_VERSION = 'v82';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -497,7 +497,7 @@ function combinedScore({ flashPct, qcmTotal, qcmMastered, checklistPct }) {
 }
 
 // Rond de progression SVG
-function progressRing(pct, color, size = 64) {
+function progressRing(pct, color, size = 64, label = null) {
   const r = 16;
   const c = 2 * Math.PI * r;
   return `
@@ -508,7 +508,7 @@ function progressRing(pct, color, size = 64) {
         stroke-dasharray="${(pct / 100 * c).toFixed(2)} ${c.toFixed(2)}"
         style="stroke:${color}"/>
     </svg>
-    <div class="ring-label">${pct}%</div>
+    <div class="ring-label">${label ?? pct + '%'}</div>
   </div>`;
 }
 
@@ -596,11 +596,10 @@ async function renderHome() {
     return `
     <div class="subject-cell" onclick="goToSubject('${id}')">
       <div class="sc-top">
-        <span class="sc-icon" style="background:${col.primary}1A">${SUBJECT_ICONS[id] || '📘'}</span>
-        ${progressRing(score, col.primary, 56)}
+        ${progressRing(score, col.primary, 44, SUBJECT_ICONS[id] || '📘')}
+        <div class="sc-name">${SUBJECT_SHORT[id] || s.name}</div>
       </div>
       <div class="sc-info">
-        <div class="sc-name">${SUBJECT_SHORT[id] || s.name}</div>
         <div class="sc-days" style="color:${col.primary}">Examen dans ${days}j</div>
       </div>
       <div class="sc-cta" style="background:${col.primary}1A;color:${col.primary}">
