@@ -4,17 +4,20 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v66';
+const APP_VERSION = 'v67';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
+const PLACE_LABELS = { '🏠': 'Maison', '🏫': 'École' };
+function placeLabel(place) { return PLACE_LABELS[place] || place || ''; }
+
 const SUBJECT_COLORS = {
-  geo:      { primary: '#16a34a', light: '#f0fdf4', emoji: '🌍' },
-  philo:    { primary: '#ea580c', light: '#fff7ed', emoji: '🧠' },
-  bio:      { primary: '#0891b2', light: '#ecfeff', emoji: '🧬' },
-  francais: { primary: '#ca8a04', light: '#fffbeb', emoji: '📚' },
-  maths:    { primary: '#7c3aed', light: '#f5f3ff', emoji: '📐' },
-  chimie:   { primary: '#db2777', light: '#fdf2f8', emoji: '⚗️' },
+  geo:      { primary: '#6F98C8' },
+  philo:    { primary: '#C54536' },
+  bio:      { primary: '#3A9FA7' },
+  francais: { primary: '#9F7EC8' },
+  maths:    { primary: '#D4A843' },
+  chimie:   { primary: '#5BAD8E' },
 };
 
 const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
@@ -356,11 +359,11 @@ async function loadAllSubjects() {
 }
 
 const VOCAB_SOURCES = {
-  bio:      { file: '/data/vocabulaire-bio.json',      name: 'Vocabulaire Biologie',   emoji: '🧬', color: '#0891b2' },
-  geo:      { file: '/data/vocabulaire-geo.json',      name: 'Vocabulaire Géographie', emoji: '🌍', color: '#16a34a' },
-  chimie:   { file: '/data/vocabulaire-chimie.json',   name: 'Vocabulaire Chimie',     emoji: '⚗️', color: '#db2777' },
-  philo:    { file: '/data/vocabulaire-philo.json',    name: 'Vocabulaire Philo',      emoji: '🏛️', color: '#ea580c' },
-  francais: { file: '/data/vocabulaire-francais.json', name: 'Vocabulaire Français',   emoji: '📖', color: '#ca8a04' },
+  bio:      { file: '/data/vocabulaire-bio.json',      name: 'Vocabulaire Biologie',   color: '#3A9FA7' },
+  geo:      { file: '/data/vocabulaire-geo.json',      name: 'Vocabulaire Géographie', color: '#6F98C8' },
+  chimie:   { file: '/data/vocabulaire-chimie.json',   name: 'Vocabulaire Chimie',     color: '#5BAD8E' },
+  philo:    { file: '/data/vocabulaire-philo.json',    name: 'Vocabulaire Philo',      color: '#C54536' },
+  francais: { file: '/data/vocabulaire-francais.json', name: 'Vocabulaire Français',   color: '#9F7EC8' },
 };
 const vocabCache = {};
 async function loadVocabSource(id) {
@@ -503,7 +506,6 @@ async function renderHome() {
     <div class="section-label">Prochain examen</div>
     <div class="next-exam-card" onclick="showView('agenda')">
       <div class="nec-top">
-        <div class="nec-emoji">${ne.emoji || col.emoji || '📅'}</div>
         <div class="nec-info">
           <div class="nec-name">${ne.name}</div>
           <div class="nec-type">${ne.type} · ${formatDate(ne.date)}</div>
@@ -541,14 +543,14 @@ async function renderHome() {
   const progCards = subjectScores.map(entry => {
     if (!entry) return '';
     const { id, s, score } = entry;
-    const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0', light: '#EEF0FA', emoji: '📖' };
+    const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
     const days = daysUntil(s.exam);
 
     return `
-    <div class="subject-cell" onclick="goToSubject('${id}')">
+    <div class="subject-cell" style="border-left:6px solid ${col.primary}" onclick="goToSubject('${id}')">
       ${progressRing(score, col.primary, 48)}
       <div class="sc-info">
-        <div class="sc-name">${col.emoji} ${s.name}</div>
+        <div class="sc-name">${s.name}</div>
         <div class="sc-days" style="color:${col.primary}">${days}j</div>
       </div>
     </div>`;
@@ -562,13 +564,12 @@ async function renderHome() {
     if (todayPlan.isExam) {
       const examColor = todayPlan.examColor || 'var(--accent)';
       const examTask = todayPlan.tasks && todayPlan.tasks[0];
-      todayTasksHTML += `<div class="today-exam-band" style="background:${examColor}">🎯 EXAM — ${examTask ? examTask.text : 'Jour d\'examen'}</div>`;
+      todayTasksHTML += `<div class="today-exam-band" style="background:${examColor}">EXAM — ${examTask ? examTask.text : 'Jour d\'examen'}</div>`;
       (todayPlan.tasks || []).slice(1).forEach(t => {
-        todayTasksHTML += `<div class="today-slot"><div class="today-task"><span class="today-task-place">${t.place || ''}</span><span class="today-task-text">${t.text}</span></div></div>`;
+        todayTasksHTML += `<div class="today-slot"><div class="today-task"><span class="today-task-place">${placeLabel(t.place)}</span><span class="today-task-text">${t.text}</span></div></div>`;
       });
     } else {
       const slots = { 'Matin': [], 'Après-midi': [], 'Soir': [] };
-      const slotEmoji = { 'Matin': '🌅', 'Après-midi': '☀️', 'Soir': '🌙' };
       const tasks = todayPlan.tasks || [];
       if (tasks.length > 0) {
         tasks.forEach(t => {
@@ -578,9 +579,9 @@ async function renderHome() {
         Object.entries(slots).forEach(([slot, items]) => {
           if (!items.length) return;
           const rows = items.map(t =>
-            `<div class="today-task"><span class="today-task-place">${t.place || ''}</span><span class="today-task-text">${t.text}</span></div>`
+            `<div class="today-task"><span class="today-task-place">${placeLabel(t.place)}</span><span class="today-task-text">${t.text}</span></div>`
           ).join('');
-          todayTasksHTML += `<div class="today-slot"><div class="today-slot-title">${slotEmoji[slot]} ${slot}</div>${rows}</div>`;
+          todayTasksHTML += `<div class="today-slot"><div class="today-slot-title">${slot}</div>${rows}</div>`;
         });
       } else {
         todayTasksHTML = `<div class="today-empty">Rien de prévu aujourd'hui</div>`;
@@ -597,7 +598,7 @@ async function renderHome() {
   view.innerHTML = `
   <div class="home-header">
     <div class="home-greeting">${capFirst(dateStr)}</div>
-    <div class="home-date">${greeting} 👋</div>
+    <div class="home-date">${greeting}</div>
   </div>
 
   <div class="global-score-card">
@@ -629,7 +630,7 @@ async function renderSubjectPage(id) {
   learnSubView = 'subject';
   currentSubject = id;
   const s = subjects[id];
-  const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0', light: '#EEF0FA', emoji: '📖' };
+  const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
   const stats = await getSubjectStats(id);
   const dueFC = await getDueCards(id);
   const qcmStats = await getQCMStats(id);
@@ -655,14 +656,12 @@ async function renderSubjectPage(id) {
     <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
       <div class="vocab-card" onclick="openVocabDetail('${id}')" style="border-left-color:${vocabSrc.color}">
         <div class="vc-left">
-          <div class="vc-icon">${vocabSrc.emoji}</div>
           <div><div class="vc-name">${vocabSrc.name}</div><div class="vc-meta">${count} termes · ${cats} thèmes</div></div>
         </div>
         <div class="vc-arrow">›</div>
       </div>
       <div class="vocab-card" onclick="openAntiVocabDetail('${id}')" style="border-left-color:${vocabSrc.color};opacity:.9">
         <div class="vc-left">
-          <div class="vc-icon">🔄</div>
           <div><div class="vc-name">${vocabSrc.name.replace('Vocabulaire', 'Anti-vocab')}</div><div class="vc-meta">${count} définitions → trouver le terme</div></div>
         </div>
         <div class="vc-arrow">›</div>
@@ -678,7 +677,6 @@ async function renderSubjectPage(id) {
     <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
       ${fiches.map(f => `
       <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openFicheView('${f.id}')">
-        <div class="tsr-emoji">📖</div>
         <div class="tsr-info"><div class="tsr-name">${f.titre}</div><div class="tsr-count">${f.sous_titre || ''}</div></div>
         <div class="vc-arrow">›</div>
       </div>`).join('')}
@@ -699,9 +697,8 @@ async function renderSubjectPage(id) {
     <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
       ${controles.map(item => `
       <div class="today-subject-row" style="border-left-color:${col.primary}">
-        <div class="tsr-emoji">📝</div>
         <div class="tsr-info"><div class="tsr-name">${item.titre}</div><div class="tsr-count">${item.questions} questions</div></div>
-        ${item.fiche_id ? `<button class="btn" style="color:${col.primary};padding:10px 12px;font-size:13px" onclick="openFicheView('${item.fiche_id}')" title="Lire la fiche">📖</button>` : ''}
+        ${item.fiche_id ? `<button class="btn" style="color:${col.primary};padding:10px 12px;font-size:13px" onclick="openFicheView('${item.fiche_id}')" title="Lire la fiche">Fiche</button>` : ''}
         <button class="btn" style="color:${col.primary};padding:10px 14px;font-size:13px" onclick="startControle('${item.id}')">Démarrer</button>
       </div>`).join('')}
       ${savedIds.map(rid => {
@@ -710,7 +707,6 @@ async function renderSubjectPage(id) {
         const mins = Math.round(r.duree_totale_secondes / 60);
         return `
         <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openControleResult('${rid}')">
-          <div class="tsr-emoji">📝</div>
           <div class="tsr-info"><div class="tsr-name">${r.titre}</div><div class="tsr-count">${date} · ${mins} min</div></div>
           <button class="btn" style="color:${col.primary};padding:7px 12px;font-size:12px" onclick="event.stopPropagation();exportControleResponse('${rid}')">↗</button>
         </div>`;
@@ -721,7 +717,7 @@ async function renderSubjectPage(id) {
   <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
     <button class="back-btn" onclick="showView('home')">←</button>
     <div style="flex:1">
-      <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px">${col.emoji} ${s.name}</div>
+      <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px">${s.name}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">${s.type || 'Matière'} · dans ${days} jours · ${formatDate(s.exam)}</div>
     </div>
     ${progressRing(score, col.primary, 52)}
@@ -736,40 +732,33 @@ async function renderSubjectPage(id) {
   <div class="section-label">Réviser</div>
   <div class="action-list">
     <div class="action-btn" onclick="startFlashcards('${id}','due')">
-      <div class="ab-icon">📖</div>
       <div class="ab-info"><div class="ab-title">Flashcards Leitner</div><div class="ab-sub">${dueFC.length} cartes dues aujourd'hui</div></div>
       <div class="ab-arrow">›</div>
     </div>
     <div class="action-btn" onclick="startQCM('${id}','due')">
-      <div class="ab-icon">❓</div>
       <div class="ab-info"><div class="ab-title">QCM Leitner</div><div class="ab-sub">${qcmDue.length} questions dues</div></div>
       <div class="ab-arrow">›</div>
     </div>
     <div class="action-btn" onclick="startFlashcards('${id}','all')">
-      <div class="ab-icon">🃏</div>
       <div class="ab-info"><div class="ab-title">Toutes les cartes</div><div class="ab-sub">${s.flashcards.length} au total</div></div>
       <div class="ab-arrow">›</div>
     </div>
     <div class="action-btn" onclick="startQCM('${id}','quick')">
-      <div class="ab-icon">⚡</div>
       <div class="ab-info"><div class="ab-title">QCM rapide</div><div class="ab-sub">5 questions aléatoires</div></div>
       <div class="ab-arrow">›</div>
     </div>
     <div class="action-btn" onclick="startQCM('${id}','all')">
-      <div class="ab-icon">📝</div>
       <div class="ab-info"><div class="ab-title">Tous les QCM</div><div class="ab-sub">${s.qcm.length} questions</div></div>
       <div class="ab-arrow">›</div>
     </div>
     ${s.qcmImg && s.qcmImg.length ? `
     <div class="action-btn" onclick="startQCMImg('${id}','quick')">
-      <div class="ab-icon">🔬</div>
       <div class="ab-info"><div class="ab-title">QCM Microscopie</div><div class="ab-sub">10 images aléatoires (sur ${s.qcmImg.length})</div></div>
       <div class="ab-arrow">›</div>
     </div>
     ` : ''}
     ${s.qcmColor && s.qcmColor.length ? `
     <div class="action-btn" onclick="startQCMColor('${id}')">
-      <div class="ab-icon">🎨</div>
       <div class="ab-info"><div class="ab-title">QCM Coloration</div><div class="ab-sub">${s.qcmColor.length} images — identifie les organites rose/bleu</div></div>
       <div class="ab-arrow">›</div>
     </div>
@@ -799,7 +788,6 @@ async function openVocabDetail(sourceId = 'bio') {
   const catRows = cats.map(cat => {
     const n = cards.filter(c => c.cat === cat).length;
     return `<div class="action-btn" onclick="startVocab('${sourceId}','${cat.replace(/'/g,"\\'")}')">
-      <div class="ab-icon">📖</div>
       <div class="ab-info"><div class="ab-title">${cat}</div><div class="ab-sub">${n} termes</div></div>
       <div class="ab-arrow">›</div>
     </div>`;
@@ -809,13 +797,12 @@ async function openVocabDetail(sourceId = 'bio') {
   <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
     <button class="back-btn" onclick="renderSubjectPage('${sourceId}')">←</button>
     <div>
-      <div style="font-size:20px;font-weight:900;color:var(--text)">${src.emoji} ${src.name}</div>
+      <div style="font-size:20px;font-weight:900;color:var(--text)">${src.name}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">${cards.length} termes · ${cats.length} thèmes</div>
     </div>
   </div>
   <div style="padding:0 16px;margin-bottom:14px">
     <div class="action-btn" onclick="startVocab('${sourceId}',null)">
-      <div class="ab-icon">🔀</div>
       <div class="ab-info"><div class="ab-title">Tous les termes (mélangés)</div><div class="ab-sub">${cards.length} cartes</div></div>
       <div class="ab-arrow">›</div>
     </div>
@@ -853,7 +840,6 @@ async function openAntiVocabDetail(sourceId = 'bio') {
   const catRows = cats.map(cat => {
     const n = cards.filter(c => c.cat === cat).length;
     return `<div class="action-btn" onclick="startAntiVocab('${sourceId}','${cat.replace(/'/g,"\\'")}')">
-      <div class="ab-icon">🔄</div>
       <div class="ab-info"><div class="ab-title">${cat}</div><div class="ab-sub">${n} définitions</div></div>
       <div class="ab-arrow">›</div>
     </div>`;
@@ -863,13 +849,12 @@ async function openAntiVocabDetail(sourceId = 'bio') {
   <div style="padding:max(env(safe-area-inset-top,0),52px) 20px 16px;display:flex;align-items:center;gap:14px">
     <button class="back-btn" onclick="renderSubjectPage('${sourceId}')">←</button>
     <div>
-      <div style="font-size:20px;font-weight:900;color:var(--text)">🔄 Anti-vocab ${src.name.replace('Vocabulaire ','')}</div>
+      <div style="font-size:20px;font-weight:900;color:var(--text)">Anti-vocab ${src.name.replace('Vocabulaire ','')}</div>
       <div style="font-size:12px;color:var(--muted);margin-top:2px">Définition → trouver le terme · ${cards.length} cartes</div>
     </div>
   </div>
   <div style="padding:0 16px;margin-bottom:14px">
     <div class="action-btn" onclick="startAntiVocab('${sourceId}',null)">
-      <div class="ab-icon">🔀</div>
       <div class="ab-info"><div class="ab-title">Tous les termes (mélangés)</div><div class="ab-sub">${cards.length} cartes</div></div>
       <div class="ab-arrow">›</div>
     </div>
@@ -904,7 +889,7 @@ async function startAntiVocab(sourceId = 'bio', cat = null) {
 async function startFlashcards(subjectId, mode) {
   const s = subjects[subjectId];
   let cards = mode === 'due' ? await getDueCards(subjectId) : [...s.flashcards];
-  if (cards.length === 0) { toast('🎉 Toutes les cartes sont à jour !'); return; }
+  if (cards.length === 0) { toast('Toutes les cartes sont à jour !'); return; }
   cards = shuffle(cards);
   fcSession = { subjectId, cards, idx: 0, correct: 0, bof: 0, wrong: 0, mode };
   learnSubView = 'flashcard';
@@ -1020,7 +1005,6 @@ function renderFlashcardEnd() {
   const view = document.getElementById('view-learn');
   const total = cards.length;
   const pct = total ? Math.round(((correct + bof * 0.5) / total) * 100) : 0;
-  const emoji = pct >= 80 ? '🎉' : pct >= 55 ? '💪' : '📚';
   const msg = pct >= 80 ? 'Excellent travail !' : pct >= 55 ? 'Continue comme ça !' : 'Révise encore ce soir !';
 
   const scoresHtml = isAntiVocabEnd
@@ -1042,7 +1026,7 @@ function renderFlashcardEnd() {
     <div style="width:40px"></div>
   </div>
   <div class="session-end">
-    <div class="se-icon">${emoji}</div>
+    <div class="se-pct">${pct}%</div>
     <div class="se-title">${msg}</div>
     <div class="se-sub">${sessionName} · ${total} carte${total > 1 ? 's' : ''}</div>
     <div class="se-scores">${scoresHtml}</div>
@@ -1150,7 +1134,7 @@ function answerQCM(chosen) {
   if (q.exp) {
     const expHtml = q.exp.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     document.getElementById('qcm-expl').innerHTML =
-      `<div class="qcm-explanation">💡 ${expHtml}</div>`;
+      `<div class="qcm-explanation">${expHtml}</div>`;
   }
 
   const nextBtn = document.getElementById('qcm-next');
@@ -1164,7 +1148,6 @@ function renderQCMEnd() {
   const s = subjects[subjectId];
   const view = document.getElementById('view-learn');
   const pct = Math.round((correct / questions.length) * 100);
-  const emoji = pct >= 80 ? '🎉' : pct >= 60 ? '💪' : '📖';
   const msg = pct >= 80 ? 'Excellente maîtrise !' : pct >= 60 ? 'Bon travail !' : 'Révise les notions manquées !';
   const backFn = `renderSubjectPage('${subjectId}')`;
 
@@ -1175,7 +1158,7 @@ function renderQCMEnd() {
     <div style="width:40px"></div>
   </div>
   <div class="session-end">
-    <div class="se-icon">${emoji}</div>
+    <div class="se-pct">${pct}%</div>
     <div class="se-title">${msg}</div>
     <div class="se-sub">${s.name} · ${questions.length} question${questions.length > 1 ? 's' : ''}</div>
     <div class="se-scores">
@@ -1224,14 +1207,14 @@ function renderQCMColor() {
     <div class="qcm-question">Identifie les organites colorés sur cette image</div>
     <img class="qcm-img" src="${q.img}" alt="Image de microscopie colorée">
     <div class="qcmc-group">
-      <label class="qcmc-label qcmc-rose">🔴 Organite en rose</label>
+      <label class="qcmc-label qcmc-rose">Organite en rose</label>
       <select class="qcmc-select" id="qcmc-rose">
         <option value="">— Choisis une réponse —</option>
         ${optsHtml}
       </select>
     </div>
     <div class="qcmc-group">
-      <label class="qcmc-label qcmc-bleu">🔵 Organite en bleu</label>
+      <label class="qcmc-label qcmc-bleu">Organite en bleu</label>
       <select class="qcmc-select" id="qcmc-bleu">
         <option value="">— Choisis une réponse —</option>
         ${optsHtml}
@@ -1268,9 +1251,9 @@ function validateQCMColor() {
   if (roseOk && bleuOk) qcmColorSession.correct++;
 
   let feedback = '';
-  if (!roseOk) feedback += `<div class="qcm-explanation">🔴 Réponse attendue : <strong>${q.rose}</strong></div>`;
-  if (!bleuOk) feedback += `<div class="qcm-explanation">🔵 Réponse attendue : <strong>${q.bleu}</strong></div>`;
-  if (roseOk && bleuOk) feedback = `<div class="qcm-explanation">💡 Bravo, les deux organites sont corrects !</div>`;
+  if (!roseOk) feedback += `<div class="qcm-explanation">Réponse attendue (rose) : <strong>${q.rose}</strong></div>`;
+  if (!bleuOk) feedback += `<div class="qcm-explanation">Réponse attendue (bleu) : <strong>${q.bleu}</strong></div>`;
+  if (roseOk && bleuOk) feedback = `<div class="qcm-explanation">Bravo, les deux organites sont corrects !</div>`;
   document.getElementById('qcmc-feedback').innerHTML = feedback;
 
   const nextBtn = document.getElementById('qcm-next');
@@ -1285,7 +1268,6 @@ function renderQCMColorEnd() {
   const view = document.getElementById('view-learn');
   const totalParts = questions.length * 2;
   const pct = Math.round((parts / totalParts) * 100);
-  const emoji = pct >= 80 ? '🎉' : pct >= 60 ? '💪' : '📖';
   const msg = pct >= 80 ? 'Excellente reconnaissance !' : pct >= 60 ? 'Bon travail !' : 'Révise les organites manqués !';
 
   view.innerHTML = `
@@ -1295,7 +1277,7 @@ function renderQCMColorEnd() {
     <div style="width:40px"></div>
   </div>
   <div class="session-end">
-    <div class="se-icon">${emoji}</div>
+    <div class="se-pct">${pct}%</div>
     <div class="se-title">${msg}</div>
     <div class="se-sub">${s.name} · ${questions.length} image${questions.length > 1 ? 's' : ''} · ${correct}/${questions.length} entièrement correctes</div>
     <div class="se-scores">
@@ -1379,11 +1361,9 @@ function slotsHTML(day) {
       const isDone = !!checked[t.globalIdx];
       const subj = detectTaskSubject(t.text);
       const col = subj ? SUBJECT_COLORS[subj] : null;
-      const icon = col ? col.emoji : (t.place || '📌');
       const borderStyle = col ? `border-left-color:${col.primary}` : '';
       return `<div class="at-row${isDone ? ' at-done' : ''}" style="${borderStyle}" onclick="toggleAgendaTask('${dateKey}', ${t.globalIdx})">
         <div class="at-check">${isDone ? '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>' : ''}</div>
-        <span class="at-icon">${icon}</span>
         <span class="at-text">${t.text}</span>
       </div>`;
     }).join('');
@@ -1431,7 +1411,7 @@ function renderAgenda() {
   if (!dashboardData || !dashboardData.planning || !dashboardData.planning.length) {
     view.innerHTML = `
     <div class="view-header"><div class="view-title">Agenda</div></div>
-    <div class="agenda-no-data"><div style="font-size:48px;margin-bottom:14px">📡</div><p>Aucun planning disponible.</p></div>`;
+    <div class="agenda-no-data"><p>Aucun planning disponible.</p></div>`;
     return;
   }
 
@@ -1553,14 +1533,14 @@ async function renderStats() {
     : 0;
 
   const subjectRows = validSubjects.map(({ id, s, stats, qcmStats, checklistPct, score }) => {
-    const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0', emoji: '📖' };
+    const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
     const flashPct = stats.total ? Math.round(stats.b3 / stats.total * 100) : 0;
     const qPct = qcmStats.total ? Math.round(qcmStats.mastered / qcmStats.total * 100) : 0;
 
     return `
     <div class="stats-subject-row" style="border-left-color:${col.primary}">
       <div class="ssr-top">
-        <div class="ssr-name">${col.emoji || ''} ${s.name}</div>
+        <div class="ssr-name">${s.name}</div>
         <div class="ssr-score" style="color:${col.primary}">${score}%</div>
       </div>
       <div class="ssr-bar-bg"><div class="ssr-bar" style="width:${score}%; background:${col.primary}"></div></div>
@@ -1601,7 +1581,7 @@ async function renderStats() {
       const pct = total ? Math.round(b3 / total * 100) : 0;
       totalVocabB3 += b3;
 
-      const label = prefix === 'vocab' ? `${src.emoji} ${src.name}` : `🔄 Anti-vocab ${src.name.replace('Vocabulaire ', '')}`;
+      const label = prefix === 'vocab' ? src.name : `Anti-vocab ${src.name.replace('Vocabulaire ', '')}`;
       vocabRows.push(`
       <div class="stats-vocab-row" style="border-left-color:${src.color}">
         <span class="svr-name">${label}</span>
@@ -1615,7 +1595,7 @@ async function renderStats() {
   <div class="view-header"><div class="view-title">Stats</div></div>
 
   <div class="global-score-card">
-    ${progressRing(globalScore, '#6366F1', 64)}
+    ${progressRing(globalScore, 'var(--accent)', 64)}
     <div class="gsc-info">
       <div class="gsc-label">Avancement global</div>
       <div class="gsc-sub">${totalSeen} cartes vues · ${totalB3} en B3 · ${totalVocabB3} vocab B3</div>
@@ -1623,7 +1603,7 @@ async function renderStats() {
   </div>
 
   <div class="section-label">Par matière</div>
-  <div class="b-legend">💡 B1 = à revoir demain · B2 = dans 3 jours · B3 = maîtrisé (7 jours)</div>
+  <div class="b-legend">B1 = à revoir demain · B2 = dans 3 jours · B3 = maîtrisé (7 jours)</div>
   ${subjectRows}
 
   ${vocabRows.length ? `<div class="section-label">Vocabulaire</div>${vocabRows.join('')}` : ''}
@@ -1631,19 +1611,15 @@ async function renderStats() {
   <div class="section-label">Outils</div>
   <div class="action-list" style="margin-bottom:8px">
     <div class="action-btn action-sync" onclick="syncWithWiki()">
-      <div class="ab-icon">🔄</div>
       <div class="ab-info"><div class="ab-title">Sync Wiki</div><div class="ab-sub">Mise à jour checklists (WiFi maison)</div></div>
     </div>
     <div class="action-btn action-export" onclick="exportProgress()">
-      <div class="ab-icon">📤</div>
       <div class="ab-info"><div class="ab-title">Exporter</div><div class="ab-sub">Télécharger ma progression JSON</div></div>
     </div>
     <div class="action-btn action-export" onclick="exportQuestions()">
-      <div class="ab-icon">❓</div>
       <div class="ab-info"><div class="ab-title">Exporter mes questions</div><div class="ab-sub">Télécharger les questions enregistrées (JSON)</div></div>
     </div>
     <div class="action-btn" onclick="runMigration()">
-      <div class="ab-icon">🔧</div>
       <div class="ab-info"><div class="ab-title">Récupérer vocab perdu</div><div class="ab-sub">Migration ancienne clé → nouvelles clés</div></div>
     </div>
   </div>
@@ -1726,7 +1702,7 @@ async function migrateOldVocabProgress() {
 
 async function runMigration() {
   const n = await migrateOldVocabProgress();
-  if (n > 0) { toast(`✅ ${n} cartes vocab récupérées !`); renderStats(); }
+  if (n > 0) { toast(`${n} cartes vocab récupérées !`); renderStats(); }
   else toast('Rien à migrer (déjà à jour)');
 }
 
@@ -1786,7 +1762,7 @@ async function init() {
     if (GUEST_MODE) {
       const banner = document.createElement('div');
       banner.className = 'guest-banner';
-      banner.textContent = '👤 Mode invité — rien n\'est sauvegardé';
+      banner.textContent = 'Mode invité — rien n\'est sauvegardé';
       document.body.prepend(banner);
 
       const statsNav = document.querySelector('.nav-btn[data-nav="stats"]');
@@ -1817,7 +1793,6 @@ async function init() {
     if (homeView) {
       homeView.innerHTML = `
       <div style="padding:40px 24px; text-align:center">
-        <div style="font-size:48px; margin-bottom:16px">⚠️</div>
         <h2 style="color:var(--text)">Erreur de chargement</h2>
         <p style="color:var(--muted); margin-top:8px">Vérifie ta connexion puis recharge la page.</p>
       </div>`;
@@ -2212,7 +2187,7 @@ async function finishControle() {
     <div class="ctrl-recap-q">
       <div class="ctrl-recap-num" style="display:flex;justify-content:space-between;align-items:center">
         <span>Q${r.numero} · ${r.duree_totale_secondes}s <span style="color:var(--muted);font-size:9px">(${r.duree_reflexion_secondes}s réflexion · ${r.duree_ecriture_secondes}s écriture)</span></span>
-        <span class="ctrl-ease-badge" style="background:${ei.color}">⚡${r.indice_facilite}/10 ${ei.label}</span>
+        <span class="ctrl-ease-badge" style="background:${ei.color}">${r.indice_facilite}/10 ${ei.label}</span>
       </div>
       <div class="ctrl-recap-q-text">${r.question}</div>
       <div class="ctrl-recap-answer">${r.reponse || '<em style="color:var(--muted)">Sans réponse</em>'}</div>
@@ -2226,7 +2201,6 @@ async function finishControle() {
     </div>
     <div class="ctrl-body" style="overflow-y:auto">
       <div style="text-align:center;padding:20px 0 16px">
-        <div style="font-size:40px">📝</div>
         <div style="font-size:18px;font-weight:900;margin-top:8px">${data.titre}</div>
         <div style="font-size:13px;color:var(--muted);margin-top:4px">${reponses.length} questions · ${mins} min au total</div>
         <div style="margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 14px">
@@ -2240,7 +2214,7 @@ async function finishControle() {
     </div>
     <div class="ctrl-footer" style="flex-direction:column;gap:10px">
       <button class="ctrl-validate-btn" style="background:${col.primary}" onclick="exportControleResponse('${responseId}')">
-        📤 Exporter pour correction Claude
+        Exporter pour correction Claude
       </button>
       <button class="btn" style="padding:14px;font-size:14px;font-weight:700;width:100%" onclick="renderSubjectPage(currentSubject)">
         Retour
@@ -2307,7 +2281,7 @@ async function openControleResult(id) {
     </div>
     <div class="ctrl-footer">
       <button class="ctrl-validate-btn" style="background:${col.primary}" onclick="exportControleResponse('${id}')">
-        📤 Exporter pour Claude
+        Exporter pour Claude
       </button>
     </div>
   </div>

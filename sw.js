@@ -1,4 +1,4 @@
-const CACHE = 'studyapp-v66';
+const CACHE = 'studyapp-v67';
 const ASSETS = [
   '/',
   '/index.html',
