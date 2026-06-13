@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v84';
+const APP_VERSION = 'v85';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -26,6 +26,101 @@ function applyStoredAccent() {
   const preset = ACCENT_PRESETS[idx] || ACCENT_PRESETS[0];
   document.documentElement.style.setProperty('--accent', preset.primary);
   document.documentElement.style.setProperty('--accent-l', preset.light);
+}
+
+// ═══════════════════════════════════════════════════
+// THÈME (clair / sombre / auto)
+// ═══════════════════════════════════════════════════
+function applyStoredTheme() {
+  const mode = localStorage.getItem('studyos-theme') || 'auto';
+  const dark = mode === 'dark' || (mode === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', dark ? '#15171C' : '#FFFFFF');
+}
+
+function setTheme(mode) {
+  localStorage.setItem('studyos-theme', mode);
+  applyStoredTheme();
+  renderSettings();
+}
+
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if ((localStorage.getItem('studyos-theme') || 'auto') === 'auto') applyStoredTheme();
+  });
+}
+
+// ═══════════════════════════════════════════════════
+// TAILLE DE TEXTE
+// ═══════════════════════════════════════════════════
+const TEXT_SIZES = { petit: 0.9, normal: 1, grand: 1.15 };
+
+function applyStoredTextSize() {
+  const size = localStorage.getItem('studyos-textsize') || 'normal';
+  document.documentElement.style.zoom = TEXT_SIZES[size] || 1;
+}
+
+function setTextSize(size) {
+  localStorage.setItem('studyos-textsize', size);
+  applyStoredTextSize();
+  renderSettings();
+}
+
+// ═══════════════════════════════════════════════════
+// DATES D'EXAMEN PERSONNALISÉES
+// ═══════════════════════════════════════════════════
+function getExamDateOverrides() {
+  try { return JSON.parse(localStorage.getItem('studyos-examdates') || '{}'); }
+  catch { return {}; }
+}
+
+function getExamDate(subjectId) {
+  const overrides = getExamDateOverrides();
+  return overrides[subjectId] || (subjects[subjectId] && subjects[subjectId].exam);
+}
+
+function setExamDate(subjectId, dateStr) {
+  const overrides = getExamDateOverrides();
+  if (dateStr) overrides[subjectId] = dateStr;
+  else delete overrides[subjectId];
+  localStorage.setItem('studyos-examdates', JSON.stringify(overrides));
+  toast('Date d\'examen mise à jour');
+}
+
+// ═══════════════════════════════════════════════════
+// RAPPELS DE RÉVISION
+// ═══════════════════════════════════════════════════
+async function setReminders(on) {
+  if (on && 'Notification' in window) {
+    const perm = await Notification.requestPermission();
+    if (perm !== 'granted') { toast('Notifications refusées par le navigateur'); on = false; }
+  }
+  localStorage.setItem('studyos-reminders', on ? 'on' : 'off');
+  renderSettings();
+}
+
+async function checkReminders() {
+  if (localStorage.getItem('studyos-reminders') !== 'on') return;
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  const today = localDateStr();
+  if (localStorage.getItem('studyos-reminder-last') === today) return;
+
+  let due = 0;
+  for (const id of SUBJECTS_ORDER) {
+    if (!subjects[id]) continue;
+    const stats = await getSubjectStats(id);
+    const dueQCM = await getDueQCMs(id);
+    due += (stats.due || 0) + dueQCM.length;
+  }
+
+  if (due > 0) {
+    new Notification('StudyOS — Révisions du jour', {
+      body: `Tu as ${due} exercice${due > 1 ? 's' : ''} à réviser aujourd'hui.`,
+      icon: '/icons/icon-192.png',
+    });
+  }
+  localStorage.setItem('studyos-reminder-last', today);
 }
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
@@ -591,7 +686,7 @@ async function renderHome() {
     if (!entry) return '';
     const { id, s, score, due } = entry;
     const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
-    const days = daysUntil(s.exam);
+    const days = daysUntil(getExamDate(id));
     const ctaText = due > 0 ? `${due} exercice${due > 1 ? 's' : ''}` : 'Tout est fait ✓';
 
     return `
@@ -651,7 +746,7 @@ async function renderSubjectPage(id) {
   const qcmStats = await getQCMStats(id);
   const qcmDue = await getDueQCMs(id);
   const view = document.getElementById('view-learn');
-  const days = daysUntil(s.exam);
+  const days = daysUntil(getExamDate(id));
 
   const flashPct = stats.total ? Math.round((stats.b1 * 0.25 + stats.b2 * 0.6 + stats.b3 * 1.0) / stats.total * 100) : 0;
   const checklistPct = dashboardData?.subjects?.[id]?.checklist?.pct ?? null;
@@ -732,7 +827,7 @@ async function renderSubjectPage(id) {
     <button class="back-btn" onclick="showView('home')">←</button>
     <div style="flex:1">
       <div style="font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px">${s.name}</div>
-      <div style="font-size:12px;color:var(--muted);margin-top:2px">${s.type || 'Matière'} · dans ${days} jours · ${formatDate(s.exam)}</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">${s.type || 'Matière'} · dans ${days} jours · ${formatDate(getExamDate(id))}</div>
     </div>
     ${progressRing(score, col.primary, 52, String(score))}
   </div>
@@ -1684,8 +1779,71 @@ async function renderStats() {
   ${subjectRows}
 
   ${vocabRows.length ? `<div class="section-label">Vocabulaire</div>${vocabRows.join('')}` : ''}
+  `;
+}
 
-  <div class="section-label">Outils</div>
+// ═══════════════════════════════════════════════════
+// RÉGLAGES
+// ═══════════════════════════════════════════════════
+function renderSettings() {
+  const view = document.getElementById('view-settings');
+  const currentAccent = parseInt(localStorage.getItem('studyos-accent') || '0', 10);
+  const currentTheme = localStorage.getItem('studyos-theme') || 'auto';
+  const currentTextSize = localStorage.getItem('studyos-textsize') || 'normal';
+  const remindersOn = localStorage.getItem('studyos-reminders') === 'on';
+
+  const examRows = SUBJECTS_ORDER.filter(id => subjects[id]).map(id => {
+    const s = subjects[id];
+    return `
+    <div class="examdate-row">
+      <div class="examdate-name">${SUBJECT_ICONS[id] || '📘'} ${SUBJECT_SHORT[id] || s.name}</div>
+      <input type="date" class="examdate-input" value="${getExamDate(id) || ''}" onchange="setExamDate('${id}', this.value); renderHome();">
+    </div>`;
+  }).join('');
+
+  view.innerHTML = `
+  <div class="view-header"><div class="view-title">Réglages</div></div>
+  <div class="section-label">Profil</div>
+  <div class="card card-sm">
+    <label class="settings-label" for="settings-name-input">Nom affiché</label>
+    <input id="settings-name-input" class="settings-input" type="text" value="${getDisplayName()}" maxlength="20" placeholder="Charles">
+  </div>
+
+  <div class="section-label">Couleur d'accentuation</div>
+  <div class="settings-swatches">
+    ${ACCENT_PRESETS.map((p, i) => `
+    <button class="settings-swatch${i === currentAccent ? ' active' : ''}" style="background:${p.primary}" onclick="setAccentColor(${i})" aria-label="${p.name}"></button>`).join('')}
+  </div>
+
+  <div class="section-label">Apparence</div>
+  <div class="settings-label" style="padding:0 16px 8px">Thème</div>
+  <div class="seg-group">
+    <button class="seg-btn${currentTheme === 'light' ? ' active' : ''}" onclick="setTheme('light')">Clair</button>
+    <button class="seg-btn${currentTheme === 'dark' ? ' active' : ''}" onclick="setTheme('dark')">Sombre</button>
+    <button class="seg-btn${currentTheme === 'auto' ? ' active' : ''}" onclick="setTheme('auto')">Auto</button>
+  </div>
+  <div class="settings-label" style="padding:8px 16px 8px">Taille du texte</div>
+  <div class="seg-group">
+    <button class="seg-btn${currentTextSize === 'petit' ? ' active' : ''}" onclick="setTextSize('petit')">Petit</button>
+    <button class="seg-btn${currentTextSize === 'normal' ? ' active' : ''}" onclick="setTextSize('normal')">Normal</button>
+    <button class="seg-btn${currentTextSize === 'grand' ? ' active' : ''}" onclick="setTextSize('grand')">Grand</button>
+  </div>
+
+  <div class="section-label">Dates d'examen</div>
+  <div class="card card-sm" style="padding:0">
+    ${examRows}
+  </div>
+
+  <div class="section-label">Rappels</div>
+  <div class="card card-sm toggle-row" onclick="setReminders(${!remindersOn})">
+    <div>
+      <div class="toggle-title">Rappels de révision</div>
+      <div class="toggle-sub">Notification au lancement si des révisions sont dues</div>
+    </div>
+    <div class="toggle-switch${remindersOn ? ' on' : ''}"><div class="toggle-knob"></div></div>
+  </div>
+
+  <div class="section-label">Données</div>
   <div class="action-list" style="margin-bottom:8px">
     <div class="action-btn action-sync" onclick="syncWithWiki()">
       <div class="ab-info"><div class="ab-title">Sync Wiki</div><div class="ab-sub">Mise à jour checklists (WiFi maison)</div></div>
@@ -1705,30 +1863,7 @@ async function renderStats() {
     <div class="danger-label">Zone danger</div>
     <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
   </div>
-  <div class="app-version">StudyOS ${APP_VERSION}</div>
-  `;
-}
-
-// ═══════════════════════════════════════════════════
-// RÉGLAGES
-// ═══════════════════════════════════════════════════
-function renderSettings() {
-  const view = document.getElementById('view-settings');
-  const currentAccent = parseInt(localStorage.getItem('studyos-accent') || '0', 10);
-
-  view.innerHTML = `
-  <div class="view-header"><div class="view-title">Réglages</div></div>
-  <div class="section-label">Profil</div>
-  <div class="card card-sm">
-    <label class="settings-label" for="settings-name-input">Nom affiché</label>
-    <input id="settings-name-input" class="settings-input" type="text" value="${getDisplayName()}" maxlength="20" placeholder="Charles">
-  </div>
-  <div class="section-label">Couleur d'accentuation</div>
-  <div class="settings-swatches">
-    ${ACCENT_PRESETS.map((p, i) => `
-    <button class="settings-swatch${i === currentAccent ? ' active' : ''}" style="background:${p.primary}" onclick="setAccentColor(${i})" aria-label="${p.name}"></button>`).join('')}
-  </div>
-  <div class="app-version-row">StudyOS ${APP_VERSION}</div>`;
+  <div class="app-version">StudyOS ${APP_VERSION}</div>`;
 
   const input = document.getElementById('settings-name-input');
   input.addEventListener('change', () => {
@@ -1885,6 +2020,7 @@ async function init() {
     await loadDashboard();
     migrateOldVocabProgress().then(n => { if (n > 0) console.log(`Migration vocab: ${n} cartes récupérées`); });
     await renderHome();
+    checkReminders();
 
     // Service worker
     if ('serviceWorker' in navigator) {
@@ -1947,6 +2083,8 @@ function setupLockScreen() {
 
 document.addEventListener('DOMContentLoaded', () => {
   applyStoredAccent();
+  applyStoredTheme();
+  applyStoredTextSize();
   if (localStorage.getItem('studyos-auth') === 'charles') {
     document.getElementById('lock-screen').remove();
     init();
