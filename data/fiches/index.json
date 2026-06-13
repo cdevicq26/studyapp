@@ -42,6 +42,12 @@
     "sous_titre": "Vue d'ensemble de tout le programme (Ch0 à Ch5)"
   },
   {
+    "id": "fiche-geo-06",
+    "matiere": "geo",
+    "titre": "Géo — Analyse de document (Grille A/B/C)",
+    "sous_titre": "Méthode complète + exemple appliqué (12/20 pts à l'oral)"
+  },
+  {
     "id": "fiche-philo-05",
     "matiere": "philo",
     "titre": "Philo — Sweep complet",
