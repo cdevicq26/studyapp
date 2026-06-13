@@ -13,6 +13,7 @@
   --muted:    #6B6560;
   --accent:   #E8491F;
   --accent-l: #FDE6DB;
+  --track:    #EDEAE5;
   --r:        24px;
   --r-sm:     18px;
   --r-xs:     12px;
@@ -32,6 +33,7 @@
   --text-2:   #C7C2BA;
   --muted:    #8A8680;
   --accent-l: #2A2018;
+  --track:    #2A2D34;
 }
 
 /* ── 2. RESET + BASE ── */
@@ -157,7 +159,7 @@ body {
 /* Progress bar */
 .prog-track {
   height: 8px; border-radius: 4px;
-  background: #EDEAE5;
+  background: var(--track);
   overflow: hidden;
 }
 .prog-fill { height: 100%; border-radius: 4px; transition: width .6s ease; min-width: 4px; }
@@ -337,7 +339,7 @@ body {
 /* Rond de progression SVG */
 .ring { position: relative; flex-shrink: 0; }
 .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-.ring-bg { fill: none; stroke: #EDEAE5; stroke-width: 3; }
+.ring-bg { fill: none; stroke: var(--track); stroke-width: 3; }
 .ring-fill { fill: none; stroke-width: 3; stroke-linecap: round; transition: stroke-dasharray .6s ease; }
 .ring-label {
   position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
@@ -770,7 +772,7 @@ body {
 }
 .agenda-progress-track {
   flex: 1; height: 5px; border-radius: 3px;
-  background: #EDEAE5; overflow: hidden;
+  background: var(--track); overflow: hidden;
 }
 .agenda-progress-fill { height: 100%; border-radius: 3px; background: var(--accent); transition: width .3s ease; }
 .agenda-progress-label { font-size: 11px; font-weight: 700; color: var(--text); min-width: 28px; text-align: right; }
@@ -835,7 +837,7 @@ body {
 .ssr-top { display: flex; align-items: center; justify-content: space-between; }
 .ssr-name { font-size: 14px; font-weight: 800; color: var(--text); }
 .ssr-score { font-size: 14px; font-weight: 800; }
-.ssr-bar-bg { height: 6px; border-radius: 3px; background: #EDEAE5; margin-top: 8px; overflow: hidden; }
+.ssr-bar-bg { height: 6px; border-radius: 3px; background: var(--track); margin-top: 8px; overflow: hidden; }
 .ssr-bar { height: 6px; border-radius: 3px; transition: width .6s ease; }
 .ssr-details { margin-top: 10px; }
 .ssr-details summary {
