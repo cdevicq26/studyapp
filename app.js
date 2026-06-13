@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v90';
+const APP_VERSION = 'v91';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -96,7 +96,7 @@ function isNightTime() {
 // THÈME (clair / sombre / auto)
 // ═══════════════════════════════════════════════════
 function applyStoredTheme() {
-  const mode = localStorage.getItem('studyos-theme') || 'light';
+  const mode = localStorage.getItem('studyos-theme') || 'auto';
   const dark = mode === 'dark' || (mode === 'auto' && isNightTime());
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   const meta = document.querySelector('meta[name="theme-color"]');
@@ -113,7 +113,7 @@ function setTheme(mode) {
 
 // En mode "Auto", revérifie périodiquement si le lever/coucher du soleil est franchi
 setInterval(() => {
-  if ((localStorage.getItem('studyos-theme') || 'light') === 'auto') applyStoredTheme();
+  if ((localStorage.getItem('studyos-theme') || 'auto') === 'auto') applyStoredTheme();
 }, 10 * 60 * 1000);
 
 // ═══════════════════════════════════════════════════
@@ -1856,7 +1856,7 @@ async function renderStats() {
 function renderSettings() {
   const view = document.getElementById('view-settings');
   const currentAccent = parseInt(localStorage.getItem('studyos-accent') || '0', 10);
-  const currentTheme = localStorage.getItem('studyos-theme') || 'light';
+  const currentTheme = localStorage.getItem('studyos-theme') || 'auto';
   const currentTextSize = localStorage.getItem('studyos-textsize') || 'normal';
   const remindersOn = localStorage.getItem('studyos-reminders') === 'on';
 
@@ -2166,7 +2166,7 @@ function setupLockScreen() {
 document.addEventListener('DOMContentLoaded', () => {
   applyStoredTheme();
   applyStoredTextSize();
-  if ((localStorage.getItem('studyos-theme') || 'light') === 'auto') requestGeoOnce();
+  if ((localStorage.getItem('studyos-theme') || 'auto') === 'auto') requestGeoOnce();
   if (localStorage.getItem('studyos-auth') === 'charles') {
     document.getElementById('lock-screen').remove();
     init();
