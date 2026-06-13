@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v77';
+const APP_VERSION = 'v78';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -29,9 +29,6 @@ function applyStoredAccent() {
 }
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
-
-const PLACE_LABELS = { '🏠': 'Maison', '🏫': 'École' };
-function placeLabel(place) { return PLACE_LABELS[place] || place || ''; }
 
 const SUBJECT_COLORS = {
   geo:      { primary: '#2F8FE0' },
@@ -586,48 +583,13 @@ async function renderHome() {
 
     return `
     <div class="subject-cell" onclick="goToSubject('${id}')">
-      ${progressRing(score, col.primary, 48)}
+      ${progressRing(score, col.primary, 56)}
       <div class="sc-info">
         <div class="sc-name">${SUBJECT_SHORT[id] || s.name}</div>
         <div class="sc-days" style="color:${col.primary}">${days}j</div>
       </div>
     </div>`;
   });
-
-  // Today planning
-  const todayStr = localDateStr();
-  const todayPlan = dashboardData ? (dashboardData.planning || []).find(p => p.fullDate === todayStr) : null;
-  let todayTasksHTML = '';
-  if (todayPlan) {
-    if (todayPlan.isExam) {
-      const examColor = todayPlan.examColor || 'var(--accent)';
-      const examTask = todayPlan.tasks && todayPlan.tasks[0];
-      todayTasksHTML += `<div class="today-exam-band" style="background:${examColor}">EXAM — ${examTask ? examTask.text : 'Jour d\'examen'}</div>`;
-      (todayPlan.tasks || []).slice(1).forEach(t => {
-        todayTasksHTML += `<div class="today-slot"><div class="today-task"><span class="today-task-place">${placeLabel(t.place)}</span><span class="today-task-text">${t.text}</span></div></div>`;
-      });
-    } else {
-      const slots = { 'Matin': [], 'Après-midi': [], 'Soir': [] };
-      const tasks = todayPlan.tasks || [];
-      if (tasks.length > 0) {
-        tasks.forEach(t => {
-          const slot = slots[t.time] !== undefined ? t.time : 'Matin';
-          slots[slot].push(t);
-        });
-        Object.entries(slots).forEach(([slot, items]) => {
-          if (!items.length) return;
-          const rows = items.map(t =>
-            `<div class="today-task"><span class="today-task-place">${placeLabel(t.place)}</span><span class="today-task-text">${t.text}</span></div>`
-          ).join('');
-          todayTasksHTML += `<div class="today-slot"><div class="today-slot-title">${slot}</div>${rows}</div>`;
-        });
-      } else {
-        todayTasksHTML = `<div class="today-empty">Rien de prévu aujourd'hui</div>`;
-      }
-    }
-  } else {
-    todayTasksHTML = `<div class="today-empty">Rien de prévu aujourd'hui</div>`;
-  }
 
   const syncDate = (dashboardData && dashboardData.generated)
     ? new Date(dashboardData.generated).toLocaleDateString('fr-BE', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })
@@ -651,11 +613,6 @@ async function renderHome() {
 
   <div class="section-label">Matières</div>
   <div class="subject-grid">${progCards.join('')}</div>
-
-  <div class="section-label">Aujourd'hui</div>
-  <div class="today-plan-card">
-    ${todayTasksHTML}
-  </div>
 
   ${syncDate ? `<div class="sync-footer"><span class="sync-dot"></span>Sync Claude : ${syncDate}</div>` : ''}
   `;
@@ -715,7 +672,7 @@ async function renderSubjectPage(id) {
     <div class="section-label">Fiches de révision</div>
     <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
       ${fiches.map(f => `
-      <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openFicheView('${f.id}')">
+      <div class="today-subject-row" style="cursor:pointer" onclick="openFicheView('${f.id}')">
         <div class="tsr-info"><div class="tsr-name">${f.titre}</div><div class="tsr-count">${f.sous_titre || ''}</div></div>
         <div class="vc-arrow">${CHEVRON_ICON}</div>
       </div>`).join('')}
@@ -735,7 +692,7 @@ async function renderSubjectPage(id) {
     <div class="section-label">Contrôles</div>
     <div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px">
       ${controles.map(item => `
-      <div class="today-subject-row" style="border-left-color:${col.primary}">
+      <div class="today-subject-row">
         <div class="tsr-info"><div class="tsr-name">${item.titre}</div><div class="tsr-count">${item.questions} questions</div></div>
         ${item.fiche_id ? `<button class="btn" style="color:${col.primary};padding:10px 12px;font-size:13px" onclick="openFicheView('${item.fiche_id}')" title="Lire la fiche">Fiche</button>` : ''}
         <button class="btn" style="color:${col.primary};padding:10px 14px;font-size:13px" onclick="startControle('${item.id}')">Démarrer</button>
@@ -745,7 +702,7 @@ async function renderSubjectPage(id) {
         const date = new Date(r.date).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
         const mins = Math.round(r.duree_totale_secondes / 60);
         return `
-        <div class="today-subject-row" style="border-left-color:${col.primary};cursor:pointer" onclick="openControleResult('${rid}')">
+        <div class="today-subject-row" style="cursor:pointer" onclick="openControleResult('${rid}')">
           <div class="tsr-info"><div class="tsr-name">${r.titre}</div><div class="tsr-count">${date} · ${mins} min</div></div>
           <button class="btn" style="color:${col.primary};padding:7px 12px;font-size:12px" onclick="event.stopPropagation();exportControleResponse('${rid}')">↗</button>
         </div>`;
@@ -1641,7 +1598,7 @@ async function renderStats() {
 
       const label = prefix === 'vocab' ? src.name : `Anti-vocab ${src.name.replace('Vocabulaire ', '')}`;
       vocabRows.push(`
-      <div class="stats-vocab-row" style="border-left-color:${src.color}">
+      <div class="stats-vocab-row">
         <span class="svr-name">${label}</span>
         <span class="svr-meta">${seen}/${total} vus</span>
         <span class="svr-pct" style="color:${src.color}">${pct}%</span>
