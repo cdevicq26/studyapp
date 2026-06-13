@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v68';
+const APP_VERSION = 'v69';
 
 const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
 
@@ -1445,9 +1445,10 @@ function renderAgenda() {
   const rows = agendaDays.map(day => {
     const dt = new Date(day.fullDate);
     const isToday = day.fullDate === todayStr;
+    const isPast = day.fullDate < todayStr;
     const dayName = dt.toLocaleDateString('fr-BE', { weekday: 'short' });
     return `
-    <div class="agenda-day-row${isToday ? ' is-today' : ''}" onclick="toggleAgendaDay('${day.fullDate}')">
+    <div class="agenda-day-row${isToday ? ' is-today' : ''}${isPast ? ' is-past' : ''}" onclick="toggleAgendaDay('${day.fullDate}')">
       <div class="adr-date">${capFirst(dayName)} ${day.date}</div>
       <div id="agenda-row-badge-${day.fullDate}">${dayBadgeHTML(day)}</div>
       <div class="adr-chevron" id="adr-chevron-${day.fullDate}">›</div>
@@ -1506,6 +1507,7 @@ function toggleAgendaTask(dateKey, taskIdx) {
 // ═══════════════════════════════════════════════════
 async function renderStats() {
   const view = document.getElementById('view-stats');
+  view.innerHTML = `<div class="view-header"><div class="view-title">Stats</div></div><div class="loading-state">Chargement…</div>`;
 
   let totalSeen = 0, totalB3 = 0, totalVocabB3 = 0;
 
