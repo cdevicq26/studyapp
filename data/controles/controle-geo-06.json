@@ -1,0 +1,39 @@
+{
+  "id": "controle-geo-06",
+  "matiere": "geo",
+  "numero": 6,
+  "titre": "Géographie — Révision éclair : pièges & chiffres",
+  "date_generation": "2026-06-14",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Quelles sont les limites géographiques de l'Europe ? Pourquoi dit-on que sa limite Est est floue ?",
+      "concepts": ["Oural", "Caucase", "mer Caspienne", "Bosphore", "Russie", "limite floue", "critères politiques vs physiques"]
+    },
+    {
+      "id": "q2",
+      "texte": "Explique la différence entre l'Union européenne, la Zone euro et l'Espace Schengen (avec les chiffres). Où se situe la Suisse par rapport à ces trois ensembles ?",
+      "concepts": ["UE 27 États", "zone euro 20 États", "espace Schengen 29 États", "Suisse dans Schengen", "Suisse hors UE", "Suisse hors zone euro", "franc suisse"]
+    },
+    {
+      "id": "q3",
+      "texte": "Que signifie l'acronyme DIPP ? Explique ce que désigne réellement ce concept.",
+      "concepts": ["Division Internationale des Processus Productifs", "fragmentation géographique", "chaîne de production", "avantages comparatifs"]
+    },
+    {
+      "id": "q4",
+      "texte": "Donne les chiffres clés qui font d'Anvers un hub de la cocaïne en Europe (saisies, trafic de conteneurs, taux de contrôle).",
+      "concepts": ["121 tonnes 2023", "8,5 millions d'EVP", "5% des conteneurs contrôlés", "2e port européen"]
+    },
+    {
+      "id": "q5",
+      "texte": "Comment a évolué la production mondiale de cocaïne depuis 1998 malgré les politiques répressives, et quel mécanisme géographique explique cette évolution ?",
+      "concepts": ["production mondiale ×4", "1998-2022", "effet ballon", "Air Bridge Denial", "déplacement de la production"]
+    },
+    {
+      "id": "q6",
+      "texte": "En quel sens peut-on dire que la cocaïne est une ressource « semi-mondialisée » ?",
+      "concepts": ["routes commerciales mondiales", "DIPP applicable", "hémisphère Nord", "consommation concentrée Europe/USA/Canada"]
+    }
+  ]
+}

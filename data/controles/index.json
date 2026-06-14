@@ -61,5 +61,12 @@
     "titre": "Bio — Sweep complet (tout le programme)",
     "questions": 11,
     "fiche_id": "fiche-bio-04"
+  },
+  {
+    "id": "controle-geo-06",
+    "matiere": "geo",
+    "titre": "Géo — Révision éclair : pièges & chiffres",
+    "questions": 6,
+    "fiche_id": "fiche-geo-11"
   }
 ]
