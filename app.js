@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v98';
+const APP_VERSION = 'v99';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -947,10 +947,10 @@ async function renderSubjectPage(id) {
   </div>
 
   ${s.liens && s.liens.length ? `
-  <div class="section-label">Liens transversaux</div>
+  <div class="section-label">Questions ouvertes</div>
   <div class="action-list">
     <div class="action-btn" onclick="startLiens('${id}')">
-      <div class="ab-info"><div class="ab-title">Relier les concepts</div><div class="ab-sub">${s.liens.length} liens entre chapitres à expliquer</div></div>
+      <div class="ab-info"><div class="ab-title">Questions transversales</div><div class="ab-sub">${s.liens.length} questions ouvertes, réponse au verso</div></div>
       <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
   </div>
@@ -1125,8 +1125,8 @@ function renderFlashcard() {
        <div class="fc-hint">Quel est le terme ?</div>`
     : isLiens
     ? `<div class="fc-cat">${catLabel}</div>
-       <div class="fc-term" style="font-size:24px">${card.term}</div>
-       <div class="fc-hint">Quel est le lien entre ces deux notions ?</div>`
+       <div class="fc-def fc-def-front">${card.term}</div>
+       <div class="fc-hint">Réfléchis à voix haute, puis retourne la carte</div>`
     : `<div class="fc-cat">${catLabel}</div>
        <div class="fc-term">${card.term}</div>
        <div class="fc-hint">Appuie pour voir la réponse</div>`;
@@ -1136,7 +1136,7 @@ function renderFlashcard() {
        <div class="fc-term" style="color:${col.primary}">${card.term}</div>`
     : isLiens
     ? `<div class="fc-cat">${catLabel}</div>
-       <div class="fc-term-back" style="font-size:18px">${card.term}</div>
+       <div class="fc-def" style="font-weight:700;color:${col.primary}">${card.term}</div>
        <div class="fc-def">${(card.def || '').replace(/\n/g, '<br>')}</div>
        ${card.ex ? `<div class="fc-ex"><span class="fc-ex-label">Exemple</span>${card.ex}</div>` : ''}`
     : `<div class="fc-cat">${catLabel}</div>
@@ -1214,7 +1214,7 @@ function renderFlashcardEnd() {
 
   const sessionName = isAntiVocabEnd ? 'Anti-vocabulaire'
     : isVocabEnd ? 'Vocabulaire'
-    : isLiensEnd ? 'Liens transversaux'
+    : isLiensEnd ? 'Questions ouvertes'
     : (subjects[subjectId] || {}).name || subjectId;
 
   const backFn = isVocabAny

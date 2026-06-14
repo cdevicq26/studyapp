@@ -878,45 +878,143 @@
   "liens": [
     {
       "id": "gl1",
-      "cat": "Liens transversaux",
-      "term": "DIPP ↔ Effet ballon",
-      "def": "Le DIPP explique POURQUOI une production se déplace géographiquement (recherche des avantages comparatifs). L'effet ballon explique COMMENT elle se déplace quand une contrainte (répression, interdiction) apparaît à un endroit : la production migre vers un autre pays sans diminuer globalement.",
-      "ex": "Cocaïne : répression Pérou/Bolivie (Air Bridge Denial) → explosion en Colombie (40 000 → 170 000 ha). Sable : interdiction d'export en Indonésie (2007) → Singapour se tourne vers Cambodge/Vietnam/Myanmar."
+      "cat": "Questions ouvertes",
+      "term": "Comment expliques-tu que le sable soit aujourd'hui l'une des ressources les plus importantes au monde ?",
+      "def": "Le sable est la 2e ressource la plus consommée au monde (après l'eau). Il est l'ingrédient principal du béton (46% du mélange, avec gravier 33%, ciment 19%, eau 6%), matériau de base de toute l'urbanisation mondiale (bâtiments, routes). Avec l'explosion urbaine (mégapoles), la demande explose alors que seul un sable granuleux précis (rivières, fonds marins) convient — ce qui en fait une ressource stratégique et de plus en plus rare.",
+      "ex": "Marché mondial du sable de silice/quartz : 1,39 milliard $ en 2021."
     },
     {
       "id": "gl2",
-      "cat": "Liens transversaux",
-      "term": "Anvers / dorsale européenne ↔ Mondialisation",
-      "def": "La position d'Anvers dans la dorsale européenne (site fluvial + situation = 2e port européen, hinterland connecté à toute l'Europe industrielle) en fait un hub pour les flux mondialisés. Mais cette même connexion aux flux mondiaux (8,5M EVP/an, seulement 5% contrôlés) rend Anvers vulnérable au trafic illicite : flux légaux et illégaux empruntent les MÊMES infrastructures.",
-      "ex": "Anvers = ancrage Sud de la dorsale (Liverpool → Milan) ET 1er point d'entrée de la cocaïne en Europe."
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi peut-on dire que la cocaïne suit la même logique géographique que des ressources légales comme le sable ou le pétrole ?",
+      "def": "La cocaïne peut s'analyser avec la même grille DIPP que n'importe quelle ressource : une production localisée selon des avantages comparatifs (climat, main-d'œuvre, faible contrôle étatique en Colombie/Pérou/Bolivie), des flux de transit organisés (Afrique de l'Ouest), une distribution vers des marchés de consommation (Europe via Anvers), et des acteurs/rapports de force (cartels, États, douanes). Seule différence : la dimension de répression/clandestinité.",
+      "ex": "La cocaïne est dite ressource « semi-mondialisée » : mêmes routes commerciales que les marchandises légales, mais demande concentrée dans l'hémisphère Nord."
     },
     {
       "id": "gl3",
-      "cat": "Liens transversaux",
-      "term": "Pergélisol/méthane ↔ Earth Overshoot Day",
-      "def": "Le réchauffement arctique dégèle le pergélisol, qui libère du méthane (GES puissant) → boucle de rétroaction positive qui accélère le réchauffement global → augmente l'empreinte écologique mondiale / réduit la biocapacité. Comme EOD = (biocapacité ÷ empreinte écologique) × 365, ce phénomène régional ferait reculer la date de l'Earth Overshoot Day dans le calendrier.",
-      "ex": "Un phénomène localisé en Arctique a un impact sur un indicateur mondial calculé chaque année (EOD 2025 = 24 juillet, 1,75 Terre)."
+      "cat": "Questions ouvertes",
+      "term": "En quoi le réchauffement de l'Arctique est-il un bon exemple de \"boucle de rétroaction\" ?",
+      "def": "Une boucle de rétroaction positive est un mécanisme où un effet amplifie sa propre cause. En Arctique : le réchauffement fait fondre la banquise → la surface blanche (qui réfléchit le rayonnement solaire, effet albédo) diminue → l'océan sombre absorbe plus de chaleur → le réchauffement s'accélère → encore plus de fonte. Le dégel du pergélisol ajoute une seconde boucle en libérant du méthane (GES puissant).",
+      "ex": "Albédo élevé (glace blanche) → réfléchit la chaleur. Albédo faible (océan sombre) → absorbe la chaleur → boucle qui s'auto-entretient."
     },
     {
       "id": "gl4",
-      "cat": "Liens transversaux",
-      "term": "Sable (non renouvelable) ↔ Ressources arctiques (pétrole/gaz)",
-      "def": "Le sable est non renouvelable à l'échelle humaine : il se forme par érosion, mais beaucoup trop lentement par rapport à la consommation. Même logique pour le pétrole/gaz arctique (~13%/~30% des réserves mondiales) : formation géologique sur des millions d'années. Conséquence géopolitique : une ressource finie et de plus en plus accessible (fonte des glaces) devient un enjeu stratégique majeur → course aux ZEE entre les 8 pays riverains de l'Arctique, tensions OTAN/Russie.",
-      "ex": "« Non renouvelable à l'échelle humaine » = la justification géographique de pourquoi ces ressources deviennent des enjeux géopolitiques."
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi la Suisse est-elle un cas particulièrement piégeux pour comprendre l'UE, la zone euro et l'espace Schengen ?",
+      "def": "Parce qu'elle a un statut différent dans chacun des trois ensembles : la Suisse n'est PAS membre de l'UE (27 États) ni de la zone euro (20 États, elle garde le franc suisse), MAIS elle EST dans l'espace Schengen (29 États, libre circulation des personnes), comme la Norvège, l'Islande et le Liechtenstein. On confond facilement ces trois cercles car ils se recoupent presque mais pas totalement.",
+      "ex": "Phrase-clé : « La Suisse est dans Schengen, mais PAS dans l'UE ni dans la zone euro »."
     },
     {
       "id": "gl5",
-      "cat": "Liens transversaux",
-      "term": "Effet ballon : cocaïne ↔ commerce du sable",
-      "def": "L'effet ballon n'est pas propre à la drogue : c'est un mécanisme géographique général — une contrainte locale déplace un phénomène sans le supprimer. Cocaïne : répression au Pérou/Bolivie → explosion en Colombie. Sable : interdiction d'exporter du sable en Indonésie (2007, sous pression de Singapour) → Singapour se tourne vers d'autres fournisseurs (Cambodge, Vietnam, Myanmar) — le problème se déplace géographiquement.",
-      "ex": "Même mécanisme (effet ballon) applicable à une ressource illicite (cocaïne) et à une ressource légale (sable)."
+      "cat": "Questions ouvertes",
+      "term": "Comment l'effet ballon explique-t-il à la fois le trafic de cocaïne et certains commerces parfaitement légaux ?",
+      "def": "L'effet ballon est un mécanisme géographique général : une contrainte (interdiction, répression) appliquée à un endroit déplace le phénomène ailleurs sans le faire disparaître — comme appuyer sur un ballon fait gonfler une autre partie. Cocaïne : la répression au Pérou/Bolivie (Air Bridge Denial, 1994) a fait exploser la production en Colombie (40 000 → 170 000 ha). Sable : l'interdiction d'exporter du sable en Indonésie (2007) a poussé Singapour vers d'autres fournisseurs (Cambodge, Vietnam, Myanmar).",
+      "ex": "Résultat global pour la cocaïne : production mondiale ×4 entre 1998 et 2022 malgré toutes les politiques répressives."
     },
     {
       "id": "gl6",
-      "cat": "Liens transversaux",
-      "term": "Site/situation : Anvers ↔ Routes maritimes arctiques",
-      "def": "Dans les deux cas, c'est la SITUATION (position relative dans des flux mondiaux) qui compte plus que le SITE brut. Pour Anvers, la situation (dorsale européenne + accès Escaut) est déjà pleinement exploitée. Pour les routes arctiques (Nord-Ouest/Nord-Est), la situation potentielle viendrait du gain de distance Asie-Europe (raccourci vs Suez/Panama), mais reste limitée par l'absence d'infrastructures portuaires et les conditions extrêmes.",
-      "ex": "Anvers = situation mondialisée déjà exploitée ; routes arctiques = situation stratégique encore potentielle."
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi Anvers est-il à la fois un atout économique majeur et une faiblesse sécuritaire pour la Belgique ?",
+      "def": "Le site d'Anvers (port fluvial sur l'Escaut) et sa situation (2e port européen, 13e mondial, 8,5 millions d'EVP/an, hinterland connecté à toute l'Europe via la dorsale européenne) en font un atout économique énorme. Mais ce même volume de trafic rend le contrôle quasi impossible : seulement 5% des conteneurs sont scannés, ce qui en fait le principal point d'entrée de la cocaïne en Europe (121 tonnes saisies en Belgique en 2023, dont 116 t à Anvers).",
+      "ex": "Le MSC Tena (24 000 conteneurs, le plus grand porte-conteneurs du monde) ne peut accoster que dans 23 ports au monde — dont Anvers."
+    },
+    {
+      "id": "gl7",
+      "cat": "Questions ouvertes",
+      "term": "Qu'est-ce que la méthode DIPP nous apprend sur la mondialisation actuelle ?",
+      "def": "La DIPP (Division Internationale des Processus Productifs) montre que la production d'un bien n'est presque jamais réalisée dans un seul pays : chaque étape (matières premières, fabrication, assemblage, distribution) est localisée là où les avantages comparatifs sont les plus grands (coût de la main-d'œuvre, ressources disponibles, fiscalité, infrastructures). Cela révèle que la mondialisation est avant tout une fragmentation géographique des chaînes de production, pas seulement un échange de produits finis.",
+      "ex": "Un iPhone est conçu aux USA, ses composants fabriqués en Asie, et il est assemblé en Chine — chaque étape choisie selon ses avantages comparatifs."
+    },
+    {
+      "id": "gl8",
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi l'Arctique devient-il un nouvel espace géopolitique stratégique ?",
+      "def": "La fonte de la banquise rend accessibles des ressources énormes (~13% des réserves mondiales de pétrole, ~30% de gaz) et ouvre potentiellement deux routes maritimes (Nord-Ouest le long du Canada, Nord-Est le long de la Russie) qui réduiraient les distances Asie-Europe de 30 à 40% par rapport à Suez/Panama. Cela attise les tensions entre les 8 pays riverains (dont la Russie et des membres de l'OTAN) sur les zones économiques exclusives (ZEE, 200 milles nautiques) et le contrôle de ces futures routes.",
+      "ex": "Projection : la banquise pourrait reculer de 36% d'ici 2030, ouvrant des zones aujourd'hui inaccessibles."
+    },
+    {
+      "id": "gl9",
+      "cat": "Questions ouvertes",
+      "term": "En quoi l'Earth Overshoot Day est-il un indicateur révélateur de notre rapport aux ressources ?",
+      "def": "L'Earth Overshoot Day est calculé par la formule (biocapacité ÷ empreinte écologique) × 365 : c'est la date de l'année à partir de laquelle l'humanité a consommé l'équivalent de toutes les ressources que la Terre peut renouveler en un an. Plus cette date est précoce dans l'année, plus notre empreinte écologique dépasse la biocapacité de la planète — un indicateur synthétique du déséquilibre entre consommation humaine et capacité de régénération des écosystèmes.",
+      "ex": "EOD 2025 = 24 juillet → l'humanité consomme l'équivalent de 1,75 Terre par an."
+    },
+    {
+      "id": "gl10",
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi la fonte des glaces arctiques pourrait-elle bouleverser le commerce mondial ?",
+      "def": "L'ouverture des routes maritimes du Nord-Ouest (côtes canadiennes) et du Nord-Est (côtes russes) réduirait les distances de transport Asie-Europe de 30 à 40% par rapport aux routes traditionnelles via le canal de Suez ou de Panama. Cela redessinerait les flux commerciaux mondiaux, donnerait un avantage stratégique majeur à la Russie (route Nord-Est très rentable pour elle) et au Canada, et créerait de nouveaux hubs portuaires dans des régions aujourd'hui marginales.",
+      "ex": "Lors du vote (méthode de Ganty) sur l'ouverture des routes arctiques, le choix final retenu a été la route du Nord-Ouest."
+    },
+    {
+      "id": "gl11",
+      "cat": "Questions ouvertes",
+      "term": "Comment le choc pétrolier de 1973 a-t-il changé durablement notre rapport aux ressources énergétiques ?",
+      "def": "Lors de la guerre du Kippour (1973), les pays arabes de l'OPEP ont décrété un embargo pétrolier contre les pays soutenant Israël, multipliant le prix du pétrole par 4 (de ~3$ à ~12$ le baril) en quelques mois. Ce choc a révélé la dépendance totale des économies occidentales au pétrole importé et a déclenché les premières politiques d'économies d'énergie en Europe — un tournant dans la prise de conscience de la vulnérabilité énergétique.",
+      "ex": "Le second choc pétrolier (1979, révolution iranienne) a doublé le prix du pétrole (~13$ → ~34$) et accéléré le développement des énergies alternatives."
+    },
+    {
+      "id": "gl12",
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi dit-on que l'Europe n'a pas de frontière naturelle claire à l'Est ?",
+      "def": "À l'Ouest, au Nord et au Sud, l'Europe est délimitée par des frontières océaniques et maritimes nettes (Atlantique, Arctique, Méditerranée). Mais à l'Est, la frontière conventionnelle suit les monts Oural, le fleuve Oural, la mer Caspienne et le Caucase — une limite qui ne correspond à aucune barrière physique continue. La Russie s'étend des deux côtés de l'Oural, ce qui montre que l'Europe est définie davantage par des critères politiques et historiques que par des critères géographiques physiques.",
+      "ex": "Le détroit du Bosphore (séparant la Turquie d'Europe et d'Asie) est parfois admis comme une autre limite Sud-Est possible."
+    },
+    {
+      "id": "gl13",
+      "cat": "Questions ouvertes",
+      "term": "En quoi la dorsale européenne structure-t-elle l'espace économique du continent ?",
+      "def": "La dorsale européenne (ou « Banane bleue »), théorisée par Roger Brunet dans les années 1980, est un arc allant de Liverpool à Milan en passant par la vallée du Rhin, concentrant environ 100 millions d'habitants et l'essentiel de la richesse industrielle et urbaine européenne. Anvers s'y inscrit comme ancrage portuaire de cet axe, ce qui explique pourquoi les flux commerciaux mondiaux (légaux et illégaux) convergent vers cette région.",
+      "ex": "Anvers, situé à l'extrémité Sud-Ouest de la dorsale, bénéficie d'un hinterland directement connecté à toute l'Europe industrielle."
+    },
+    {
+      "id": "gl14",
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi le sable du désert ne peut-il pas remplacer le sable utilisé pour le béton, malgré son abondance ?",
+      "def": "Le sable du désert est façonné par le vent, qui érode et arrondit ses grains au fil du temps. Pour le béton, on a besoin de sable granuleux aux grains anguleux (provenant de rivières ou de fonds marins), car ces grains accrochent et adhèrent entre eux avec le ciment. Les grains ronds du désert glissent les uns sur les autres et n'offrent pas la cohésion nécessaire — d'où une pénurie mondiale de sable malgré l'immensité des déserts.",
+      "ex": "Conséquence : on extrait le sable de construction dans les rivières et les fonds marins, ce qui détruit des berges entières (ex : 750 km de berges disparues le long du Mékong au Vietnam)."
+    },
+    {
+      "id": "gl15",
+      "cat": "Questions ouvertes",
+      "term": "En quoi des ressources qu'on croit \"infinies\" (sable, eau douce...) sont-elles en réalité non renouvelables à l'échelle humaine ?",
+      "def": "Le sable se forme naturellement par érosion, mais ce processus prend des milliers d'années — bien trop lent face à la vitesse de la consommation humaine (urbanisation, béton). Une ressource peut donc se renouveler « à l'échelle géologique » tout en étant non renouvelable « à l'échelle humaine » : on la consomme beaucoup plus vite qu'elle ne se régénère. C'est exactement la même logique que pour le pétrole/gaz arctique, formés sur des millions d'années.",
+      "ex": "Cette distinction d'échelle explique pourquoi des ressources « naturelles et renouvelables en théorie » deviennent des enjeux de pénurie et de géopolitique en pratique."
+    },
+    {
+      "id": "gl16",
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi Singapour a-t-il dû importer massivement du sable, et quelles tensions cela a-t-il créées avec ses voisins ?",
+      "def": "Cité-État à très forte urbanisation et au territoire minuscule, Singapour agrandit son territoire depuis 1973 par remblaiement (land reclamation), c'est-à-dire en gagnant des terres sur la mer grâce à du sable importé — principalement depuis l'Indonésie (îles Riau) et la Malaisie. Mais cette extraction massive faisait disparaître des îles côtières indonésiennes, ce qui a poussé l'Indonésie à interdire l'exportation de sable vers Singapour en 2007, forçant Singapour à chercher d'autres fournisseurs (effet ballon).",
+      "ex": "L'extension du territoire de Singapour (visible entre 1965 et 2019) est directement mesurable sur des cartes successives."
+    },
+    {
+      "id": "gl17",
+      "cat": "Questions ouvertes",
+      "term": "Qu'est-ce qu'un \"pavillon de complaisance\" et pourquoi ce système est-il central dans le commerce maritime mondialisé ?",
+      "def": "Un pavillon de complaisance est un faux pavillon (drapeau national) rattaché à un État qui taxe très peu et impose peu de règles (ex : Panama, Liberia, Nigeria), alors que le bateau et son armateur (l'entreprise qui l'exploite) n'ont aucun lien réel avec ce pays. Ce système permet aux armateurs de réduire fortement leurs coûts (fiscalité, normes sociales/environnementales) — une forme de dumping fiscal appliquée au transport maritime, qui rend aussi le contrôle des cargaisons (légales ou illégales) beaucoup plus difficile.",
+      "ex": "Ce système facilite à la fois le commerce mondialisé légal et les trafics (cocaïne) en brouillant la traçabilité des navires."
+    },
+    {
+      "id": "gl18",
+      "cat": "Questions ouvertes",
+      "term": "Quelle différence fais-tu entre banquise et inlandsis, et pourquoi cette distinction compte pour la hausse du niveau des mers ?",
+      "def": "La banquise est de la mer gelée : elle flotte déjà sur l'océan, donc sa fonte ne fait quasiment pas monter le niveau des mers (comme un glaçon qui fond dans un verre déjà plein). L'inlandsis est de la glace posée sur la terre (ex : le Groenland) : sa fonte ajoute une masse d'eau nouvelle dans les océans et fait donc directement monter leur niveau. C'est pourquoi la fonte de l'inlandsis est beaucoup plus préoccupante pour la montée des eaux que celle de la banquise.",
+      "ex": "Le pergélisol, lui, est un sol gelé (sur terre) — sa fonte ne change pas le niveau des mers mais libère du méthane (GES)."
+    },
+    {
+      "id": "gl19",
+      "cat": "Questions ouvertes",
+      "term": "Pourquoi les firmes transnationales jouent-elles un rôle clé dans la fragmentation des chaînes de production (DIPP) ?",
+      "def": "Une firme transnationale est une entreprise dont les activités s'étendent dans plusieurs pays : c'est elle qui décide où localiser chaque étape de production (matières premières, fabrication, assemblage, siège social) en fonction des avantages comparatifs de chaque pays (coût de la main-d'œuvre, fiscalité, infrastructures, réglementation). Ce sont donc ces acteurs économiques qui, concrètement, mettent en œuvre la DIPP à l'échelle mondiale — et qui peuvent aussi pratiquer le dumping fiscal en choisissant leurs implantations.",
+      "ex": "La structure des réseaux de trafic de cocaïne est elle-même comparée à celle d'une firme transnationale (organisation multinationale, hiérarchisée, fragmentée géographiquement)."
+    },
+    {
+      "id": "gl20",
+      "cat": "Questions ouvertes",
+      "term": "En quoi l'ouverture des routes maritimes arctiques (Nord-Ouest et Nord-Est) pourrait-elle redessiner la carte du commerce mondial ?",
+      "def": "Ces routes réduiraient les distances Asie-Europe de 30 à 40% par rapport aux routes actuelles (Suez, Panama), ce qui diminuerait les coûts et les temps de transport pour une part importante du commerce mondial. La route du Nord-Est (le long de la Sibérie) serait très rentable pour la Russie ; la route du Nord-Ouest (le long du Canada) avantagerait l'Amérique du Nord. De nouveaux hubs portuaires arctiques pourraient émerger, un peu comme Anvers ou Singapour le sont devenus grâce à leur situation — mais cette fois dans une région aujourd'hui marginale du commerce mondial.",
+      "ex": "Dans l'exercice de la démarche de Ganty (vote avec alliances), le choix final retenu par les pays riverains a été la route du Nord-Ouest."
     }
   ]
 }
