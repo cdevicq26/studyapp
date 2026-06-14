@@ -1,0 +1,39 @@
+{
+  "id": "controle-geo-07",
+  "matiere": "geo",
+  "numero": 7,
+  "titre": "Géographie — Liens transversaux entre chapitres",
+  "date_generation": "2026-06-14",
+  "questions": [
+    {
+      "id": "q1",
+      "texte": "Compare l'application de la DIPP à une ressource légale (le sable) et à une ressource illicite (la cocaïne). Quelles similitudes et quelles différences observes-tu ?",
+      "concepts": ["DIPP", "sable", "cocaïne", "fragmentation production", "ressource licite/illicite", "acteurs"]
+    },
+    {
+      "id": "q2",
+      "texte": "En quoi la position d'Anvers dans la dorsale européenne renforce-t-elle son rôle de hub à la fois pour le commerce mondial légal et pour le trafic de cocaïne ?",
+      "concepts": ["Anvers", "dorsale européenne", "hub", "site/situation", "mondialisation", "trafic cocaïne"]
+    },
+    {
+      "id": "q3",
+      "texte": "Le réchauffement de l'Arctique libère du méthane (pergélisol), ce qui accélère encore le réchauffement climatique global. En quoi ce mécanisme peut-il, à terme, influencer l'Earth Overshoot Day ?",
+      "concepts": ["pergélisol", "méthane", "boucle de rétroaction", "Earth Overshoot Day", "biocapacité", "empreinte écologique"]
+    },
+    {
+      "id": "q4",
+      "texte": "Le sable est une ressource non renouvelable à l'échelle humaine malgré sa formation naturelle continue. Applique le même raisonnement aux ressources arctiques (pétrole, gaz) : pourquoi sont-elles aussi non renouvelables, et qu'est-ce que cela implique pour la géopolitique de la région ?",
+      "concepts": ["ressource non renouvelable", "sable", "pétrole/gaz arctique", "8 pays riverains", "géopolitique", "ZEE"]
+    },
+    {
+      "id": "q5",
+      "texte": "L'effet ballon est identifié dans le trafic de cocaïne (répression → déplacement de la production). Observe-t-on un mécanisme comparable dans le commerce du sable (légal et illégal) ? Justifie avec un exemple.",
+      "concepts": ["effet ballon", "cocaïne", "sable", "Singapour", "Indonésie", "mafia du sable", "déplacement de la pression"]
+    },
+    {
+      "id": "q6",
+      "texte": "Anvers tire sa puissance de sa « situation » géographique mondialisée. Si les routes maritimes arctiques (Nord-Ouest et Nord-Est) s'ouvraient pleinement, qu'est-ce qui ferait leur « situation » stratégique, et en quoi serait-ce comparable au cas d'Anvers ?",
+      "concepts": ["site/situation", "Anvers", "routes maritimes arctiques", "hinterland", "gain de distance", "mondialisation"]
+    }
+  ]
+}

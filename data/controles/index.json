@@ -68,5 +68,12 @@
     "titre": "Géo — Révision éclair : pièges & chiffres",
     "questions": 6,
     "fiche_id": "fiche-geo-11"
+  },
+  {
+    "id": "controle-geo-07",
+    "matiere": "geo",
+    "titre": "Géographie — Liens transversaux entre chapitres",
+    "questions": 6,
+    "fiche_id": "fiche-geo-12"
   }
 ]
