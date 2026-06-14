@@ -168,7 +168,8 @@ Les acides nucléiques contiennent **l'information de fonctionnement des cellule
 - **A = T** (2 liaisons hydrogène)
 - **C ≡ G** (3 liaisons hydrogène)
 
-[SCHÉMA : double hélice — 2 brins antiparallèles, chaque brin = alternance phosphate-sucre-base, liaisons H horizontales entre A-T et C-G]
+![Nucléotide et double hélice d'ADN avec appariements A-T / C-G](/img/fiches/bio05-nucleotide-helice-adn.png)
+*Schéma — Structure d'un nucléotide (phosphate, sucre désoxyribose, base) et double hélice d'ADN*
 
 **Sens de lecture (convention) :** une séquence d'ADN se lit toujours **5' → 3'**. Les deux brins sont **antiparallèles** : si l'un va de 5'→3', l'autre va obligatoirement de 3'→5'.
 
@@ -191,7 +192,8 @@ Brin complémentaire : 3'— T A C A A C T G A G A —5'
 | **3. Chromatine** | Nucléosomes enroulés/repliés les uns sur les autres — **état standard de l'ADN** dans une cellule qui ne se divise pas |
 | **4. Chromosome** | Stade de condensation maximale — **n'apparaît que pendant la division cellulaire** (mitose/méiose) |
 
-[SCHÉMA : escalier de condensation — Double hélice (2nm) → Nucléosome "collier de perles" (10nm) → Chromatine en fibre lâche (30nm) → Chromatine en boucles → Chromosome condensé en X]
+![Niveaux de condensation de l'ADN — double hélice, nucléosome, chromatine, chromosome](/img/fiches/bio05-condensation-adn.png)
+*Schéma — Niveaux de condensation : double hélice (~2nm) → nucléosome (~10nm) → chromatine (~30nm) → chromosome bichromatidien*
 
 **Deux types de chromatine :**
 

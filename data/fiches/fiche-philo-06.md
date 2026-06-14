@@ -137,6 +137,9 @@ Pas de vérité absolue pour les Sophistes → Doxa (opinion)
 [Critiqué par Platon — Ch2 : Doxa vs Épistémè]
 ```
 
+![Chaîne de concepts du chapitre — des Sophistes à la Doxa](/img/fiches/philo06-chaine-concepts-sophistes.png)
+*Schéma — Chaîne de concepts : démocratie → rhétorique → pharmakon → sophisme/doxa*
+
 > 💡 **À retenir — le fil rouge** : tout part du **contexte politique** (démocratie directe) qui rend la **parole** centrale. De là découlent la **rhétorique**, son ambivalence (**pharmakon**), ses dérives (**sophisme**, **démagogie**), et enfin la conception relativiste de la vérité des Sophistes (**doxa**) — qui sera le point de départ de l'opposition de Platon.
 
 ---

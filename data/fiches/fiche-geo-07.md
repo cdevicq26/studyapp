@@ -137,7 +137,8 @@ L'Europe **n'est pas vraiment un continent** : aucun océan ne la sépare de l'A
 | La Manche | **Tunnel sous la Manche** |
 | Les Alpes | **Tunnels alpins** |
 
-[SCHÉMA : Carte de la Banane bleue — Liverpool → vallée du Rhin → Milan, en arc de cercle traversant l'Europe du Nord-Ouest]
+![Carte de la dorsale européenne — Liverpool à Milan](/img/fiches/geo07-dorsale-europeenne.png)
+*Carte — La dorsale européenne ("Banane bleue"), Roger Brunet, années 1980*
 
 > 💡 **À retenir :** Roger Brunet, années 1980, Liverpool → Milan via le Rhin, ~100 millions d'habitants, 2 discontinuités (Manche, Alpes) résolues par des tunnels.
 

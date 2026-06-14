@@ -22,6 +22,9 @@
 
 > 💡 **À retenir :** La **baisse des prix malgré l'augmentation des saisies** s'explique par la loi de l'offre et de la demande : **l'offre augmente plus vite que la demande**. La production mondiale a **quadruplé** entre 1980 et 2020 malgré les politiques répressives.
 
+![Site et situation du port d'Anvers sur l'Escaut](/img/fiches/geo10-site-situation-anvers.png)
+*Schéma — Site (port sur l'Escaut) et situation (hinterland Belgique/Allemagne/France/Pays-Bas) d'Anvers*
+
 ---
 
 ## 2. La cocaïne dans les villes européennes — données "eaux usées"
@@ -74,9 +77,13 @@ Méthode : échantillons quotidiens d'eaux usées prélevés dans les zones de c
 
 > 💡 **À retenir :** Cet exemple est LE cas d'école de l'effet ballon. À citer systématiquement si la question porte sur ce concept.
 
+![L'effet ballon — pression répressive et déplacement de la production de coca](/img/fiches/geo10-effet-ballon.png)
+*Schéma — L'effet ballon : la répression au Pérou/Bolivie déplace la production vers la Colombie*
+
 ### Le trafic 1998-2008 (carte ONUDC / SciencesPo)
 
-[SCHÉMA : carte des routes de la cocaïne 1998-2008]
+![Carte des flux du trafic de cocaïne vers les États-Unis et l'Europe](/img/fiches/geo10-carte-trafic-cocaine.png)
+*Carte — Flux du trafic de cocaïne : Amérique du Sud → USA / Amérique du Sud → Afrique → Europe (Anvers)*
 
 | Destination | 1998 | 2008 |
 |---|---|---|

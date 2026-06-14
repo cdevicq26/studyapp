@@ -197,6 +197,9 @@ Structure du mind map (centre = la question) :
 
 > 💡 **À retenir :** Cette structure en 5 branches (carte d'identité / acteurs / ressource / DIPP / conséquences) est **LA grille d'analyse type** pour n'importe quelle ressource géoéconomique (sable, pétrole arctique, cocaïne...).
 
+![Cycle économique du sable comme ressource](/img/fiches/geo09-cycle-sable.png)
+*Schéma — Cycle économique du sable : extraction → transformation → transport → vente → utilisation*
+
 ---
 
 ## 8. Carte thématique — Commerce mondial du sable
@@ -206,6 +209,9 @@ Structure du mind map (centre = la question) :
 - **Analyse** : les grands exportateurs se trouvent principalement dans l'axe atlantique et autour de Dubaï et Singapour, qui sont aussi de gros importateurs.
 
 > ⚠️ Pays importateurs souvent oubliés sur une carte : **Norvège, Suède, Inde, Thaïlande, Vietnam, Malaisie, Argentine**.
+
+![Carte des flux commerciaux mondiaux du sable](/img/fiches/geo09-flux-mondiaux-sable.png)
+*Carte — Flux commerciaux du sable dans le monde (exportateurs, importateurs, cas d'étude Dubaï)*
 
 ---
 

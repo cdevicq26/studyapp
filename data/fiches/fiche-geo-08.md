@@ -123,6 +123,9 @@ Grille d'analyse — 4 questions géographiques clés :
 
 > 💡 **À retenir :** la DIPP est la **grille transversale** du cours — elle s'applique aussi bien aux ressources de l'Arctique (pétrole, gaz), au sable, qu'à la cocaïne (chapitres suivants). Si on te donne n'importe quelle ressource à l'oral, tu peux l'analyser avec ces 4 questions.
 
+![Schéma systémique d'une ressource — acteurs, flux DIPP, conséquences](/img/fiches/geo08-schema-systemique-dipp.png)
+*Schéma — Carte mentale type d'une ressource (acteurs, définition, flux DIPP, conséquences)*
+
 ---
 
 ## Synthèse — liens entre les notions
