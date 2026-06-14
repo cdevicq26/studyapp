@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v97';
+const APP_VERSION = 'v98';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -946,6 +946,16 @@ async function renderSubjectPage(id) {
     ` : ''}
   </div>
 
+  ${s.liens && s.liens.length ? `
+  <div class="section-label">Liens transversaux</div>
+  <div class="action-list">
+    <div class="action-btn" onclick="startLiens('${id}')">
+      <div class="ab-info"><div class="ab-title">Relier les concepts</div><div class="ab-sub">${s.liens.length} liens entre chapitres à expliquer</div></div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
+    </div>
+  </div>
+  ` : ''}
+
   ${vocabHTML}
   ${fichesHTML}
   ${controlesHTML}
@@ -1066,6 +1076,20 @@ async function startAntiVocab(sourceId = 'bio', cat = null) {
 // ═══════════════════════════════════════════════════
 // FLASHCARD SESSION
 // ═══════════════════════════════════════════════════
+async function startLiens(subjectId) {
+  const s = subjects[subjectId];
+  if (!s.liens || !s.liens.length) return;
+  const cards = shuffle([...s.liens]).map(c => ({ ...c, _subject: `liens_${subjectId}` }));
+  fcSession = {
+    subjectId: `liens_${subjectId}`,
+    cards, idx: 0, correct: 0, bof: 0, wrong: 0,
+    _backFn: `renderSubjectPage('${subjectId}')`,
+    _color: (SUBJECT_COLORS[subjectId] || {}).primary
+  };
+  learnSubView = 'flashcard';
+  renderFlashcard();
+}
+
 async function startFlashcards(subjectId, mode) {
   const s = subjects[subjectId];
   let cards = mode === 'due' ? await getDueCards(subjectId) : [...s.flashcards];
@@ -1088,16 +1112,21 @@ function renderFlashcard() {
   const subId = card._subject || subjectId;
   const isVocab = subjectId.startsWith('vocab_') || subjectId === 'vocab';
   const isAntiVocab = subjectId.startsWith('antivocab_') || subjectId === 'antivocab';
-  const vocabColor = (isVocab || isAntiVocab) ? (fcSession._color || '#0891b2') : null;
-  const col = (isVocab || isAntiVocab) ? { primary: vocabColor } : (SUBJECT_COLORS[subId] || { primary: '#5C6BC0' });
+  const isLiens = subjectId.startsWith('liens_');
+  const vocabColor = (isVocab || isAntiVocab || isLiens) ? (fcSession._color || '#0891b2') : null;
+  const col = (isVocab || isAntiVocab || isLiens) ? { primary: vocabColor } : (SUBJECT_COLORS[subId] || { primary: '#5C6BC0' });
   const pct = Math.round((idx / cards.length) * 100);
   const catLabel = card.cat;
-  const backRef = (isVocab || isAntiVocab) ? (fcSession._backFn || `renderSubjectPage('${subjectId}')`) : `renderSubjectPage('${subjectId}')`;
+  const backRef = (isVocab || isAntiVocab || isLiens) ? (fcSession._backFn || `renderSubjectPage('${subjectId}')`) : `renderSubjectPage('${subjectId}')`;
 
   const frontContent = isAntiVocab
     ? `<div class="fc-cat">${catLabel}</div>
        <div class="fc-def fc-def-front">${card.short_def || (card.def || '').split('\n')[0]}</div>
        <div class="fc-hint">Quel est le terme ?</div>`
+    : isLiens
+    ? `<div class="fc-cat">${catLabel}</div>
+       <div class="fc-term" style="font-size:24px">${card.term}</div>
+       <div class="fc-hint">Quel est le lien entre ces deux notions ?</div>`
     : `<div class="fc-cat">${catLabel}</div>
        <div class="fc-term">${card.term}</div>
        <div class="fc-hint">Appuie pour voir la réponse</div>`;
@@ -1105,6 +1134,11 @@ function renderFlashcard() {
   const backContent = isAntiVocab
     ? `<div class="fc-cat">${catLabel}</div>
        <div class="fc-term" style="color:${col.primary}">${card.term}</div>`
+    : isLiens
+    ? `<div class="fc-cat">${catLabel}</div>
+       <div class="fc-term-back" style="font-size:18px">${card.term}</div>
+       <div class="fc-def">${(card.def || '').replace(/\n/g, '<br>')}</div>
+       ${card.ex ? `<div class="fc-ex"><span class="fc-ex-label">Exemple</span>${card.ex}</div>` : ''}`
     : `<div class="fc-cat">${catLabel}</div>
        <div class="fc-term-back">${card.term}</div>
        <div class="fc-def">${(card.def || '').replace(/\n/g, '<br>')}</div>
@@ -1175,10 +1209,12 @@ function renderFlashcardEnd() {
   const { subjectId, cards, correct, bof, wrong, mode } = fcSession;
   const isVocabEnd = subjectId === 'vocab' || subjectId.startsWith('vocab_');
   const isAntiVocabEnd = subjectId === 'antivocab' || subjectId.startsWith('antivocab_');
-  const isVocabAny = isVocabEnd || isAntiVocabEnd;
+  const isLiensEnd = subjectId.startsWith('liens_');
+  const isVocabAny = isVocabEnd || isAntiVocabEnd || isLiensEnd;
 
   const sessionName = isAntiVocabEnd ? 'Anti-vocabulaire'
     : isVocabEnd ? 'Vocabulaire'
+    : isLiensEnd ? 'Liens transversaux'
     : (subjects[subjectId] || {}).name || subjectId;
 
   const backFn = isVocabAny

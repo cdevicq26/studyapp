@@ -874,5 +874,49 @@
       "ans": 2,
       "exp": "Les projections indiquent qu'il n'y aura plus de banquise certains mois à partir de 2030. La surface a déjà diminué de 2,5 M km² (36%) depuis les années 1980."
     }
+  ],
+  "liens": [
+    {
+      "id": "gl1",
+      "cat": "Liens transversaux",
+      "term": "DIPP ↔ Effet ballon",
+      "def": "Le DIPP explique POURQUOI une production se déplace géographiquement (recherche des avantages comparatifs). L'effet ballon explique COMMENT elle se déplace quand une contrainte (répression, interdiction) apparaît à un endroit : la production migre vers un autre pays sans diminuer globalement.",
+      "ex": "Cocaïne : répression Pérou/Bolivie (Air Bridge Denial) → explosion en Colombie (40 000 → 170 000 ha). Sable : interdiction d'export en Indonésie (2007) → Singapour se tourne vers Cambodge/Vietnam/Myanmar."
+    },
+    {
+      "id": "gl2",
+      "cat": "Liens transversaux",
+      "term": "Anvers / dorsale européenne ↔ Mondialisation",
+      "def": "La position d'Anvers dans la dorsale européenne (site fluvial + situation = 2e port européen, hinterland connecté à toute l'Europe industrielle) en fait un hub pour les flux mondialisés. Mais cette même connexion aux flux mondiaux (8,5M EVP/an, seulement 5% contrôlés) rend Anvers vulnérable au trafic illicite : flux légaux et illégaux empruntent les MÊMES infrastructures.",
+      "ex": "Anvers = ancrage Sud de la dorsale (Liverpool → Milan) ET 1er point d'entrée de la cocaïne en Europe."
+    },
+    {
+      "id": "gl3",
+      "cat": "Liens transversaux",
+      "term": "Pergélisol/méthane ↔ Earth Overshoot Day",
+      "def": "Le réchauffement arctique dégèle le pergélisol, qui libère du méthane (GES puissant) → boucle de rétroaction positive qui accélère le réchauffement global → augmente l'empreinte écologique mondiale / réduit la biocapacité. Comme EOD = (biocapacité ÷ empreinte écologique) × 365, ce phénomène régional ferait reculer la date de l'Earth Overshoot Day dans le calendrier.",
+      "ex": "Un phénomène localisé en Arctique a un impact sur un indicateur mondial calculé chaque année (EOD 2025 = 24 juillet, 1,75 Terre)."
+    },
+    {
+      "id": "gl4",
+      "cat": "Liens transversaux",
+      "term": "Sable (non renouvelable) ↔ Ressources arctiques (pétrole/gaz)",
+      "def": "Le sable est non renouvelable à l'échelle humaine : il se forme par érosion, mais beaucoup trop lentement par rapport à la consommation. Même logique pour le pétrole/gaz arctique (~13%/~30% des réserves mondiales) : formation géologique sur des millions d'années. Conséquence géopolitique : une ressource finie et de plus en plus accessible (fonte des glaces) devient un enjeu stratégique majeur → course aux ZEE entre les 8 pays riverains de l'Arctique, tensions OTAN/Russie.",
+      "ex": "« Non renouvelable à l'échelle humaine » = la justification géographique de pourquoi ces ressources deviennent des enjeux géopolitiques."
+    },
+    {
+      "id": "gl5",
+      "cat": "Liens transversaux",
+      "term": "Effet ballon : cocaïne ↔ commerce du sable",
+      "def": "L'effet ballon n'est pas propre à la drogue : c'est un mécanisme géographique général — une contrainte locale déplace un phénomène sans le supprimer. Cocaïne : répression au Pérou/Bolivie → explosion en Colombie. Sable : interdiction d'exporter du sable en Indonésie (2007, sous pression de Singapour) → Singapour se tourne vers d'autres fournisseurs (Cambodge, Vietnam, Myanmar) — le problème se déplace géographiquement.",
+      "ex": "Même mécanisme (effet ballon) applicable à une ressource illicite (cocaïne) et à une ressource légale (sable)."
+    },
+    {
+      "id": "gl6",
+      "cat": "Liens transversaux",
+      "term": "Site/situation : Anvers ↔ Routes maritimes arctiques",
+      "def": "Dans les deux cas, c'est la SITUATION (position relative dans des flux mondiaux) qui compte plus que le SITE brut. Pour Anvers, la situation (dorsale européenne + accès Escaut) est déjà pleinement exploitée. Pour les routes arctiques (Nord-Ouest/Nord-Est), la situation potentielle viendrait du gain de distance Asie-Europe (raccourci vs Suez/Panama), mais reste limitée par l'absence d'infrastructures portuaires et les conditions extrêmes.",
+      "ex": "Anvers = situation mondialisée déjà exploitée ; routes arctiques = situation stratégique encore potentielle."
+    }
   ]
 }
