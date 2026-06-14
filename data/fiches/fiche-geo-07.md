@@ -86,6 +86,9 @@ Allemagne, Autriche, Belgique, Bulgarie, Chypre, Croatie, Danemark, Espagne, Est
 
 > ⚠️ **Piège à jour :** ne pas répondre "26 États" — c'est l'ancien chiffre. Depuis 2024 c'est **29 États**.
 
+![Carte de l'Europe — UE, zone euro, espace Schengen](/img/fiches/geo07-carte-ue-schengen.png)
+*Carte — UE (bleu), zone euro (hachures jaunes), espace Schengen (contour vert)*
+
 ---
 
 ## 3. L'Europe physique

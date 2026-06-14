@@ -290,6 +290,9 @@ ADN  ──(Transcription, dans le noyau)──►  ARNm  ──(Traduction, au 
 | **P** | Peptide | Site où se forme la liaison peptidique |
 | **E** | Évacuation | Éjecte l'ARNt vide (sans AA) |
 
+![Ribosome en cours de traduction — sites A, P, E](/img/fiches/bio05-ribosome-traduction.png)
+*Schéma — Ribosome lisant l'ARNm, sites A/P/E et chaîne polypeptidique naissante*
+
 ### Les 5 étapes de la traduction
 
 | Étape | Description |

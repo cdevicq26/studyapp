@@ -49,6 +49,9 @@ La mitochondrie est l'organite le plus souvent demandé en détail :
 
 ---
 
+![Cellule animale et cellule végétale comparées](/img/fiches/bio06-cellule-animale-vegetale.png)
+*Schéma — Comparaison cellule animale / cellule végétale et leurs organites*
+
 ## 3. Cellule animale théorique — organites et rôles
 
 Une cellule animale typique mesure **10-30 µm**.
@@ -155,6 +158,9 @@ Une cellule végétale typique mesure **10-100 µm**.
 > 💡 **Trajet à retenir :** Ribosome (sur RER) → RER → vésicule → Golgi → vésicule → exocytose → extérieur de la cellule.
 >
 > Seules les protéines synthétisées par des ribosomes **accrochés au RER** suivent ce trajet d'export ; les ribosomes **libres** dans le cytosol produisent des protéines qui **restent dans la cellule**.
+
+![Trajet d'une protéine sécrétée — RER, Golgi, exocytose](/img/fiches/bio06-met-cellule-secretrice.png)
+*Schéma — Trajet d'une protéine sécrétée : ribosome → RER → vésicule → Golgi → exocytose*
 
 ---
 

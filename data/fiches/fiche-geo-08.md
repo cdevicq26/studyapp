@@ -37,6 +37,9 @@ $$\text{EOD} = \frac{\text{Biocapacité de la Terre}}{\text{Empreinte écologiqu
 | 2024 | ~1er août |
 | 2025 | **24 juillet** |
 
+![Earth Overshoot Day — biocapacité vs empreinte écologique](/img/fiches/geo08-earth-overshoot-day.png)
+*Schéma — Jour du Dépassement de la Terre (24 juillet 2025)*
+
 > 💡 **À retenir :** en 2025, il faudrait **1,75 Terre** pour vivre durablement avec les habitudes de consommation actuelles de l'humanité.
 
 **Country Overshoot Days** — chaque pays a son propre jour du dépassement (= la date à laquelle l'EOD mondial tomberait si toute l'humanité vivait comme les habitants de ce pays) :

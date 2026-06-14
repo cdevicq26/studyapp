@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = 'v93';
+const APP_VERSION = 'v94';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -2296,6 +2296,12 @@ function renderMarkdown(md) {
     if (/^[-*] /.test(trimmed)) {
       if (!inList) { html += '<ul>'; inList = true; }
       html += `<li>${inlineMd(trimmed.slice(2))}</li>`;
+      continue;
+    }
+    const imgMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+    if (imgMatch) {
+      closeList();
+      html += `<figure class="fiche-img"><img src="${imgMatch[2]}" alt="${imgMatch[1]}" loading="lazy"></figure>`;
       continue;
     }
     closeList();
