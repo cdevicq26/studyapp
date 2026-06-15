@@ -284,12 +284,92 @@
         {
           "time": "Matin",
           "place": "🏫",
-          "text": "EXAMEN GÉOGRAPHIE — Oral"
+          "text": "EXAMEN GÉOGRAPHIE — Oral ✅"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "13h00-13h50 : Philo Ch3 Aristote (1/2) — bio, divergence Platon/Aristote, Eudaimonia, 3 voies mensongères"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "13h50-14h00 : Pause"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "14h00-14h50 : Philo Ch3 Aristote (2/2) — Médieté, Phronesis, Arête, Justice/Équité, Eichmann/Sartre"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "14h50-15h10 : Pause longue"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "15h10-16h00 : Philo Ch2 Platon — consolider mythe de la caverne + 3 questions, doxa/épistémè, 3 classes sociales"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "16h00-16h10 : Pause"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "16h10-17h00 : Philo Ch2 Platon — combler Socrate/Platon, réminiscence/métempsychose, alétheia/ascèse, despotisme éclairé, Cypher"
+        },
+        {
+          "time": "Après-midi",
+          "place": "🏠",
+          "text": "17h00-17h30 : Pause longue — goûter, air frais"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "App Bio + relecture fiche Philo légère"
+          "text": "17h30-18h15 : Philo Ch1 Sophistes — définir sophisme + reconsolider pharmakon/doxa/contexte athénien"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "18h15-18h30 : Pause"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "18h30-19h15 : Vocabulaire philo — flashcards StudyOS (14 termes ∅)"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "19h15-20h00 : Dîner — pause, pas d'écran philo"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "20h00-20h45 : Contrôle blanc philo (sweep complet) en conditions d'examen"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "20h45-21h00 : Pause"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "21h00-21h30 : Correction du contrôle blanc + identifier les dernières lacunes"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "21h30-22h00 : Relecture ciblée légère sur les lacunes restantes, à voix haute"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "22h00 : Douche, écran éteint, au lit"
         }
       ]
     },
