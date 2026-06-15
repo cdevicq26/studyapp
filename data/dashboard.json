@@ -289,82 +289,77 @@
         {
           "time": "Après-midi",
           "place": "🏠",
-          "text": "13h00-13h50 : Philo Ch3 Aristote (1/2) — bio, divergence Platon/Aristote, Eudaimonia, 3 voies mensongères"
+          "text": "13h00-15h26 : Matrix (Cypher = prisonnier de la caverne — révision déguisée Ch2)"
         },
         {
           "time": "Après-midi",
           "place": "🏠",
-          "text": "13h50-14h00 : Pause"
+          "text": "15h26-15h30 : Pause"
         },
         {
           "time": "Après-midi",
           "place": "🏠",
-          "text": "14h00-14h50 : Philo Ch3 Aristote (2/2) — Médieté, Phronesis, Arête, Justice/Équité, Eichmann/Sartre"
+          "text": "15h30-16h20 : Philo Ch3 Aristote (1/2) — bio, divergence Platon/Aristote, Eudaimonia, 3 voies mensongères"
         },
         {
           "time": "Après-midi",
           "place": "🏠",
-          "text": "14h50-15h10 : Pause longue"
+          "text": "16h20-16h30 : Pause"
         },
         {
           "time": "Après-midi",
           "place": "🏠",
-          "text": "15h10-16h00 : Philo Ch2 Platon — consolider mythe de la caverne + 3 questions, doxa/épistémè, 3 classes sociales"
+          "text": "16h30-17h20 : Philo Ch3 Aristote (2/2) — Médieté, Phronesis, Arête, Justice/Équité, Eichmann/Sartre"
         },
         {
           "time": "Après-midi",
           "place": "🏠",
-          "text": "16h00-16h10 : Pause"
-        },
-        {
-          "time": "Après-midi",
-          "place": "🏠",
-          "text": "16h10-17h00 : Philo Ch2 Platon — combler Socrate/Platon, réminiscence/métempsychose, alétheia/ascèse, despotisme éclairé, Cypher"
-        },
-        {
-          "time": "Après-midi",
-          "place": "🏠",
-          "text": "17h00-17h30 : Pause longue — goûter, air frais"
+          "text": "17h20-17h35 : Pause longue — goûter, air frais"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "17h30-18h15 : Philo Ch1 Sophistes — définir sophisme + reconsolider pharmakon/doxa/contexte athénien"
+          "text": "17h35-18h20 : Philo Ch2 Platon — consolider mythe de la caverne + 3 questions, doxa/épistémè, 3 classes sociales, Socrate/Platon, réminiscence/métempsychose, alétheia/ascèse, despotisme éclairé"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "18h15-18h30 : Pause"
+          "text": "18h20-18h30 : Pause"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "18h30-19h15 : Vocabulaire philo — flashcards StudyOS (14 termes ∅)"
+          "text": "18h30-19h00 : Philo Ch1 Sophistes — définir sophisme + reconsolider pharmakon/doxa/contexte athénien"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "19h15-20h00 : Dîner — pause, pas d'écran philo"
+          "text": "19h00-19h30 : Vocabulaire philo — flashcards StudyOS (14 termes ∅)"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "20h00-20h45 : Contrôle blanc philo (sweep complet) en conditions d'examen"
+          "text": "19h30-20h15 : Dîner — pause, pas d'écran philo"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "20h45-21h00 : Pause"
+          "text": "20h15-21h00 : Contrôle blanc philo (sweep complet) en conditions d'examen"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "21h00-21h30 : Correction du contrôle blanc + identifier les dernières lacunes"
+          "text": "21h00-21h15 : Pause"
         },
         {
           "time": "Soir",
           "place": "🏠",
-          "text": "21h30-22h00 : Relecture ciblée légère sur les lacunes restantes, à voix haute"
+          "text": "21h15-21h45 : Correction du contrôle blanc + identifier les dernières lacunes"
+        },
+        {
+          "time": "Soir",
+          "place": "🏠",
+          "text": "21h45-22h00 : Relecture ciblée légère sur les lacunes restantes, à voix haute"
         },
         {
           "time": "Soir",
