@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.16';
+const APP_VERSION = '1.17';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -284,6 +284,7 @@ const CHARLES_CODE = '124816';
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.17': ['Mode invité : reconnaissance automatique (Continuer en tant que Pauline)', 'Reglages : layout des dates examen corrige'],
   '1.16': ['Mode invité : retour au mode simple, accès complet comme avant'],
   '1.15': [
     'Mode invité : accès complet aux exercices des matières sélectionnées (flashcards, QCM, etc.)',
@@ -2385,21 +2386,39 @@ function setupLockScreen() {
       init();
     };
 
+    const showNameForm = () => {
+      const form = document.getElementById('lock-guest-form');
+      form.style.display = 'block';
+      const nameInput = document.getElementById('lock-guest-name');
+      nameInput.focus();
+      const start = () => launchGuest(nameInput.value.trim() || 'invité');
+      document.getElementById('lock-guest-start').addEventListener('click', start);
+      nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') start(); });
+    };
+
     if (knownName) {
-      // Déjà connu → entrée directe
-      launchGuest(knownName);
+      // IP connue → proposer de continuer sous ce nom
+      const box = screen.querySelector('.lock-box');
+      const knownDiv = document.createElement('div');
+      knownDiv.id = 'lock-known';
+      knownDiv.innerHTML = `
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px">Bon retour !</div>
+        <button id="lock-known-confirm" class="lock-submit" style="margin-bottom:10px">
+          Continuer en tant que ${knownName}
+        </button>
+        <button id="lock-known-other" style="width:100%;background:none;border:2px solid var(--border);border-radius:var(--r-xs);padding:11px;font-size:14px;font-weight:600;color:var(--text-2);cursor:pointer">
+          Ce n'est pas moi
+        </button>`;
+      box.appendChild(knownDiv);
+      document.getElementById('lock-known-confirm').addEventListener('click', () => launchGuest(knownName));
+      document.getElementById('lock-known-other').addEventListener('click', () => {
+        knownDiv.remove();
+        showNameForm();
+      });
       return;
     }
 
-    // Nouveau → affiche le formulaire de prénom
-    const form = document.getElementById('lock-guest-form');
-    form.style.display = 'block';
-    const nameInput = document.getElementById('lock-guest-name');
-    nameInput.focus();
-
-    const start = () => launchGuest(nameInput.value.trim() || 'invité');
-    document.getElementById('lock-guest-start').addEventListener('click', start);
-    nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') start(); });
+    showNameForm();
   });
 }
 
