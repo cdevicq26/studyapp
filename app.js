@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.17';
+const APP_VERSION = '1.18';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -284,6 +284,7 @@ const CHARLES_CODE = '124816';
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.18': ['Reglages : Invites et Session deplacees au-dessus de Donnees', 'Bouton de recherche de mise a jour avec reload', 'Fix API invites (GitHub integration desactivee)'],
   '1.17': ['Mode invité : reconnaissance automatique (Continuer en tant que Pauline)', 'Reglages : layout des dates examen corrige'],
   '1.16': ['Mode invité : retour au mode simple, accès complet comme avant'],
   '1.15': [
@@ -2079,6 +2080,25 @@ function renderSettings() {
   </div>
 
   ${GUEST_MODE ? '' : `
+  <div class="section-label">Invités</div>
+  <div class="action-list" style="margin-bottom:24px">
+    <div class="action-btn" onclick="renderAnalytics()">
+      <div class="ab-info"><div class="ab-title">Connexions invités</div><div class="ab-sub">Voir qui a utilisé l'app</div></div>
+    </div>
+  </div>`}
+
+  <div class="section-label">Session</div>
+  <div class="action-list" style="margin-bottom:8px">
+    <div class="action-btn" onclick="checkForUpdate()">
+      <div class="ab-info"><div class="ab-title">Rechercher une mise à jour</div><div class="ab-sub">v${APP_VERSION} — vérifier si une nouvelle version est disponible</div></div>
+    </div>
+    <div class="action-btn" onclick="logout()">
+      <div class="ab-info"><div class="ab-title">Se déconnecter</div><div class="ab-sub">Revenir à l'écran de connexion</div></div>
+    </div>
+  </div>
+  <button id="update-reload-btn" style="display:none;width:calc(100% - 32px);margin:0 16px 20px;background:var(--accent);color:#fff;border:none;border-radius:var(--r-xs);padding:13px;font-weight:700;font-size:14px;cursor:pointer" onclick="location.reload(true)">Recharger</button>
+
+  ${GUEST_MODE ? '' : `
   <div class="section-label">Données</div>
   <div class="action-list" style="margin-bottom:8px">
     <div class="action-btn action-sync" onclick="syncWithWiki()">
@@ -2098,21 +2118,7 @@ function renderSettings() {
   <div class="danger-zone">
     <div class="danger-label">Zone danger</div>
     <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
-  </div>
-
-  <div class="section-label">Invités</div>
-  <div class="action-list" style="margin-bottom:24px">
-    <div class="action-btn" onclick="renderAnalytics()">
-      <div class="ab-info"><div class="ab-title">Connexions invités</div><div class="ab-sub">Voir qui a utilisé l'app</div></div>
-    </div>
   </div>`}
-
-  <div class="section-label">Session</div>
-  <div class="action-list" style="margin-bottom:24px">
-    <div class="action-btn" onclick="logout()">
-      <div class="ab-info"><div class="ab-title">Se déconnecter</div><div class="ab-sub">Revenir à l'écran de connexion</div></div>
-    </div>
-  </div>
 
   <div class="app-version">StudyOS ${APP_VERSION}</div>`;
 
@@ -2122,6 +2128,28 @@ function renderSettings() {
     localStorage.setItem('studyos-name', val);
     input.value = val;
   });
+}
+
+async function checkForUpdate() {
+  const btn = document.getElementById('update-reload-btn');
+  try {
+    const r = await fetch('/sw.js?_=' + Date.now());
+    const text = await r.text();
+    const match = text.match(/const CACHE = 'studyapp-([^']+)'/);
+    if (!match) { toast('Impossible de vérifier'); return; }
+    const serverVersion = match[1];
+    if (serverVersion === APP_VERSION) {
+      toast('Déjà à jour — v' + APP_VERSION);
+    } else {
+      if (btn) {
+        btn.textContent = `Nouvelle version v${serverVersion} disponible — Recharger →`;
+        btn.style.display = 'block';
+        btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  } catch {
+    toast('Impossible de vérifier la mise à jour');
+  }
 }
 
 async function renderAnalytics() {

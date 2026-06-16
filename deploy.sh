@@ -1,10 +1,10 @@
 #!/bin/bash
-# Deploy StudyApp to Vercel + alias les deux domaines
+# Deploy StudyApp to Vercel (production) — GitHub integration désactivée
 set -e
 SCOPE="charlesdevicq-5176s-projects"
 
 echo "🚀 Déploiement en cours..."
-DEPLOY_URL=$(vercel --yes --scope $SCOPE 2>&1 | grep -oE 'studyapp-[a-z0-9]+-charlesdevicq-5176s-projects\.vercel\.app' | head -1)
+DEPLOY_URL=$(vercel --prod --yes --scope $SCOPE 2>&1 | grep -oE 'studyapp-[a-z0-9]+-charlesdevicq-5176s-projects\.vercel\.app' | head -1)
 
 if [ -z "$DEPLOY_URL" ]; then
   echo "❌ Deploy échoué"
