@@ -1163,6 +1163,25 @@ body {
 .toggle-switch.on { background: var(--accent-l); }
 .toggle-switch.on .toggle-knob { transform: translateX(20px); background: var(--accent); }
 
+/* ── Structures cellulaires ─────────────────────────── */
+.cs-mem-group {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+}
+.cs-mem-btn, .cs-fn-btn {
+  width: 100%; border: 2px solid var(--border); background: var(--bg);
+  color: var(--text); border-radius: var(--r-sm); padding: 12px 8px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  font-family: 'Poppins', sans-serif; transition: border-color .15s, background .15s;
+  text-align: left; line-height: 1.35;
+}
+.cs-mem-btn { text-align: center; }
+.cs-mem-btn.cs-mem-active {
+  border-color: var(--accent); background: var(--accent-l); color: var(--accent);
+}
+.cs-fn-btn.cs-fn-active {
+  border-color: var(--accent); background: var(--accent-l); color: var(--accent);
+}
+
 .app-version-row {
   text-align: center; font-size: 12px; font-weight: 600; color: var(--muted);
   padding: 28px 20px;

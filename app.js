@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.19';
+const APP_VERSION = '1.20';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -284,6 +284,8 @@ const CHARLES_CODE = '124816';
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.20': ['Bio : exercice Structures cellulaires (14 organites — membrane + fonction)'],
+  '1.19': ['Ecran de connexion : 3 etats clairs (IP connue / defaut / prenom invite)'],
   '1.18': ['Reglages : Invites et Session deplacees au-dessus de Donnees', 'Bouton de recherche de mise a jour avec reload', 'Fix API invites (GitHub integration desactivee)'],
   '1.17': ['Mode invité : reconnaissance automatique (Continuer en tant que Pauline)', 'Reglages : layout des dates examen corrige'],
   '1.16': ['Mode invité : retour au mode simple, accès complet comme avant'],
@@ -323,6 +325,53 @@ let fcSession = null;
 let qcmSession = null;
 let qcmColorSession = null;
 let metDbSession = null;
+let cellStructSession = null;
+
+// ── Données exercice structures cellulaires (13 à l'exam) ──
+const CELL_STRUCTURES_DATA = [
+  { name: 'Noyau',                membrane: 'double',
+    fn: "Contient l'ADN ; contrôle les activités cellulaires",
+    distractors: ["Produit l'ATP par respiration cellulaire", "Modifie, trie et sécrète les protéines", "Réactions métaboliques (sans ribosomes)"] },
+  { name: 'RER',                  membrane: 'simple',
+    fn: "Synthèse de protéines et de membranes (ribosomes fixés)",
+    distractors: ["Réactions métaboliques spécialisées ; produit H₂O₂", "Digestion des macromolécules", "Produit l'ATP par respiration cellulaire"] },
+  { name: 'REL',                  membrane: 'simple',
+    fn: "Réactions métaboliques (sans ribosomes)",
+    distractors: ["Synthèse de protéines et de membranes", "Stockage et dégradation des déchets", "Contient l'ADN ; contrôle les activités cellulaires"] },
+  { name: 'Ribosome',             membrane: 'aucune',
+    fn: "Synthèse des protéines",
+    distractors: ["Modifie, trie et sécrète les protéines", "Produit les ARN ribosomiques dans le noyau", "Produit l'ATP par respiration cellulaire"] },
+  { name: 'Appareil de Golgi',    membrane: 'simple',
+    fn: "Modifie, trie et sécrète les protéines",
+    distractors: ["Synthèse de protéines et de membranes", "Réactions métaboliques (sans ribosomes)", "Digestion des macromolécules"] },
+  { name: 'Peroxysome',           membrane: 'simple',
+    fn: "Réactions métaboliques spécialisées ; produit H₂O₂",
+    distractors: ["Digestion des macromolécules", "Modifie, trie et sécrète les protéines", "Produit l'ATP par respiration cellulaire"] },
+  { name: 'Lysosome',             membrane: 'simple',
+    fn: "Digestion des macromolécules et organites usagés",
+    distractors: ["Réactions métaboliques spécialisées ; produit H₂O₂", "Stockage et dégradation des déchets", "Synthèse de protéines et de membranes"] },
+  { name: 'Mitochondrie',         membrane: 'double',
+    fn: "Respiration cellulaire → production d'ATP",
+    distractors: ["Photosynthèse → énergie lumineuse en glucides", "Contient l'ADN ; contrôle les activités cellulaires", "Modifie, trie et sécrète les protéines"] },
+  { name: 'Chloroplaste',         membrane: 'double',
+    fn: "Photosynthèse → énergie lumineuse en glucides",
+    distractors: ["Respiration cellulaire → production d'ATP", "Stockage et dégradation des déchets", "Réactions métaboliques spécialisées ; produit H₂O₂"] },
+  { name: 'Membrane plasmique',   membrane: 'simple',
+    fn: "Délimite la cellule ; contrôle les échanges",
+    distractors: ["Maintient la forme et protège (rigide, cellulose)", "Contient l'ADN ; contrôle les activités cellulaires", "Synthèse de protéines et de membranes"] },
+  { name: 'Vacuole centrale',     membrane: 'simple',
+    fn: "Stockage et dégradation des déchets (végétale)",
+    distractors: ["Délimite la cellule ; contrôle les échanges", "Digestion des macromolécules", "Produit l'ATP par respiration cellulaire"] },
+  { name: 'Paroi cellulosique',   membrane: 'aucune',
+    fn: "Maintient la forme et protège la cellule végétale",
+    distractors: ["Délimite la cellule ; contrôle les échanges", "Stockage et dégradation des déchets", "Réactions métaboliques (sans ribosomes)"] },
+  { name: 'Cytosol',              membrane: 'aucune',
+    fn: "Matrice du cytoplasme ; milieu des réactions métaboliques",
+    distractors: ["Maintient la forme et protège la cellule végétale", "Synthèse de protéines et de membranes", "Contient l'ADN ; contrôle les activités cellulaires"] },
+  { name: 'Centriole / Centrosome', membrane: 'aucune',
+    fn: "Organise le fuseau mitotique ; forme cils et flagelles",
+    distractors: ["Synthèse des protéines", "Produit les ribosomes", "Matrice du cytoplasme ; milieu des réactions métaboliques"] },
+];
 let dashboardData = null;
 let currentView = 'home';
 let learnSubView = 'subject'; // 'subject' | 'flashcard' | 'qcm' | 'qcm-color' | 'met-db' | 'fiche-view' | 'controle-question'
@@ -1070,6 +1119,11 @@ async function renderSubjectPage(id) {
       <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
     ` : ''}
+    ${id === 'bio' ? `
+    <div class="action-btn" onclick="startCellStructures()">
+      <div class="ab-info"><div class="ab-title">Structures cellulaires</div><div class="ab-sub">14 organites — membrane + fonction</div></div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
+    </div>` : ''}
   </div>
 
   ${s.liens && s.liens.length ? `
@@ -1646,6 +1700,162 @@ function startMETDatabase(subjectId) {
   metDbSession = { subjectId, order: shuffle([...Array(s.qcmImg.length).keys()]), pos: 0 };
   learnSubView = 'met-db';
   renderMETDatabase();
+}
+
+// ═══════════════════════════════════════════════════
+// STRUCTURES CELLULAIRES — exercice membrane + fonction
+// ═══════════════════════════════════════════════════
+function startCellStructures() {
+  const items = shuffle([...CELL_STRUCTURES_DATA]).map(item => {
+    const opts = shuffle([item.fn, ...item.distractors]);
+    return { ...item, opts };
+  });
+  cellStructSession = { items, idx: 0, scoreMem: 0, scoreFn: 0 };
+  learnSubView = 'cell-struct';
+  setNavbarVisible(false);
+  renderCellStructQuestion();
+}
+
+function renderCellStructQuestion() {
+  const { items, idx } = cellStructSession;
+  const total = items.length;
+  const item = items[idx];
+  const view = document.getElementById('view-learn');
+  const col = SUBJECT_COLORS['bio']?.primary || '#16a34a';
+
+  const memOptions = [
+    { val: 'aucune', label: 'Pas de membrane' },
+    { val: 'simple', label: 'Membrane simple' },
+    { val: 'double', label: 'Double membrane' },
+  ];
+
+  view.innerHTML = `
+  <div style="padding:max(env(safe-area-inset-top,0),16px) 16px 0;display:flex;align-items:center;gap:10px">
+    <button class="back-btn" onclick="renderSubjectPage('bio')">←</button>
+    <div style="flex:1;font-size:13px;color:var(--muted);font-weight:600">Structures cellulaires</div>
+    <div style="font-size:13px;color:var(--muted);font-weight:700">${idx + 1} / ${total}</div>
+  </div>
+
+  <div style="padding:4px 16px 6px">
+    <div style="height:4px;background:var(--border);border-radius:4px;overflow:hidden">
+      <div style="height:100%;width:${Math.round((idx / total) * 100)}%;background:${col};border-radius:4px;transition:width .3s"></div>
+    </div>
+  </div>
+
+  <div style="padding:28px 20px 16px;text-align:center">
+    <div style="font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.5px;line-height:1.1">${item.name}</div>
+  </div>
+
+  <div style="padding:0 16px 20px">
+    <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Membrane</div>
+    <div class="cs-mem-group" id="cs-mem">
+      ${memOptions.map(o => `
+      <button class="cs-mem-btn" data-val="${o.val}" onclick="csMem(this)">${o.label}</button>`).join('')}
+    </div>
+  </div>
+
+  <div style="padding:0 16px 24px">
+    <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Fonction</div>
+    <div id="cs-fn" style="display:flex;flex-direction:column;gap:8px">
+      ${item.opts.map((o, i) => `
+      <button class="cs-fn-btn" data-val="${o}" onclick="csFn(this)">${o}</button>`).join('')}
+    </div>
+  </div>
+
+  <div style="padding:0 16px 32px">
+    <button id="cs-validate" class="lock-submit" style="opacity:.35;cursor:default" disabled onclick="csValidate()">Valider</button>
+  </div>`;
+}
+
+function csMem(btn) {
+  document.querySelectorAll('.cs-mem-btn').forEach(b => b.classList.remove('cs-mem-active'));
+  btn.classList.add('cs-mem-active');
+  csCheckReady();
+}
+function csFn(btn) {
+  document.querySelectorAll('.cs-fn-btn').forEach(b => b.classList.remove('cs-fn-active'));
+  btn.classList.add('cs-fn-active');
+  csCheckReady();
+}
+function csCheckReady() {
+  const memOk = !!document.querySelector('.cs-mem-active');
+  const fnOk = !!document.querySelector('.cs-fn-active');
+  const btn = document.getElementById('cs-validate');
+  if (!btn) return;
+  btn.disabled = !(memOk && fnOk);
+  btn.style.opacity = (memOk && fnOk) ? '1' : '.35';
+  btn.style.cursor = (memOk && fnOk) ? 'pointer' : 'default';
+}
+
+function csValidate() {
+  const { items, idx } = cellStructSession;
+  const item = items[idx];
+  const chosenMem = document.querySelector('.cs-mem-active')?.dataset.val;
+  const chosenFn = document.querySelector('.cs-fn-active')?.dataset.val;
+  const memOk = chosenMem === item.membrane;
+  const fnOk = chosenFn === item.fn;
+  if (memOk) cellStructSession.scoreMem++;
+  if (fnOk) cellStructSession.scoreFn++;
+
+  const memLabels = { aucune: 'Pas de membrane', simple: 'Membrane simple', double: 'Double membrane' };
+
+  // Feedback membrane
+  document.querySelectorAll('.cs-mem-btn').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.val === item.membrane) b.style.cssText += ';background:#dcfce7;border-color:#16a34a;color:#15803d;font-weight:800';
+    else if (b.classList.contains('cs-mem-active')) b.style.cssText += ';background:#fee2e2;border-color:#dc2626;color:#dc2626';
+  });
+
+  // Feedback fonction
+  document.querySelectorAll('.cs-fn-btn').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.val === item.fn) b.style.cssText += ';background:#dcfce7;border-color:#16a34a;color:#15803d;font-weight:800';
+    else if (b.classList.contains('cs-fn-active')) b.style.cssText += ';background:#fee2e2;border-color:#dc2626;color:#dc2626';
+  });
+
+  const validateBtn = document.getElementById('cs-validate');
+  const total = items.length;
+  const isLast = idx === total - 1;
+  validateBtn.textContent = isLast ? 'Voir le score' : 'Suivant →';
+  validateBtn.disabled = false;
+  validateBtn.style.opacity = '1';
+  validateBtn.style.cursor = 'pointer';
+  validateBtn.onclick = isLast ? csShowScore : csNext;
+}
+
+function csNext() {
+  cellStructSession.idx++;
+  renderCellStructQuestion();
+}
+
+function csShowScore() {
+  const { scoreMem, scoreFn, items } = cellStructSession;
+  const total = items.length;
+  const col = SUBJECT_COLORS['bio']?.primary || '#16a34a';
+  const pct = Math.round(((scoreMem + scoreFn) / (total * 2)) * 100);
+  const view = document.getElementById('view-learn');
+  const stars = pct >= 80 ? '🌟' : pct >= 60 ? '✅' : '💪';
+  view.innerHTML = `
+  <div style="padding:max(env(safe-area-inset-top,0),52px) 16px 40px;display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div style="font-size:60px;margin-bottom:16px">${stars}</div>
+    <div style="font-size:32px;font-weight:900;color:${col};margin-bottom:4px">${pct}%</div>
+    <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:24px">Score final</div>
+
+    <div class="card" style="width:100%;max-width:340px;margin-bottom:24px">
+      <div style="display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border)">
+        <span style="color:var(--text-2);font-weight:600">Membrane</span>
+        <span style="font-weight:800;color:${scoreMem === total ? '#16a34a' : 'var(--text)'}">${scoreMem} / ${total}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;padding:12px 0">
+        <span style="color:var(--text-2);font-weight:600">Fonction</span>
+        <span style="font-weight:800;color:${scoreFn === total ? '#16a34a' : 'var(--text)'}">${scoreFn} / ${total}</span>
+      </div>
+    </div>
+
+    <button class="lock-submit" style="max-width:340px;width:100%;margin-bottom:12px" onclick="startCellStructures()">Recommencer</button>
+    <button class="lock-guest" style="max-width:340px;width:100%" onclick="renderSubjectPage('bio')">Retour à Biologie</button>
+  </div>`;
+  setNavbarVisible(true);
 }
 
 function renderMETDatabase() {
