@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.02';
+const APP_VERSION = '1.15';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -156,6 +156,83 @@ function setExamDate(subjectId, dateStr) {
   toast(GUEST_MODE ? 'Date modifiée pour cette session uniquement' : 'Date d\'examen mise à jour');
 }
 
+function getExamTimes() {
+  try { return JSON.parse(localStorage.getItem('studyos-examtimes') || '{}'); }
+  catch { return {}; }
+}
+function getExamTime(subjectId) { return getExamTimes()[subjectId] || '09:00'; }
+function setExamTime(subjectId, timeStr) {
+  const times = getExamTimes();
+  if (timeStr) times[subjectId] = timeStr; else delete times[subjectId];
+  localStorage.setItem('studyos-examtimes', JSON.stringify(times));
+  toast('Heure mise à jour');
+}
+
+function getExamEndTimes() {
+  try { return JSON.parse(localStorage.getItem('studyos-examendtimes') || '{}'); }
+  catch { return {}; }
+}
+function getExamEndTime(subjectId) { return getExamEndTimes()[subjectId] || '12:00'; }
+function setExamEndTime(subjectId, timeStr) {
+  const times = getExamEndTimes();
+  if (timeStr) times[subjectId] = timeStr; else delete times[subjectId];
+  localStorage.setItem('studyos-examendtimes', JSON.stringify(times));
+  toast('Heure de fin mise à jour');
+}
+
+function examDateTime(subjectId, useEnd = false) {
+  const dateStr = getExamDate(subjectId);
+  if (!dateStr) return null;
+  const timeStr = useEnd ? getExamEndTime(subjectId) : getExamTime(subjectId);
+  const [h, m] = timeStr.split(':').map(Number);
+  const d = new Date(dateStr);
+  d.setHours(h, m, 0, 0);
+  return d;
+}
+function secsUntilExam(subjectId) {
+  const d = examDateTime(subjectId);
+  return d ? Math.round((d - new Date()) / 1000) : null;
+}
+function secsUntilExamEnd(subjectId) {
+  const d = examDateTime(subjectId, true);
+  return d ? Math.round((d - new Date()) / 1000) : null;
+}
+function fmtCountdown(secs) {
+  const h = Math.floor(secs / 3600);
+  const mn = Math.floor((secs % 3600) / 60);
+  const s = secs % 60;
+  return `${String(h).padStart(2,'0')}:${String(mn).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+let _countdownInterval = null;
+function clearCountdown() {
+  if (_countdownInterval) { clearInterval(_countdownInterval); _countdownInterval = null; }
+}
+
+// ── Guest exam config ──
+function getGuestExamConfig() {
+  try { return JSON.parse(localStorage.getItem('guest-exam-config') || '{}'); }
+  catch { return {}; }
+}
+function saveGuestExamConfig(cfg) {
+  localStorage.setItem('guest-exam-config', JSON.stringify(cfg));
+}
+function getGuestAllExams() {
+  const cfg = getGuestExamConfig();
+  const result = [];
+  // Examens de Charles sélectionnés
+  (cfg.selected || []).forEach(id => {
+    const s = dashboardData?.subjects?.[id];
+    if (!s) return;
+    result.push({ id, name: s.name, emoji: s.emoji || SUBJECT_ICONS[id] || '📘',
+      date: getExamDate(id), startTime: getExamTime(id), endTime: getExamEndTime(id),
+      color: (SUBJECT_COLORS[id] || {}).primary || '#5C6BC0', isCustom: false });
+  });
+  // Examens personnalisés
+  (cfg.custom || []).forEach(ex => result.push({ ...ex, isCustom: true }));
+  return result.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+}
+
 // ═══════════════════════════════════════════════════
 // RAPPELS DE RÉVISION
 // ═══════════════════════════════════════════════════
@@ -224,6 +301,35 @@ const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
 
 // Code d'accès Charles (6 chiffres) — à changer ici si besoin
 const CHARLES_CODE = '124816';
+
+// ═══════════════════════════════════════════════════
+// CHANGELOG — une entrée par version déployée
+// ═══════════════════════════════════════════════════
+const CHANGELOG = {
+  '1.15': [
+    'Mode invité : accès complet aux exercices des matières sélectionnées (flashcards, QCM, etc.)',
+    'Mode invité : examens perso ajoutés uniquement dans l\'agenda et le tableau de bord',
+    'Mode invité : formulaire d\'ajout d\'examens perso corrigé et simplifié',
+  ],
+  '1.14': [
+    'Popup de mise à jour : changelog détaillé par version',
+  ],
+  '1.13': [
+    'Mode invité : sélection personnalisée des examens',
+    'Mode invité : ajout d\'examens personnalisés (nom, emoji, date, heure)',
+    'Mode invité : agenda simplifié avec uniquement tes examens',
+    'Connexions invités visible uniquement pour Charles (sans PIN)',
+    'Popup mise à jour : version correcte + résumé des nouveautés',
+  ],
+  '1.12': ['Bouton de déconnexion dans les réglages pour Charles et les invités'],
+  '1.11': ['Bouton de déconnexion (Charles uniquement)'],
+  '1.10': ['Connexions invités : accès via PIN au lieu d\'une clé séparée'],
+  '1.09': ['Connexions invités masquées pour les invités'],
+  '1.08': ['Barre de progression des exercices en gris clair (mode clair)'],
+  '1.07': ['Décompte au format HH:MM:SS'],
+  '1.06': ['Prochain exam calculé dynamiquement', 'Page connexions invités dans les réglages'],
+  '1.05': ['Reconnaissance automatique des invités par IP (Upstash)', 'Réglages : date + horaires d\'exam en une seule ligne', 'Heure de fin d\'exam + passage auto au suivant'],
+};
 
 // ═══════════════════════════════════════════════════
 // STATE
@@ -629,6 +735,7 @@ function setNavbarVisible(visible) {
 }
 
 function showView(name) {
+  if (name !== 'home') clearCountdown();
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   const viewEl = document.getElementById(`view-${name}`);
@@ -687,10 +794,30 @@ async function renderHome() {
   const greeting = h >= 18 ? 'Bonsoir' : (h >= 12 ? 'Bon après-midi' : 'Bonjour');
   const dateStr = new Date().toLocaleDateString('fr-BE', { weekday: 'long', day: 'numeric', month: 'long' });
 
-  // Next exam hero card
+  // Next exam hero card — calcul dynamique (ne pas lire next_exam statique de dashboard.json)
   let nextExamHTML = '';
-  if (dashboardData && dashboardData.next_exam) {
-    const ne = dashboardData.next_exam;
+  const neComputed = (() => {
+    const now = new Date();
+    if (GUEST_MODE) {
+      const exams = getGuestAllExams().filter(ex => {
+        const [h, m] = (ex.endTime || '12:00').split(':').map(Number);
+        const end = new Date(ex.date); end.setHours(h, m, 0, 0);
+        return end > now;
+      });
+      if (!exams.length) return null;
+      const ex = exams[0];
+      return { subject: ex.id, name: ex.name, type: ex.isCustom ? 'Examen' : (dashboardData?.subjects?.[ex.id]?.type || 'Examen'),
+        date: ex.date, emoji: ex.emoji, color: ex.color };
+    }
+    if (!dashboardData?.subjects) return null;
+    const candidates = Object.entries(dashboardData.subjects)
+      .map(([id, s]) => ({ subject: id, name: s.name, type: s.type, date: s.exam, emoji: s.emoji, color: s.color }))
+      .filter(s => { const end = examDateTime(s.subject, true); return end && end > now; })
+      .sort((a, b) => daysUntil(a.date) - daysUntil(b.date));
+    return candidates[0] || null;
+  })();
+  if (neComputed) {
+    const ne = neComputed;
     const days = daysUntil(ne.date);
     const col = SUBJECT_COLORS[ne.subject] || { primary: '#5C6BC0', light: '#EEF0FA' };
     const daysColor = days <= 3 ? '#dc2626' : days <= 7 ? '#d97706' : '#16a34a';
@@ -710,15 +837,28 @@ async function renderHome() {
       const neScore = neB1 * 0.25 + neB2 * 0.6 + neB3 * 1.0;
       masteryPctNE = neSubject.flashcards.length ? Math.round(neScore / neSubject.flashcards.length * 100) : 0;
     }
+    const secsLeft = secsUntilExam(ne.subject);
+    const secsEnd = secsUntilExamEnd(ne.subject);
+    const inProgress = secsLeft !== null && secsLeft <= 0 && secsEnd !== null && secsEnd > 0;
+    const showCountdown = secsLeft !== null && secsLeft > 0 && secsLeft < 86400;
+    let daysDisplay;
+    if (inProgress) {
+      daysDisplay = `<div id="nec-countdown" style="color:#d97706;font-size:12px;font-weight:700;text-align:center">En cours<br><span style="font-size:11px;font-weight:600">${fmtCountdown(secsEnd)}</span></div>`;
+    } else if (showCountdown) {
+      daysDisplay = `<div id="nec-countdown" style="color:${daysColor};font-size:13px;font-weight:700;letter-spacing:.5px">${fmtCountdown(secsLeft)}</div>`;
+    } else {
+      daysDisplay = `<div class="nec-days" style="color:${daysColor}">${days}j</div>`;
+    }
+    const timeLabel = `${getExamTime(ne.subject)}–${getExamEndTime(ne.subject)}`;
     nextExamHTML = `
     <div class="section-label">Prochain examen</div>
     <div class="next-exam-card" onclick="showView('agenda')">
       <div class="nec-top">
         <div class="nec-info">
           <div class="nec-name">${ne.name}</div>
-          <div class="nec-type">${ne.type} · ${formatDate(ne.date)}</div>
+          <div class="nec-type">${ne.type} · ${formatDate(ne.date)} · ${timeLabel}</div>
         </div>
-        <div class="nec-days" style="color:${daysColor}">${days}j</div>
+        ${daysDisplay}
       </div>
       <div style="margin-top:14px">
         <div class="nec-prog-label">Concepts maîtrisés (B3)</div>
@@ -728,10 +868,32 @@ async function renderHome() {
         <div class="nec-prog-num">${masteryPctNE}%</div>
       </div>
     </div>`;
+    if (showCountdown || inProgress) {
+      clearCountdown();
+      _countdownInterval = setInterval(() => {
+        const el = document.getElementById('nec-countdown');
+        if (!el) { clearCountdown(); return; }
+        const sl = secsUntilExam(ne.subject);
+        const se = secsUntilExamEnd(ne.subject);
+        if (sl > 0) {
+          el.textContent = fmtCountdown(sl);
+        } else if (se > 0) {
+          el.innerHTML = `En cours<br><span style="font-size:11px;font-weight:600">${fmtCountdown(se)}</span>`;
+        } else {
+          clearCountdown();
+          renderHome();
+        }
+      }, 1000);
+    }
   }
 
   // Subject grid — score combiné par matière
+  // Invité : on garde la grille complète mais filtrée sur les matières sélectionnées
+  const guestCfg = GUEST_MODE ? getGuestExamConfig() : null;
+  const guestSelected = guestCfg ? new Set(guestCfg.selected || SUBJECTS_ORDER) : null;
+
   const subjectScores = await Promise.all(SUBJECTS_ORDER.map(async id => {
+    if (GUEST_MODE && guestSelected && !guestSelected.has(id)) return null;
     const s = subjects[id];
     if (!s) return null;
     const stats = await getSubjectStats(id);
@@ -743,12 +905,11 @@ async function renderHome() {
     const due = (stats.due || 0) + dueQCM.length;
     return { id, s, score, due };
   }));
-
-  const globalScore = (() => {
-    const valid = subjectScores.filter(Boolean);
-    if (!valid.length) return 0;
-    return Math.round(valid.reduce((sum, v) => sum + v.score, 0) / valid.length);
-  })();
+  const validScores = subjectScores.filter(Boolean);
+  const subjectCount = validScores.length + (GUEST_MODE ? (guestCfg?.custom?.length || 0) : 0);
+  const globalScore = validScores.length
+    ? Math.round(validScores.reduce((sum, v) => sum + v.score, 0) / validScores.length)
+    : 0;
 
   const progCards = subjectScores.map(entry => {
     if (!entry) return '';
@@ -756,7 +917,6 @@ async function renderHome() {
     const col = SUBJECT_COLORS[id] || { primary: '#5C6BC0' };
     const days = daysUntil(getExamDate(id));
     const ctaText = due > 0 ? `${due} exercice${due > 1 ? 's' : ''}` : 'Tout est fait ✓';
-
     return `
     <div class="subject-cell" onclick="goToSubject('${id}')">
       <div class="sc-top">
@@ -773,6 +933,27 @@ async function renderHome() {
     </div>`;
   });
 
+  // Examens perso invité — cartes simples sans exercices
+  const customCards = GUEST_MODE ? (guestCfg?.custom || [])
+    .filter(ex => daysUntil(ex.date) >= 0)
+    .map(ex => {
+      const days = daysUntil(ex.date);
+      const col = ex.color || '#6366F1';
+      return `
+      <div class="subject-cell" style="cursor:default">
+        <div class="sc-top">
+          ${progressRing(0, col, 44, ex.emoji || '📘')}
+          <div class="sc-name">${ex.name}</div>
+        </div>
+        <div class="sc-info">
+          <div class="sc-days" style="color:${col}">Examen dans ${days}j</div>
+        </div>
+        <div class="sc-cta" style="background:${col}1A;color:${col}">
+          <span>Examen perso</span>
+        </div>
+      </div>`;
+    }) : [];
+
   const syncDate = (dashboardData && dashboardData.generated)
     ? new Date(dashboardData.generated).toLocaleDateString('fr-BE', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })
     : null;
@@ -787,14 +968,14 @@ async function renderHome() {
     ${progressRing(globalScore, 'var(--accent)', 76)}
     <div class="gsc-info">
       <div class="gsc-label">Avancement global</div>
-      <div class="gsc-sub">Moyenne de tes ${subjectScores.filter(Boolean).length} matières</div>
+      <div class="gsc-sub">Moyenne de tes ${subjectCount} matières</div>
     </div>
   </div>
 
   ${nextExamHTML}
 
   <div class="section-label">Matières</div>
-  <div class="subject-grid">${progCards.join('')}</div>
+  <div class="subject-grid">${progCards.join('')}${customCards.join('')}</div>
 
   ${syncDate ? `<div class="sync-footer"><span class="sync-dot"></span>Sync Claude : ${syncDate}</div>` : ''}
   `;
@@ -1666,6 +1847,36 @@ function dayBadgeHTML(day) {
 
 function renderAgenda() {
   const view = document.getElementById('view-agenda');
+
+  if (GUEST_MODE) {
+    const exams = getGuestAllExams();
+    const todayStr = localDateStr();
+    const rows = exams.map(ex => {
+      const days = daysUntil(ex.date);
+      const isPast = days < 0;
+      const isToday = ex.date === todayStr;
+      const col = ex.color || '#5C6BC0';
+      const label = isToday ? "Aujourd'hui" : isPast ? 'Passé' : `Dans ${days}j`;
+      return `
+      <div style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);opacity:${isPast ? .45 : 1}">
+        <div style="font-size:28px">${ex.emoji || '📘'}</div>
+        <div style="flex:1">
+          <div style="font-weight:700;color:var(--text)">${ex.name}</div>
+          <div style="font-size:12px;color:var(--muted)">${ex.startTime}–${ex.endTime} · ${ex.date ? new Date(ex.date).toLocaleDateString('fr-BE',{day:'numeric',month:'long'}) : '—'}</div>
+        </div>
+        <div style="font-weight:700;font-size:13px;color:${isPast ? 'var(--muted)' : col}">${label}</div>
+      </div>`;
+    }).join('') || `<div style="padding:24px;color:var(--muted);text-align:center">Aucun examen configuré</div>`;
+
+    view.innerHTML = `
+    <div class="view-header">
+      <div class="view-title">Mes examens</div>
+      <button style="background:var(--accent);color:#fff;border:none;border-radius:var(--r-xs);padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer" onclick="showGuestSetup(true)">Modifier</button>
+    </div>
+    <div class="card card-sm" style="padding:0;margin:16px">${rows}</div>`;
+    return;
+  }
+
   if (!dashboardData || !dashboardData.planning || !dashboardData.planning.length) {
     view.innerHTML = `
     <div class="view-header"><div class="view-title">Agenda</div></div>
@@ -1901,7 +2112,12 @@ function renderSettings() {
     return `
     <div class="examdate-row">
       <div class="examdate-name">${SUBJECT_ICONS[id] || '📘'} ${SUBJECT_SHORT[id] || s.name}</div>
-      <input type="date" class="examdate-input" value="${getExamDate(id) || ''}" onchange="setExamDate('${id}', this.value); renderHome();">
+      <div class="examdate-controls">
+        <input type="date" class="examdate-input" value="${getExamDate(id) || ''}" onchange="setExamDate('${id}', this.value); renderHome();">
+        <input type="time" class="examdate-input" value="${getExamTime(id)}" onchange="setExamTime('${id}', this.value); renderHome();">
+        <span class="examdate-sep">→</span>
+        <input type="time" class="examdate-input" value="${getExamEndTime(id)}" onchange="setExamEndTime('${id}', this.value); renderHome();">
+      </div>
     </div>`;
   }).join('');
 
@@ -1933,7 +2149,7 @@ function renderSettings() {
     <button class="seg-btn${currentTextSize === 'grand' ? ' active' : ''}" onclick="setTextSize('grand')">Grand</button>
   </div>
 
-  <div class="section-label">Dates d'examen</div>
+  <div class="section-label">Examens — date &amp; horaires</div>
   <div class="card card-sm" style="padding:0">
     ${examRows}
   </div>
@@ -1967,7 +2183,30 @@ function renderSettings() {
   <div class="danger-zone">
     <div class="danger-label">Zone danger</div>
     <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
+  </div>
+
+  <div class="section-label">Invités</div>
+  <div class="action-list" style="margin-bottom:24px">
+    <div class="action-btn" onclick="renderAnalytics()">
+      <div class="ab-info"><div class="ab-title">Connexions invités</div><div class="ab-sub">Voir qui a utilisé l'app</div></div>
+    </div>
   </div>`}
+
+  ${GUEST_MODE ? `
+  <div class="section-label">Mes examens</div>
+  <div class="action-list" style="margin-bottom:24px">
+    <div class="action-btn" onclick="showGuestSetup(true)">
+      <div class="ab-info"><div class="ab-title">Modifier ma sélection</div><div class="ab-sub">Ajouter, supprimer ou changer mes examens</div></div>
+    </div>
+  </div>` : ''}
+
+  <div class="section-label">Session</div>
+  <div class="action-list" style="margin-bottom:24px">
+    <div class="action-btn" onclick="logout()">
+      <div class="ab-info"><div class="ab-title">Se déconnecter</div><div class="ab-sub">Revenir à l'écran de connexion</div></div>
+    </div>
+  </div>
+
   <div class="app-version">StudyOS ${APP_VERSION}</div>`;
 
   const input = document.getElementById('settings-name-input');
@@ -1976,6 +2215,44 @@ function renderSettings() {
     localStorage.setItem('studyos-name', val);
     input.value = val;
   });
+}
+
+async function renderAnalytics() {
+  const view = document.getElementById('view-settings');
+  view.innerHTML = `
+  <div class="view-header" style="display:flex;align-items:center;gap:12px">
+    <button class="back-btn" onclick="renderSettings()">←</button>
+    <div class="view-title">Connexions invités</div>
+  </div>
+  <div id="analytics-body" style="padding:16px;color:var(--text-2);font-size:14px">Chargement…</div>`;
+
+  const data = await fetch('/api/analytics?token=studyos-analytics-2026-cd').then(r => r.ok ? r.json() : null);
+  renderAnalyticsData(data);
+}
+
+function renderAnalyticsData(data) {
+  const body = document.getElementById('analytics-body');
+  if (!body) return;
+  if (!data || !data.guests) { body.textContent = 'Aucune donnée.'; return; }
+  const fmt = iso => iso ? new Date(iso).toLocaleString('fr-BE', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' }) : '—';
+  body.innerHTML = `
+  <div style="margin-bottom:16px;font-weight:700;font-size:15px">${data.total} invité${data.total > 1 ? 's' : ''} enregistré${data.total > 1 ? 's' : ''}</div>
+  ${data.guests.map(g => `
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
+    <div>
+      <div style="font-weight:700;color:var(--text)">${g.name || '—'}</div>
+      <div style="font-size:12px;color:var(--muted)">1ère visite : ${fmt(g.firstSeen)}</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-weight:700;color:var(--accent)">${g.count}×</div>
+      <div style="font-size:12px;color:var(--muted)">${fmt(g.lastSeen)}</div>
+    </div>
+  </div>`).join('')}`;
+}
+
+function logout() {
+  localStorage.removeItem('studyos-auth');
+  location.reload();
 }
 
 function setAccentColor(idx) {
@@ -2132,9 +2409,12 @@ async function init() {
       navigator.serviceWorker.register('/sw.js').catch(() => {});
       navigator.serviceWorker.addEventListener('message', e => {
         if (e.data && e.data.type === 'SW_UPDATED') {
+          const v = e.data.version || APP_VERSION;
+          const notes = CHANGELOG[v] || [];
+          const notesList = notes.length ? `<ul style="margin:8px 0 0;padding-left:18px;font-size:12px;opacity:.85">${notes.map(n => `<li>${n}</li>`).join('')}</ul>` : '';
           const b = document.createElement('div');
           b.className = 'update-banner';
-          b.innerHTML = `<div class="update-banner-box">Nouvelle version disponible (${APP_VERSION})<button onclick="location.reload()">Recharger</button></div>`;
+          b.innerHTML = `<div class="update-banner-box"><div><strong>Mise à jour v${v}</strong>${notesList}</div><button onclick="location.reload()">Recharger</button></div>`;
           document.body.appendChild(b);
         }
       });
@@ -2150,6 +2430,143 @@ async function init() {
       </div>`;
     }
   }
+}
+
+// ═══════════════════════════════════════════════════
+// GUEST SETUP
+// ═══════════════════════════════════════════════════
+function showGuestSetup(isEdit = false) {
+  const cfg = getGuestExamConfig();
+  const selected = new Set(cfg.selected || []);
+  const custom = cfg.custom ? [...cfg.custom] : [];
+
+  const overlay = document.createElement('div');
+  overlay.id = 'guest-setup-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:var(--bg);z-index:9999;overflow-y:auto;padding:24px 16px 80px';
+
+  // Construit la liste des matières de Charles
+  const charlieExams = dashboardData?.subjects
+    ? Object.entries(dashboardData.subjects).map(([id, s]) => ({
+        id, name: s.name,
+        emoji: s.emoji || SUBJECT_ICONS[id] || '📘',
+        date: s.exam,
+        color: (SUBJECT_COLORS[id] || {}).primary || '#5C6BC0'
+      }))
+    : SUBJECTS_ORDER.map(id => ({
+        id, name: id, emoji: SUBJECT_ICONS[id] || '📘',
+        date: getExamDate(id), color: (SUBJECT_COLORS[id] || {}).primary || '#5C6BC0'
+      }));
+
+  const renderCustomList = () => {
+    const list = overlay.querySelector('#custom-exam-list');
+    if (!list) return;
+    list.innerHTML = custom.length
+      ? custom.map((ex, i) => `
+        <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--border)">
+          <span style="font-size:22px">${ex.emoji || '📘'}</span>
+          <div style="flex:1;min-width:0">
+            <div style="font-weight:700;color:var(--text)">${ex.name}</div>
+            <div style="font-size:12px;color:var(--muted)">${ex.date ? new Date(ex.date).toLocaleDateString('fr-BE',{day:'numeric',month:'long'}) : '—'} · ${ex.startTime}–${ex.endTime}</div>
+          </div>
+          <button data-rm="${i}" style="background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 8px">✕</button>
+        </div>`).join('')
+      : '<div style="padding:16px;color:var(--muted);font-size:14px">Aucun examen personnalisé</div>';
+
+    list.querySelectorAll('[data-rm]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        custom.splice(+btn.dataset.rm, 1);
+        renderCustomList();
+      });
+    });
+  };
+
+  const charliRows = charlieExams.map(ex => {
+    const checked = selected.has(ex.id);
+    const days = daysUntil(ex.date);
+    const isPast = days < 0;
+    return `
+    <label style="display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border);cursor:pointer;${isPast ? 'opacity:.5' : ''}">
+      <input type="checkbox" data-id="${ex.id}" ${checked ? 'checked' : ''} style="width:20px;height:20px;accent-color:${ex.color};flex-shrink:0">
+      <span style="font-size:22px">${ex.emoji}</span>
+      <div style="flex:1">
+        <div style="font-weight:700;color:var(--text)">${ex.name}</div>
+        <div style="font-size:12px;color:var(--muted)">${isPast ? 'Passé' : `Dans ${days}j`} · ${ex.date ? new Date(ex.date).toLocaleDateString('fr-BE',{day:'numeric',month:'long'}) : '—'}</div>
+      </div>
+    </label>`;
+  }).join('');
+
+  overlay.innerHTML = `
+  <div style="max-width:480px;margin:0 auto">
+    <div style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:4px">${isEdit ? 'Mes examens' : 'Bienvenue ' + guestName + ' !'}</div>
+    <div style="font-size:14px;color:var(--muted);margin-bottom:24px">${isEdit ? 'Modifie ta sélection' : 'Sélectionne les examens que tu as'}</div>
+
+    <div style="font-weight:700;color:var(--text-2);font-size:11px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px">Examens en commun</div>
+    <div class="card" style="padding:0;margin-bottom:24px">${charliRows || '<div style="padding:16px;color:var(--muted)">Aucun examen disponible</div>'}</div>
+
+    <div style="font-weight:700;color:var(--text-2);font-size:11px;letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px">Examens personnalisés</div>
+    <div class="card" style="padding:0;margin-bottom:12px" id="custom-exam-list"></div>
+    <button id="add-custom-toggle" style="width:100%;padding:12px;border:2px dashed var(--border);background:none;border-radius:var(--r-xs);color:var(--accent);font-weight:700;font-size:14px;cursor:pointer;margin-bottom:16px">+ Ajouter un examen</button>
+
+    <div id="custom-exam-form" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px;margin-bottom:20px">
+      <div style="font-weight:700;margin-bottom:14px;color:var(--text)">Nouvel examen</div>
+      <div style="display:grid;grid-template-columns:64px 1fr;gap:10px;margin-bottom:10px">
+        <input id="nex-emoji" class="settings-input" type="text" placeholder="📘" maxlength="2" style="text-align:center;font-size:22px">
+        <input id="nex-name" class="settings-input" type="text" placeholder="Nom (ex: Histoire)">
+      </div>
+      <input id="nex-date" class="examdate-input" type="date" style="width:100%;margin-bottom:10px;box-sizing:border-box">
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px">
+        <input id="nex-start" class="examdate-input" type="time" value="09:00" style="flex:1">
+        <span style="color:var(--muted);font-weight:700">→</span>
+        <input id="nex-end" class="examdate-input" type="time" value="12:00" style="flex:1">
+      </div>
+      <button id="nex-add-btn" style="width:100%;background:var(--accent);color:#fff;border:none;border-radius:var(--r-xs);padding:11px;font-weight:700;font-size:15px;cursor:pointer">Ajouter</button>
+    </div>
+
+    <button id="guest-save-btn" style="width:100%;background:var(--accent);color:#fff;border:none;border-radius:var(--r);padding:16px;font-size:16px;font-weight:800;cursor:pointer">${isEdit ? 'Enregistrer' : 'Commencer →'}</button>
+  </div>`;
+
+  // Listeners checkbox
+  overlay.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) selected.add(cb.dataset.id); else selected.delete(cb.dataset.id);
+    });
+  });
+
+  // Toggle formulaire
+  overlay.querySelector('#add-custom-toggle').addEventListener('click', () => {
+    const f = overlay.querySelector('#custom-exam-form');
+    f.style.display = f.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // Ajouter un examen perso
+  overlay.querySelector('#nex-add-btn').addEventListener('click', () => {
+    const name = overlay.querySelector('#nex-name').value.trim();
+    const date = overlay.querySelector('#nex-date').value;
+    if (!name) { toast('Indique un nom pour l\'examen'); return; }
+    if (!date) { toast('Indique une date'); return; }
+    const emoji = overlay.querySelector('#nex-emoji').value.trim() || '📘';
+    const startTime = overlay.querySelector('#nex-start').value || '09:00';
+    const endTime = overlay.querySelector('#nex-end').value || '12:00';
+    custom.push({ id: 'custom-' + Date.now(), name, emoji, date, startTime, endTime, color: '#6366F1', isCustom: true });
+    // reset form
+    overlay.querySelector('#nex-emoji').value = '';
+    overlay.querySelector('#nex-name').value = '';
+    overlay.querySelector('#nex-date').value = '';
+    overlay.querySelector('#nex-start').value = '09:00';
+    overlay.querySelector('#nex-end').value = '12:00';
+    overlay.querySelector('#custom-exam-form').style.display = 'none';
+    renderCustomList();
+  });
+
+  // Sauvegarder
+  overlay.querySelector('#guest-save-btn').addEventListener('click', () => {
+    saveGuestExamConfig({ selected: [...selected], custom, setupDone: true });
+    overlay.remove();
+    init();
+  });
+
+  renderCustomList();
+  document.body.appendChild(overlay);
 }
 
 // ═══════════════════════════════════════════════════
@@ -2179,21 +2596,40 @@ function setupLockScreen() {
     if (input.value.length === 6) tryUnlock();
   });
 
-  document.getElementById('lock-guest').addEventListener('click', () => {
+  document.getElementById('lock-guest').addEventListener('click', async () => {
     document.getElementById('lock-guest').style.display = 'none';
     document.querySelector('.lock-divider').style.display = 'none';
     document.querySelector('.lock-guest-note').style.display = 'none';
+
+    // Vérifie si l'IP est déjà connue
+    let knownName = null;
+    try {
+      const r = await fetch('/api/guest');
+      if (r.ok) { const d = await r.json(); knownName = d.name || null; }
+    } catch {}
+
+    const launchGuest = async (name) => {
+      GUEST_MODE = true;
+      guestName = name || 'invité';
+      try { await fetch('/api/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: guestName }) }); } catch {}
+      screen.remove();
+      const cfg = getGuestExamConfig();
+      if (!cfg.setupDone) { showGuestSetup(false); } else { init(); }
+    };
+
+    if (knownName) {
+      // Déjà connu → entrée directe
+      launchGuest(knownName);
+      return;
+    }
+
+    // Nouveau → affiche le formulaire de prénom
     const form = document.getElementById('lock-guest-form');
     form.style.display = 'block';
     const nameInput = document.getElementById('lock-guest-name');
     nameInput.focus();
 
-    const start = () => {
-      GUEST_MODE = true;
-      guestName = nameInput.value.trim();
-      screen.remove();
-      init();
-    };
+    const start = () => launchGuest(nameInput.value.trim() || 'invité');
     document.getElementById('lock-guest-start').addEventListener('click', start);
     nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') start(); });
   });

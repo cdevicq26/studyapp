@@ -1,4 +1,4 @@
-const CACHE = 'studyapp-1.02';
+const CACHE = 'studyapp-1.15';
 const ASSETS = [
   '/',
   '/index.html',
@@ -27,7 +27,7 @@ self.addEventListener('activate', e => {
     ).then(() => {
       self.clients.claim();
       self.clients.matchAll({ includeUncontrolled: true }).then(clients =>
-        clients.forEach(c => c.postMessage({ type: 'SW_UPDATED' }))
+        clients.forEach(c => c.postMessage({ type: 'SW_UPDATED', version: CACHE.replace('studyapp-', '') }))
       );
     })
   );
