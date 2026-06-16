@@ -1071,12 +1071,18 @@ body {
   transition: background var(--transition), transform var(--transition);
 }
 .lock-guest:active { background: var(--accent-l); transform: scale(.98); }
-.lock-guest-note { font-size: 11px; color: var(--muted); margin-top: 10px; }
-.lock-guest-form { margin-top: 18px; }
-.lock-guest-name {
-  font-size: 17px; text-align: left; letter-spacing: normal;
-  text-transform: none; font-weight: 700; padding: 14px;
+.lock-known-greeting {
+  font-size: 17px; font-weight: 700; color: var(--text); margin: 12px 0 20px;
+  line-height: 1.3;
 }
+.lock-other-btn {
+  width: 100%; border: 2px solid var(--border); background: none; color: var(--muted);
+  border-radius: var(--r-sm); padding: 12px; font-size: 14px; font-weight: 600;
+  margin-top: 10px; cursor: pointer; font-family: 'Poppins', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+.lock-other-btn:active { color: var(--text); border-color: var(--accent); }
 
 .guest-banner {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;

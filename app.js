@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.18';
+const APP_VERSION = '1.19';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -2370,12 +2370,45 @@ async function init() {
 // ═══════════════════════════════════════════════════
 // LOCK SCREEN
 // ═══════════════════════════════════════════════════
-function setupLockScreen() {
+async function setupLockScreen() {
   const screen = document.getElementById('lock-screen');
+  const box = screen.querySelector('.lock-box');
+
+  const showState = (id) => {
+    ['ls-known', 'ls-default', 'ls-guest'].forEach(s => {
+      document.getElementById(s).style.display = s === id ? 'block' : 'none';
+    });
+    box.style.visibility = 'visible';
+  };
+
+  const launchGuest = async (name) => {
+    GUEST_MODE = true;
+    guestName = name || 'invité';
+    try { await fetch('/api/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: guestName }) }); } catch {}
+    screen.remove();
+    init();
+  };
+
+  // — État A : IP connue —
+  let knownName = null;
+  try {
+    const r = await fetch('/api/guest');
+    if (r.ok) { const d = await r.json(); knownName = d.name || null; }
+  } catch {}
+
+  if (knownName) {
+    document.getElementById('ls-known-greeting').textContent = `Heureux de vous revoir, ${knownName} !`;
+    document.getElementById('ls-known-confirm').addEventListener('click', () => launchGuest(knownName));
+    document.getElementById('ls-known-other').addEventListener('click', () => showState('ls-default'));
+    showState('ls-known');
+  } else {
+    showState('ls-default');
+  }
+
+  // — État B : PIN Charles —
   const input = document.getElementById('lock-pin');
   const error = document.getElementById('lock-error');
-
-  function tryUnlock() {
+  const tryUnlock = () => {
     if (input.value === CHARLES_CODE) {
       localStorage.setItem('studyos-auth', 'charles');
       screen.remove();
@@ -2385,69 +2418,23 @@ function setupLockScreen() {
       input.value = '';
       input.focus();
     }
-  }
-
+  };
   document.getElementById('lock-submit').addEventListener('click', tryUnlock);
   input.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
-  input.addEventListener('input', () => {
-    error.textContent = '';
-    if (input.value.length === 6) tryUnlock();
+  input.addEventListener('input', () => { error.textContent = ''; if (input.value.length === 6) tryUnlock(); });
+
+  // — État B → C : passer au formulaire prénom —
+  document.getElementById('lock-guest').addEventListener('click', () => {
+    showState('ls-guest');
+    document.getElementById('lock-guest-name').focus();
   });
 
-  document.getElementById('lock-guest').addEventListener('click', async () => {
-    document.getElementById('lock-guest').style.display = 'none';
-    document.querySelector('.lock-divider').style.display = 'none';
-    document.querySelector('.lock-guest-note').style.display = 'none';
-
-    // Vérifie si l'IP est déjà connue
-    let knownName = null;
-    try {
-      const r = await fetch('/api/guest');
-      if (r.ok) { const d = await r.json(); knownName = d.name || null; }
-    } catch {}
-
-    const launchGuest = async (name) => {
-      GUEST_MODE = true;
-      guestName = name || 'invité';
-      try { await fetch('/api/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: guestName }) }); } catch {}
-      screen.remove();
-      init();
-    };
-
-    const showNameForm = () => {
-      const form = document.getElementById('lock-guest-form');
-      form.style.display = 'block';
-      const nameInput = document.getElementById('lock-guest-name');
-      nameInput.focus();
-      const start = () => launchGuest(nameInput.value.trim() || 'invité');
-      document.getElementById('lock-guest-start').addEventListener('click', start);
-      nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') start(); });
-    };
-
-    if (knownName) {
-      // IP connue → proposer de continuer sous ce nom
-      const box = screen.querySelector('.lock-box');
-      const knownDiv = document.createElement('div');
-      knownDiv.id = 'lock-known';
-      knownDiv.innerHTML = `
-        <div style="font-size:13px;color:var(--muted);margin-bottom:12px">Bon retour !</div>
-        <button id="lock-known-confirm" class="lock-submit" style="margin-bottom:10px">
-          Continuer en tant que ${knownName}
-        </button>
-        <button id="lock-known-other" style="width:100%;background:none;border:2px solid var(--border);border-radius:var(--r-xs);padding:11px;font-size:14px;font-weight:600;color:var(--text-2);cursor:pointer">
-          Ce n'est pas moi
-        </button>`;
-      box.appendChild(knownDiv);
-      document.getElementById('lock-known-confirm').addEventListener('click', () => launchGuest(knownName));
-      document.getElementById('lock-known-other').addEventListener('click', () => {
-        knownDiv.remove();
-        showNameForm();
-      });
-      return;
-    }
-
-    showNameForm();
-  });
+  // — État C : formulaire prénom —
+  const nameInput = document.getElementById('lock-guest-name');
+  const startGuest = () => launchGuest(nameInput.value.trim() || 'invité');
+  document.getElementById('lock-guest-start').addEventListener('click', startGuest);
+  nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') startGuest(); });
+  document.getElementById('lock-guest-back').addEventListener('click', () => showState('ls-default'));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
