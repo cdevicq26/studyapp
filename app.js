@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.24';
+const APP_VERSION = '1.25';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -2416,6 +2416,12 @@ async function renderAnalytics() {
   renderAnalyticsData(data);
 }
 
+async function mergeGuests(primaryIp, secondaryIp) {
+  const ok = await fetch(`/api/analytics?token=studyos-analytics-2026-cd&action=merge&primary=${encodeURIComponent(primaryIp)}&secondary=${encodeURIComponent(secondaryIp)}`).then(r => r.ok ? r.json() : null);
+  if (ok?.ok) { toast('Fusionné !'); renderAnalytics(); }
+  else toast('Erreur lors de la fusion');
+}
+
 function renderAnalyticsData(data) {
   const body = document.getElementById('analytics-body');
   if (!body) return;
@@ -2424,6 +2430,13 @@ function renderAnalyticsData(data) {
   const fmtDur = s => s ? (s >= 3600 ? `${Math.floor(s/3600)}h${String(Math.floor((s%3600)/60)).padStart(2,'0')}` : s >= 60 ? `${Math.floor(s/60)}min` : `${s}s`) : null;
   const SL = { bio:'Bio', geo:'Géo', maths:'Maths', francais:'Français', chimie:'Chimie', philo:'Philo' };
   const EX_TYPES = { flash_end:'Flashcards', qcm_end:'QCM', cell_struct_end:'Structures cell.', qcm_color_start:'QCM Coloration' };
+
+  // Détecter les doublons de nom (même nom, IPs différentes)
+  const nameMap = {};
+  data.guests.forEach(g => {
+    const key = (g.name || '').toLowerCase().trim();
+    if (key) (nameMap[key] = nameMap[key] || []).push(g);
+  });
 
   body.innerHTML = `
   <div style="margin-bottom:16px;font-weight:700;font-size:15px">${data.total} invité${data.total > 1 ? 's' : ''} enregistré${data.total > 1 ? 's' : ''}</div>
@@ -2459,6 +2472,19 @@ function renderAnalyticsData(data) {
     const avgAll = scored.length ? Math.round(scored.reduce((a, e) => a + e.pct, 0) / scored.length) : null;
     const summary = avgAll != null ? `${scored.length} exo${scored.length > 1 ? 's' : ''} · moy. ${avgAll}%` : (subjectsVisited.length ? subjectsVisited.join(', ') : '');
 
+    // Doublons de nom = même nom, IPs différentes → bouton fusionner
+    const nameDupes = (nameMap[(g.name || '').toLowerCase().trim()] || []).filter(d => d.ip !== g.ip);
+    const mergeButtons = nameDupes.map(d =>
+      `<button onclick="mergeGuests('${g.ip}','${d.ip}')"
+        style="font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer;margin-top:6px">
+        Fusionner avec ${d.name} (${fmt(d.lastSeen)})
+      </button>`
+    ).join('');
+
+    const mergedLabel = g.merged_ips?.length
+      ? `<div style="font-size:11px;color:var(--muted);margin-top:2px">${g.merged_ips.length + 1} appareil${g.merged_ips.length > 0 ? 's' : ''} fusionnés</div>`
+      : '';
+
     return `
   <div style="border-bottom:1px solid var(--border)">
     <div onclick="const d=document.getElementById('${detailId}');d.style.display=d.style.display==='none'?'block':'none'"
@@ -2466,6 +2492,7 @@ function renderAnalyticsData(data) {
       <div>
         <div style="font-weight:700;color:var(--text)">${g.name || '—'}</div>
         ${summary ? `<div style="font-size:12px;color:var(--muted)">${summary}</div>` : ''}
+        ${mergedLabel}
       </div>
       <div style="display:flex;align-items:center;gap:10px">
         ${accentColor ? `<div style="width:10px;height:10px;border-radius:50%;background:${accentColor.primary};flex-shrink:0"></div>` : ''}
@@ -2509,6 +2536,7 @@ function renderAnalyticsData(data) {
       ${!hasActivity ? `<div style="color:var(--muted);font-size:12px">Pas encore d'activité enregistrée (données collectées depuis v1.22)</div>` : ''}
 
       <div style="font-size:11px;color:var(--muted);margin-top:10px">${g.count} visite${g.count > 1 ? 's' : ''} · 1ère : ${fmt(g.firstSeen)}</div>
+      ${mergeButtons}
     </div>
   </div>`;
   }).join('')}`;
