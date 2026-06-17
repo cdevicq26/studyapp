@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.22';
+const APP_VERSION = '1.23';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -2423,32 +2423,61 @@ function renderAnalyticsData(data) {
   const fmt = iso => iso ? new Date(iso).toLocaleString('fr-BE', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' }) : '—';
   const fmtDur = s => s ? (s >= 3600 ? `${Math.floor(s/3600)}h${String(Math.floor((s%3600)/60)).padStart(2,'0')}` : s >= 60 ? `${Math.floor(s/60)}min` : `${s}s`) : null;
   const SUBJECT_LABELS = { bio:'Bio', geo:'Géo', maths:'Maths', francais:'Français', chimie:'Chimie', philo:'Philo' };
+  const EVENT_LABELS = { subject_open:'Matière ouverte', flash_start:'Flashcards démarrées', flash_end:'Flashcards terminées', qcm_start:'QCM démarré', qcm_end:'QCM terminé', qcm_color_start:'QCM coloration', fiche_open:'Fiche ouverte', vocab_open:'Vocabulaire ouvert', controle_start:'Contrôle démarré', met_db_start:'MET database', cell_struct_start:'Structures cellulaires', cell_struct_end:'Structures terminées', session_end:'Fin de session' };
 
   body.innerHTML = `
   <div style="margin-bottom:16px;font-weight:700;font-size:15px">${data.total} invité${data.total > 1 ? 's' : ''} enregistré${data.total > 1 ? 's' : ''}</div>
-  ${data.guests.map(g => {
+  ${data.guests.map((g, i) => {
     const dur = fmtDur(g.sessionDuration);
     const subjs = (g.subjectsVisited || []).map(s => SUBJECT_LABELS[s] || s).join(', ');
-    const deviceIcon = g.device === 'mobile' ? '📱' : g.device === 'tablet' ? '📲' : '💻';
     const avgScore = g.scores?.length
-      ? Math.round(g.scores.reduce((a,s)=>a+s.pct,0)/g.scores.length) + '%'
+      ? Math.round(g.scores.reduce((a, s) => a + s.pct, 0) / g.scores.length) + '%'
       : null;
+    const detailId = `ag-detail-${i}`;
+
+    const detailRows = [
+      g.device     ? `<tr><td>Appareil</td><td>${g.device}</td></tr>` : '',
+      g.browser    ? `<tr><td>Navigateur</td><td>${g.browser}</td></tr>` : '',
+      g.screen     ? `<tr><td>Résolution</td><td>${g.screen}</td></tr>` : '',
+      g.language   ? `<tr><td>Langue</td><td>${g.language}</td></tr>` : '',
+      g.timezone   ? `<tr><td>Fuseau</td><td>${g.timezone}</td></tr>` : '',
+      g.theme      ? `<tr><td>Thème préféré</td><td>${g.theme}</td></tr>` : '',
+      g.connection ? `<tr><td>Connexion</td><td>${g.connection}</td></tr>` : '',
+      dur          ? `<tr><td>Durée session</td><td>${dur}</td></tr>` : '',
+      subjs        ? `<tr><td>Matières visitées</td><td>${subjs}</td></tr>` : '',
+      avgScore     ? `<tr><td>Score moyen</td><td>${avgScore} (${g.scores.length} exo${g.scores.length > 1 ? 's' : ''})</td></tr>` : '',
+      `<tr><td>1ère visite</td><td>${fmt(g.firstSeen)}</td></tr>`,
+      `<tr><td>Dernière visite</td><td>${fmt(g.lastSeen)}</td></tr>`,
+      `<tr><td>Nb visites</td><td>${g.count}</td></tr>`,
+    ].filter(Boolean).join('');
+
+    const eventsRows = (g.recentEvents || []).map(e => {
+      const label = EVENT_LABELS[e.type] || e.type;
+      const subj = e.subject ? ` · ${SUBJECT_LABELS[e.subject] || e.subject}` : '';
+      const score = e.pct != null ? ` · ${e.pct}%` : '';
+      const time = e.t ? new Date(e.t).toLocaleTimeString('fr-BE', { hour:'2-digit', minute:'2-digit' }) : '';
+      return `<tr><td style="color:var(--muted)">${time}</td><td>${label}${subj}${score}</td></tr>`;
+    }).join('');
+
     return `
-  <div style="padding:14px 0;border-bottom:1px solid var(--border)">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start">
-      <div>
-        <div style="font-weight:700;color:var(--text)">${g.name || '—'} ${deviceIcon}</div>
-        <div style="font-size:12px;color:var(--muted)">${g.browser || ''} · ${g.screen || ''} · ${g.language || ''}</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-weight:700;color:var(--accent)">${g.count}×</div>
+  <div style="border-bottom:1px solid var(--border)">
+    <div onclick="document.getElementById('${detailId}').style.display=document.getElementById('${detailId}').style.display==='none'?'block':'none'"
+         style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer">
+      <div style="font-weight:700;color:var(--text)">${g.name || '—'}</div>
+      <div style="display:flex;align-items:center;gap:12px">
         <div style="font-size:12px;color:var(--muted)">${fmt(g.lastSeen)}</div>
+        <div style="font-weight:700;color:var(--accent)">${g.count}×</div>
+        <div style="color:var(--muted);font-size:14px">›</div>
       </div>
     </div>
-    ${subjs ? `<div style="font-size:12px;color:var(--text-2);margin-top:4px">📚 ${subjs}</div>` : ''}
-    ${dur ? `<div style="font-size:12px;color:var(--text-2)">⏱ ${dur}</div>` : ''}
-    ${avgScore ? `<div style="font-size:12px;color:var(--text-2)">🎯 Score moyen : ${avgScore} (${g.scores.length} exo${g.scores.length>1?'s':''})</div>` : ''}
-    <div style="font-size:11px;color:var(--muted)">1ère visite : ${fmt(g.firstSeen)}</div>
+    <div id="${detailId}" style="display:none;padding-bottom:14px">
+      <table style="width:100%;font-size:12px;border-collapse:collapse">
+        ${detailRows}
+      </table>
+      ${eventsRows ? `
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:10px 0 4px">Activité récente</div>
+      <table style="width:100%;font-size:12px;border-collapse:collapse">${eventsRows}</table>` : ''}
+    </div>
   </div>`;
   }).join('')}`;
 }
