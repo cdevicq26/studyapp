@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.23';
+const APP_VERSION = '1.24';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -2422,61 +2422,93 @@ function renderAnalyticsData(data) {
   if (!data || !data.guests) { body.textContent = 'Aucune donnée.'; return; }
   const fmt = iso => iso ? new Date(iso).toLocaleString('fr-BE', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' }) : '—';
   const fmtDur = s => s ? (s >= 3600 ? `${Math.floor(s/3600)}h${String(Math.floor((s%3600)/60)).padStart(2,'0')}` : s >= 60 ? `${Math.floor(s/60)}min` : `${s}s`) : null;
-  const SUBJECT_LABELS = { bio:'Bio', geo:'Géo', maths:'Maths', francais:'Français', chimie:'Chimie', philo:'Philo' };
-  const EVENT_LABELS = { subject_open:'Matière ouverte', flash_start:'Flashcards démarrées', flash_end:'Flashcards terminées', qcm_start:'QCM démarré', qcm_end:'QCM terminé', qcm_color_start:'QCM coloration', fiche_open:'Fiche ouverte', vocab_open:'Vocabulaire ouvert', controle_start:'Contrôle démarré', met_db_start:'MET database', cell_struct_start:'Structures cellulaires', cell_struct_end:'Structures terminées', session_end:'Fin de session' };
+  const SL = { bio:'Bio', geo:'Géo', maths:'Maths', francais:'Français', chimie:'Chimie', philo:'Philo' };
+  const EX_TYPES = { flash_end:'Flashcards', qcm_end:'QCM', cell_struct_end:'Structures cell.', qcm_color_start:'QCM Coloration' };
 
   body.innerHTML = `
   <div style="margin-bottom:16px;font-weight:700;font-size:15px">${data.total} invité${data.total > 1 ? 's' : ''} enregistré${data.total > 1 ? 's' : ''}</div>
   ${data.guests.map((g, i) => {
-    const dur = fmtDur(g.sessionDuration);
-    const subjs = (g.subjectsVisited || []).map(s => SUBJECT_LABELS[s] || s).join(', ');
-    const avgScore = g.scores?.length
-      ? Math.round(g.scores.reduce((a, s) => a + s.pct, 0) / g.scores.length) + '%'
-      : null;
+    const events = g.recentEvents || [];
     const detailId = `ag-detail-${i}`;
 
-    const detailRows = [
-      g.device     ? `<tr><td>Appareil</td><td>${g.device}</td></tr>` : '',
-      g.browser    ? `<tr><td>Navigateur</td><td>${g.browser}</td></tr>` : '',
-      g.screen     ? `<tr><td>Résolution</td><td>${g.screen}</td></tr>` : '',
-      g.language   ? `<tr><td>Langue</td><td>${g.language}</td></tr>` : '',
-      g.timezone   ? `<tr><td>Fuseau</td><td>${g.timezone}</td></tr>` : '',
-      g.theme      ? `<tr><td>Thème préféré</td><td>${g.theme}</td></tr>` : '',
-      g.connection ? `<tr><td>Connexion</td><td>${g.connection}</td></tr>` : '',
-      dur          ? `<tr><td>Durée session</td><td>${dur}</td></tr>` : '',
-      subjs        ? `<tr><td>Matières visitées</td><td>${subjs}</td></tr>` : '',
-      avgScore     ? `<tr><td>Score moyen</td><td>${avgScore} (${g.scores.length} exo${g.scores.length > 1 ? 's' : ''})</td></tr>` : '',
-      `<tr><td>1ère visite</td><td>${fmt(g.firstSeen)}</td></tr>`,
-      `<tr><td>Dernière visite</td><td>${fmt(g.lastSeen)}</td></tr>`,
-      `<tr><td>Nb visites</td><td>${g.count}</td></tr>`,
-    ].filter(Boolean).join('');
+    // Couleur choisie
+    const accentEv = [...events].reverse().find(e => e.type === 'accent_color');
+    const accentColor = accentEv ? ACCENT_PALETTES[accentEv.idx] : null;
 
-    const eventsRows = (g.recentEvents || []).map(e => {
-      const label = EVENT_LABELS[e.type] || e.type;
-      const subj = e.subject ? ` · ${SUBJECT_LABELS[e.subject] || e.subject}` : '';
-      const score = e.pct != null ? ` · ${e.pct}%` : '';
-      const time = e.t ? new Date(e.t).toLocaleTimeString('fr-BE', { hour:'2-digit', minute:'2-digit' }) : '';
-      return `<tr><td style="color:var(--muted)">${time}</td><td>${label}${subj}${score}</td></tr>`;
-    }).join('');
+    // Exercices avec scores, groupés par type+matière
+    const scored = events.filter(e => e.pct != null);
+    const exoByType = {};
+    scored.forEach(e => {
+      const label = EX_TYPES[e.type] || e.type;
+      const subj = e.subject ? ` ${SL[e.subject] || e.subject}` : '';
+      const key = label + subj;
+      if (!exoByType[key]) exoByType[key] = [];
+      exoByType[key].push(e.pct);
+    });
+
+    // Sessions sans score (ouvertures de fiches, matières, contrôles)
+    const ficheOpens = events.filter(e => e.type === 'fiche_open').length;
+    const controleStarts = events.filter(e => e.type === 'controle_start').length;
+    const vocabOpens = events.filter(e => e.type === 'vocab_open').length;
+    const subjectsVisited = [...new Set(events.filter(e => e.subject).map(e => SL[e.subject] || e.subject))];
+
+    const dur = fmtDur(g.sessionDuration);
+    const hasActivity = scored.length > 0 || ficheOpens > 0 || controleStarts > 0 || vocabOpens > 0;
+
+    // Résumé pour la ligne fermée
+    const avgAll = scored.length ? Math.round(scored.reduce((a, e) => a + e.pct, 0) / scored.length) : null;
+    const summary = avgAll != null ? `${scored.length} exo${scored.length > 1 ? 's' : ''} · moy. ${avgAll}%` : (subjectsVisited.length ? subjectsVisited.join(', ') : '');
 
     return `
   <div style="border-bottom:1px solid var(--border)">
-    <div onclick="document.getElementById('${detailId}').style.display=document.getElementById('${detailId}').style.display==='none'?'block':'none'"
+    <div onclick="const d=document.getElementById('${detailId}');d.style.display=d.style.display==='none'?'block':'none'"
          style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer">
-      <div style="font-weight:700;color:var(--text)">${g.name || '—'}</div>
-      <div style="display:flex;align-items:center;gap:12px">
+      <div>
+        <div style="font-weight:700;color:var(--text)">${g.name || '—'}</div>
+        ${summary ? `<div style="font-size:12px;color:var(--muted)">${summary}</div>` : ''}
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        ${accentColor ? `<div style="width:10px;height:10px;border-radius:50%;background:${accentColor.primary};flex-shrink:0"></div>` : ''}
         <div style="font-size:12px;color:var(--muted)">${fmt(g.lastSeen)}</div>
-        <div style="font-weight:700;color:var(--accent)">${g.count}×</div>
-        <div style="color:var(--muted);font-size:14px">›</div>
+        <div style="color:var(--muted);font-size:16px;line-height:1">›</div>
       </div>
     </div>
-    <div id="${detailId}" style="display:none;padding-bottom:14px">
-      <table style="width:100%;font-size:12px;border-collapse:collapse">
-        ${detailRows}
-      </table>
-      ${eventsRows ? `
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:10px 0 4px">Activité récente</div>
-      <table style="width:100%;font-size:12px;border-collapse:collapse">${eventsRows}</table>` : ''}
+    <div id="${detailId}" style="display:none;padding-bottom:16px;font-size:13px">
+
+      ${accentColor ? `<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+        <div style="width:14px;height:14px;border-radius:50%;background:${accentColor.primary}"></div>
+        <span style="color:var(--text-2)">Couleur choisie : <strong>${accentColor.name}</strong></span>
+      </div>` : ''}
+
+      ${subjectsVisited.length ? `<div style="color:var(--text-2);margin-bottom:8px">Matières visitées : <strong>${subjectsVisited.join(', ')}</strong></div>` : ''}
+      ${dur ? `<div style="color:var(--text-2);margin-bottom:8px">Durée de session : <strong>${dur}</strong></div>` : ''}
+
+      ${Object.keys(exoByType).length ? `
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:10px 0 6px">Scores par exercice</div>
+      <table style="width:100%;border-collapse:collapse">
+        ${Object.entries(exoByType).map(([label, scores]) => {
+          const avg = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+          const bar = `<div style="height:4px;border-radius:2px;background:var(--border);margin-top:3px"><div style="height:4px;border-radius:2px;background:var(--accent);width:${avg}%"></div></div>`;
+          return `<tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 0;color:var(--text)">${label}</td>
+            <td style="padding:6px 0;text-align:right;font-weight:700;color:var(--accent)">${avg}%</td>
+            <td style="padding:6px 0 6px 10px;color:var(--muted);font-size:11px">${scores.length}×</td>
+          </tr>
+          <tr><td colspan="3" style="padding-bottom:4px">${bar}</td></tr>`;
+        }).join('')}
+      </table>` : ''}
+
+      ${ficheOpens || controleStarts || vocabOpens ? `
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:12px 0 6px">Contenus consultés</div>
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        ${ficheOpens ? `<tr><td style="padding:4px 0;color:var(--text-2)">Fiches lues</td><td style="text-align:right;font-weight:700">${ficheOpens}</td></tr>` : ''}
+        ${controleStarts ? `<tr><td style="padding:4px 0;color:var(--text-2)">Contrôles ouverts</td><td style="text-align:right;font-weight:700">${controleStarts}</td></tr>` : ''}
+        ${vocabOpens ? `<tr><td style="padding:4px 0;color:var(--text-2)">Vocabulaire</td><td style="text-align:right;font-weight:700">${vocabOpens}</td></tr>` : ''}
+      </table>` : ''}
+
+      ${!hasActivity ? `<div style="color:var(--muted);font-size:12px">Pas encore d'activité enregistrée (données collectées depuis v1.22)</div>` : ''}
+
+      <div style="font-size:11px;color:var(--muted);margin-top:10px">${g.count} visite${g.count > 1 ? 's' : ''} · 1ère : ${fmt(g.firstSeen)}</div>
     </div>
   </div>`;
   }).join('')}`;
@@ -2490,6 +2522,7 @@ function logout() {
 function setAccentColor(idx) {
   localStorage.setItem('studyos-accent', String(idx));
   applyStoredAccent();
+  trackGuestEvent({ type: 'accent_color', idx, name: ACCENT_PALETTES[idx]?.name });
   renderSettings();
 }
 
