@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.20';
+const APP_VERSION = '1.22';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -18,6 +18,36 @@ const ACCENT_PRESETS = [
 ];
 
 let guestName = '';
+let guestSessionStart = null;
+
+function getGuestDeviceInfo() {
+  const ua = navigator.userAgent;
+  const isMobile = /iPhone|Android.*Mobile|IEMobile/i.test(ua);
+  const isTablet = /iPad|Android(?!.*Mobile)/i.test(ua);
+  let browser = 'Autre';
+  if (/Edg\//i.test(ua)) browser = 'Edge';
+  else if (/Chrome\//i.test(ua)) browser = 'Chrome';
+  else if (/Safari\//i.test(ua) && !/Chrome/i.test(ua)) browser = 'Safari';
+  else if (/Firefox\//i.test(ua)) browser = 'Firefox';
+  return {
+    device: isTablet ? 'tablet' : isMobile ? 'mobile' : 'desktop',
+    browser,
+    language: navigator.language || 'fr',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    screen: `${screen.width}×${screen.height}`,
+    theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+    connection: navigator.connection?.effectiveType || null
+  };
+}
+
+function trackGuestEvent(data) {
+  if (!GUEST_MODE) return;
+  fetch('/api/guest', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'event', t: Date.now(), ...data })
+  }).catch(() => {});
+}
 
 function getDisplayName() {
   if (GUEST_MODE) return guestName || 'invité';
@@ -284,6 +314,7 @@ const CHARLES_CODE = '124816';
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.21': ['Fix invités : demande le prénom aux anciens "invité" · ne plus enregistrer sans prénom'],
   '1.20': ['Bio : exercice Structures cellulaires (14 organites — membrane + fonction)'],
   '1.19': ['Ecran de connexion : 3 etats clairs (IP connue / defaut / prenom invite)'],
   '1.18': ['Reglages : Invites et Session deplacees au-dessus de Donnees', 'Bouton de recherche de mise a jour avec reload', 'Fix API invites (GitHub integration desactivee)'],
@@ -783,6 +814,7 @@ function showView(name) {
 
 // Navigate to subject from home card
 function goToSubject(id) {
+  trackGuestEvent({ type: 'subject_open', subject: id });
   showView('learn');
   renderSubjectPage(id);
 }
@@ -1148,6 +1180,7 @@ async function renderSubjectPage(id) {
 // VOCABULAIRE
 // ═══════════════════════════════════════════════════
 async function openVocabDetail(sourceId = 'bio') {
+  trackGuestEvent({ type: 'vocab_open', sourceId });
   await loadVocabSource(sourceId);
   const src   = VOCAB_SOURCES[sourceId];
   const data  = vocabCache[sourceId];
@@ -1276,6 +1309,7 @@ async function startFlashcards(subjectId, mode) {
   if (cards.length === 0) { toast('Toutes les cartes sont à jour !'); return; }
   cards = shuffle(cards);
   fcSession = { subjectId, cards, idx: 0, correct: 0, bof: 0, wrong: 0, mode };
+  trackGuestEvent({ type: 'flash_start', subject: subjectId, mode, count: cards.length });
   learnSubView = 'flashcard';
   renderFlashcard();
 }
@@ -1404,6 +1438,7 @@ function renderFlashcardEnd() {
   const view = document.getElementById('view-learn');
   const total = cards.length;
   const pct = total ? Math.round(((correct + bof * 0.5) / total) * 100) : 0;
+  trackGuestEvent({ type: 'flash_end', subject: subjectId, mode, total, correct, bof, wrong, pct });
   const msg = pct >= 80 ? 'Excellent travail !' : pct >= 55 ? 'Continue comme ça !' : 'Révise encore ce soir !';
 
   const scoresHtml = isAntiVocabEnd
@@ -1452,6 +1487,7 @@ async function startQCM(subjectId, mode) {
   }
 
   qcmSession = { subjectId, questions, idx: 0, correct: 0, mode };
+  trackGuestEvent({ type: 'qcm_start', subject: subjectId, mode, count: questions.length });
   learnSubView = 'qcm';
   renderQCM();
 }
@@ -1535,6 +1571,7 @@ function renderQCMEnd() {
   const s = subjects[subjectId];
   const view = document.getElementById('view-learn');
   const pct = Math.round((correct / questions.length) * 100);
+  trackGuestEvent({ type: 'qcm_end', subject: subjectId, mode, total: questions.length, correct, pct });
   const msg = pct >= 80 ? 'Excellente maîtrise !' : pct >= 60 ? 'Bon travail !' : 'Révise les notions manquées !';
   const backFn = `renderSubjectPage('${subjectId}')`;
 
@@ -1565,6 +1602,7 @@ function renderQCMEnd() {
 async function startQCMColor(subjectId) {
   const s = subjects[subjectId];
   qcmColorSession = { subjectId, questions: shuffle([...s.qcmColor]), idx: 0, correct: 0, parts: 0 };
+  trackGuestEvent({ type: 'qcm_color_start', subject: subjectId, count: s.qcmColor.length });
   learnSubView = 'qcm-color';
   renderQCMColor();
 }
@@ -1698,6 +1736,7 @@ function renderQCMColorEnd() {
 function startMETDatabase(subjectId) {
   const s = subjects[subjectId];
   metDbSession = { subjectId, order: shuffle([...Array(s.qcmImg.length).keys()]), pos: 0 };
+  trackGuestEvent({ type: 'met_db_start', subject: subjectId });
   learnSubView = 'met-db';
   renderMETDatabase();
 }
@@ -1711,6 +1750,7 @@ function startCellStructures() {
     return { ...item, opts };
   });
   cellStructSession = { items, idx: 0, scoreMem: 0, scoreFn: 0 };
+  trackGuestEvent({ type: 'cell_struct_start', count: items.length });
   learnSubView = 'cell-struct';
   setNavbarVisible(false);
   renderCellStructQuestion();
@@ -1833,6 +1873,7 @@ function csShowScore() {
   const total = items.length;
   const col = SUBJECT_COLORS['bio']?.primary || '#16a34a';
   const pct = Math.round(((scoreMem + scoreFn) / (total * 2)) * 100);
+  trackGuestEvent({ type: 'cell_struct_end', total, scoreMem, scoreFn, pct });
   const view = document.getElementById('view-learn');
   const stars = pct >= 80 ? '🌟' : pct >= 60 ? '✅' : '💪';
   view.innerHTML = `
@@ -2371,7 +2412,7 @@ async function renderAnalytics() {
   </div>
   <div id="analytics-body" style="padding:16px;color:var(--text-2);font-size:14px">Chargement…</div>`;
 
-  const data = await fetch('/api/analytics?token=studyos-analytics-2026-cd').then(r => r.ok ? r.json() : null);
+  const data = await fetch('/api/analytics?token=studyos-analytics-2026-cd&events=1').then(r => r.ok ? r.json() : null);
   renderAnalyticsData(data);
 }
 
@@ -2380,19 +2421,36 @@ function renderAnalyticsData(data) {
   if (!body) return;
   if (!data || !data.guests) { body.textContent = 'Aucune donnée.'; return; }
   const fmt = iso => iso ? new Date(iso).toLocaleString('fr-BE', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' }) : '—';
+  const fmtDur = s => s ? (s >= 3600 ? `${Math.floor(s/3600)}h${String(Math.floor((s%3600)/60)).padStart(2,'0')}` : s >= 60 ? `${Math.floor(s/60)}min` : `${s}s`) : null;
+  const SUBJECT_LABELS = { bio:'Bio', geo:'Géo', maths:'Maths', francais:'Français', chimie:'Chimie', philo:'Philo' };
+
   body.innerHTML = `
   <div style="margin-bottom:16px;font-weight:700;font-size:15px">${data.total} invité${data.total > 1 ? 's' : ''} enregistré${data.total > 1 ? 's' : ''}</div>
-  ${data.guests.map(g => `
-  <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-    <div>
-      <div style="font-weight:700;color:var(--text)">${g.name || '—'}</div>
-      <div style="font-size:12px;color:var(--muted)">1ère visite : ${fmt(g.firstSeen)}</div>
+  ${data.guests.map(g => {
+    const dur = fmtDur(g.sessionDuration);
+    const subjs = (g.subjectsVisited || []).map(s => SUBJECT_LABELS[s] || s).join(', ');
+    const deviceIcon = g.device === 'mobile' ? '📱' : g.device === 'tablet' ? '📲' : '💻';
+    const avgScore = g.scores?.length
+      ? Math.round(g.scores.reduce((a,s)=>a+s.pct,0)/g.scores.length) + '%'
+      : null;
+    return `
+  <div style="padding:14px 0;border-bottom:1px solid var(--border)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div>
+        <div style="font-weight:700;color:var(--text)">${g.name || '—'} ${deviceIcon}</div>
+        <div style="font-size:12px;color:var(--muted)">${g.browser || ''} · ${g.screen || ''} · ${g.language || ''}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:700;color:var(--accent)">${g.count}×</div>
+        <div style="font-size:12px;color:var(--muted)">${fmt(g.lastSeen)}</div>
+      </div>
     </div>
-    <div style="text-align:right">
-      <div style="font-weight:700;color:var(--accent)">${g.count}×</div>
-      <div style="font-size:12px;color:var(--muted)">${fmt(g.lastSeen)}</div>
-    </div>
-  </div>`).join('')}`;
+    ${subjs ? `<div style="font-size:12px;color:var(--text-2);margin-top:4px">📚 ${subjs}</div>` : ''}
+    ${dur ? `<div style="font-size:12px;color:var(--text-2)">⏱ ${dur}</div>` : ''}
+    ${avgScore ? `<div style="font-size:12px;color:var(--text-2)">🎯 Score moyen : ${avgScore} (${g.scores.length} exo${g.scores.length>1?'s':''})</div>` : ''}
+    <div style="font-size:11px;color:var(--muted)">1ère visite : ${fmt(g.firstSeen)}</div>
+  </div>`;
+  }).join('')}`;
 }
 
 function logout() {
@@ -2594,7 +2652,16 @@ async function setupLockScreen() {
   const launchGuest = async (name) => {
     GUEST_MODE = true;
     guestName = name || 'invité';
-    try { await fetch('/api/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: guestName }) }); } catch {}
+    guestSessionStart = Date.now();
+    if (guestName !== 'invité') {
+      try { await fetch('/api/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: guestName, ...getGuestDeviceInfo() }) }); } catch {}
+    }
+    window.addEventListener('beforeunload', () => {
+      if (!guestSessionStart) return;
+      const duration = Math.round((Date.now() - guestSessionStart) / 1000);
+      if (duration < 5) return;
+      navigator.sendBeacon('/api/guest', new Blob([JSON.stringify({ action: 'event', t: Date.now(), type: 'session_end', duration })], { type: 'application/json' }));
+    });
     screen.remove();
     init();
   };
@@ -2606,11 +2673,15 @@ async function setupLockScreen() {
     if (r.ok) { const d = await r.json(); knownName = d.name || null; }
   } catch {}
 
-  if (knownName) {
+  if (knownName && knownName !== 'invité') {
     document.getElementById('ls-known-greeting').textContent = `Heureux de vous revoir, ${knownName} !`;
     document.getElementById('ls-known-confirm').addEventListener('click', () => launchGuest(knownName));
     document.getElementById('ls-known-other').addEventListener('click', () => showState('ls-default'));
     showState('ls-known');
+  } else if (knownName === 'invité') {
+    document.querySelector('#ls-guest .lock-sub').textContent = 'Dis-nous ton prénom pour être reconnu(e) la prochaine fois 👋';
+    showState('ls-guest');
+    document.getElementById('lock-guest-name').focus();
   } else {
     showState('ls-default');
   }
@@ -2798,6 +2869,7 @@ function renderMarkdown(md) {
 
 // ── Vue lecture d'une fiche ──
 async function openFicheView(id) {
+  trackGuestEvent({ type: 'fiche_open', id });
   learnSubView = 'fiche-view';
   const view = document.getElementById('view-learn');
   const md = await loadFicheData(id);
@@ -2834,6 +2906,7 @@ async function loadControleData(id) {
 
 // ── Démarrer un contrôle ──
 async function startControle(id) {
+  trackGuestEvent({ type: 'controle_start', id });
   const data = await loadControleData(id);
   if (!data) { toast('Contrôle introuvable'); return; }
 
