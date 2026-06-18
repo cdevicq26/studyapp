@@ -549,6 +549,195 @@
       ],
       "ans": 1,
       "exp": "Les colonnes de la matrice sont les images des vecteurs de base canoniques : col1=f(e₁)=f(1,0) et col2=f(e₂)=f(0,1)."
+    },
+    {
+      "id": "mq31",
+      "q": "Quel axiome (ℝ, ×) ne vérifie-t-il PAS ?",
+      "opts": ["Interne", "Associatif", "Neutre", "Inverse"],
+      "ans": 3,
+      "exp": "0 ∈ ℝ n'a pas d'inverse pour la multiplication (1/0 n'existe pas). Les autres axiomes sont vérifiés (neutre = 1)."
+    },
+    {
+      "id": "mq32",
+      "q": "Dans (ℤ/7ℤ, ×), l'inverse de 2 est :",
+      "opts": ["2", "3", "4", "6"],
+      "ans": 2,
+      "exp": "2 × 4 = 8 = 1 mod 7 → l'inverse de 2 est 4."
+    },
+    {
+      "id": "mq33",
+      "q": "Dans (ℤ/4ℤ, +), l'inverse de 3 est :",
+      "opts": ["0", "1", "3", "4"],
+      "ans": 1,
+      "exp": "3 + 1 = 4 = 0 mod 4 → l'inverse de 3 est 1."
+    },
+    {
+      "id": "mq34",
+      "q": "Un groupe d'ordre 12 peut-il avoir un sous-groupe d'ordre 8 ?",
+      "opts": ["Oui, toujours", "Non, 8 ne divise pas 12", "Oui, si le groupe est abélien", "Cela dépend de l'opération"],
+      "ans": 1,
+      "exp": "Théorème de Lagrange : |H| doit diviser |G|. 8 ne divise pas 12 (12/8 = 1,5) → impossible."
+    },
+    {
+      "id": "mq35",
+      "q": "La table de Cayley est symétrique (par rapport à la diagonale) si et seulement si :",
+      "opts": ["Le groupe est fini", "Le groupe est d'ordre premier", "Le groupe est abélien", "Le groupe a un unique sous-groupe"],
+      "ans": 2,
+      "exp": "Symétrie de la table ↔ a★b = b★a pour tout a,b ↔ groupe abélien."
+    },
+    {
+      "id": "mq36",
+      "q": "Les isométries du triangle équilatéral forment un groupe d'ordre :",
+      "opts": ["3", "4", "6", "12"],
+      "ans": 2,
+      "exp": "3 rotations (0°, 120°, 240°) + 3 symétries axiales = 6 éléments. C'est le groupe diédral D₃."
+    },
+    {
+      "id": "mq37",
+      "q": "Les isométries du carré forment un groupe d'ordre :",
+      "opts": ["4", "6", "8", "12"],
+      "ans": 2,
+      "exp": "4 rotations (0°, 90°, 180°, 270°) + 4 symétries (2 axes + 2 diagonales) = 8. Groupe diédral D₄."
+    },
+    {
+      "id": "mq38",
+      "q": "Si a★b = a+b+ab dans (ℝ\\{−1}, ★), l'élément neutre est :",
+      "opts": ["1", "0", "−1", "2"],
+      "ans": 1,
+      "exp": "a★e = a → a+e+ae = a → e(1+a) = 0 → e = 0. Vérif : a★0 = a+0+0 = a ✓"
+    },
+    {
+      "id": "mq39",
+      "q": "Deux plans ax+by+cz = d₁ et ax+by+cz = d₂ avec d₁ ≠ d₂ sont :",
+      "opts": ["Confondus", "Strictement parallèles", "Sécants", "Perpendiculaires"],
+      "ans": 1,
+      "exp": "Même vecteur normal → parallèles. d₁ ≠ d₂ → pas confondus → strictement parallèles."
+    },
+    {
+      "id": "mq40",
+      "q": "Deux plans aux vecteurs normaux non colinéaires sont nécessairement :",
+      "opts": ["Parallèles", "Confondus", "Sécants", "Perpendiculaires"],
+      "ans": 2,
+      "exp": "Normales non colinéaires → plans non parallèles → ils se croisent selon une droite → sécants."
+    },
+    {
+      "id": "mq41",
+      "q": "Le vecteur directeur de la droite x = 2+3t, y = 1−t, z = 4t est :",
+      "opts": ["(2, 1, 0)", "(3, −1, 4)", "(3, 1, 4)", "(2, 1, 4)"],
+      "ans": 1,
+      "exp": "Le vecteur directeur est donné par les coefficients de t : (3, −1, 4)."
+    },
+    {
+      "id": "mq42",
+      "q": "u⃗ × v⃗ = 0⃗ (produit vectoriel nul) signifie que :",
+      "opts": ["u⃗ ⊥ v⃗", "u⃗ ∥ v⃗ (ou l'un est nul)", "||u⃗|| = ||v⃗||", "u⃗ = v⃗"],
+      "ans": 1,
+      "exp": "||u×v|| = ||u||·||v||·sin θ = 0 → sin θ = 0 → θ = 0° ou 180° → vecteurs parallèles (ou l'un est nul)."
+    },
+    {
+      "id": "mq43",
+      "q": "Deux droites dans l'espace qui ne sont ni parallèles ni sécantes sont dites :",
+      "opts": ["Coplanaires", "Orthogonales", "Gauches", "Confondues"],
+      "ans": 2,
+      "exp": "Droites gauches : non coplanaires, ni parallèles ni sécantes. Spécifique à l'espace 3D (impossible en 2D)."
+    },
+    {
+      "id": "mq44",
+      "q": "Pour trouver la normale à un plan passant par A, B, C, on calcule :",
+      "opts": ["AB⃗ + AC⃗", "AB⃗ · AC⃗ (scalaire)", "AB⃗ × AC⃗ (vectoriel)", "||AB⃗|| × ||AC⃗||"],
+      "ans": 2,
+      "exp": "n⃗ = AB⃗ × AC⃗. Le produit vectoriel de deux vecteurs du plan donne un vecteur perpendiculaire au plan."
+    },
+    {
+      "id": "mq45",
+      "q": "La méthode de Cramer s'applique uniquement si :",
+      "opts": ["Le déterminant est nul", "Le déterminant est non nul", "Le système a une infinité de solutions", "Les équations sont homogènes"],
+      "ans": 1,
+      "exp": "Cramer : det(A) ≠ 0 ↔ système de Cramer ↔ solution unique xᵢ = det(Aᵢ)/det(A)."
+    },
+    {
+      "id": "mq46",
+      "q": "La translation T(x,y) = (x+3, y−1) est-elle linéaire ?",
+      "opts": ["Oui", "Non car T(0,0) ≠ (0,0)", "Non car elle n'est pas bijective", "Oui si le vecteur est unitaire"],
+      "ans": 1,
+      "exp": "T(0,0) = (3,−1) ≠ (0,0). Toute application linéaire envoie 0 sur 0 → la translation n'est pas linéaire."
+    },
+    {
+      "id": "mq47",
+      "q": "La matrice de la symétrie par rapport à l'axe des x est :",
+      "opts": ["[[1,0],[0,1]]", "[[1,0],[0,−1]]", "[[−1,0],[0,1]]", "[[0,1],[1,0]]"],
+      "ans": 1,
+      "exp": "Sₓ(1,0) = (1,0) et Sₓ(0,1) = (0,−1) → col1=(1,0), col2=(0,−1) → [[1,0],[0,−1]]."
+    },
+    {
+      "id": "mq48",
+      "q": "La matrice de la symétrie par rapport à la droite y = x est :",
+      "opts": ["[[1,0],[0,−1]]", "[[0,−1],[−1,0]]", "[[0,1],[1,0]]", "[[−1,0],[0,−1]]"],
+      "ans": 2,
+      "exp": "S(1,0) = (0,1) et S(0,1) = (1,0) → col1=(0,1), col2=(1,0) → [[0,1],[1,0]]."
+    },
+    {
+      "id": "mq49",
+      "q": "R(90°) composé avec R(90°) donne :",
+      "opts": ["R(45°)", "R(180°)", "R(270°)", "L'identité"],
+      "ans": 1,
+      "exp": "R(α)·R(β) = R(α+β) → R(90°)·R(90°) = R(180°). Géométriquement : deux quarts de tour = demi-tour."
+    },
+    {
+      "id": "mq50",
+      "q": "Une application linéaire f vérifie toujours :",
+      "opts": ["f(0) = 1", "f(0) = 0", "f est bijective", "f = identité"],
+      "ans": 1,
+      "exp": "f(λ·0⃗) = λ·f(0⃗) pour tout λ → 0⃗ = λ·f(0⃗) → f(0⃗) = 0⃗. C'est un test rapide de linéarité."
+    },
+    {
+      "id": "mq51",
+      "q": "det(A·B) est égal à :",
+      "opts": ["det(A) + det(B)", "det(A) · det(B)", "det(A) − det(B)", "det(A) / det(B)"],
+      "ans": 1,
+      "exp": "Propriété multiplicative du déterminant : det(AB) = det(A)·det(B)."
+    },
+    {
+      "id": "mq52",
+      "q": "La matrice R(180°) est égale à :",
+      "opts": ["[[0,−1],[1,0]]", "[[−1,0],[0,−1]]", "[[1,0],[0,1]]", "[[0,1],[−1,0]]"],
+      "ans": 1,
+      "exp": "R(180°) = [[cos180°,−sin180°],[sin180°,cos180°]] = [[−1,0],[0,−1]]. Géo : symétrie par rapport à l'origine."
+    },
+    {
+      "id": "mq53",
+      "q": "Combien de solutions sin(x) = k admet-il sur [0, 2π[ si −1 < k < 1 ?",
+      "opts": ["0", "1", "2", "4"],
+      "ans": 2,
+      "exp": "Sur [0,2π[, le sinus prend chaque valeur de ]−1,1[ exactement deux fois : une en montant (entre 0 et π), une en descendant (entre π et 2π)."
+    },
+    {
+      "id": "mq54",
+      "q": "L'ensemble des solutions de cos(x) = 0 dans ℝ est :",
+      "opts": ["x = kπ", "x = π/2 + kπ", "x = π + 2kπ", "x = π/4 + kπ"],
+      "ans": 1,
+      "exp": "cos(x) = 0 aux angles π/2, 3π/2, 5π/2... = π/2 + kπ avec k ∈ ℤ."
+    },
+    {
+      "id": "mq55",
+      "q": "sin(x) = 1 a pour solution générale :",
+      "opts": ["x = 0 + 2kπ", "x = π/2 + 2kπ", "x = π + 2kπ", "x = 3π/2 + 2kπ"],
+      "ans": 1,
+      "exp": "sin(π/2) = 1 et c'est le seul point du cercle trigonométrique avec ordonnée = 1 → x = π/2 + 2kπ."
+    },
+    {
+      "id": "mq56",
+      "q": "sin(2θ) est égal à :",
+      "opts": ["cos²θ − sin²θ", "2·sin θ·cos θ", "2·cos θ", "sin θ + cos θ"],
+      "ans": 1,
+      "exp": "sin(2θ) = sin(θ+θ) = sinθcosθ + cosθsinθ = 2sinθcosθ. C'est la formule de doublage."
+    },
+    {
+      "id": "mq57",
+      "q": "L'amplitude de f(x) = −3·sin(2x + π) est :",
+      "opts": ["−3", "2", "3", "π"],
+      "ans": 2,
+      "exp": "L'amplitude est |a| = |−3| = 3. Le signe négatif indique une symétrie par rapport à l'axe x, pas un changement d'amplitude."
     }
   ]
 }
