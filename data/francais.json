@@ -418,6 +418,27 @@
       "term": "Représentation de la femme",
       "def": "Phèdre : femme victime d'une passion divine, prise en faute. Chimène (Le Cid) : déchirée entre amour et devoir. Merteuil (Liaisons) : femme qui utilise la séduction pour s'émanciper. Shoko (Silent Voice) : victime.",
       "ex": "Évolution : de la femme passive victime (Phèdre) vers la femme stratège (Merteuil) — 100 ans d'écart (1677→1782)"
+    },
+    {
+      "id": "f62",
+      "cat": "Libertinage",
+      "term": "Libertinage à l'écrit — procédés stylistiques",
+      "def": "Roman épistolaire (Liaisons) : les lettres SONT l'arme de manipulation · Ton cynique et calculateur : libertin commente ses propres stratégies · Ironie dramatique : lecteur voit le vrai visage, personnages dupés ne le voient pas · Double discours : masque vertueux en société + vrai visage dans les lettres · Manipulation explicite : contraste entre le dit et le fait.",
+      "ex": "Merteuil écrit à Valmont son plan de séduction (lettre cynique) tout en paraissant vertueuse aux yeux du monde. Le lecteur voit les deux faces."
+    },
+    {
+      "id": "f63",
+      "cat": "Question transversale",
+      "term": "Thème Liberté — lien avec chaque œuvre",
+      "def": "Phèdre : esclave de sa passion imposée par Vénus — fatalité janséniste, 0 liberté · Le Cid (Chimène) : libre de choisir l'honneur, mais ce choix la détruit — liberté tragique · Dom Juan : croit être libre mais meurt condamné — fausse liberté · Merteuil : utilise la liberté comme arme mais la perd tout (procès + visage) — liberté éphémère · Thèse : la liberté sans limite se retourne contre soi.",
+      "ex": "À l'oral : montrer la gradation — Phèdre (0 liberté) → Dom Juan (illusion de liberté) → Merteuil (liberté stratégique détruite) = 3 visages du manque de liberté."
+    },
+    {
+      "id": "f64",
+      "cat": "Question transversale",
+      "term": "Intérêt littéraire et philosophique du libertin",
+      "def": "Littérairement : personnage fascinant car transgresse les normes morales, maître de la parole et du masque, crée une tension dramatique maximale · Philosophiquement : pousse à l'extrême la question de la liberté individuelle, révèle les hypocrisies sociales, anticipe les Lumières (libre pensée, critique dogme) · MAIS : sa liberté se détruit elle-même → les deux meurent/s'effondrent. Limite = liberté sans éthique = autodestruction.",
+      "ex": "Dom Juan intéresse parce qu'il refuse tout — Dieu, les normes, le passé. Mais sa fin (statue du Commandeur) montre que l'impunité a des limites même dans la fiction."
     }
   ],
   "qcm": [
@@ -744,6 +765,126 @@
       ],
       "ans": 2,
       "exp": "Métaphore = comparaison implicite SANS outil (\"Vénus s'est attachée à sa proie\"). Comparaison = avec un outil (\"fort comme un lion\"). La métaphore est plus directe et plus percutante que la comparaison."
+    },
+    {
+      "id": "fq27",
+      "q": "L'anaphore produit quel effet rhétorique ?",
+      "opts": [
+        "Elle crée un contraste brutal entre deux idées opposées",
+        "Elle insiste, martèle une idée et crée un rythme incantatoire",
+        "Elle atténue une réalité dure par un terme adouci",
+        "Elle place deux termes contraires dans un même groupe"
+      ],
+      "ans": 1,
+      "exp": "L'anaphore (répétition en début de proposition) insiste et martèle → rythme incantatoire, solennité. Ex : \"Je vous suis, je vous sers, j'ai le cœur plein de vous\" (Phèdre). ≠ antithèse (contraste) ≠ euphémisme (atténuation) ≠ oxymore (deux contraires ensemble)."
+    },
+    {
+      "id": "fq29",
+      "q": "L'allégorie en littérature, c'est :",
+      "opts": [
+        "Une répétition d'un même son consonantique",
+        "Une représentation abstraite sous une forme concrète (personnification d'une idée)",
+        "Un rapprochement de deux mots de sens contraire",
+        "Une figure où l'on dit le contraire de ce qu'on pense"
+      ],
+      "ans": 1,
+      "exp": "L'allégorie = idée abstraite incarnée dans un personnage ou objet concret. Ex classique : Vénus dans Phèdre représente la passion incontrôlable — ce n'est pas juste une déesse, c'est l'allégorie du désir fatal."
+    },
+    {
+      "id": "fq30",
+      "q": "Le chiasme structure la phrase selon le schéma :",
+      "opts": [
+        "A – B – A – B",
+        "A – B – B' – A'",
+        "A – A – B – B",
+        "A – B – C – B – A"
+      ],
+      "ans": 1,
+      "exp": "Chiasme = A-B / B'-A' (structure croisée, en X). Ex Le Cid : \"Je suis jeune, il est vrai ; mais aux âmes bien nées / La valeur n'attend pas le nombre des années.\" valeur/âge croisé avec âge/valeur → crée un effet d'équilibre et de renversement."
+    },
+    {
+      "id": "fq31",
+      "q": "Dans La La Land (Chazelle, 2016), quel est le thème central du film ?",
+      "opts": [
+        "La rédemption par la musique dans une société oppressive",
+        "La tension entre rêve/passion artistique et réalité/sacrifices amoureux",
+        "Le deuil impossible d'une relation idéalisée dans le Japon contemporain",
+        "La libération progressive d'un personnage handicapé par la honte"
+      ],
+      "ans": 1,
+      "exp": "La La Land = couple qui choisit entre amour et carrière artistique → ils sacrifient la relation pour leurs rêves. Forme : couleurs saturées (jaune, bleu, rouge), chorégraphies, montage musical. La fin en épilogue montre la vie imaginée vs la vie réelle."
+    },
+    {
+      "id": "fq32",
+      "q": "Phèdre est-elle un personnage libre ?",
+      "opts": [
+        "Oui, elle choisit librement d'aimer Hippolyte",
+        "Non, elle est esclave d'une passion imposée par Vénus (fatalité tragique)",
+        "Oui, car elle avoue son amour de sa propre volonté",
+        "Non, parce que son rang de reine l'oblige au silence"
+      ],
+      "ans": 1,
+      "exp": "Phèdre = paradigme du personnage privé de liberté : Vénus punit la lignée du Soleil en l'infligeant d'une passion monstrueuse. C'est la fatalité janséniste (grâce refusée). Même son aveu n'est pas libre — c'est une tragédie de la volonté corrompue."
+    },
+    {
+      "id": "fq33",
+      "q": "En quoi le libertin est-il un personnage philosophiquement intéressant ?",
+      "opts": [
+        "Il incarne la liberté totale et sans limites",
+        "Il pousse jusqu'à l'absurde la logique de l'individu contre la société, révélant ses contradictions",
+        "Il représente la morale bourgeoise camouflée sous le vice",
+        "Il est intéressant parce qu'il est toujours sympathique au lecteur"
+      ],
+      "ans": 1,
+      "exp": "Le libertin fascine parce qu'il radicalise la question de la liberté individuelle : peut-on tout se permettre ? Il révèle les hypocrisies sociales et anticipe les Lumières. Mais sa « liberté » est une prison : Dom Juan meurt, Merteuil perd tout. La liberté sans limite se détruit elle-même."
+    },
+    {
+      "id": "fq34",
+      "q": "Le libertin précurseur des Lumières — quel est le lien précis ?",
+      "opts": [
+        "Le libertin croit en Dieu mais refuse l'Église institutionnelle",
+        "Le libertin remet en question les dogmes religieux et l'autorité, annonçant la pensée critique du XVIIIe",
+        "Le libertin défend les droits des femmes avant les Lumières",
+        "Le libertin se bat pour la démocratie et les droits civiques"
+      ],
+      "ans": 1,
+      "exp": "Dom Juan acte III sc.1 : \"deux et deux sont quatre, et quatre et quatre sont huit\" = athéisme, refus du dogme = pensée libre. C'est le germe de la critique des Lumières (Voltaire, Diderot). Libertin intellectuel → précurseur de l'esprit philosophique du XVIIIe siècle."
+    },
+    {
+      "id": "fq35",
+      "q": "Le libertinage dans Les Liaisons dangereuses : quel procédé stylistique central ?",
+      "opts": [
+        "Le monologue intérieur — les personnages ne communiquent pas",
+        "Le roman épistolaire — les lettres sont l'arme de la manipulation",
+        "Le récit à la troisième personne omniscient — le narrateur juge les libertins",
+        "Le discours indirect libre — pour montrer la double pensée"
+      ],
+      "ans": 1,
+      "exp": "Roman épistolaire (lettres) = le support DEVIENT l'arme. Les libertins manipulent via l'écrit, avec ton cynique et calcul explicite. L'ironie dramatique : le lecteur voit les deux faces (lettre vraie à Valmont + façade en société). Merteuil écrit ses stratagèmes comme un traité militaire."
+    },
+    {
+      "id": "fq36",
+      "q": "Rimes embrassées vs rimes croisées — quelle est la différence ?",
+      "opts": [
+        "Embrassées = ABBA / Croisées = ABAB",
+        "Embrassées = ABAB / Croisées = ABBA",
+        "Embrassées = AABB / Croisées = ABBA",
+        "Embrassées = ABBA / Croisées = AABB"
+      ],
+      "ans": 0,
+      "exp": "Rimes embrassées = ABBA (la 2e paire 'embrasse' la première, comme dans une accolade). Rimes croisées = ABAB (alternées). Rimes plates/suivies = AABB. Les stances du Cid mêlent ces schémas pour varier le rythme émotionnel."
+    },
+    {
+      "id": "fq37",
+      "q": "Que révèle la liste de conquêtes de Dom Juan (Acte I sc. 2) sur sa nature ?",
+      "opts": [
+        "Qu'il est un romantique incapable de se fixer sur une femme",
+        "Qu'il traite les femmes comme des objets de collection, sans affect — libertin de mœurs pur",
+        "Qu'il souffre d'une incapacité à aimer due à son enfance",
+        "Qu'il cherche l'amour idéal introuvable"
+      ],
+      "ans": 1,
+      "exp": "La liste de conquêtes (\"une blonde pour ceci, une brune pour cela\") montre le libertin de mœurs à l'état pur : les femmes sont des catégories, pas des personnes. C'est le portrait du manipulateur calculateur, sans culpabilité. Contraste avec le libertin intellectuel de l'Acte III sc.1."
     }
   ]
 }

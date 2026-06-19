@@ -383,6 +383,27 @@
       "term": "Hydrogénation vs Déshydratation",
       "def": "Hydrogénation (réduction) : alcène + H₂ → alcane (addition de H₂ sur la double liaison). Déshydratation (élimination) : alcool → alcène + H₂O (formation de double liaison par perte d'eau). Réactions inverses.",
       "ex": "Propène + H₂ → propane. Propan-2-ol → propène + H₂O."
+    },
+    {
+      "id": "ch55",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Réseau des interconversions",
+      "def": "Alcane ←hydrog./déshydrat.→ Alcène ←hydratat./déshydrat.→ Alcool (1°) ←oxydation douce→ Aldéhyde ←oxydation forte→ Acide carboxylique ←estérif./hydrolyse→ Ester. Alcool (2°) ←oxydation→ Cétone. Alcool + NH₃ → Amine. Acide + Amine → Amide.",
+      "ex": "Méthanol → (oxydation) → Méthanal → (oxydation) → Acide méthanoïque → (+ méthanol) → Méthanoate de méthyle."
+    },
+    {
+      "id": "ch56",
+      "cat": "Thermochimie — Spontanéité",
+      "term": "Piège : Spontané ≠ Rapide",
+      "def": "ΔG < 0 signifie que la réaction est THERMODYNAMIQUEMENT possible (spontanée), pas qu'elle se produit vite. La vitesse = cinétique (énergie d'activation, catalyseur). Une réaction peut être spontanée mais extrêmement lente sans catalyseur.",
+      "ex": "C(diamant) → C(graphite) : ΔG < 0 (spontanée) mais infiniment lente. Combustion du bois : spontanée (ΔG<0) mais n'a pas lieu sans allumette → énergie d'activation nécessaire."
+    },
+    {
+      "id": "ch57",
+      "cat": "Chimie Organique — Réactions",
+      "term": "Méthode exercice combustion",
+      "def": "1. Équilibrer : CₙH₂ₙ₊₂ + (3n+1)/2 O₂ → n CO₂ + (n+1) H₂O · 2. Masse → moles : n = m/M · 3. Rapport stœchio → moles produits · 4. Masse : m = n × M. Règle rapide alcane : n CO₂ et (n+1) H₂O.",
+      "ex": "Combustion C₃H₈ : C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. 44g de propane = 1 mol → 3 mol CO₂ = 132 g de CO₂."
     }
   ],
   "qcm": [
@@ -709,6 +730,121 @@
       ],
       "ans": 1,
       "exp": "Alcool + NH₃ → Amine + H₂O : c'est une substitution (le groupe OH est remplacé par NH₂). Ex : propan-1-ol + NH₃ → propan-1-amine + H₂O. À ne pas confondre avec la condensation acide+amine → amide."
+    },
+    {
+      "id": "chq28",
+      "q": "Dans une formule topologique, que représente chaque sommet ou extrémité de trait ?",
+      "opts": [
+        "Un atome d'hydrogène (H implicite)",
+        "Un atome de carbone (H implicites complètent la valence)",
+        "Un hétéroatome (O, N, F...)",
+        "Une liaison double obligatoire"
+      ],
+      "ans": 1,
+      "exp": "Règle topologique : chaque sommet (angle) et chaque extrémité = 1 atome de C. Les H ne sont jamais écrits (implicites). Seuls les hétéroatomes (O, N, F, Cl...) et les groupes fonctionnels (OH, CHO, COOH) sont écrits explicitement."
+    },
+    {
+      "id": "chq29",
+      "q": "Dans la nomenclature IUPAC, quel préfixe correspond à une chaîne de 4 carbones ?",
+      "opts": ["prop-", "but-", "pent-", "hex-"],
+      "ans": 1,
+      "exp": "Méth(1), Éth(2), Prop(3), But(4), Pent(5), Hex(6), Hept(7), Oct(8), Non(9), Déc(10). But- = 4 carbones (penser 'buter contre le 4'). Moyen mémo : Mon Éléphant Peut Baigner Profondément Heureux — où H=Hept n°7."
+    },
+    {
+      "id": "chq30",
+      "q": "Quel est le nom IUPAC de CH₃-CH(OH)-CH₃ ?",
+      "opts": [
+        "Propan-1-ol",
+        "Propan-2-ol",
+        "2-méthylpropanol",
+        "Isopropylène"
+      ],
+      "ans": 1,
+      "exp": "Chaîne principale = 3C (propan-). Groupe OH en C2 → propan-2-ol. Vérif : C1-C2(OH)-C3. Numéroter depuis l'extrémité la plus proche du OH → indice le plus petit = 2 ✓"
+    },
+    {
+      "id": "chq31",
+      "q": "Pour passer d'un alcool primaire à un acide carboxylique, quelle séquence de réactions faut-il ?",
+      "opts": [
+        "Oxydation directe (en une étape)",
+        "Oxydation douce → aldéhyde → oxydation forte → acide",
+        "Estérification puis hydrolyse",
+        "Substitution puis condensation"
+      ],
+      "ans": 1,
+      "exp": "Alcool 1° →(oxydation douce/partielle)→ Aldéhyde →(oxydation forte/totale)→ Acide carboxylique. Deux étapes obligatoires. L'oxydation directe d'un alcool en acide n'est pas une réaction unique standard au niveau 5e."
+    },
+    {
+      "id": "chq32",
+      "q": "Si ΔH > 0 et ΔS > 0, la réaction est spontanée :",
+      "opts": [
+        "Jamais, quelle que soit T",
+        "Toujours, quelle que soit T",
+        "Uniquement à haute température (T grand → TΔS domine)",
+        "Uniquement à basse température"
+      ],
+      "ans": 2,
+      "exp": "ΔG = ΔH − TΔS. Si ΔH>0 et ΔS>0 : ΔG = (+) − T(+). À haute T, TΔS > ΔH → ΔG < 0 → spontanée. À basse T, TΔS petit → ΔG > 0 → non spontanée. Règle : ΔH+/ΔS+ = spontané à HAUTE T."
+    },
+    {
+      "id": "chq33",
+      "q": "Si ΔH < 0 et ΔS < 0, la réaction est spontanée :",
+      "opts": [
+        "Jamais",
+        "Toujours",
+        "Uniquement à haute température",
+        "Uniquement à basse température (ΔH domine sur TΔS)"
+      ],
+      "ans": 3,
+      "exp": "ΔG = ΔH − TΔS = (−) − T(−). À basse T : TΔS petit → ΔG ≈ ΔH < 0 → spontanée ✓. À haute T : TΔS grand positif → ΔG = (−) − T(grand +) → ΔG > 0 → non spontanée. Règle : ΔH−/ΔS− = spontané à BASSE T."
+    },
+    {
+      "id": "chq34",
+      "q": "\"Spontané ≠ rapide\" — quel est le meilleur exemple de cette distinction ?",
+      "opts": [
+        "L'eau bout spontanément à 100°C",
+        "Le diamant est spontanément stable (ΔG>0 pour la transformation)",
+        "C(diamant)→C(graphite) est spontané (ΔG<0) mais extrêmement lent sans catalyseur",
+        "La combustion est non-spontanée car elle nécessite une allumette"
+      ],
+      "ans": 2,
+      "exp": "C(diamant)→C(graphite) : ΔG < 0 → thermodynamiquement spontané, MAIS la vitesse est quasi nulle à T ambiante → cinétiquement bloqué. La spontanéité (ΔG) dit si c'est possible, pas si c'est rapide. La combustion du bois EST spontanée (ΔG<0) ; l'allumette fournit juste l'énergie d'activation."
+    },
+    {
+      "id": "chq35",
+      "q": "Quelle est la différence structurale entre un alcool et un éther ?",
+      "opts": [
+        "Alcool : R-O-R' / Éther : R-OH",
+        "Alcool : R-OH / Éther : R-O-R' (O entre deux carbones)",
+        "Alcool : R-CHO / Éther : R-CO-R'",
+        "Alcool : R-COOH / Éther : R-COO-R'"
+      ],
+      "ans": 1,
+      "exp": "Alcool : groupe OH terminal (—OH lié à un C). Éther : atome O lié à 2 carbones (R—O—R'). Même formule brute possible (isomérie de fonction) : éthanol C₂H₆O vs diméthyl éther C₂H₆O. L'éther n'a pas de liaison OH → pas de liaison hydrogène entre molécules → Tébull plus bas."
+    },
+    {
+      "id": "chq36",
+      "q": "Quel est le groupe caractéristique de l'amide ?",
+      "opts": [
+        "—NH₂",
+        "—CO—NH— (ou —CONH₂ en bout de chaîne)",
+        "—COO—",
+        "—CHO"
+      ],
+      "ans": 1,
+      "exp": "Amide = —CO—NH— : liaison entre un carbonyle (C=O) et un azote (N). Se forme par condensation acide carboxylique + amine → amide + eau. Présent dans les protéines (liaison peptidique = amide). ≠ amine (—NH₂ seul) ≠ ester (—COO—)."
+    },
+    {
+      "id": "chq37",
+      "q": "Dans l'aluminothermie (Fe₂O₃ + Al → Al₂O₃ + Fe), comment approche-t-on le ΔH° par Hess ?",
+      "opts": [
+        "ΔH° = ΔH°f(Fe₂O₃) + ΔH°f(Al)",
+        "ΔH° = ΔH°f(Al₂O₃) + ΔH°f(Fe) − ΔH°f(Fe₂O₃) − ΔH°f(Al)",
+        "ΔH° = ΔH°f(Al₂O₃) + ΔH°f(Fe₂O₃)",
+        "ΔH° = 2 × ΔH°f(Al₂O₃)"
+      ],
+      "ans": 1,
+      "exp": "Formule Hess : ΔH°rxn = Σ ΔH°f(produits) − Σ ΔH°f(réactifs). Fe et Al = corps simples → ΔH°f = 0. Donc ΔH° = ΔH°f(Al₂O₃) − ΔH°f(Fe₂O₃) = −1676 − (−824,2) = −851,8 kJ/mol → très exothermique (soudure aluminothermique)."
     }
   ]
 }
