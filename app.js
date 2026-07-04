@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.29';
+const APP_VERSION = '1.30';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -322,6 +322,7 @@ let EDOUARD_MODE = false;
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.30': ['Fix : changer la couleur d\'accentuation dans les réglages plantait silencieusement (variable ACCENT_PALETTES inexistante) et empêchait l\'anneau de sélection de se mettre à jour'],
   '1.29': ['Mode Édouard : espace séparé avec code d\'accès 4 chiffres, données isolées (IndexedDB dédiée)', 'Nouveau type d\'exercice : Saisie libre (conjugaison/orthographe à trous)', 'Néerlandais et Anglais 4e : vocabulaire + conjugaison de base'],
   '1.21': ['Fix invités : demande le prénom aux anciens "invité" · ne plus enregistrer sans prénom'],
   '1.20': ['Bio : exercice Structures cellulaires (14 organites — membrane + fonction)'],
@@ -2664,7 +2665,7 @@ function renderAnalyticsData(data) {
 
     // Couleur choisie
     const accentEv = [...events].reverse().find(e => e.type === 'accent_color');
-    const accentColor = accentEv ? ACCENT_PALETTES[accentEv.idx] : null;
+    const accentColor = accentEv ? ACCENT_PRESETS[accentEv.idx] : null;
 
     // Exercices avec scores, groupés par type+matière
     const scored = events.filter(e => e.pct != null);
@@ -2768,7 +2769,7 @@ function logout() {
 function setAccentColor(idx) {
   localStorage.setItem('studyos-accent', String(idx));
   applyStoredAccent();
-  trackGuestEvent({ type: 'accent_color', idx, name: ACCENT_PALETTES[idx]?.name });
+  trackGuestEvent({ type: 'accent_color', idx, name: ACCENT_PRESETS[idx]?.name });
   renderSettings();
 }
 
