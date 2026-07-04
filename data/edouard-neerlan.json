@@ -1,0 +1,53 @@
+{
+  "id": "edouard-neerlan",
+  "name": "Néerlandais",
+  "color": "#F97316",
+  "colorLight": "#FFEDD5",
+  "exam": "2026-09-01",
+  "type": "Prépa rentrée 4e",
+  "flashcards": [
+    { "id": "en1", "cat": "École", "term": "l'école", "def": "de school" },
+    { "id": "en2", "cat": "École", "term": "le professeur", "def": "de leraar / de leerkracht" },
+    { "id": "en3", "cat": "École", "term": "le devoir", "def": "het huiswerk" },
+    { "id": "en4", "cat": "École", "term": "l'examen", "def": "het examen" },
+    { "id": "en5", "cat": "École", "term": "le cahier", "def": "het schrift" },
+    { "id": "en6", "cat": "Maison", "term": "la maison", "def": "het huis" },
+    { "id": "en7", "cat": "Maison", "term": "la chambre", "def": "de kamer / de slaapkamer" },
+    { "id": "en8", "cat": "Maison", "term": "la cuisine", "def": "de keuken" },
+    { "id": "en9", "cat": "Temps libre", "term": "le sport", "def": "de sport" },
+    { "id": "en10", "cat": "Temps libre", "term": "regarder la télévision", "def": "televisie kijken" },
+    { "id": "en11", "cat": "Temps libre", "term": "jouer", "def": "spelen" },
+    { "id": "en12", "cat": "Verbes courants", "term": "avoir", "def": "hebben" },
+    { "id": "en13", "cat": "Verbes courants", "term": "être", "def": "zijn" },
+    { "id": "en14", "cat": "Verbes courants", "term": "aller", "def": "gaan" },
+    { "id": "en15", "cat": "Verbes courants", "term": "faire", "def": "doen / maken" }
+  ],
+  "qcm": [
+    {
+      "id": "enq1",
+      "q": "Comment dit-on \"l'école\" en néerlandais ?",
+      "opts": ["het huis", "de school", "de kamer", "het schrift"],
+      "ans": 1,
+      "exp": "**de school** = l'école. Notez l'article \"de\" (pas \"het\")."
+    },
+    {
+      "id": "enq2",
+      "q": "Quel est l'infinitif du verbe \"avoir\" en néerlandais ?",
+      "opts": ["zijn", "gaan", "hebben", "doen"],
+      "ans": 2,
+      "exp": "**hebben** = avoir. C'est un des verbes les plus utilisés, à connaître par cœur à toutes les personnes."
+    }
+  ],
+  "saisie": [
+    { "id": "ens1", "cat": "Présent — hebben", "prompt": "Ik ___ een hond. (avoir)", "answer": "heb" },
+    { "id": "ens2", "cat": "Présent — hebben", "prompt": "Jij ___ een broer. (avoir)", "answer": "hebt" },
+    { "id": "ens3", "cat": "Présent — hebben", "prompt": "Hij ___ een auto. (avoir)", "answer": "heeft" },
+    { "id": "ens4", "cat": "Présent — zijn", "prompt": "Ik ___ moe. (être)", "answer": "ben" },
+    { "id": "ens5", "cat": "Présent — zijn", "prompt": "Jij ___ blij. (être)", "answer": "bent" },
+    { "id": "ens6", "cat": "Présent — zijn", "prompt": "Zij ___ ziek. (être)", "answer": "is" },
+    { "id": "ens7", "cat": "Présent — gaan", "prompt": "Ik ___ naar school. (aller)", "answer": "ga" },
+    { "id": "ens8", "cat": "Présent — gaan", "prompt": "Jij ___ naar huis. (aller)", "answer": "gaat" },
+    { "id": "ens9", "cat": "Présent — werken", "prompt": "Ik ___ elke dag. (travailler)", "answer": "werk" },
+    { "id": "ens10", "cat": "Présent — werken", "prompt": "Hij ___ in Brussel. (travailler)", "answer": "werkt" }
+  ]
+}

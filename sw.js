@@ -1,4 +1,4 @@
-const CACHE = 'studyapp-1.27';
+const CACHE = 'studyapp-1.29';
 const ASSETS = [
   '/',
   '/index.html',
@@ -12,6 +12,8 @@ const ASSETS = [
   '/data/maths.json',
   '/data/chimie.json',
   '/data/dashboard.json',
+  '/data/edouard-neerlan.json',
+  '/data/edouard-anglais.json',
 ];
 
 self.addEventListener('install', e => {

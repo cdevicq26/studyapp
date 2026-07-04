@@ -606,6 +606,29 @@ body {
 .fc-bof { color: #f97316; }
 .fc-oui { color: #16a34a; }
 
+/* ── 9b. SAISIE LIBRE (orthographe/conjugaison) ── */
+.saisie-card { padding: 28px 24px; align-items: stretch; justify-content: flex-start; cursor: default; }
+.saisie-prompt { font-size: 18px; font-weight: 700; line-height: 1.6; color: var(--text); margin-bottom: 20px; }
+.saisie-blank {
+  display: inline-block; border-bottom: 2.5px solid var(--accent);
+  color: var(--accent); font-weight: 800; padding: 0 4px;
+}
+.saisie-input {
+  width: 100%; border: 2px solid var(--border); border-radius: var(--r-sm);
+  padding: 14px 16px; font-size: 16px; font-family: 'Poppins', sans-serif;
+  background: var(--bg); color: var(--text); box-sizing: border-box;
+}
+.saisie-input:focus { outline: none; border-color: var(--accent); }
+.saisie-input:disabled { opacity: .7; }
+.saisie-feedback {
+  margin-top: 14px; font-size: 14px; font-weight: 600; line-height: 1.5;
+  display: none;
+}
+.saisie-feedback.show { display: block; }
+.saisie-feedback.ok { color: #16a34a; }
+.saisie-feedback.ko { color: #ef4444; }
+#saisie-btns { grid-template-columns: 1fr; }
+
 /* ── 10. QCM SESSION ── */
 .qcm-body { padding: 10px 16px calc(56px + env(safe-area-inset-bottom, 0) + 80px); }
 .qcm-arena { padding: 10px 16px 100px; }

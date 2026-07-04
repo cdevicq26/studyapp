@@ -31,14 +31,24 @@
       <button id="ls-known-other" class="lock-other-btn">Ce n'est pas moi</button>
     </div>
 
-    <!-- État B : Défaut → PIN Charles + option invité -->
+    <!-- État B : Défaut → PIN Charles + options -->
     <div id="ls-default" style="display:none">
       <div class="lock-sub">Code à 6 chiffres pour Charles</div>
       <input id="lock-pin" class="lock-pin" type="tel" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="••••••">
       <div id="lock-error" class="lock-error"></div>
       <button id="lock-submit" class="lock-submit">Connexion</button>
       <div class="lock-divider">ou</div>
-      <button id="lock-guest" class="lock-guest">Continuer en invité</button>
+      <button id="lock-edouard" class="lock-guest">👦 Mode Édouard</button>
+      <button id="lock-guest" class="lock-guest" style="margin-top:8px;opacity:.7;font-size:13px">Continuer en invité</button>
+    </div>
+
+    <!-- État D : PIN Édouard -->
+    <div id="ls-edouard" style="display:none">
+      <div class="lock-sub">Code d'Édouard (4 chiffres)</div>
+      <input id="lock-edouard-pin" class="lock-pin" type="tel" inputmode="numeric" maxlength="4" autocomplete="off" placeholder="••••">
+      <div id="lock-edouard-error" class="lock-error"></div>
+      <button id="lock-edouard-submit" class="lock-submit">Connexion</button>
+      <button id="lock-edouard-back" class="lock-other-btn">← Retour</button>
     </div>
 
     <!-- État C : Formulaire prénom invité -->

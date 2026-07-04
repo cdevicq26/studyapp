@@ -1,0 +1,53 @@
+{
+  "id": "edouard-anglais",
+  "name": "Anglais",
+  "color": "#0EA5E9",
+  "colorLight": "#E0F2FE",
+  "exam": "2026-09-01",
+  "type": "Prépa rentrée 4e",
+  "flashcards": [
+    { "id": "ea1", "cat": "École", "term": "l'école", "def": "school" },
+    { "id": "ea2", "cat": "École", "term": "le devoir", "def": "homework" },
+    { "id": "ea3", "cat": "École", "term": "l'examen", "def": "exam / test" },
+    { "id": "ea4", "cat": "École", "term": "le cahier", "def": "notebook" },
+    { "id": "ea5", "cat": "Maison", "term": "la maison", "def": "house" },
+    { "id": "ea6", "cat": "Maison", "term": "la chambre", "def": "bedroom" },
+    { "id": "ea7", "cat": "Maison", "term": "la cuisine", "def": "kitchen" },
+    { "id": "ea8", "cat": "Temps libre", "term": "le sport", "def": "sport" },
+    { "id": "ea9", "cat": "Temps libre", "term": "regarder la télévision", "def": "to watch TV" },
+    { "id": "ea10", "cat": "Temps libre", "term": "jouer", "def": "to play" },
+    { "id": "ea11", "cat": "Verbes irréguliers", "term": "aller (passé)", "def": "went (go)" },
+    { "id": "ea12", "cat": "Verbes irréguliers", "term": "avoir (passé)", "def": "had (have)" },
+    { "id": "ea13", "cat": "Verbes irréguliers", "term": "faire (passé)", "def": "did (do)" },
+    { "id": "ea14", "cat": "Verbes irréguliers", "term": "voir (passé)", "def": "saw (see)" },
+    { "id": "ea15", "cat": "Verbes irréguliers", "term": "prendre (passé)", "def": "took (take)" }
+  ],
+  "qcm": [
+    {
+      "id": "eaq1",
+      "q": "Quelle est la forme correcte au passé du verbe \"to go\" ?",
+      "opts": ["goed", "went", "gone", "going"],
+      "ans": 1,
+      "exp": "**went** = forme du prétérit (simple past) de \"go\". \"gone\" est le participe passé, utilisé avec \"have\"."
+    },
+    {
+      "id": "eaq2",
+      "q": "Comment dit-on \"devoir\" (homework) en anglais ?",
+      "opts": ["notebook", "exam", "homework", "school"],
+      "ans": 2,
+      "exp": "**homework** = les devoirs (indénombrable, jamais de \"s\")."
+    }
+  ],
+  "saisie": [
+    { "id": "eas1", "cat": "Present simple — to be", "prompt": "I ___ happy. (être)", "answer": "am" },
+    { "id": "eas2", "cat": "Present simple — to be", "prompt": "She ___ tired. (être)", "answer": "is" },
+    { "id": "eas3", "cat": "Present simple — to be", "prompt": "They ___ students. (être)", "answer": "are" },
+    { "id": "eas4", "cat": "Present simple — to have", "prompt": "I ___ a brother. (avoir)", "answer": "have" },
+    { "id": "eas5", "cat": "Present simple — to have", "prompt": "He ___ a dog. (avoir)", "answer": "has" },
+    { "id": "eas6", "cat": "Simple past", "prompt": "Yesterday, I ___ to school. (go)", "answer": "went" },
+    { "id": "eas7", "cat": "Simple past", "prompt": "She ___ her homework. (do)", "answer": "did" },
+    { "id": "eas8", "cat": "Simple past", "prompt": "We ___ a film. (see)", "answer": "saw" },
+    { "id": "eas9", "cat": "Simple past", "prompt": "They ___ the bus. (take)", "answer": "took" },
+    { "id": "eas10", "cat": "Simple past", "prompt": "I ___ a good time. (have)", "answer": "had" }
+  ]
+}

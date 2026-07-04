@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.25';
+const APP_VERSION = '1.29';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -51,6 +51,7 @@ function trackGuestEvent(data) {
 
 function getDisplayName() {
   if (GUEST_MODE) return guestName || 'invité';
+  if (EDOUARD_MODE) return 'Édouard';
   return localStorage.getItem('studyos-name') || 'Charles';
 }
 
@@ -276,15 +277,18 @@ async function checkReminders() {
   localStorage.setItem('studyos-reminder-last', today);
 }
 
-const SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
+let SUBJECTS_ORDER = ['geo', 'philo', 'bio', 'maths', 'francais', 'chimie'];
+const EDOUARD_SUBJECTS_ORDER = ['edouard-neerlan', 'edouard-anglais'];
 
 const SUBJECT_COLORS = {
-  geo:      { primary: '#2F8FE0' },
-  philo:    { primary: '#8B5CF6' },
-  bio:      { primary: '#14B8A6' },
-  francais: { primary: '#EC4899' },
-  maths:    { primary: '#EAB308' },
-  chimie:   { primary: '#22C55E' },
+  geo:             { primary: '#2F8FE0' },
+  philo:           { primary: '#8B5CF6' },
+  bio:             { primary: '#14B8A6' },
+  francais:        { primary: '#EC4899' },
+  maths:           { primary: '#EAB308' },
+  chimie:          { primary: '#22C55E' },
+  'edouard-neerlan': { primary: '#F97316' },
+  'edouard-anglais': { primary: '#0EA5E9' },
 };
 
 const SUBJECT_SHORT = {
@@ -310,10 +314,15 @@ const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
 // Code d'accès Charles (6 chiffres) — à changer ici si besoin
 const CHARLES_CODE = '124816';
 
+// Code d'accès Édouard (4 chiffres) — à changer ici si besoin
+const EDOUARD_CODE = '2026';
+let EDOUARD_MODE = false;
+
 // ═══════════════════════════════════════════════════
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.29': ['Mode Édouard : espace séparé avec code d\'accès 4 chiffres, données isolées (IndexedDB dédiée)', 'Nouveau type d\'exercice : Saisie libre (conjugaison/orthographe à trous)', 'Néerlandais et Anglais 4e : vocabulaire + conjugaison de base'],
   '1.21': ['Fix invités : demande le prénom aux anciens "invité" · ne plus enregistrer sans prénom'],
   '1.20': ['Bio : exercice Structures cellulaires (14 organites — membrane + fonction)'],
   '1.19': ['Ecran de connexion : 3 etats clairs (IP connue / defaut / prenom invite)'],
@@ -355,6 +364,7 @@ let currentSubject = null;
 let fcSession = null;
 let qcmSession = null;
 let qcmColorSession = null;
+let saisieSession = null;
 let metDbSession = null;
 let cellStructSession = null;
 
@@ -414,6 +424,22 @@ let agendaDays = [];
 // ═══════════════════════════════════════════════════
 // INDEXEDDB — spec-exact schema
 // ═══════════════════════════════════════════════════
+function openEdouardDB() {
+  return new Promise((res, rej) => {
+    const req = indexedDB.open('studyapp-edouard', 1);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains('progress')) d.createObjectStore('progress');
+      if (!d.objectStoreNames.contains('qcm_progress')) d.createObjectStore('qcm_progress');
+      if (!d.objectStoreNames.contains('saisie_progress')) d.createObjectStore('saisie_progress');
+      if (!d.objectStoreNames.contains('controle_responses')) d.createObjectStore('controle_responses');
+      if (!d.objectStoreNames.contains('questions')) d.createObjectStore('questions', { keyPath: 'id' });
+    };
+    req.onsuccess = e => res(e.target.result);
+    req.onerror = e => rej(e);
+  });
+}
+
 function openDB() {
   return new Promise((res, rej) => {
     const req = indexedDB.open('studyapp', 4);
@@ -565,6 +591,170 @@ async function getSubjectStats(subjectId) {
 }
 
 // ═══════════════════════════════════════════════════
+// SAISIE LIBRE — phrase à trous, réponse tapée (conjugaison/orthographe)
+// ═══════════════════════════════════════════════════
+async function getSaisieProgress(subjectId) {
+  return (await dbGet(`saisie_${subjectId}`)) || {};
+}
+
+async function saveSaisieProgress(subjectId, progress) {
+  await dbSet(`saisie_${subjectId}`, progress);
+}
+
+function normalizeSaisieAnswer(str) {
+  return (str || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+async function updateSaisie(subjectId, itemId, correct) {
+  const progress = await getSaisieProgress(subjectId);
+  const now = Date.now();
+  const p = progress[itemId] || { box: 1, nextReview: 0, streak: 0 };
+  if (correct) {
+    p.box = Math.min(3, p.box + 1);
+    p.streak = (p.streak || 0) + 1;
+  } else {
+    p.box = 1; p.streak = 0;
+  }
+  p.nextReview = now + LEITNER_DAYS[p.box - 1] * 86400000;
+  p.lastAnswered = now;
+  progress[itemId] = p;
+  await saveSaisieProgress(subjectId, progress);
+  return p;
+}
+
+async function getDueSaisies(subjectId) {
+  const s = subjects[subjectId];
+  if (!s || !s.saisie) return [];
+  const progress = await getSaisieProgress(subjectId);
+  const now = Date.now();
+  return s.saisie.filter(item => {
+    const p = progress[item.id];
+    return !p || p.nextReview <= now;
+  });
+}
+
+async function getSaisieStats(subjectId) {
+  const s = subjects[subjectId];
+  if (!s || !s.saisie) return { total: 0, b1: 0, b2: 0, b3: 0 };
+  const progress = await getSaisieProgress(subjectId);
+  let b1 = 0, b2 = 0, b3 = 0;
+  s.saisie.forEach(item => {
+    const p = progress[item.id];
+    if (!p) { b1++; return; }
+    if (p.box === 1) b1++;
+    else if (p.box === 2) b2++;
+    else b3++;
+  });
+  return { total: s.saisie.length, b1, b2, b3 };
+}
+
+async function startSaisie(subjectId, mode) {
+  const s = subjects[subjectId];
+  let items = mode === 'due' ? await getDueSaisies(subjectId) : [...s.saisie];
+  if (items.length === 0) { toast('Toutes les phrases sont à jour !'); return; }
+  items = shuffle(items);
+  saisieSession = { subjectId, items, idx: 0, correct: 0, wrong: 0, mode, answered: false };
+  learnSubView = 'saisie';
+  renderSaisie();
+}
+
+function renderSaisie() {
+  const { subjectId, items, idx } = saisieSession;
+  const view = document.getElementById('view-learn');
+  learnSubView = 'saisie';
+  setNavbarVisible(false);
+
+  if (idx >= items.length) { renderSaisieEnd(); return; }
+
+  const item = items[idx];
+  const col = SUBJECT_COLORS[subjectId] || { primary: '#5C6BC0' };
+  const pct = Math.round((idx / items.length) * 100);
+  const parts = item.prompt.split('___');
+  const promptHTML = parts.join('<span class="saisie-blank">______</span>');
+
+  view.innerHTML = `
+  <div class="fc-layout">
+    <div class="fc-header">
+      <button class="back-btn" onclick="renderSubjectPage('${subjectId}')">←</button>
+      <div class="fc-progress-bar">
+        <div class="fc-progress-fill" style="width:${pct}%; background:${col.primary}"></div>
+      </div>
+      <div class="fc-counter">${idx + 1}/${items.length}</div>
+      <button class="help-btn" onclick="openQuestionModal()">?</button>
+    </div>
+    <div class="fc-card-area">
+      <div class="fc-card saisie-card" style="cursor:default">
+        <div class="fc-cat">${item.cat || ''}</div>
+        <div class="saisie-prompt">${promptHTML}</div>
+        <input id="saisie-input" class="saisie-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Ta réponse...">
+        <div id="saisie-feedback" class="saisie-feedback"></div>
+      </div>
+    </div>
+    <div class="fc-buttons" id="saisie-btns">
+      <button class="fc-btn fc-oui" id="saisie-submit-btn" style="width:100%" onclick="submitSaisie()">Valider</button>
+    </div>
+  </div>
+  `;
+
+  const input = document.getElementById('saisie-input');
+  input.focus();
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') submitSaisie(); });
+}
+
+async function submitSaisie() {
+  const { subjectId, items, idx, answered } = saisieSession;
+  const item = items[idx];
+  const input = document.getElementById('saisie-input');
+  const feedback = document.getElementById('saisie-feedback');
+  const submitBtn = document.getElementById('saisie-submit-btn');
+
+  if (!answered) {
+    const correct = normalizeSaisieAnswer(input.value) === normalizeSaisieAnswer(item.answer);
+    await updateSaisie(subjectId, item.id, correct);
+    if (correct) saisieSession.correct++; else saisieSession.wrong++;
+    saisieSession.answered = true;
+    input.disabled = true;
+    feedback.className = `saisie-feedback show ${correct ? 'ok' : 'ko'}`;
+    feedback.innerHTML = correct
+      ? `✓ Correct !`
+      : `✗ Réponse attendue : <strong>${item.answer}</strong>`;
+    submitBtn.textContent = idx + 1 >= items.length ? 'Terminer' : 'Suivant';
+  } else {
+    saisieSession.idx++;
+    renderSaisie();
+  }
+}
+
+function renderSaisieEnd() {
+  setNavbarVisible(true);
+  const { subjectId, items, correct, wrong, mode } = saisieSession;
+  const view = document.getElementById('view-learn');
+  const total = items.length;
+  const pct = total ? Math.round((correct / total) * 100) : 0;
+  const msg = pct >= 80 ? 'Excellent travail !' : pct >= 55 ? 'Continue comme ça !' : 'Révise encore un peu !';
+  const sessionName = (subjects[subjectId] || {}).name || subjectId;
+
+  view.innerHTML = `
+  <div class="fc-header">
+    <button class="back-btn" onclick="renderSubjectPage('${subjectId}')">←</button>
+    <div style="font-size:15px;font-weight:700;flex:1;text-align:center;color:var(--text)">Session terminée</div>
+    <div style="width:40px"></div>
+  </div>
+  <div class="session-end">
+    <div class="se-pct">${pct}%</div>
+    <div class="se-title">${msg}</div>
+    <div class="se-sub">${sessionName} · ${total} phrase${total > 1 ? 's' : ''}</div>
+    <div class="se-scores">
+      <div class="ses-item" style="color:#ef4444"><div class="ses-n">${wrong}</div><div class="ses-l">Faux</div></div>
+      <div class="ses-item" style="color:#16a34a"><div class="ses-n">${correct}</div><div class="ses-l">Correct</div></div>
+    </div>
+    <button class="btn-primary" onclick="startSaisie('${subjectId}','${mode}')">Recommencer</button>
+    <button class="btn-secondary" onclick="renderSubjectPage('${subjectId}')">Retour</button>
+  </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════
 // QCM — spec-exact
 // ═══════════════════════════════════════════════════
 async function getQCMProgress(subjectId) {
@@ -646,6 +836,17 @@ function buildQuestionContext() {
       img: q.img || null,
       opts: q.opts,
       ans: q.opts[q.ans]
+    };
+  }
+  if (learnSubView === 'saisie' && saisieSession) {
+    const item = saisieSession.items[saisieSession.idx];
+    return {
+      type: 'saisie',
+      subject: (subjects[saisieSession.subjectId] || {}).name || saisieSession.subjectId,
+      id: item.id,
+      label: `Phrase : ${item.prompt}`,
+      prompt: item.prompt,
+      answer: item.answer
     };
   }
   if (learnSubView === 'qcm-color' && qcmColorSession) {
@@ -1020,6 +1221,7 @@ async function renderSubjectPage(id) {
   const dueFC = await getDueCards(id);
   const qcmStats = await getQCMStats(id);
   const qcmDue = await getDueQCMs(id);
+  const saisieDue = (s.saisie && s.saisie.length) ? await getDueSaisies(id) : [];
   const view = document.getElementById('view-learn');
   const days = daysUntil(getExamDate(id));
 
@@ -1163,6 +1365,20 @@ async function renderSubjectPage(id) {
   <div class="action-list">
     <div class="action-btn" onclick="startLiens('${id}')">
       <div class="ab-info"><div class="ab-title">Questions transversales</div><div class="ab-sub">${s.liens.length} questions ouvertes, réponse au verso</div></div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
+    </div>
+  </div>
+  ` : ''}
+
+  ${s.saisie && s.saisie.length ? `
+  <div class="section-label">Orthographe &amp; conjugaison</div>
+  <div class="action-list">
+    <div class="action-btn" onclick="startSaisie('${id}','due')">
+      <div class="ab-info"><div class="ab-title">À réviser aujourd'hui</div><div class="ab-sub">${saisieDue.length} phrase${saisieDue.length === 1 ? '' : 's'} due${saisieDue.length === 1 ? '' : 's'}</div></div>
+      <div class="ab-arrow">${CHEVRON_ICON}</div>
+    </div>
+    <div class="action-btn" onclick="startSaisie('${id}','all')">
+      <div class="ab-info"><div class="ab-title">Toutes les phrases</div><div class="ab-sub">${s.saisie.length} phrase${s.saisie.length === 1 ? '' : 's'} au total</div></div>
       <div class="ab-arrow">${CHEVRON_ICON}</div>
     </div>
   </div>
@@ -2330,7 +2546,7 @@ function renderSettings() {
     <div class="toggle-switch${remindersOn ? ' on' : ''}"><div class="toggle-knob"></div></div>
   </div>
 
-  ${GUEST_MODE ? '' : `
+  ${(GUEST_MODE || EDOUARD_MODE) ? '' : `
   <div class="section-label">Invités</div>
   <div class="action-list" style="margin-bottom:24px">
     <div class="action-btn" onclick="renderAnalytics()">
@@ -2352,18 +2568,20 @@ function renderSettings() {
   ${GUEST_MODE ? '' : `
   <div class="section-label">Données</div>
   <div class="action-list" style="margin-bottom:8px">
+    ${EDOUARD_MODE ? '' : `
     <div class="action-btn action-sync" onclick="syncWithWiki()">
       <div class="ab-info"><div class="ab-title">Sync Wiki</div><div class="ab-sub">Mise à jour checklists (WiFi maison)</div></div>
-    </div>
+    </div>`}
     <div class="action-btn action-export" onclick="exportProgress()">
       <div class="ab-info"><div class="ab-title">Exporter</div><div class="ab-sub">Télécharger ma progression JSON</div></div>
     </div>
     <div class="action-btn action-export" onclick="exportQuestions()">
       <div class="ab-info"><div class="ab-title">Exporter mes questions</div><div class="ab-sub">Télécharger les questions enregistrées (JSON)</div></div>
     </div>
+    ${EDOUARD_MODE ? '' : `
     <div class="action-btn" onclick="runMigration()">
       <div class="ab-info"><div class="ab-title">Récupérer vocab perdu</div><div class="ab-sub">Migration ancienne clé → nouvelles clés</div></div>
-    </div>
+    </div>`}
   </div>
 
   <div class="danger-zone">
@@ -2679,7 +2897,12 @@ async function resetProgress() {
 // ═══════════════════════════════════════════════════
 async function init() {
   try {
-    db = GUEST_MODE ? createMemDB() : await openDB();
+    if (EDOUARD_MODE) {
+      SUBJECTS_ORDER = EDOUARD_SUBJECTS_ORDER;
+      db = await openEdouardDB();
+    } else {
+      db = GUEST_MODE ? createMemDB() : await openDB();
+    }
 
     if (GUEST_MODE) {
       const banner = document.createElement('div');
@@ -2689,6 +2912,14 @@ async function init() {
 
       const statsNav = document.querySelector('.nav-btn[data-nav="stats"]');
       if (statsNav) statsNav.remove();
+    }
+
+    if (EDOUARD_MODE) {
+      const banner = document.createElement('div');
+      banner.className = 'guest-banner';
+      banner.style.background = SUBJECT_COLORS['edouard-neerlan'].primary;
+      banner.textContent = 'Mode Édouard';
+      document.body.prepend(banner);
     }
 
     await loadAllSubjects();
@@ -2733,7 +2964,7 @@ async function setupLockScreen() {
   const box = screen.querySelector('.lock-box');
 
   const showState = (id) => {
-    ['ls-known', 'ls-default', 'ls-guest'].forEach(s => {
+    ['ls-known', 'ls-default', 'ls-guest', 'ls-edouard'].forEach(s => {
       document.getElementById(s).style.display = s === id ? 'block' : 'none';
     });
     box.style.visibility = 'visible';
@@ -2800,6 +3031,31 @@ async function setupLockScreen() {
     document.getElementById('lock-guest-name').focus();
   });
 
+  // — État B → D : PIN Édouard —
+  document.getElementById('lock-edouard').addEventListener('click', () => {
+    showState('ls-edouard');
+    document.getElementById('lock-edouard-pin').focus();
+  });
+  document.getElementById('lock-edouard-back').addEventListener('click', () => showState('ls-default'));
+
+  const edInput = document.getElementById('lock-edouard-pin');
+  const edError = document.getElementById('lock-edouard-error');
+  const tryUnlockEdouard = () => {
+    if (edInput.value === EDOUARD_CODE) {
+      localStorage.setItem('studyos-auth', 'edouard');
+      EDOUARD_MODE = true;
+      screen.remove();
+      init();
+    } else {
+      edError.textContent = 'Code incorrect';
+      edInput.value = '';
+      edInput.focus();
+    }
+  };
+  document.getElementById('lock-edouard-submit').addEventListener('click', tryUnlockEdouard);
+  edInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlockEdouard(); });
+  edInput.addEventListener('input', () => { edError.textContent = ''; if (edInput.value.length === 4) tryUnlockEdouard(); });
+
   // — État C : formulaire prénom —
   const nameInput = document.getElementById('lock-guest-name');
   const startGuest = () => launchGuest(nameInput.value.trim() || 'invité');
@@ -2813,6 +3069,10 @@ document.addEventListener('DOMContentLoaded', () => {
   applyStoredTextSize();
   if ((localStorage.getItem('studyos-theme') || 'auto') === 'auto') requestGeoOnce();
   if (localStorage.getItem('studyos-auth') === 'charles') {
+    document.getElementById('lock-screen').remove();
+    init();
+  } else if (localStorage.getItem('studyos-auth') === 'edouard') {
+    EDOUARD_MODE = true;
     document.getElementById('lock-screen').remove();
     init();
   } else {
