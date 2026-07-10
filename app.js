@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.30';
+const APP_VERSION = '1.31';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -315,13 +315,14 @@ const LEITNER_DAYS = [1, 3, 7]; // par boîte 1, 2, 3
 const CHARLES_CODE = '124816';
 
 // Code d'accès Édouard (4 chiffres) — à changer ici si besoin
-const EDOUARD_CODE = '2026';
+const EDOUARD_CODE = '124816';
 let EDOUARD_MODE = false;
 
 // ═══════════════════════════════════════════════════
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.31': ['Code d\'accès Édouard changé pour un code à 6 chiffres'],
   '1.30': ['Fix : changer la couleur d\'accentuation dans les réglages plantait silencieusement (variable ACCENT_PALETTES inexistante) et empêchait l\'anneau de sélection de se mettre à jour'],
   '1.29': ['Mode Édouard : espace séparé avec code d\'accès 4 chiffres, données isolées (IndexedDB dédiée)', 'Nouveau type d\'exercice : Saisie libre (conjugaison/orthographe à trous)', 'Néerlandais et Anglais 4e : vocabulaire + conjugaison de base'],
   '1.21': ['Fix invités : demande le prénom aux anciens "invité" · ne plus enregistrer sans prénom'],
@@ -3055,7 +3056,7 @@ async function setupLockScreen() {
   };
   document.getElementById('lock-edouard-submit').addEventListener('click', tryUnlockEdouard);
   edInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlockEdouard(); });
-  edInput.addEventListener('input', () => { edError.textContent = ''; if (edInput.value.length === 4) tryUnlockEdouard(); });
+  edInput.addEventListener('input', () => { edError.textContent = ''; if (edInput.value.length === 6) tryUnlockEdouard(); });
 
   // — État C : formulaire prénom —
   const nameInput = document.getElementById('lock-guest-name');
