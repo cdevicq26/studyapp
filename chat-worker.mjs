@@ -33,8 +33,16 @@ function loadEnvLocal() {
   const text = fs.readFileSync(envPath, 'utf-8');
   const env = {};
   for (const line of text.split('\n')) {
-    const m = line.match(/^([A-Z_]+)="?(.*?)"?$/);
-    if (m) env[m[1]] = m[2];
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eqIdx = trimmed.indexOf('=');
+    if (eqIdx === -1) continue;
+    const key = trimmed.slice(0, eqIdx).trim();
+    let value = trimmed.slice(eqIdx + 1).trim();
+    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    env[key] = value;
   }
   return env;
 }
