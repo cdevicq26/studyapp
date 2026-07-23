@@ -1094,10 +1094,6 @@ body {
   transition: background var(--transition), transform var(--transition);
 }
 .lock-guest:active { background: var(--accent-l); transform: scale(.98); }
-.lock-known-greeting {
-  font-size: 17px; font-weight: 700; color: var(--text); margin: 12px 0 20px;
-  line-height: 1.3;
-}
 .lock-other-btn {
   width: 100%; border: 2px solid var(--border); background: none; color: var(--muted);
   border-radius: var(--r-sm); padding: 12px; font-size: 14px; font-weight: 600;
@@ -1107,7 +1103,7 @@ body {
 }
 .lock-other-btn:active { color: var(--text); border-color: var(--accent); }
 
-.guest-banner {
+.mode-banner {
   position: fixed; top: 0; left: 0; right: 0; z-index: 500;
   background: var(--accent); color: #fff; text-align: center;
   font-size: 12px; font-weight: 700; padding: 6px 12px;

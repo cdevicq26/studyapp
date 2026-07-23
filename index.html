@@ -25,14 +25,7 @@
   <div class="lock-box" style="visibility:hidden">
     <div class="lock-title">StudyOS</div>
 
-    <!-- État A : IP connue → reconnexion rapide -->
-    <div id="ls-known" style="display:none">
-      <div id="ls-known-greeting" class="lock-known-greeting"></div>
-      <button id="ls-known-confirm" class="lock-submit">Connexion</button>
-      <button id="ls-known-other" class="lock-other-btn">Ce n'est pas moi</button>
-    </div>
-
-    <!-- État B : Défaut → PIN Charles + options -->
+    <!-- État A : Défaut → PIN Charles + Mode Édouard -->
     <div id="ls-default" style="display:none">
       <div class="lock-sub">Code à 6 chiffres pour Charles</div>
       <input id="lock-pin" class="lock-pin" type="tel" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="••••••">
@@ -40,24 +33,15 @@
       <button id="lock-submit" class="lock-submit">Connexion</button>
       <div class="lock-divider">ou</div>
       <button id="lock-edouard" class="lock-guest">👦 Mode Édouard</button>
-      <button id="lock-guest" class="lock-guest" style="margin-top:8px;opacity:.7;font-size:13px">Continuer en invité</button>
     </div>
 
-    <!-- État D : PIN Édouard -->
+    <!-- État B : PIN Édouard -->
     <div id="ls-edouard" style="display:none">
       <div class="lock-sub">Code d'Édouard (6 chiffres)</div>
       <input id="lock-edouard-pin" class="lock-pin" type="tel" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="••••••">
       <div id="lock-edouard-error" class="lock-error"></div>
       <button id="lock-edouard-submit" class="lock-submit">Connexion</button>
       <button id="lock-edouard-back" class="lock-other-btn">← Retour</button>
-    </div>
-
-    <!-- État C : Formulaire prénom invité -->
-    <div id="ls-guest" style="display:none">
-      <div class="lock-sub" style="margin-bottom:20px">Quel est ton prénom ?</div>
-      <input id="lock-guest-name" class="lock-pin" type="text" maxlength="20" placeholder="Prénom" autocomplete="off">
-      <button id="lock-guest-start" class="lock-submit" style="margin-top:12px">Commencer</button>
-      <button id="lock-guest-back" class="lock-other-btn">← Retour</button>
     </div>
   </div>
 </div>

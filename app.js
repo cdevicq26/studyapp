@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.32';
+const APP_VERSION = '1.33';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -32,40 +32,7 @@ const ACCENT_PRESETS = [
   { name: 'Rose',    primary: '#DB2777', light: '#FCE4F1' },
 ];
 
-let guestName = '';
-let guestSessionStart = null;
-
-function getGuestDeviceInfo() {
-  const ua = navigator.userAgent;
-  const isMobile = /iPhone|Android.*Mobile|IEMobile/i.test(ua);
-  const isTablet = /iPad|Android(?!.*Mobile)/i.test(ua);
-  let browser = 'Autre';
-  if (/Edg\//i.test(ua)) browser = 'Edge';
-  else if (/Chrome\//i.test(ua)) browser = 'Chrome';
-  else if (/Safari\//i.test(ua) && !/Chrome/i.test(ua)) browser = 'Safari';
-  else if (/Firefox\//i.test(ua)) browser = 'Firefox';
-  return {
-    device: isTablet ? 'tablet' : isMobile ? 'mobile' : 'desktop',
-    browser,
-    language: navigator.language || 'fr',
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    screen: `${screen.width}×${screen.height}`,
-    theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-    connection: navigator.connection?.effectiveType || null
-  };
-}
-
-function trackGuestEvent(data) {
-  if (!GUEST_MODE) return;
-  fetch('/api/guest', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ action: 'event', t: Date.now(), ...data })
-  }).catch(() => {});
-}
-
 function getDisplayName() {
-  if (GUEST_MODE) return guestName || 'invité';
   if (EDOUARD_MODE) return 'Édouard';
   return localStorage.getItem('studyos-name') || 'Charles';
 }
@@ -181,10 +148,7 @@ function setTextSize(size) {
 // ═══════════════════════════════════════════════════
 // DATES D'EXAMEN PERSONNALISÉES
 // ═══════════════════════════════════════════════════
-const guestExamDates = {};
-
 function getExamDateOverrides() {
-  if (GUEST_MODE) return guestExamDates;
   try { return JSON.parse(localStorage.getItem('studyos-examdates') || '{}'); }
   catch { return {}; }
 }
@@ -198,8 +162,8 @@ function setExamDate(subjectId, dateStr) {
   const overrides = getExamDateOverrides();
   if (dateStr) overrides[subjectId] = dateStr;
   else delete overrides[subjectId];
-  if (!GUEST_MODE) localStorage.setItem('studyos-examdates', JSON.stringify(overrides));
-  toast(GUEST_MODE ? 'Date modifiée pour cette session uniquement' : 'Date d\'examen mise à jour');
+  localStorage.setItem('studyos-examdates', JSON.stringify(overrides));
+  toast('Date d\'examen mise à jour');
 }
 
 function getExamTimes() {
@@ -337,6 +301,7 @@ let EDOUARD_MODE = false;
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.33': ['Suppression complète du mode invité (accès, tracking, analytics) — app strictement privée : Charles ou Édouard'],
   '1.32': ['Support Telegram Mini App : plein écran auto, thème adapté quand ouvert depuis Telegram (sans impact hors Telegram)'],
   '1.31': ['Code d\'accès Édouard changé pour un code à 6 chiffres'],
   '1.30': ['Fix : changer la couleur d\'accentuation dans les réglages plantait silencieusement (variable ACCENT_PALETTES inexistante) et empêchait l\'anneau de sélection de se mettre à jour'],
@@ -376,7 +341,6 @@ const CHANGELOG = {
 // STATE
 // ═══════════════════════════════════════════════════
 let db;
-let GUEST_MODE = false;
 let subjects = {};
 let currentSubject = null;
 let fcSession = null;
@@ -495,59 +459,6 @@ async function dbClear() {
     tx.objectStore('qcm_progress').clear();
     tx.oncomplete = () => res();
   });
-}
-
-// ═══════════════════════════════════════════════════
-// MODE INVITÉ — base en mémoire (rien n'est persisté)
-// Implémente la même interface que IndexedDB (transaction/objectStore)
-// ═══════════════════════════════════════════════════
-function createMemDB() {
-  const KEY_PATH = { questions: 'id' };
-  const stores = {
-    progress: new Map(),
-    qcm_progress: new Map(),
-    controle_responses: new Map(),
-    questions: new Map(),
-  };
-
-  function makeRequest(compute) {
-    const req = {};
-    req.result = compute();
-    Promise.resolve().then(() => { if (req.onsuccess) req.onsuccess({ target: req }); });
-    return req;
-  }
-
-  return {
-    transaction(storeNames) {
-      const tx = {};
-      Promise.resolve().then(() => { if (tx.oncomplete) tx.oncomplete(); });
-      tx.objectStore = name => {
-        const map = stores[name];
-        return {
-          get: key => makeRequest(() => map.get(key)),
-          getAll: () => makeRequest(() => Array.from(map.values())),
-          put: (value, key) => makeRequest(() => {
-            map.set(KEY_PATH[name] ? value[KEY_PATH[name]] : key, value);
-          }),
-          clear: () => makeRequest(() => map.clear()),
-          openCursor: () => {
-            const entries = Array.from(map.entries());
-            let i = 0;
-            const req = {};
-            const emit = () => Promise.resolve().then(() => {
-              req.result = i < entries.length
-                ? { key: entries[i][0], value: entries[i++][1], continue: emit }
-                : null;
-              if (req.onsuccess) req.onsuccess({ target: req });
-            });
-            emit();
-            return req;
-          },
-        };
-      };
-      return tx;
-    },
-  };
 }
 
 // ═══════════════════════════════════════════════════
@@ -1033,7 +944,6 @@ function showView(name) {
 
 // Navigate to subject from home card
 function goToSubject(id) {
-  trackGuestEvent({ type: 'subject_open', subject: id });
   showView('learn');
   renderSubjectPage(id);
 }
@@ -1414,7 +1324,6 @@ async function renderSubjectPage(id) {
 // VOCABULAIRE
 // ═══════════════════════════════════════════════════
 async function openVocabDetail(sourceId = 'bio') {
-  trackGuestEvent({ type: 'vocab_open', sourceId });
   await loadVocabSource(sourceId);
   const src   = VOCAB_SOURCES[sourceId];
   const data  = vocabCache[sourceId];
@@ -1543,7 +1452,6 @@ async function startFlashcards(subjectId, mode) {
   if (cards.length === 0) { toast('Toutes les cartes sont à jour !'); return; }
   cards = shuffle(cards);
   fcSession = { subjectId, cards, idx: 0, correct: 0, bof: 0, wrong: 0, mode };
-  trackGuestEvent({ type: 'flash_start', subject: subjectId, mode, count: cards.length });
   learnSubView = 'flashcard';
   renderFlashcard();
 }
@@ -1672,7 +1580,6 @@ function renderFlashcardEnd() {
   const view = document.getElementById('view-learn');
   const total = cards.length;
   const pct = total ? Math.round(((correct + bof * 0.5) / total) * 100) : 0;
-  trackGuestEvent({ type: 'flash_end', subject: subjectId, mode, total, correct, bof, wrong, pct });
   const msg = pct >= 80 ? 'Excellent travail !' : pct >= 55 ? 'Continue comme ça !' : 'Révise encore ce soir !';
 
   const scoresHtml = isAntiVocabEnd
@@ -1721,7 +1628,6 @@ async function startQCM(subjectId, mode) {
   }
 
   qcmSession = { subjectId, questions, idx: 0, correct: 0, mode };
-  trackGuestEvent({ type: 'qcm_start', subject: subjectId, mode, count: questions.length });
   learnSubView = 'qcm';
   renderQCM();
 }
@@ -1805,7 +1711,6 @@ function renderQCMEnd() {
   const s = subjects[subjectId];
   const view = document.getElementById('view-learn');
   const pct = Math.round((correct / questions.length) * 100);
-  trackGuestEvent({ type: 'qcm_end', subject: subjectId, mode, total: questions.length, correct, pct });
   const msg = pct >= 80 ? 'Excellente maîtrise !' : pct >= 60 ? 'Bon travail !' : 'Révise les notions manquées !';
   const backFn = `renderSubjectPage('${subjectId}')`;
 
@@ -1836,7 +1741,6 @@ function renderQCMEnd() {
 async function startQCMColor(subjectId) {
   const s = subjects[subjectId];
   qcmColorSession = { subjectId, questions: shuffle([...s.qcmColor]), idx: 0, correct: 0, parts: 0 };
-  trackGuestEvent({ type: 'qcm_color_start', subject: subjectId, count: s.qcmColor.length });
   learnSubView = 'qcm-color';
   renderQCMColor();
 }
@@ -1970,7 +1874,6 @@ function renderQCMColorEnd() {
 function startMETDatabase(subjectId) {
   const s = subjects[subjectId];
   metDbSession = { subjectId, order: shuffle([...Array(s.qcmImg.length).keys()]), pos: 0 };
-  trackGuestEvent({ type: 'met_db_start', subject: subjectId });
   learnSubView = 'met-db';
   renderMETDatabase();
 }
@@ -1984,7 +1887,6 @@ function startCellStructures() {
     return { ...item, opts };
   });
   cellStructSession = { items, idx: 0, scoreMem: 0, scoreFn: 0 };
-  trackGuestEvent({ type: 'cell_struct_start', count: items.length });
   learnSubView = 'cell-struct';
   setNavbarVisible(false);
   renderCellStructQuestion();
@@ -2107,7 +2009,6 @@ function csShowScore() {
   const total = items.length;
   const col = SUBJECT_COLORS['bio']?.primary || '#16a34a';
   const pct = Math.round(((scoreMem + scoreFn) / (total * 2)) * 100);
-  trackGuestEvent({ type: 'cell_struct_end', total, scoreMem, scoreFn, pct });
   const view = document.getElementById('view-learn');
   const stars = pct >= 80 ? '🌟' : pct >= 60 ? '✅' : '💪';
   view.innerHTML = `
@@ -2365,16 +2266,13 @@ function toggleAgendaDay(fullDate) {
   }
 }
 
-const guestAgendaChecked = {};
 function getAgendaChecked(dateKey) {
-  if (GUEST_MODE) return guestAgendaChecked[dateKey] || {};
   try { return JSON.parse(localStorage.getItem(`agenda-checked-${dateKey}`) || '{}'); } catch { return {}; }
 }
 function toggleAgendaTask(dateKey, taskIdx) {
   const checked = getAgendaChecked(dateKey);
   checked[taskIdx] = !checked[taskIdx];
-  if (GUEST_MODE) guestAgendaChecked[dateKey] = checked;
-  else localStorage.setItem(`agenda-checked-${dateKey}`, JSON.stringify(checked));
+  localStorage.setItem(`agenda-checked-${dateKey}`, JSON.stringify(checked));
 
   const day = agendaDays.find(d => d.fullDate === dateKey);
   if (!day) return;
@@ -2564,14 +2462,6 @@ function renderSettings() {
     <div class="toggle-switch${remindersOn ? ' on' : ''}"><div class="toggle-knob"></div></div>
   </div>
 
-  ${(GUEST_MODE || EDOUARD_MODE) ? '' : `
-  <div class="section-label">Invités</div>
-  <div class="action-list" style="margin-bottom:24px">
-    <div class="action-btn" onclick="renderAnalytics()">
-      <div class="ab-info"><div class="ab-title">Connexions invités</div><div class="ab-sub">Voir qui a utilisé l'app</div></div>
-    </div>
-  </div>`}
-
   <div class="section-label">Session</div>
   <div class="action-list" style="margin-bottom:8px">
     <div class="action-btn" onclick="checkForUpdate()">
@@ -2583,7 +2473,6 @@ function renderSettings() {
   </div>
   <button id="update-reload-btn" style="display:none;width:calc(100% - 32px);margin:0 16px 20px;background:var(--accent);color:#fff;border:none;border-radius:var(--r-xs);padding:13px;font-weight:700;font-size:14px;cursor:pointer" onclick="location.reload(true)">Recharger</button>
 
-  ${GUEST_MODE ? '' : `
   <div class="section-label">Données</div>
   <div class="action-list" style="margin-bottom:8px">
     ${EDOUARD_MODE ? '' : `
@@ -2605,7 +2494,7 @@ function renderSettings() {
   <div class="danger-zone">
     <div class="danger-label">Zone danger</div>
     <button class="reset-btn" onclick="resetProgress()">Réinitialiser la progression</button>
-  </div>`}
+  </div>
 
   <div class="app-version">StudyOS ${APP_VERSION}</div>`;
 
@@ -2639,144 +2528,6 @@ async function checkForUpdate() {
   }
 }
 
-async function renderAnalytics() {
-  const view = document.getElementById('view-settings');
-  view.innerHTML = `
-  <div class="view-header" style="display:flex;align-items:center;gap:12px">
-    <button class="back-btn" onclick="renderSettings()">←</button>
-    <div class="view-title">Connexions invités</div>
-  </div>
-  <div id="analytics-body" style="padding:16px;color:var(--text-2);font-size:14px">Chargement…</div>`;
-
-  const data = await fetch('/api/analytics?token=studyos-analytics-2026-cd&events=1').then(r => r.ok ? r.json() : null);
-  renderAnalyticsData(data);
-}
-
-async function mergeGuests(primaryIp, secondaryIp) {
-  const ok = await fetch(`/api/analytics?token=studyos-analytics-2026-cd&action=merge&primary=${encodeURIComponent(primaryIp)}&secondary=${encodeURIComponent(secondaryIp)}`).then(r => r.ok ? r.json() : null);
-  if (ok?.ok) { toast('Fusionné !'); renderAnalytics(); }
-  else toast('Erreur lors de la fusion');
-}
-
-function renderAnalyticsData(data) {
-  const body = document.getElementById('analytics-body');
-  if (!body) return;
-  if (!data || !data.guests) { body.textContent = 'Aucune donnée.'; return; }
-  const fmt = iso => iso ? new Date(iso).toLocaleString('fr-BE', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' }) : '—';
-  const fmtDur = s => s ? (s >= 3600 ? `${Math.floor(s/3600)}h${String(Math.floor((s%3600)/60)).padStart(2,'0')}` : s >= 60 ? `${Math.floor(s/60)}min` : `${s}s`) : null;
-  const SL = { bio:'Bio', geo:'Géo', maths:'Maths', francais:'Français', chimie:'Chimie', philo:'Philo' };
-  const EX_TYPES = { flash_end:'Flashcards', qcm_end:'QCM', cell_struct_end:'Structures cell.', qcm_color_start:'QCM Coloration' };
-
-  // Détecter les doublons de nom (même nom, IPs différentes)
-  const nameMap = {};
-  data.guests.forEach(g => {
-    const key = (g.name || '').toLowerCase().trim();
-    if (key) (nameMap[key] = nameMap[key] || []).push(g);
-  });
-
-  body.innerHTML = `
-  <div style="margin-bottom:16px;font-weight:700;font-size:15px">${data.total} invité${data.total > 1 ? 's' : ''} enregistré${data.total > 1 ? 's' : ''}</div>
-  ${data.guests.map((g, i) => {
-    const events = g.recentEvents || [];
-    const detailId = `ag-detail-${i}`;
-
-    // Couleur choisie
-    const accentEv = [...events].reverse().find(e => e.type === 'accent_color');
-    const accentColor = accentEv ? ACCENT_PRESETS[accentEv.idx] : null;
-
-    // Exercices avec scores, groupés par type+matière
-    const scored = events.filter(e => e.pct != null);
-    const exoByType = {};
-    scored.forEach(e => {
-      const label = EX_TYPES[e.type] || e.type;
-      const subj = e.subject ? ` ${SL[e.subject] || e.subject}` : '';
-      const key = label + subj;
-      if (!exoByType[key]) exoByType[key] = [];
-      exoByType[key].push(e.pct);
-    });
-
-    // Sessions sans score (ouvertures de fiches, matières, contrôles)
-    const ficheOpens = events.filter(e => e.type === 'fiche_open').length;
-    const controleStarts = events.filter(e => e.type === 'controle_start').length;
-    const vocabOpens = events.filter(e => e.type === 'vocab_open').length;
-    const subjectsVisited = [...new Set(events.filter(e => e.subject).map(e => SL[e.subject] || e.subject))];
-
-    const dur = fmtDur(g.sessionDuration);
-    const hasActivity = scored.length > 0 || ficheOpens > 0 || controleStarts > 0 || vocabOpens > 0;
-
-    // Résumé pour la ligne fermée
-    const avgAll = scored.length ? Math.round(scored.reduce((a, e) => a + e.pct, 0) / scored.length) : null;
-    const summary = avgAll != null ? `${scored.length} exo${scored.length > 1 ? 's' : ''} · moy. ${avgAll}%` : (subjectsVisited.length ? subjectsVisited.join(', ') : '');
-
-    // Doublons de nom = même nom, IPs différentes → bouton fusionner
-    const nameDupes = (nameMap[(g.name || '').toLowerCase().trim()] || []).filter(d => d.ip !== g.ip);
-    const mergeButtons = nameDupes.map(d =>
-      `<button onclick="mergeGuests('${g.ip}','${d.ip}')"
-        style="font-size:11px;padding:3px 8px;border-radius:6px;border:1px solid var(--accent);color:var(--accent);background:none;cursor:pointer;margin-top:6px">
-        Fusionner avec ${d.name} (${fmt(d.lastSeen)})
-      </button>`
-    ).join('');
-
-    const mergedLabel = g.merged_ips?.length
-      ? `<div style="font-size:11px;color:var(--muted);margin-top:2px">${g.merged_ips.length + 1} appareil${g.merged_ips.length > 0 ? 's' : ''} fusionnés</div>`
-      : '';
-
-    return `
-  <div style="border-bottom:1px solid var(--border)">
-    <div onclick="const d=document.getElementById('${detailId}');d.style.display=d.style.display==='none'?'block':'none'"
-         style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;cursor:pointer">
-      <div>
-        <div style="font-weight:700;color:var(--text)">${g.name || '—'}</div>
-        ${summary ? `<div style="font-size:12px;color:var(--muted)">${summary}</div>` : ''}
-        ${mergedLabel}
-      </div>
-      <div style="display:flex;align-items:center;gap:10px">
-        ${accentColor ? `<div style="width:10px;height:10px;border-radius:50%;background:${accentColor.primary};flex-shrink:0"></div>` : ''}
-        <div style="font-size:12px;color:var(--muted)">${fmt(g.lastSeen)}</div>
-        <div style="color:var(--muted);font-size:16px;line-height:1">›</div>
-      </div>
-    </div>
-    <div id="${detailId}" style="display:none;padding-bottom:16px;font-size:13px">
-
-      ${accentColor ? `<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-        <div style="width:14px;height:14px;border-radius:50%;background:${accentColor.primary}"></div>
-        <span style="color:var(--text-2)">Couleur choisie : <strong>${accentColor.name}</strong></span>
-      </div>` : ''}
-
-      ${subjectsVisited.length ? `<div style="color:var(--text-2);margin-bottom:8px">Matières visitées : <strong>${subjectsVisited.join(', ')}</strong></div>` : ''}
-      ${dur ? `<div style="color:var(--text-2);margin-bottom:8px">Durée de session : <strong>${dur}</strong></div>` : ''}
-
-      ${Object.keys(exoByType).length ? `
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:10px 0 6px">Scores par exercice</div>
-      <table style="width:100%;border-collapse:collapse">
-        ${Object.entries(exoByType).map(([label, scores]) => {
-          const avg = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
-          const bar = `<div style="height:4px;border-radius:2px;background:var(--border);margin-top:3px"><div style="height:4px;border-radius:2px;background:var(--accent);width:${avg}%"></div></div>`;
-          return `<tr style="border-bottom:1px solid var(--border)">
-            <td style="padding:6px 0;color:var(--text)">${label}</td>
-            <td style="padding:6px 0;text-align:right;font-weight:700;color:var(--accent)">${avg}%</td>
-            <td style="padding:6px 0 6px 10px;color:var(--muted);font-size:11px">${scores.length}×</td>
-          </tr>
-          <tr><td colspan="3" style="padding-bottom:4px">${bar}</td></tr>`;
-        }).join('')}
-      </table>` : ''}
-
-      ${ficheOpens || controleStarts || vocabOpens ? `
-      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:12px 0 6px">Contenus consultés</div>
-      <table style="width:100%;border-collapse:collapse;font-size:12px">
-        ${ficheOpens ? `<tr><td style="padding:4px 0;color:var(--text-2)">Fiches lues</td><td style="text-align:right;font-weight:700">${ficheOpens}</td></tr>` : ''}
-        ${controleStarts ? `<tr><td style="padding:4px 0;color:var(--text-2)">Contrôles ouverts</td><td style="text-align:right;font-weight:700">${controleStarts}</td></tr>` : ''}
-        ${vocabOpens ? `<tr><td style="padding:4px 0;color:var(--text-2)">Vocabulaire</td><td style="text-align:right;font-weight:700">${vocabOpens}</td></tr>` : ''}
-      </table>` : ''}
-
-      ${!hasActivity ? `<div style="color:var(--muted);font-size:12px">Pas encore d'activité enregistrée (données collectées depuis v1.22)</div>` : ''}
-
-      <div style="font-size:11px;color:var(--muted);margin-top:10px">${g.count} visite${g.count > 1 ? 's' : ''} · 1ère : ${fmt(g.firstSeen)}</div>
-      ${mergeButtons}
-    </div>
-  </div>`;
-  }).join('')}`;
-}
 
 function logout() {
   localStorage.removeItem('studyos-auth');
@@ -2786,7 +2537,6 @@ function logout() {
 function setAccentColor(idx) {
   localStorage.setItem('studyos-accent', String(idx));
   applyStoredAccent();
-  trackGuestEvent({ type: 'accent_color', idx, name: ACCENT_PRESETS[idx]?.name });
   renderSettings();
 }
 
@@ -2919,22 +2669,12 @@ async function init() {
       SUBJECTS_ORDER = EDOUARD_SUBJECTS_ORDER;
       db = await openEdouardDB();
     } else {
-      db = GUEST_MODE ? createMemDB() : await openDB();
-    }
-
-    if (GUEST_MODE) {
-      const banner = document.createElement('div');
-      banner.className = 'guest-banner';
-      banner.textContent = 'Mode invité — rien n\'est sauvegardé';
-      document.body.prepend(banner);
-
-      const statsNav = document.querySelector('.nav-btn[data-nav="stats"]');
-      if (statsNav) statsNav.remove();
+      db = await openDB();
     }
 
     if (EDOUARD_MODE) {
       const banner = document.createElement('div');
-      banner.className = 'guest-banner';
+      banner.className = 'mode-banner';
       banner.style.background = SUBJECT_COLORS['edouard-neerlan'].primary;
       banner.textContent = 'Mode Édouard';
       document.body.prepend(banner);
@@ -2982,50 +2722,15 @@ async function setupLockScreen() {
   const box = screen.querySelector('.lock-box');
 
   const showState = (id) => {
-    ['ls-known', 'ls-default', 'ls-guest', 'ls-edouard'].forEach(s => {
+    ['ls-default', 'ls-edouard'].forEach(s => {
       document.getElementById(s).style.display = s === id ? 'block' : 'none';
     });
     box.style.visibility = 'visible';
   };
 
-  const launchGuest = async (name) => {
-    GUEST_MODE = true;
-    guestName = name || 'invité';
-    guestSessionStart = Date.now();
-    if (guestName !== 'invité') {
-      try { await fetch('/api/guest', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name: guestName, ...getGuestDeviceInfo() }) }); } catch {}
-    }
-    window.addEventListener('beforeunload', () => {
-      if (!guestSessionStart) return;
-      const duration = Math.round((Date.now() - guestSessionStart) / 1000);
-      if (duration < 5) return;
-      navigator.sendBeacon('/api/guest', new Blob([JSON.stringify({ action: 'event', t: Date.now(), type: 'session_end', duration })], { type: 'application/json' }));
-    });
-    screen.remove();
-    init();
-  };
+  showState('ls-default');
 
-  // — État A : IP connue —
-  let knownName = null;
-  try {
-    const r = await fetch('/api/guest');
-    if (r.ok) { const d = await r.json(); knownName = d.name || null; }
-  } catch {}
-
-  if (knownName && knownName !== 'invité') {
-    document.getElementById('ls-known-greeting').textContent = `Heureux de vous revoir, ${knownName} !`;
-    document.getElementById('ls-known-confirm').addEventListener('click', () => launchGuest(knownName));
-    document.getElementById('ls-known-other').addEventListener('click', () => showState('ls-default'));
-    showState('ls-known');
-  } else if (knownName === 'invité') {
-    document.querySelector('#ls-guest .lock-sub').textContent = 'Dis-nous ton prénom pour être reconnu(e) la prochaine fois 👋';
-    showState('ls-guest');
-    document.getElementById('lock-guest-name').focus();
-  } else {
-    showState('ls-default');
-  }
-
-  // — État B : PIN Charles —
+  // — État A : PIN Charles —
   const input = document.getElementById('lock-pin');
   const error = document.getElementById('lock-error');
   const tryUnlock = () => {
@@ -3043,13 +2748,7 @@ async function setupLockScreen() {
   input.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
   input.addEventListener('input', () => { error.textContent = ''; if (input.value.length === 6) tryUnlock(); });
 
-  // — État B → C : passer au formulaire prénom —
-  document.getElementById('lock-guest').addEventListener('click', () => {
-    showState('ls-guest');
-    document.getElementById('lock-guest-name').focus();
-  });
-
-  // — État B → D : PIN Édouard —
+  // — État A → B : PIN Édouard —
   document.getElementById('lock-edouard').addEventListener('click', () => {
     showState('ls-edouard');
     document.getElementById('lock-edouard-pin').focus();
@@ -3073,13 +2772,6 @@ async function setupLockScreen() {
   document.getElementById('lock-edouard-submit').addEventListener('click', tryUnlockEdouard);
   edInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlockEdouard(); });
   edInput.addEventListener('input', () => { edError.textContent = ''; if (edInput.value.length === 6) tryUnlockEdouard(); });
-
-  // — État C : formulaire prénom —
-  const nameInput = document.getElementById('lock-guest-name');
-  const startGuest = () => launchGuest(nameInput.value.trim() || 'invité');
-  document.getElementById('lock-guest-start').addEventListener('click', startGuest);
-  nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') startGuest(); });
-  document.getElementById('lock-guest-back').addEventListener('click', () => showState('ls-default'));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -3238,7 +2930,6 @@ function renderMarkdown(md) {
 
 // ── Vue lecture d'une fiche ──
 async function openFicheView(id) {
-  trackGuestEvent({ type: 'fiche_open', id });
   learnSubView = 'fiche-view';
   const view = document.getElementById('view-learn');
   const md = await loadFicheData(id);
@@ -3275,7 +2966,6 @@ async function loadControleData(id) {
 
 // ── Démarrer un contrôle ──
 async function startControle(id) {
-  trackGuestEvent({ type: 'controle_start', id });
   const data = await loadControleData(id);
   if (!data) { toast('Contrôle introuvable'); return; }
 
