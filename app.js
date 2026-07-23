@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.34';
+const APP_VERSION = '1.35';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -301,6 +301,7 @@ let EDOUARD_MODE = false;
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.35': ['Chat gratuit : passe par chat-worker.mjs sur ton Mac + ta session Claude Code au lieu de l\'API Anthropic payante — lance-le avant d\'utiliser le chat'],
   '1.34': ['Nouvel onglet Chat : pose des questions sur le wiki School, réponses basées sur le contenu de tes chapitres/concepts/synthèses (Claude Haiku 4.5)'],
   '1.33': ['Suppression complète du mode invité (accès, tracking, analytics) — app strictement privée : Charles ou Édouard'],
   '1.32': ['Support Telegram Mini App : plein écran auto, thème adapté quand ouvert depuis Telegram (sans impact hors Telegram)'],
@@ -987,6 +988,9 @@ function renderChat() {
   }
 }
 
+const CHAT_POLL_INTERVAL_MS = 2000;
+const CHAT_POLL_TIMEOUT_MS = 90000;
+
 async function sendChatMessage() {
   if (chatSending) return;
   const input = document.getElementById('chat-input');
@@ -998,20 +1002,35 @@ async function sendChatMessage() {
   renderChat();
 
   try {
-    const res = await fetch('/api/chat', {
+    const createRes = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message, history: chatHistory.slice(0, -1) }),
     });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Erreur serveur');
-    chatHistory.push({ role: 'assistant', content: data.reply });
+    const createData = await createRes.json();
+    if (!createRes.ok) throw new Error(createData.error || 'Erreur serveur');
+
+    const reply = await pollChatJob(createData.jobId);
+    chatHistory.push({ role: 'assistant', content: reply });
   } catch (e) {
     chatHistory.push({ role: 'assistant', content: `⚠️ ${e.message || 'Impossible de contacter le chat.'}` });
   } finally {
     chatSending = false;
     renderChat();
   }
+}
+
+async function pollChatJob(jobId) {
+  const start = Date.now();
+  while (Date.now() - start < CHAT_POLL_TIMEOUT_MS) {
+    await new Promise(r => setTimeout(r, CHAT_POLL_INTERVAL_MS));
+    const res = await fetch(`/api/chat?id=${encodeURIComponent(jobId)}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'chat-worker introuvable — vérifie qu\'il tourne sur ton Mac');
+    if (data.status === 'done') return data.reply;
+    if (data.status === 'error') throw new Error(data.error || 'Erreur du chat-worker');
+  }
+  throw new Error('Pas de réponse — assure-toi que chat-worker.mjs tourne sur ton Mac');
 }
 
 // ═══════════════════════════════════════════════════
