@@ -4,7 +4,7 @@
 // CONSTANTS
 // ═══════════════════════════════════════════════════
 // Garder en phase avec CACHE dans sw.js à chaque déploiement
-const APP_VERSION = '1.33';
+const APP_VERSION = '1.34';
 
 const CHEVRON_ICON = `<svg class="chevron-icon" viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>`;
 
@@ -301,6 +301,7 @@ let EDOUARD_MODE = false;
 // CHANGELOG — une entrée par version déployée
 // ═══════════════════════════════════════════════════
 const CHANGELOG = {
+  '1.34': ['Nouvel onglet Chat : pose des questions sur le wiki School, réponses basées sur le contenu de tes chapitres/concepts/synthèses (Claude Haiku 4.5)'],
   '1.33': ['Suppression complète du mode invité (accès, tracking, analytics) — app strictement privée : Charles ou Édouard'],
   '1.32': ['Support Telegram Mini App : plein écran auto, thème adapté quand ouvert depuis Telegram (sans impact hors Telegram)'],
   '1.31': ['Code d\'accès Édouard changé pour un code à 6 chiffres'],
@@ -937,6 +938,7 @@ function showView(name) {
   currentView = name;
   if (name !== 'learn') setNavbarVisible(true);
   if (name === 'home') renderHome();
+  else if (name === 'chat') renderChat();
   else if (name === 'agenda') renderAgenda();
   else if (name === 'stats') renderStats();
   else if (name === 'settings') renderSettings();
@@ -946,6 +948,70 @@ function showView(name) {
 function goToSubject(id) {
   showView('learn');
   renderSubjectPage(id);
+}
+
+// ═══════════════════════════════════════════════════
+// CHAT — questions sur le wiki School
+// ═══════════════════════════════════════════════════
+let chatHistory = [];
+let chatSending = false;
+
+function renderChat() {
+  const view = document.getElementById('view-chat');
+
+  const messagesHTML = chatHistory.length
+    ? chatHistory.map(m => `
+      <div class="chat-msg chat-msg-${m.role}">
+        <div class="chat-bubble">${m.content.replace(/\n/g, '<br>')}</div>
+      </div>`).join('')
+    : `<div class="chat-empty">Pose une question sur un chapitre, un concept, une synthèse du wiki.</div>`;
+
+  view.innerHTML = `
+  <div class="view-header"><div class="view-title">Chat</div></div>
+  <div class="chat-messages" id="chat-messages">
+    ${messagesHTML}
+    ${chatSending ? `<div class="chat-msg chat-msg-assistant"><div class="chat-bubble chat-typing">…</div></div>` : ''}
+  </div>
+  <div class="chat-input-row">
+    <input id="chat-input" class="chat-input" type="text" placeholder="Pose ta question..." autocomplete="off" ${chatSending ? 'disabled' : ''}>
+    <button class="chat-send-btn" onclick="sendChatMessage()" ${chatSending ? 'disabled' : ''}>Envoyer</button>
+  </div>`;
+
+  const messagesEl = document.getElementById('chat-messages');
+  if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
+
+  const input = document.getElementById('chat-input');
+  if (input) {
+    input.focus();
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage(); });
+  }
+}
+
+async function sendChatMessage() {
+  if (chatSending) return;
+  const input = document.getElementById('chat-input');
+  const message = input.value.trim();
+  if (!message) return;
+
+  chatHistory.push({ role: 'user', content: message });
+  chatSending = true;
+  renderChat();
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, history: chatHistory.slice(0, -1) }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Erreur serveur');
+    chatHistory.push({ role: 'assistant', content: data.reply });
+  } catch (e) {
+    chatHistory.push({ role: 'assistant', content: `⚠️ ${e.message || 'Impossible de contacter le chat.'}` });
+  } finally {
+    chatSending = false;
+    renderChat();
+  }
 }
 
 // ═══════════════════════════════════════════════════

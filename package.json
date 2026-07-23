@@ -1,0 +1,9 @@
+{
+  "name": "studyapp",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.114.0",
+    "@upstash/redis": "^1.34.0"
+  }
+}
